@@ -12,8 +12,8 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	max-width: 100vw;
-	min-height: 70vh;
+	height: calc(100vh - 64px);
+	padding-bottom: 20vh;
 }
 
 .hero__logo {
@@ -47,6 +47,10 @@ Overwrite defaults
 .toc-menu .link.-active,
 .toc-menu .hlink.-active {
 	box-shadow: inset -2px 0 #1626ff;
+}
+
+.header-nav .iconlink:hover .icon {
+	color: #1626ff;
 }
 
 .markdown-body {
