@@ -1,6 +1,6 @@
 # TOC
 
-* [Hello](hello.md)
+* [](hello.md)
   * [Installation](install.md)
   * [Usage](usage.md)
 
