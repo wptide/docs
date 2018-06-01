@@ -17,6 +17,7 @@
     "docpress": "^0.7.1"
   },
   "docpress": {
+    "github": "wptide/docs",
     "css": [
       "docs/style.css"
     ]
