@@ -14,6 +14,7 @@
 		<use xlink:href="#path3_fill" transform="translate(435 22)"/>
 		<use xlink:href="#path4_fill" transform="translate(576 70)"/>
 	</svg>
+  <canvas class="hero__canvas" id="canvas"></canvas>
 </div>
 
 
