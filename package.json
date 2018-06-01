@@ -1,0 +1,24 @@
+{
+  "name": "xwp-tide-docs",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docpress serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wptide/docs.git"
+  },
+  "devDependencies": {
+    "docpress": "^0.7.1"
+  },
+  "docpress": {
+    "css": [
+      "docs/style.css"
+    ]
+  }
+}
