@@ -50,6 +50,86 @@
 	}
 }
 
+/*
+	Api Check Component
+*/
+
+.api-check {
+	width: 100%;
+	margin-bottom: 100px;
+}
+
+.api-check__title {
+	margin-bottom: 20px;
+	font-size: 25px;
+	font-weight: 200;
+	text-align: center;
+}
+
+.api-check__form {
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid #eee;
+}
+
+.api-check__radio {
+	position: absolute;
+	visibility: hidden;
+}
+
+.api-check__radio:checked + .api-check__label {
+	color: #fff;
+	background: #1626ff;
+}
+
+.api-check__label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 50px;
+	cursor: pointer;
+	color: #1526FF;
+	transition: color .2s, background .2s;
+}
+
+.api-check__icon {
+	margin-right: 10px;
+	fill: currentColor;
+}
+
+.api-check__textfield {
+	position: relative;
+	width: 100%;
+	padding: 15px;
+}
+
+.api-check__searchfield {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 0 10px;
+	height: 50px;
+	background: #F4F4F4;
+	border: 1px solid #DDDDDD;
+	outline: none;
+}
+
+.api-check__button {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	width: 50px;
+	appearance: none;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
 /* 
 	Overwrite defaults
 */
