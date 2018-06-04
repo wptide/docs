@@ -1,3 +1,5 @@
+// Check API component
+
 // Waves for homepage hero section
 
 function Waves (canvas) {
@@ -82,17 +84,18 @@ function Waves (canvas) {
 
 // Init everything
 
-var waves
-
-function createWaves() {
+document.addEventListener('DOMContentLoaded', function() {
   var canvas = document.getElementById('canvas')
-  waves = new Waves(canvas)
-  waves.run()
-}
+  var waves
 
-window.addEventListener('load', createWaves);
-window.addEventListener('resize', function () {
-  waves.stop()
-  waves = new Waves(canvas)
-  waves.run()
-});
+  function createWaves() {
+    if (waves) waves.stop()
+    if (matchMedia('(min-width: 959px)').matches) {
+      waves = new Waves(canvas)
+      waves.run()
+    }
+  }
+
+  window.addEventListener('load', createWaves)
+  window.addEventListener('resize', createWaves)
+})
