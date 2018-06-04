@@ -1,3 +1,5 @@
+// Waves for homepage hero section
+
 function Waves (canvas) {
   var ctx = canvas.getContext('2d')
   var parentRect = canvas.parentNode.getBoundingClientRect()
@@ -76,6 +78,9 @@ function Waves (canvas) {
     stop: stop
   }
 }
+
+
+// Init everything
 
 var waves
 

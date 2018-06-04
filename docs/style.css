@@ -1,3 +1,7 @@
+/*
+	Sidebar logo
+*/
+
 .link-index {
 	display: block;
 	margin-bottom: 50px;
@@ -6,6 +10,10 @@
 	background-repeat: no-repeat;
 	background-size: 70px 30px;
 }
+
+/*
+	Homepage Hero section
+*/
 
 .hero {
 	position: relative;
@@ -43,7 +51,7 @@
 }
 
 /* 
-Overwrite defaults 
+	Overwrite defaults
 */
 
 .doc-layout .body {
