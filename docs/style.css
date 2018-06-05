@@ -26,6 +26,7 @@
 
 .hero__logo {
 	width: 500px;
+	max-width: 50%;
 }
 
 .hero__title {
