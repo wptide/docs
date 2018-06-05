@@ -49,11 +49,12 @@ function ApiCheck (el) {
     removeResponse()
   }
 
-  function showResponse (msg) {
+  function showResponse (msg, status) {
     removeResponse()
     var pre = document.createElement('pre')
     var closeLink = document.createElement('a')
     pre.classList.add('api-check__pre')
+    pre.classList.add(status)
     closeLink.setAttribute('href', '#')
     closeLink.classList.add('api-check__close')
     closeLink.innerText = 'Close'
@@ -72,8 +73,8 @@ function ApiCheck (el) {
     req.open('GET', 'https://wptide.org/api/tide/v1/audit/wporg/'+ type +'/'+ name, true)
     req.onreadystatechange = function () {
       if (req.readyState == 4) {
-        if(req.status == 200) showResponse(JSON.parse(req.responseText))
-        else showResponse('The entered API endpoint is invalid\n')
+        if(req.status == 200) showResponse(JSON.parse(req.responseText), 'success')
+        else showResponse('The '+type+' you\'re looking for does not exist in our database. Make sure you entered a right name or try to search for something else.', 'error')
       }
     }
     req.send(null)
@@ -109,7 +110,6 @@ function ApiCheck (el) {
 function Waves (canvas) {
   var ctx = canvas.getContext('2d')
   var parentRect = canvas.parentNode.getBoundingClientRect()
-  console.log(parentRect)
   var height = canvas.height = parentRect.height
   var width = canvas.width = Math.min(parentRect.width + 300, window.innerWidth - 400)
 

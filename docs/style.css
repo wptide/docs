@@ -137,9 +137,17 @@
 	margin-top: 50px;
 }
 
+.api-check pre.error {
+	padding-right: 100px;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+
 .api-check__close {
 	position: absolute;
-	top: 20px;
+	top: 15px;
 	right: 20px;
 }
 
