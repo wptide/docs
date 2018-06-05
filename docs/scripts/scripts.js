@@ -108,8 +108,10 @@ function ApiCheck (el) {
 
 function Waves (canvas) {
   var ctx = canvas.getContext('2d')
-  var height = canvas.height = window.innerHeight
-  var width = canvas.width = window.innerWidth - 400
+  var parentRect = canvas.parentNode.getBoundingClientRect()
+  console.log(parentRect)
+  var height = canvas.height = parentRect.height
+  var width = canvas.width = Math.min(parentRect.width + 300, window.innerWidth - 400)
 
   // Stage
   var fov = 1024
