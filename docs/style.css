@@ -157,8 +157,28 @@
 	box-shadow: inset -2px 0 #1626ff;
 }
 
+.header-nav {
+	margin: 12px;
+}
+
 .header-nav .iconlink:hover .icon {
 	color: #1626ff;
+}
+
+.header-nav .iconlink:hover svg {
+	fill: #1626ff;
+}
+
+.header-nav .iconlink {
+	height: 32px;
+	padding: 12px;
+}
+
+.iconlink svg {
+	position: relative;
+	top: 1px;
+	width: 22px;
+	height: 22px;
 }
 
 .markdown-body {
