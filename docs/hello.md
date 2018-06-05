@@ -19,7 +19,7 @@
 
 <div class="api-check" data-api-check>
 	<div class="api-check__title">Search Plugins & Themes</div>
-	<form class="api-check__form" action="#">
+	<div class="api-check__form">
 		<input type="radio" id="api-check__radio--plugins" name="api-check__radio" class="api-check__radio" value="plugin" checked>
 		<label class="api-check__label" for="api-check__radio--plugins">
 			<svg class="api-check__icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@
 				</svg>
 			</button>
 		</div>
-	</form>
+	</div>
 </div>
 
 # Hello

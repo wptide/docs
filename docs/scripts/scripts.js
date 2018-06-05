@@ -32,9 +32,10 @@ function addWPIcon () {
 // Check API component
 function ApiCheck (el) {
   var form = el.querySelector('form')
+  var button = el.querySelector('button')
   var input = el.querySelector('input[type=text]')
 
-  form.addEventListener('submit', handleSubmit)
+  button.addEventListener('click', handleSubmit)
 
   function handleSubmit (e) {
     e.preventDefault()
@@ -188,25 +189,26 @@ function Waves (canvas) {
 
 
 // Init everything
-
 document.addEventListener('DOMContentLoaded', function() {
-  var canvas = document.getElementById('canvas')
-  var apiCheck = document.querySelector('[data-api-check]')
   var waves
-
+  
   function createWaves() {
+    var canvas = document.getElementById('canvas')
     if (waves) waves.stop()
     if (matchMedia('(min-width: 959px)').matches && canvas) {
-      waves = new Waves(canvas)
+      waves = new Waves( canvas )
       waves.run()
     }
   }
-
-  window.addEventListener('load', function() {
+  
+  function handlePageLoad () {
+    var apiCheck = document.querySelector('[data-api-check]')
     createWaves()
     addWPIcon()
-    if (apiCheck) new ApiCheck(apiCheck)
-  })
+    if (apiCheck) new ApiCheck( apiCheck )
+  }
 
+  window.addEventListener('load', handlePageLoad)
+  document.addEventListener('pjax:complete', handlePageLoad)
   window.addEventListener('resize', createWaves)
 })
