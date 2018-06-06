@@ -31,7 +31,7 @@ function addWPIcon () {
 
 // Check API component
 function ApiCheck (el) {
-  var form = el.querySelector('form')
+  var form = el.querySelector('[data-api-check-form]')
   var button = el.querySelector('button')
   var input = el.querySelector('input[type=text]')
 
