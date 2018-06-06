@@ -2,22 +2,42 @@
 
 ## Environment Variables
 
-## Google Cloud SDK
+Copy the `.env.dist` file to `.env`.
 
-## Google App Engine
+```
+cp .env.dist .env
+```
 
-## Service Account
-
-## Google Cloud Firestore
-
-## Google Cloud Storage
-
-## Google Cloud Storage for App Engine
+`.env` file is used to store custom values of environment variables for various services. Before setting up any of the services, update values according instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
 
 ## API
 
-## Sync Server
+Update the following environment variables in `.env` file:
 
-## Lighthouse Server
+...
 
-## PHPCS Server
+Install the dependencies as follows:
+
+```
+$ make api.composer
+```
+
+Then start the API Docker images in isolation:
+
+```
+make api.up
+```
+
+Last run the setup script:
+
+```
+make api.setup
+```
+
+Run the setup script to initialize WordPress for the first time or if you would 
+like a convenient way to update the default values when you change relevant 
+environment variables.
+
+Update your `hosts` file ...
+
+
