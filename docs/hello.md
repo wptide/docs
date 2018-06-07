@@ -40,7 +40,14 @@ The following diagram notes the Google Cloud Platform (GCP) components, Tide ser
 ![](architecture-diagram.png)
 
 ## Working with Tide
+_[Note: This is a transition to next sections, it needs to be elaborated in more detail yet, links added, etc.]_
 
-_[A transition to the next sections - explain various use cases, eg. user can search for plugins & themes, install Tide locally, etc.]_
+Tide is actively developed. Currently you can:
+
+* [search for plugins & themes](search.md) on this site and see their audits
+* install Tide locally
+* install Tide and deploy it to Google Cloud Platform
+
+In the future you will be able to use Tide as a service - use it to test your plugins or themes during development.
 
 
