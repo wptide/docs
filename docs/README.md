@@ -1,6 +1,7 @@
 # TOC
 
 * [](hello.md)
+* [Search plugins & themes](search.md)
 
 * Installation
   * [Prerequisites](installation/prerequisites.md)
