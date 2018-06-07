@@ -67,5 +67,8 @@ The following diagram notes the Google Cloud Platform (GCP) components, Tide ser
 
 ![](architecture-diagram.png)
 
+## Working with Tide
+
+_[A transition to the next sections - explain various use cases, eg. user can search for plugins & themes, install Tide locally, etc.]_
 
 
