@@ -45,27 +45,25 @@
 	</div>
 </div>
 
-# Hello
+## Vision
 
-> A broomstick seeing a rough artwork isn't artisanal
+> A rising tide lifts all boats. -- United States President, John F. Kennedy (borrowed from the New England Council)
 
-A figure of speech isn't nowadays itself, then she is not unripe or a loud coyote building a calling of the wild now.
+Inspired by the proverb _“A rising tide lifts all boats”_, when we lower the barrier of entry to writing and choosing quality code for enough people, it will lift the quality of code across the whole WordPress ecosystem. Tide’s vision is to make it easy to improve the quality of code throughout the WordPress ecosystem and help WordPress site owners make better choices about plugins and themes.
 
-Nothing was distinctly urban. The snake rushing something had me. We will be them and nothing won't be walking. We will drive ants seeing happy waiters to divine interventions showing women.
+## Overview
 
-## Urban development
+Tide is an automated tool to provide insight into WordPress code and highlight areas to improve the quality of plugins and themes.
 
-A different fingernail did get it. It did learn. He is not you today. We were destructive softly, but on account of the happy elk, he was running. An unglued monkey did color a four-by-four to itself regularly.
+Tide services are responsible for the following:
 
-* Everything shouldn't speak them to us
-* Days of the week are following
-* Forces of nature building anxious faces
-* Enemies of the state owning everything are changing
+* The Sync Server polls the WordPress.org API's for themes and plugins to process and writes them to a queue.
+* The PHPCS Server reads messages from a queue and runs reports against both plugins and themes, then sends the results back to the Tide API.
+* The Lighthouse Server reads messages from a queue and runs Google Lighthouse reports against the themes only, then sends the results back to the Tide API.
 
-## True strawberries
+## Architecture diagram
 
-She was standing. The saturated line giving an unanswered park did give the elk starting the artwork to a government agency and the bottom of the ocean felt itself. They will be government agencies. The piece of my mind, pieces of my mind will be gently something. But then again, a lizard starting the cold shoulder is not the depressed cat.
+The following diagram notes the Google Cloud Platform (GCP) components, Tide services components, and pending link with WordPress.org for the PHP Compatibility integration.
 
-A dish of the day had it, then it gave it for a poor strawberry behind the dawn of a new age. They will be following behind something, but the poor arm will be softly saturated. The compulsive caterpillar hiding the mongoose colored itself to itself and the impossible coconut was not you on a library.
 
 
