@@ -16,6 +16,30 @@
   });
 })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
 
+
+// Custom menu toggle 
+function chaptersToggle () {
+  var chapters = document.querySelectorAll('.menu-item.-level-1.-parent > .title')
+
+  chapters.forEach(addEventListener)
+  chapters.forEach(openActive)
+
+  function openActive(el) {
+    var active = el.parentNode.querySelector('.-active')
+    if (active) el.parentNode.classList.add('-open')
+  }
+
+  function addEventListener (el) {
+    el.removeEventListener('click', handleClick.bind(el))
+    el.addEventListener('click', handleClick.bind(el))
+  }
+
+  function handleClick(e) {
+    this.parentNode.classList.toggle('-open')
+  }
+}
+
+
 // Add WP Icon
 function addWPIcon () {
   var githubLink = document.querySelector('.iconlink')
@@ -31,7 +55,7 @@ function addWPIcon () {
 
 // Check API component
 function ApiCheck (el) {
-  var form = el.querySelector('form')
+  var form = el.querySelector('[data-api-check-form]')
   var button = el.querySelector('button')
   var input = el.querySelector('input[type=text]')
 
@@ -106,8 +130,8 @@ function ApiCheck (el) {
   }
 }
 
-// Waves for homepage hero section
 
+// Waves for homepage hero section
 function Waves (canvas) {
   var ctx = canvas.getContext('2d')
   var parentRect = canvas.parentNode.getBoundingClientRect()
@@ -202,12 +226,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function handlePageLoad () {
-    var apiCheck = document.querySelector('[data-api-check]')
     createWaves()
     addWPIcon()
+    chaptersToggle()
+    var apiCheck = document.querySelector('[data-api-check]')
     if (apiCheck) new ApiCheck( apiCheck )
   }
-
+  
   window.addEventListener('load', handlePageLoad)
   document.addEventListener('pjax:complete', handlePageLoad)
   window.addEventListener('resize', createWaves)

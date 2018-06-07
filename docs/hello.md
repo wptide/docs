@@ -17,6 +17,7 @@
   <canvas class="hero__canvas" id="canvas"></canvas>
 </div>
 
+
 ## Vision
 
 > A rising tide lifts all boats. -- United States President, John F. Kennedy (borrowed from the New England Council)
