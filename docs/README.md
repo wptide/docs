@@ -1,8 +1,6 @@
 # TOC
 
 * [](hello.md)
-  * [Installation](install.md)
-  * [Usage](usage.md)
 
 * Installation
   * [Prerequisites](installation/prerequisites.md)
