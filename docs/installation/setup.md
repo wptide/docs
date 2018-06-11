@@ -81,6 +81,13 @@ By default MongoDB is used as the local message provider for the Lighthouse/PHPC
 | `MONGO_QUEUE_LH` | Specifies which collection in MongoDB to use for the Lighthouse message queue. Default is `lighthouse`. |
 | `MONGO_QUEUE_PHPCS` | Specifies which collection in MongoDB to use for the PHPCS message queue. Default is `phpcs`. |
 
+## Install Go dependencies
+Install Go dependencies to be able to build servers.
+
+```
+$ glide install
+```
+
 ## Sync Server
 Build the Sync Server Docker image and start the server:
 
