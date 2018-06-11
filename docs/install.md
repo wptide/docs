@@ -1,3 +1,0 @@
-# Installation
-
-Use npm install.
