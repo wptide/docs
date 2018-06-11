@@ -1,0 +1,238 @@
+{
+  "toc": {
+    "sections": [
+      {
+        "title": "",
+        "source": "docs/home.md",
+        "url": "index.html",
+        "slug": "index",
+        "headings": [
+          {
+            "title": "Urban development",
+            "depth": 2,
+            "id": "urban-development"
+          },
+          {
+            "title": "True strawberries",
+            "depth": 2,
+            "id": "true-strawberries"
+          }
+        ]
+      },
+      {
+        "title": "Search plugins & themes",
+        "source": "docs/search.md",
+        "url": "search.html",
+        "slug": "search"
+      },
+      {
+        "title": "Installation",
+        "source": "docs/installation/index.md",
+        "url": "installation/index.html",
+        "slug": "installation",
+        "sections": [
+          {
+            "title": "Prerequisites",
+            "source": "docs/installation/prerequisites.md",
+            "url": "installation/prerequisites.html",
+            "slug": "installationprerequisites"
+          },
+          {
+            "title": "Cloning",
+            "source": "docs/installation/cloning.md",
+            "url": "installation/cloning.html",
+            "slug": "installationcloning"
+          },
+          {
+            "title": "Setup",
+            "source": "docs/installation/setup.md",
+            "url": "installation/setup.html",
+            "slug": "installationsetup"
+          }
+        ]
+      },
+      {
+        "title": "Services",
+        "source": "docs/services/index.md",
+        "url": "services/index.html",
+        "slug": "services",
+        "sections": [
+          {
+            "title": "API",
+            "source": "docs/services/api.md",
+            "url": "services/api.html",
+            "slug": "servicesapi"
+          },
+          {
+            "title": "Sync Server",
+            "source": "docs/services/sync.md",
+            "url": "services/sync.html",
+            "slug": "servicessync"
+          },
+          {
+            "title": "PHPCS Server",
+            "source": "docs/services/phpcs.md",
+            "url": "services/phpcs.html",
+            "slug": "servicesphpcs"
+          },
+          {
+            "title": "Lighthouse Server",
+            "source": "docs/services/lighthouse.md",
+            "url": "services/lighthouse.html",
+            "slug": "serviceslighthouse"
+          }
+        ]
+      },
+      {
+        "title": "Google Cloud Platform",
+        "source": "docs/gcp/index.md",
+        "url": "gcp/index.html",
+        "slug": "gcp",
+        "sections": [
+          {
+            "title": "Deployments",
+            "source": "docs/gcp/deployments.md",
+            "url": "gcp/deployments.html",
+            "slug": "gcpdeployments"
+          },
+          {
+            "title": "Google Cloud Storage",
+            "source": "docs/gcp/gcs.md",
+            "url": "gcp/gcs.html",
+            "slug": "gcpgcs"
+          },
+          {
+            "title": "Google Cloud Firestore",
+            "source": "docs/gcp/gcf.md",
+            "url": "gcp/gcf.html",
+            "slug": "gcpgcf"
+          }
+        ]
+      }
+    ]
+  },
+  "index": {
+    "index.html": {
+      "source": "docs/home.md",
+      "title": "",
+      "pageTitle": "",
+      "slug": "index",
+      "headings": [
+        {
+          "title": "Urban development",
+          "depth": 2,
+          "id": "urban-development"
+        },
+        {
+          "title": "True strawberries",
+          "depth": 2,
+          "id": "true-strawberries"
+        }
+      ]
+    },
+    "search.html": {
+      "source": "docs/search.md",
+      "title": "Search plugins & themes - ",
+      "pageTitle": "Search plugins & themes",
+      "slug": "search"
+    },
+    "installation/index.html": {
+      "source": "docs/installation/index.md",
+      "title": "Installation - ",
+      "pageTitle": "Installation",
+      "slug": "installation"
+    },
+    "installation/prerequisites.html": {
+      "source": "docs/installation/prerequisites.md",
+      "title": "Prerequisites - ",
+      "pageTitle": "Prerequisites",
+      "slug": "installationprerequisites"
+    },
+    "installation/cloning.html": {
+      "source": "docs/installation/cloning.md",
+      "title": "Cloning - ",
+      "pageTitle": "Cloning",
+      "slug": "installationcloning"
+    },
+    "installation/setup.html": {
+      "source": "docs/installation/setup.md",
+      "title": "Setup - ",
+      "pageTitle": "Setup",
+      "slug": "installationsetup"
+    },
+    "services/index.html": {
+      "source": "docs/services/index.md",
+      "title": "Services - ",
+      "pageTitle": "Services",
+      "slug": "services"
+    },
+    "services/api.html": {
+      "source": "docs/services/api.md",
+      "title": "API - ",
+      "pageTitle": "API",
+      "slug": "servicesapi"
+    },
+    "services/sync.html": {
+      "source": "docs/services/sync.md",
+      "title": "Sync Server - ",
+      "pageTitle": "Sync Server",
+      "slug": "servicessync"
+    },
+    "services/phpcs.html": {
+      "source": "docs/services/phpcs.md",
+      "title": "PHPCS Server - ",
+      "pageTitle": "PHPCS Server",
+      "slug": "servicesphpcs"
+    },
+    "services/lighthouse.html": {
+      "source": "docs/services/lighthouse.md",
+      "title": "Lighthouse Server - ",
+      "pageTitle": "Lighthouse Server",
+      "slug": "serviceslighthouse"
+    },
+    "gcp/index.html": {
+      "source": "docs/gcp/index.md",
+      "title": "Google Cloud Platform - ",
+      "pageTitle": "Google Cloud Platform",
+      "slug": "gcp"
+    },
+    "gcp/deployments.html": {
+      "source": "docs/gcp/deployments.md",
+      "title": "Deployments - ",
+      "pageTitle": "Deployments",
+      "slug": "gcpdeployments"
+    },
+    "gcp/gcs.html": {
+      "source": "docs/gcp/gcs.md",
+      "title": "Google Cloud Storage - ",
+      "pageTitle": "Google Cloud Storage",
+      "slug": "gcpgcs"
+    },
+    "gcp/gcf.html": {
+      "source": "docs/gcp/gcf.md",
+      "title": "Google Cloud Firestore - ",
+      "pageTitle": "Google Cloud Firestore",
+      "slug": "gcpgcf"
+    }
+  },
+  "sources": {
+    "docs/home.md": "index.html",
+    "docs/search.md": "search.html",
+    "docs/installation/index.md": "installation/index.html",
+    "docs/installation/prerequisites.md": "installation/prerequisites.html",
+    "docs/installation/cloning.md": "installation/cloning.html",
+    "docs/installation/setup.md": "installation/setup.html",
+    "docs/services/index.md": "services/index.html",
+    "docs/services/api.md": "services/api.html",
+    "docs/services/sync.md": "services/sync.html",
+    "docs/services/phpcs.md": "services/phpcs.html",
+    "docs/services/lighthouse.md": "services/lighthouse.html",
+    "docs/gcp/index.md": "gcp/index.html",
+    "docs/gcp/deployments.md": "gcp/deployments.html",
+    "docs/gcp/gcs.md": "gcp/gcs.html",
+    "docs/gcp/gcf.md": "gcp/gcf.html",
+    "docs/style.css": "style.css",
+    "docs/tide-logo.svg": "tide-logo.svg",
+    "docs/scripts/scripts.js": "scripts/scripts.js"
+  }
+}

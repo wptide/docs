@@ -1,0 +1,250 @@
+/*
+	Sidebar logo
+*/
+
+.link-index {
+	display: block;
+	margin-bottom: 50px;
+	background-image: url(tide-logo.svg);
+	background-position: 24px 2px;
+	background-repeat: no-repeat;
+	background-size: 70px 30px;
+}
+
+/*
+	Homepage Hero section
+*/
+
+.hero {
+	position: relative;
+	display: none;
+	flex-direction: column;
+	align-items: flex-start;
+	height: calc(100vh - 64px);
+	padding-top: 15vh;
+}
+
+.hero__logo {
+	width: 500px;
+	max-width: 50%;
+}
+
+.hero__title {
+	font-size: 40px;
+	font-weight: 200;
+	margin-bottom: 20px;
+}
+
+.hero__canvas {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	z-index: -1;
+	transform: translateX(-50%);
+	display: block;
+}
+
+
+@media (min-width: 960px) {
+	.hero {
+		display: flex;
+	}
+}
+
+/*
+	Api Check Component
+*/
+
+.api-check {
+	width: 100%;
+	margin-bottom: 100px;
+}
+
+.api-check__title {
+	margin-bottom: 20px;
+	font-size: 25px;
+	font-weight: 200;
+	text-align: center;
+}
+
+.api-check__form {
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid #eee;
+	/* background: #fff; */
+	/* box-shadow: 1px 6px 20px 0px rgba(0, 0, 0, 0.1); */
+}
+
+.api-check__radio {
+	position: absolute;
+	visibility: hidden;
+}
+
+.api-check__radio:checked + .api-check__label {
+	color: #fff;
+	background: #1626ff;
+}
+
+.api-check__label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 50px;
+	cursor: pointer;
+	color: #1526FF;
+	transition: color .2s, background .2s;
+}
+
+.api-check__icon {
+	margin-right: 10px;
+	fill: currentColor;
+}
+
+.api-check__textfield {
+	position: relative;
+	width: 100%;
+	padding: 15px;
+}
+
+.api-check__searchfield {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 0 10px;
+	height: 50px;
+	background: #F4F4F4;
+	border: 1px solid #DDDDDD;
+	outline: none;
+}
+
+.api-check__button {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	width: 50px;
+	appearance: none;
+	background: none;
+	border: none;
+	cursor: pointer;
+	outline: none;
+}
+
+.api-check pre {
+	position: relative;
+	margin-top: 50px;
+}
+
+.api-check pre.error {
+	padding-right: 100px;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+
+.api-check__close {
+	position: absolute;
+	top: 15px;
+	right: 20px;
+}
+
+/*
+	Custom menu toggle
+*/
+
+/* .menu-item.-level-1.-parent {
+	cursor: pointer;
+}
+
+.menu-item.-level-1.-parent .submenu {
+	display: none;
+}
+
+.menu-item.-level-1.-parent.-open .submenu {
+	display: block;
+} */
+
+/* 
+	Overwrite defaults
+*/
+
+.toc-menu .-level-1:first-child > .heading-list {
+	margin-bottom: 16px;
+}
+
+.doc-layout .body {
+	padding-left: 24px;
+	padding-right: 24px;
+	padding-bottom: 128px;
+}
+
+.header-nav {
+	margin: 12px;
+}
+
+.header-nav .iconlink {
+	height: 32px;
+	padding: 12px;
+}
+
+.header-nav .iconlink svg {
+	position: relative;
+	top: 1px;
+	width: 22px;
+	height: 22px;
+}
+
+.header-nav .iconlink:hover .icon {
+	color: #1626ff;
+}
+
+.header-nav .iconlink:hover svg {
+	fill: #1626ff;
+}
+
+.markdown-body {
+	max-width: 960px;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+	border: none;
+}
+
+@media (min-width: 769px) {
+	.markdown-body h2 {
+		margin-top: 50px;
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 959px) {
+	.markdown-body {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
+
+@media (max-width: 959px) {
+	.menu-toggle {
+		display: none;
+	}
+
+	.footer-nav {
+		opacity: 0;
+		transition: opacity .3s;
+	}
+
+	.footer-nav.-expanded {
+		opacity: 1;
+	}
+}
