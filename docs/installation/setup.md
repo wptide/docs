@@ -10,6 +10,15 @@ cp .env.dist .env
 
 `.env` file is used to store custom values of environment variables for various services. Before setting up any of the services, update values according instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
 
+The `.tpl` files are template files that through variable interpolation are 
+converted and used to deploy your project to GCP and even setup the local API. So 
+these files play a critical role in getting Tide setup. If these files are not 
+generating the correct output, please [contact us](#contact-us) to troubleshoot and 
+figure out a solution for your OS.
+
+So far we've only tested on OS X with and without the `envsubst` command available. 
+Other systems may not work correctly and we want to resolve that quickly.
+
 ## API
 
 Update the following environment variables in `.env` file:
