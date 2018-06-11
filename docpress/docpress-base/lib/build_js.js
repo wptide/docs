@@ -3,7 +3,7 @@
 const join = require('path').join
 
 module.exports = function buildJs (options, done) {
-  const fname = join(__dirname, '../data/script.js')
+  const fname = join(__dirname, '../../../src/js/script.js')
   const browserify = require('browserify')
   const b = browserify()
   b.add(fname)

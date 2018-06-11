@@ -21,7 +21,7 @@ const dirname = require('path').dirname
  */
 
 module.exports = function buildCss (options, done) {
-  buildStylus(join(__dirname, '../css/docpress.styl'), options, done)
+  buildStylus(join(__dirname, '../../../src/css/docpress.styl'), options, done)
 }
 
 function buildStylus (filepath, options, done) {
