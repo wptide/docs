@@ -5,7 +5,7 @@
 Copy the `.env.dist` file to `.env`.
 
 ```
-cp .env.dist .env
+$ cp .env.dist .env
 ```
 
 `.env` file is used to store custom values of environment variables for various services. Before setting up any of the services, update values according instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
@@ -19,6 +19,22 @@ figure out a solution for your OS.
 So far we've only tested on OS X with and without the `envsubst` command available. 
 Other systems may not work correctly and we want to resolve that quickly.
 
+## Google Cloud SDK 
+
+Configure Google Cloud SDK with your account and the appropriate project ID:
+
+```
+$ gcloud init
+```
+
+Update the following environment variables in `.env` file:
+
+| Variable | Description |
+| :--- | :--- |
+| `GCP_PROJECT` | The unique ID of you Google project. |
+| `GCP_REGION` | The [region][regions-and-zones] where all your resources will be created. For example, `us-west1`. |
+| `GCP_ZONE` | The preferred [zone][regions-and-zones] in your region that resources will be created, For example, `us-west1-a`. |
+
 ## API
 
 Update the following environment variables in `.env` file:
@@ -31,9 +47,9 @@ Update the following environment variables in `.env` file:
 | `API_KEY` | The API key used locally to authenticate the `audit-server` user. |
 | `API_SECRET` | The API secret used locally to authenticate the `audit-server` user. |
 
-For local development you can manually set the `API_KEY` and `API_SECRET` for the 
+For local development you have to manually set the `API_KEY` and `API_SECRET` for the 
 `audit-server` user, which will automatically update the user meta values when 
-`make api.setup` is ran. If you do not set those environment variables, or are 
+`make api.setup` is ran. If you are 
 running Tide in production, then you can access the auto generated key and secret 
 from the `audit-server` user profile. 
 
@@ -46,13 +62,13 @@ $ make api.composer
 Then start the API Docker images in isolation:
 
 ```
-make api.up
+$ make api.up
 ```
 
 Last run the setup script:
 
 ```
-make api.setup
+$ make api.setup
 ```
 
 Run the setup script to initialize WordPress for the first time or if you would 
@@ -88,11 +104,12 @@ Install Go dependencies to be able to build servers.
 $ glide install
 ```
 
-## Sync Server
-Build the Sync Server Docker image and start the server:
+## Lighthouse Server
+
+Build the Lighthouse Server Docker image and start the server
 
 ```
-$ make sync.build.up
+$ make lighthouse.build.up
 ```
 
 ## PHPCS Server
@@ -103,11 +120,9 @@ Build the PHPCS Server Docker image and start the server:
 $ make phpcs.build.up
 ```
 
-## Lighthouse Server
-
-Build the Lighthouse Server Docker image and start the server
+## Sync Server
+Build the Sync Server Docker image and start the server:
 
 ```
-$ make lighthouse.build.up
+$ make sync.build.up
 ```
-
