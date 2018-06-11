@@ -21,7 +21,9 @@ Other systems may not work correctly and we want to resolve that quickly.
 
 ## Google Cloud SDK 
 
-Configure Google Cloud SDK with your account and the appropriate project ID:
+Create a new Cloud Project using the [Cloud Console](https://console.cloud.google.com/).
+
+Configure Google Cloud SDK with your account and the project ID you've just created:
 
 ```
 $ gcloud init

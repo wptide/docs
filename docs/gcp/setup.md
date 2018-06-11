@@ -1,9 +1,6 @@
 # Google Cloud Platform Setup
 
 ## Prerequisites
-* Install [Google Cloud SDK][gcloud-sdk] & [gsutil][gsutil]
-* Create a new Cloud Project using the [Cloud Console][cloud-console]
-* Enable Billing on that project
 * Enable the [Cloud SQL API][cloud-sql-api-enable] (_optional_)
 
 ## Setup
@@ -16,14 +13,6 @@ values in the `.env` file. The `.env.gcp` is optional for local development. If
 you see warnings in the console about the file missing when running certain `make` 
 commands, that's ok. The `.env.gcp` file will only affect the `.tpl` files and you 
 should only add overrides for GCP specific resources. 
-
-### Google Cloud SDK 
-
-Configure Google Cloud SDK with your account and the appropriate project ID:
-
-```
-$ gcloud init
-```
 
 ### Google App Engine
 

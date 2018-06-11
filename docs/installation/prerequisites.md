@@ -6,6 +6,9 @@ Install [Composer](https://getcomposer.org/) and test if it works by running `co
 ## Docker
 Install [Docker](https://docs.docker.com/install/). Note that you may not be able to setup and run Tide properly with legacy Docker Toolbox.
 
+## Google Cloud SDK
+Install [Google Cloud SDK](https://cloud.google.com/sdk/).
+
 ## Go
 Install [Go](https://golang.org/doc/install) language and test if your installation works by following the instructions on the installation page.
 
@@ -13,7 +16,6 @@ Install [Go](https://golang.org/doc/install) language and test if your installat
 Install [Glide](https://glide.readthedocs.io/en/latest/#installing-glide), a package manager for Go.
 
 ## MongoDB
-
 Install [MongoDB](https://www.mongodb.com/)
 
 ## Make
