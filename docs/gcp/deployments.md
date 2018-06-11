@@ -5,7 +5,7 @@ section we've included some of the basic steps required to get setup on GCP.
 
 ## GCP Settings
 
-These three settings are required for both local development and deployments to 
+These three settings are for deployments to 
 GCP. Be sure to use the same region you chose during the earlier 
 `gcloud app create` step.
 

@@ -15,6 +15,7 @@
  * [Lighthouse Server](services/lighthouse.md)
   
 * [Google Cloud Platform](gcp/index.md)
+ * [Setup](gcp/setup.md)
  * [Deployments](gcp/deployments.md)
  * [Google Cloud Storage](gcp/gcs.md)
  * [Google Cloud Firestore](gcp/gcf.md)
