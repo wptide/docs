@@ -1,17 +1,23 @@
 # Cloning
 
-Ensure you're in the directory where you would like to install Tide:
+Tide needs to be cloned to a directory inside Go workspace specified by [GOPATH](https://golang.org/doc/code.html#GOPATH) environment variable. It defaults to a directory named `go` inside your home directory, so `$HOME/go` on Mac/Unix and `%USERPROFILE%\go` (usually `C:\Users\YourName\go`) on Windows.
+
+Create the following directory `src/github.com/xwp` inside your Go workspace and change to that directory:
 
 ```
-git clone -b develop --recursive https://github.com/xwp/go-tide.git tide
+cd src/github.com/xwp
 ```
 
-_Note: On Windows clone repository to a folder `C:\Users\[YourName]\go\src\github.com\xwp\go-tide` to avoid problems with properly mounting shared volumes and to be able to build servers._
+Now clone Tide:
+
+```
+git clone -b gcp-providers --recursive https://github.com/xwp/go-tide.git
+```
 
 Change to Tide working directory:  
 
 ```
-cd tide
+cd go-tide
 ```
 
 Update submodules:
