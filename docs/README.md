@@ -18,3 +18,5 @@
  * [Deployments](gcp/deployments.md)
  * [Google Cloud Storage](gcp/gcs.md)
  * [Google Cloud Firestore](gcp/gcf.md)
+
+* [Amazon Web Services](aws/index.md)
