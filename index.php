@@ -3,8 +3,11 @@
  * The main template file
  */
 
-get_header(); ?>
+get_header();
 
-	Test
+	$file = $_SERVER[REQUEST_URI] != '/' ? $_SERVER[REQUEST_URI] : '/index';
+	$file = substr($file, -1) == '/' ? $file . 'index' : $file;
 
-<?php get_footer(); ?>
+	include('_docpress' . $file . '.html');
+
+get_footer();
