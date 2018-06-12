@@ -1,5 +1,6 @@
 <div class="api-check" data-api-check>
-	<div class="api-check__title">Search Plugins & Themes</div>
+	<div class="api-check__title">Search Plugins &amp; Themes</div>
+	<p>type the slug of the plugin or theme you're looking for, e.g. <code>twentyseventeen</code> or <code>jetpack</code>. 
 	<div class="api-check__form" data-api-check-form>
 		<input type="radio" id="api-check__radio--plugins" name="api-check__radio" class="api-check__radio" value="plugin" checked>
 		<label class="api-check__label" for="api-check__radio--plugins">
