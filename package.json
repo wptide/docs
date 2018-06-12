@@ -10,15 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/wptide/docs.git"
   },
-  "docpress": {
-    "github": "wptide/docs",
-    "markdown": {
-      "typographer": true,
-      "plugins": {
-        "decorate": {}
-      }
-    }
-  },
   "dependencies": {
     "debounce": "^1.1.0",
     "dom101": "^2.2.1",

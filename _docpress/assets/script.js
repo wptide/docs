@@ -308,484 +308,6 @@ function toggleClass (el, className, value) {
 module.exports = toggleClass
 
 },{"./add-class":2,"./has-class":5,"./remove-class":7}],10:[function(require,module,exports){
-/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
- * @license MIT */
-
-;(function(root, factory) {
-
-  if (typeof define === 'function' && define.amd) {
-    define(factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.NProgress = factory();
-  }
-
-})(this, function() {
-  var NProgress = {};
-
-  NProgress.version = '0.2.0';
-
-  var Settings = NProgress.settings = {
-    minimum: 0.08,
-    easing: 'ease',
-    positionUsing: '',
-    speed: 200,
-    trickle: true,
-    trickleRate: 0.02,
-    trickleSpeed: 800,
-    showSpinner: true,
-    barSelector: '[role="bar"]',
-    spinnerSelector: '[role="spinner"]',
-    parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-  };
-
-  /**
-   * Updates configuration.
-   *
-   *     NProgress.configure({
-   *       minimum: 0.1
-   *     });
-   */
-  NProgress.configure = function(options) {
-    var key, value;
-    for (key in options) {
-      value = options[key];
-      if (value !== undefined && options.hasOwnProperty(key)) Settings[key] = value;
-    }
-
-    return this;
-  };
-
-  /**
-   * Last number.
-   */
-
-  NProgress.status = null;
-
-  /**
-   * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
-   *
-   *     NProgress.set(0.4);
-   *     NProgress.set(1.0);
-   */
-
-  NProgress.set = function(n) {
-    var started = NProgress.isStarted();
-
-    n = clamp(n, Settings.minimum, 1);
-    NProgress.status = (n === 1 ? null : n);
-
-    var progress = NProgress.render(!started),
-        bar      = progress.querySelector(Settings.barSelector),
-        speed    = Settings.speed,
-        ease     = Settings.easing;
-
-    progress.offsetWidth; /* Repaint */
-
-    queue(function(next) {
-      // Set positionUsing if it hasn't already been set
-      if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
-
-      // Add transition
-      css(bar, barPositionCSS(n, speed, ease));
-
-      if (n === 1) {
-        // Fade out
-        css(progress, { 
-          transition: 'none', 
-          opacity: 1 
-        });
-        progress.offsetWidth; /* Repaint */
-
-        setTimeout(function() {
-          css(progress, { 
-            transition: 'all ' + speed + 'ms linear', 
-            opacity: 0 
-          });
-          setTimeout(function() {
-            NProgress.remove();
-            next();
-          }, speed);
-        }, speed);
-      } else {
-        setTimeout(next, speed);
-      }
-    });
-
-    return this;
-  };
-
-  NProgress.isStarted = function() {
-    return typeof NProgress.status === 'number';
-  };
-
-  /**
-   * Shows the progress bar.
-   * This is the same as setting the status to 0%, except that it doesn't go backwards.
-   *
-   *     NProgress.start();
-   *
-   */
-  NProgress.start = function() {
-    if (!NProgress.status) NProgress.set(0);
-
-    var work = function() {
-      setTimeout(function() {
-        if (!NProgress.status) return;
-        NProgress.trickle();
-        work();
-      }, Settings.trickleSpeed);
-    };
-
-    if (Settings.trickle) work();
-
-    return this;
-  };
-
-  /**
-   * Hides the progress bar.
-   * This is the *sort of* the same as setting the status to 100%, with the
-   * difference being `done()` makes some placebo effect of some realistic motion.
-   *
-   *     NProgress.done();
-   *
-   * If `true` is passed, it will show the progress bar even if its hidden.
-   *
-   *     NProgress.done(true);
-   */
-
-  NProgress.done = function(force) {
-    if (!force && !NProgress.status) return this;
-
-    return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
-  };
-
-  /**
-   * Increments by a random amount.
-   */
-
-  NProgress.inc = function(amount) {
-    var n = NProgress.status;
-
-    if (!n) {
-      return NProgress.start();
-    } else {
-      if (typeof amount !== 'number') {
-        amount = (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
-      }
-
-      n = clamp(n + amount, 0, 0.994);
-      return NProgress.set(n);
-    }
-  };
-
-  NProgress.trickle = function() {
-    return NProgress.inc(Math.random() * Settings.trickleRate);
-  };
-
-  /**
-   * Waits for all supplied jQuery promises and
-   * increases the progress as the promises resolve.
-   *
-   * @param $promise jQUery Promise
-   */
-  (function() {
-    var initial = 0, current = 0;
-
-    NProgress.promise = function($promise) {
-      if (!$promise || $promise.state() === "resolved") {
-        return this;
-      }
-
-      if (current === 0) {
-        NProgress.start();
-      }
-
-      initial++;
-      current++;
-
-      $promise.always(function() {
-        current--;
-        if (current === 0) {
-            initial = 0;
-            NProgress.done();
-        } else {
-            NProgress.set((initial - current) / initial);
-        }
-      });
-
-      return this;
-    };
-
-  })();
-
-  /**
-   * (Internal) renders the progress bar markup based on the `template`
-   * setting.
-   */
-
-  NProgress.render = function(fromStart) {
-    if (NProgress.isRendered()) return document.getElementById('nprogress');
-
-    addClass(document.documentElement, 'nprogress-busy');
-    
-    var progress = document.createElement('div');
-    progress.id = 'nprogress';
-    progress.innerHTML = Settings.template;
-
-    var bar      = progress.querySelector(Settings.barSelector),
-        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
-        parent   = document.querySelector(Settings.parent),
-        spinner;
-    
-    css(bar, {
-      transition: 'all 0 linear',
-      transform: 'translate3d(' + perc + '%,0,0)'
-    });
-
-    if (!Settings.showSpinner) {
-      spinner = progress.querySelector(Settings.spinnerSelector);
-      spinner && removeElement(spinner);
-    }
-
-    if (parent != document.body) {
-      addClass(parent, 'nprogress-custom-parent');
-    }
-
-    parent.appendChild(progress);
-    return progress;
-  };
-
-  /**
-   * Removes the element. Opposite of render().
-   */
-
-  NProgress.remove = function() {
-    removeClass(document.documentElement, 'nprogress-busy');
-    removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
-    var progress = document.getElementById('nprogress');
-    progress && removeElement(progress);
-  };
-
-  /**
-   * Checks if the progress bar is rendered.
-   */
-
-  NProgress.isRendered = function() {
-    return !!document.getElementById('nprogress');
-  };
-
-  /**
-   * Determine which positioning CSS rule to use.
-   */
-
-  NProgress.getPositioningCSS = function() {
-    // Sniff on document.body.style
-    var bodyStyle = document.body.style;
-
-    // Sniff prefixes
-    var vendorPrefix = ('WebkitTransform' in bodyStyle) ? 'Webkit' :
-                       ('MozTransform' in bodyStyle) ? 'Moz' :
-                       ('msTransform' in bodyStyle) ? 'ms' :
-                       ('OTransform' in bodyStyle) ? 'O' : '';
-
-    if (vendorPrefix + 'Perspective' in bodyStyle) {
-      // Modern browsers with 3D support, e.g. Webkit, IE10
-      return 'translate3d';
-    } else if (vendorPrefix + 'Transform' in bodyStyle) {
-      // Browsers without 3D support, e.g. IE9
-      return 'translate';
-    } else {
-      // Browsers without translate() support, e.g. IE7-8
-      return 'margin';
-    }
-  };
-
-  /**
-   * Helpers
-   */
-
-  function clamp(n, min, max) {
-    if (n < min) return min;
-    if (n > max) return max;
-    return n;
-  }
-
-  /**
-   * (Internal) converts a percentage (`0..1`) to a bar translateX
-   * percentage (`-100%..0%`).
-   */
-
-  function toBarPerc(n) {
-    return (-1 + n) * 100;
-  }
-
-
-  /**
-   * (Internal) returns the correct CSS for changing the bar's
-   * position given an n percentage, and speed and ease from Settings
-   */
-
-  function barPositionCSS(n, speed, ease) {
-    var barCSS;
-
-    if (Settings.positionUsing === 'translate3d') {
-      barCSS = { transform: 'translate3d('+toBarPerc(n)+'%,0,0)' };
-    } else if (Settings.positionUsing === 'translate') {
-      barCSS = { transform: 'translate('+toBarPerc(n)+'%,0)' };
-    } else {
-      barCSS = { 'margin-left': toBarPerc(n)+'%' };
-    }
-
-    barCSS.transition = 'all '+speed+'ms '+ease;
-
-    return barCSS;
-  }
-
-  /**
-   * (Internal) Queues a function to be executed.
-   */
-
-  var queue = (function() {
-    var pending = [];
-    
-    function next() {
-      var fn = pending.shift();
-      if (fn) {
-        fn(next);
-      }
-    }
-
-    return function(fn) {
-      pending.push(fn);
-      if (pending.length == 1) next();
-    };
-  })();
-
-  /**
-   * (Internal) Applies css properties to an element, similar to the jQuery 
-   * css method.
-   *
-   * While this helper does assist with vendor prefixed property names, it 
-   * does not perform any manipulation of values prior to setting styles.
-   */
-
-  var css = (function() {
-    var cssPrefixes = [ 'Webkit', 'O', 'Moz', 'ms' ],
-        cssProps    = {};
-
-    function camelCase(string) {
-      return string.replace(/^-ms-/, 'ms-').replace(/-([\da-z])/gi, function(match, letter) {
-        return letter.toUpperCase();
-      });
-    }
-
-    function getVendorProp(name) {
-      var style = document.body.style;
-      if (name in style) return name;
-
-      var i = cssPrefixes.length,
-          capName = name.charAt(0).toUpperCase() + name.slice(1),
-          vendorName;
-      while (i--) {
-        vendorName = cssPrefixes[i] + capName;
-        if (vendorName in style) return vendorName;
-      }
-
-      return name;
-    }
-
-    function getStyleProp(name) {
-      name = camelCase(name);
-      return cssProps[name] || (cssProps[name] = getVendorProp(name));
-    }
-
-    function applyCss(element, prop, value) {
-      prop = getStyleProp(prop);
-      element.style[prop] = value;
-    }
-
-    return function(element, properties) {
-      var args = arguments,
-          prop, 
-          value;
-
-      if (args.length == 2) {
-        for (prop in properties) {
-          value = properties[prop];
-          if (value !== undefined && properties.hasOwnProperty(prop)) applyCss(element, prop, value);
-        }
-      } else {
-        applyCss(element, args[1], args[2]);
-      }
-    }
-  })();
-
-  /**
-   * (Internal) Determines if an element or space separated list of class names contains a class name.
-   */
-
-  function hasClass(element, name) {
-    var list = typeof element == 'string' ? element : classList(element);
-    return list.indexOf(' ' + name + ' ') >= 0;
-  }
-
-  /**
-   * (Internal) Adds a class to an element.
-   */
-
-  function addClass(element, name) {
-    var oldList = classList(element),
-        newList = oldList + name;
-
-    if (hasClass(oldList, name)) return; 
-
-    // Trim the opening space.
-    element.className = newList.substring(1);
-  }
-
-  /**
-   * (Internal) Removes a class from an element.
-   */
-
-  function removeClass(element, name) {
-    var oldList = classList(element),
-        newList;
-
-    if (!hasClass(element, name)) return;
-
-    // Replace the class name.
-    newList = oldList.replace(' ' + name + ' ', ' ');
-
-    // Trim the opening and closing spaces.
-    element.className = newList.substring(1, newList.length - 1);
-  }
-
-  /**
-   * (Internal) Gets a space separated list of the class names on the element. 
-   * The list is wrapped with a single space on each end to facilitate finding 
-   * matches within the list.
-   */
-
-  function classList(element) {
-    return (' ' + (element.className || '') + ' ').replace(/\s+/gi, ' ');
-  }
-
-  /**
-   * (Internal) Removes an element from the DOM.
-   */
-
-  function removeElement(element) {
-    element && element.parentNode && element.parentNode.removeChild(element);
-  }
-
-  return NProgress;
-});
-
-
-},{}],11:[function(require,module,exports){
 /* global define */
 void (function (root, factory) {
   if (typeof define === 'function' && define.amd) define(factory)
@@ -1204,1293 +726,9 @@ void (function (root, factory) {
   return onmount
 }))
 
-},{}],12:[function(require,module,exports){
-var executeScripts = require("./lib/execute-scripts.js")
-var forEachEls = require("./lib/foreach-els.js")
-var parseOptions = require("./lib/parse-options.js")
-var switches = require("./lib/switches")
-var newUid = require("./lib/uniqueid.js")
-
-var on = require("./lib/events/on.js")
-var trigger = require("./lib/events/trigger.js")
-
-var clone = require("./lib/util/clone.js")
-var contains = require("./lib/util/contains.js")
-var extend = require("./lib/util/extend.js")
-var noop = require("./lib/util/noop")
-
-var Pjax = function(options) {
-    this.state = {
-      numPendingSwitches: 0,
-      href: null,
-      options: null
-    }
-
-
-    this.options = parseOptions(options)
-    this.log("Pjax options", this.options)
-
-    if (this.options.scrollRestoration && "scrollRestoration" in history) {
-      history.scrollRestoration = "manual"
-    }
-
-    this.maxUid = this.lastUid = newUid()
-
-    this.parseDOM(document)
-
-    on(window, "popstate", function(st) {
-      if (st.state) {
-        var opt = clone(this.options)
-        opt.url = st.state.url
-        opt.title = st.state.title
-        opt.history = false
-        opt.scrollPos = st.state.scrollPos
-        if (st.state.uid < this.lastUid) {
-          opt.backward = true
-        }
-        else {
-          opt.forward = true
-        }
-        this.lastUid = st.state.uid
-
-        // @todo implement history cache here, based on uid
-        this.loadUrl(st.state.url, opt)
-      }
-    }.bind(this))
-  }
-
-Pjax.switches = switches
-
-Pjax.prototype = {
-  log: require("./lib/proto/log.js"),
-
-  getElements: function(el) {
-    return el.querySelectorAll(this.options.elements)
-  },
-
-  parseDOM: function(el) {
-    var parseElement = require("./lib/proto/parse-element")
-    forEachEls(this.getElements(el), parseElement, this)
-  },
-
-  refresh: function(el) {
-    this.parseDOM(el || document)
-  },
-
-  reload: function() {
-    window.location.reload()
-  },
-
-  attachLink: require("./lib/proto/attach-link.js"),
-
-  attachForm: require("./lib/proto/attach-form.js"),
-
-  forEachSelectors: function(cb, context, DOMcontext) {
-    return require("./lib/foreach-selectors.js").bind(this)(this.options.selectors, cb, context, DOMcontext)
-  },
-
-  switchSelectors: function(selectors, fromEl, toEl, options) {
-    return require("./lib/switches-selectors.js").bind(this)(this.options.switches, this.options.switchesOptions, selectors, fromEl, toEl, options)
-  },
-
-  latestChance: function(href) {
-    window.location = href
-  },
-
-  onSwitch: function() {
-    trigger(window, "resize scroll")
-
-    this.state.numPendingSwitches--
-
-    // debounce calls, so we only run this once after all switches are finished.
-    if (this.state.numPendingSwitches === 0) {
-      this.afterAllSwitches()
-    }
-  },
-
-  loadContent: function(html, options) {
-    var tmpEl = document.implementation.createHTMLDocument("pjax")
-
-    // parse HTML attributes to copy them
-    // since we are forced to use documentElement.innerHTML (outerHTML can't be used for <html>)
-    var htmlRegex = /<html[^>]+>/gi
-    var htmlAttribsRegex = /\s?[a-z:]+(?:\=(?:\'|\")[^\'\">]+(?:\'|\"))*/gi
-    var matches = html.match(htmlRegex)
-    if (matches && matches.length) {
-      matches = matches[0].match(htmlAttribsRegex)
-      if (matches.length) {
-        matches.shift()
-        matches.forEach(function(htmlAttrib) {
-          var attr = htmlAttrib.trim().split("=")
-          if (attr.length === 1) {
-            tmpEl.documentElement.setAttribute(attr[0], true)
-          }
-          else {
-            tmpEl.documentElement.setAttribute(attr[0], attr[1].slice(1, -1))
-          }
-        })
-      }
-    }
-
-    tmpEl.documentElement.innerHTML = html
-    this.log("load content", tmpEl.documentElement.attributes, tmpEl.documentElement.innerHTML.length)
-
-    // Clear out any focused controls before inserting new page contents.
-    if (document.activeElement && contains(document, this.options.selectors, document.activeElement)) {
-      try {
-        document.activeElement.blur()
-      } catch (e) { }
-    }
-
-    this.switchSelectors(this.options.selectors, tmpEl, document, options)
-  },
-
-  abortRequest: require("./lib/abort-request.js"),
-
-  doRequest: require("./lib/send-request.js"),
-
-  handleResponse: require("./lib/proto/handle-response.js"),
-
-  loadUrl: function(href, options) {
-    options = typeof options === "object" ?
-      extend({}, this.options, options) :
-      clone(this.options)
-
-    this.log("load href", href, options)
-
-    // Abort any previous request
-    this.abortRequest(this.request)
-
-    trigger(document, "pjax:send", options)
-
-    // Do the request
-    this.request = this.doRequest(href, options, this.handleResponse.bind(this))
-  },
-
-  afterAllSwitches: function() {
-    // FF bug: Won’t autofocus fields that are inserted via JS.
-    // This behavior is incorrect. So if theres no current focus, autofocus
-    // the last field.
-    //
-    // http://www.w3.org/html/wg/drafts/html/master/forms.html
-    var autofocusEl = Array.prototype.slice.call(document.querySelectorAll("[autofocus]")).pop()
-    if (autofocusEl && document.activeElement !== autofocusEl) {
-      autofocusEl.focus()
-    }
-
-    // execute scripts when DOM have been completely updated
-    this.options.selectors.forEach(function(selector) {
-      forEachEls(document.querySelectorAll(selector), function(el) {
-        executeScripts(el)
-      })
-    })
-
-    var state = this.state
-
-    if (state.options.history) {
-      if (!window.history.state) {
-        this.lastUid = this.maxUid = newUid()
-        window.history.replaceState({
-            url: window.location.href,
-            title: document.title,
-            uid: this.maxUid,
-            scrollPos: [0, 0]
-          },
-          document.title)
-      }
-
-      // Update browser history
-      this.lastUid = this.maxUid = newUid()
-
-      window.history.pushState({
-          url: state.href,
-          title: state.options.title,
-          uid: this.maxUid,
-          scrollPos: [0, 0]
-        },
-        state.options.title,
-        state.href)
-    }
-
-    this.forEachSelectors(function(el) {
-      this.parseDOM(el)
-    }, this)
-
-    // Fire Events
-    trigger(document,"pjax:complete pjax:success", state.options)
-
-    if (typeof state.options.analytics === "function") {
-      state.options.analytics()
-    }
-
-    if (state.options.history) {
-      // First parse url and check for hash to override scroll
-      var a = document.createElement("a")
-      a.href = this.state.href
-      if (a.hash) {
-        var name = a.hash.slice(1)
-        name = decodeURIComponent(name)
-
-        var curtop = 0
-        var target = document.getElementById(name) || document.getElementsByName(name)[0]
-        if (target) {
-          // http://stackoverflow.com/questions/8111094/cross-browser-javascript-function-to-find-actual-position-of-an-element-in-page
-          if (target.offsetParent) {
-            do {
-              curtop += target.offsetTop
-
-              target = target.offsetParent
-            } while (target)
-          }
-        }
-        window.scrollTo(0, curtop)
-      }
-      else if (state.options.scrollTo !== false) {
-        // Scroll page to top on new page load
-        if (state.options.scrollTo.length > 1) {
-          window.scrollTo(state.options.scrollTo[0], state.options.scrollTo[1])
-        }
-        else {
-          window.scrollTo(0, state.options.scrollTo)
-        }
-      }
-    }
-    else if (state.options.scrollRestoration && state.options.scrollPos) {
-      window.scrollTo(state.options.scrollPos[0], state.options.scrollPos[1])
-    }
-
-    this.state = {
-      numPendingSwitches: 0,
-      href: null,
-      options: null
-    }
-  }
-}
-
-Pjax.isSupported = require("./lib/is-supported.js")
-
-// arguably could do `if( require("./lib/is-supported.js")()) {` but that might be a little to simple
-if (Pjax.isSupported()) {
-  module.exports = Pjax
-}
-// if there isn’t required browser functions, returning stupid api
-else {
-  var stupidPjax = noop
-  for (var key in Pjax.prototype) {
-    if (Pjax.prototype.hasOwnProperty(key) && typeof Pjax.prototype[key] === "function") {
-      stupidPjax[key] = noop
-    }
-  }
-
-  module.exports = stupidPjax
-}
-
-},{"./lib/abort-request.js":13,"./lib/events/on.js":15,"./lib/events/trigger.js":16,"./lib/execute-scripts.js":17,"./lib/foreach-els.js":18,"./lib/foreach-selectors.js":19,"./lib/is-supported.js":20,"./lib/parse-options.js":21,"./lib/proto/attach-form.js":22,"./lib/proto/attach-link.js":23,"./lib/proto/handle-response.js":24,"./lib/proto/log.js":25,"./lib/proto/parse-element":26,"./lib/send-request.js":27,"./lib/switches":29,"./lib/switches-selectors.js":28,"./lib/uniqueid.js":30,"./lib/util/clone.js":31,"./lib/util/contains.js":32,"./lib/util/extend.js":33,"./lib/util/noop":34}],13:[function(require,module,exports){
-var noop = require("./util/noop")
-
-module.exports = function(request) {
-  if (request && request.readyState < 4) {
-    request.onreadystatechange = noop
-    request.abort()
-  }
-}
-
-},{"./util/noop":34}],14:[function(require,module,exports){
-module.exports = function(el) {
-  var code = (el.text || el.textContent || el.innerHTML || "")
-  var src = (el.src || "")
-  var parent = el.parentNode || document.querySelector("head") || document.documentElement
-  var script = document.createElement("script")
-
-  if (code.match("document.write")) {
-    if (console && console.log) {
-      console.log("Script contains document.write. Can’t be executed correctly. Code skipped ", el)
-    }
-    return false
-  }
-
-  script.type = "text/javascript"
-
-  /* istanbul ignore if */
-  if (src !== "") {
-    script.src = src
-    script.async = false // force synchronous loading of peripheral JS
-  }
-
-  if (code !== "") {
-    try {
-      script.appendChild(document.createTextNode(code))
-    }
-    catch (e) {
-      /* istanbul ignore next */
-      // old IEs have funky script nodes
-      script.text = code
-    }
-  }
-
-  // execute
-  parent.appendChild(script)
-  // avoid pollution only in head or body tags
-  if (parent instanceof HTMLHeadElement || parent instanceof HTMLBodyElement) {
-    parent.removeChild(script)
-  }
-
-  return true
-}
-
-},{}],15:[function(require,module,exports){
-var forEachEls = require("../foreach-els")
-
-module.exports = function(els, events, listener, useCapture) {
-  events = (typeof events === "string" ? events.split(" ") : events)
-
-  events.forEach(function(e) {
-    forEachEls(els, function(el) {
-      el.addEventListener(e, listener, useCapture)
-    })
-  })
-}
-
-},{"../foreach-els":18}],16:[function(require,module,exports){
-var forEachEls = require("../foreach-els")
-
-module.exports = function(els, events, opts) {
-  events = (typeof events === "string" ? events.split(" ") : events)
-
-  events.forEach(function(e) {
-    var event
-    event = document.createEvent("HTMLEvents")
-    event.initEvent(e, true, true)
-    event.eventName = e
-    if (opts) {
-      Object.keys(opts).forEach(function(key) {
-        event[key] = opts[key]
-      })
-    }
-
-    forEachEls(els, function(el) {
-      var domFix = false
-      if (!el.parentNode && el !== document && el !== window) {
-        // THANK YOU IE (9/10/11)
-        // dispatchEvent doesn't work if the element is not in the DOM
-        domFix = true
-        document.body.appendChild(el)
-      }
-      el.dispatchEvent(event)
-      if (domFix) {
-        el.parentNode.removeChild(el)
-      }
-    })
-  })
-}
-
-},{"../foreach-els":18}],17:[function(require,module,exports){
-var forEachEls = require("./foreach-els")
-var evalScript = require("./eval-script")
-// Finds and executes scripts (used for newly added elements)
-// Needed since innerHTML does not run scripts
-module.exports = function(el) {
-  if (el.tagName.toLowerCase() === "script") {
-    evalScript(el)
-  }
-
-  forEachEls(el.querySelectorAll("script"), function(script) {
-    if (!script.type || script.type.toLowerCase() === "text/javascript") {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script)
-      }
-      evalScript(script)
-    }
-  })
-}
-
-},{"./eval-script":14,"./foreach-els":18}],18:[function(require,module,exports){
-/* global HTMLCollection: true */
-
-module.exports = function(els, fn, context) {
-  if (els instanceof HTMLCollection || els instanceof NodeList || els instanceof Array) {
-    return Array.prototype.forEach.call(els, fn, context)
-  }
-  // assume simple DOM element
-  return fn.call(context, els)
-}
-
-},{}],19:[function(require,module,exports){
-var forEachEls = require("./foreach-els")
-
-module.exports = function(selectors, cb, context, DOMcontext) {
-  DOMcontext = DOMcontext || document
-  selectors.forEach(function(selector) {
-    forEachEls(DOMcontext.querySelectorAll(selector), cb, context)
-  })
-}
-
-},{"./foreach-els":18}],20:[function(require,module,exports){
-module.exports = function() {
-  // Borrowed wholesale from https://github.com/defunkt/jquery-pjax
-  return window.history &&
-    window.history.pushState &&
-    window.history.replaceState &&
-    // pushState isn’t reliable on iOS until 5.
-    !navigator.userAgent.match(/((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/)
-}
-
-},{}],21:[function(require,module,exports){
-/* global _gaq: true, ga: true */
-
-var defaultSwitches = require("./switches")
-
-module.exports = function(options) {
-  options = options || {}
-  options.elements = options.elements || "a[href], form[action]"
-  options.selectors = options.selectors || ["title", ".js-Pjax"]
-  options.switches = options.switches || {}
-  options.switchesOptions = options.switchesOptions || {}
-  options.history = options.history || true
-  options.analytics = (typeof options.analytics === "function" || options.analytics === false) ? options.analytics : defaultAnalytics
-  options.scrollTo = (typeof options.scrollTo === "undefined") ? 0 : options.scrollTo
-  options.scrollRestoration = (typeof options.scrollRestoration !== "undefined") ? options.scrollRestoration : true
-  options.cacheBust = (typeof options.cacheBust === "undefined") ? true : options.cacheBust
-  options.debug = options.debug || false
-  options.timeout = options.timeout || 0
-  options.currentUrlFullReload = (typeof options.currentUrlFullReload === "undefined") ? false : options.currentUrlFullReload
-
-  // We can’t replace body.outerHTML or head.outerHTML.
-  // It creates a bug where a new body or head are created in the DOM.
-  // If you set head.outerHTML, a new body tag is appended, so the DOM has 2 body nodes, and vice versa
-  if (!options.switches.head) {
-    options.switches.head = defaultSwitches.switchElementsAlt
-  }
-  if (!options.switches.body) {
-    options.switches.body = defaultSwitches.switchElementsAlt
-  }
-
-  return options
-}
-
-/* istanbul ignore next */
-function defaultAnalytics() {
-  if (window._gaq) {
-    _gaq.push(["_trackPageview"])
-  }
-  if (window.ga) {
-    ga("send", "pageview", {page: location.pathname, title: document.title})
-  }
-}
-
-},{"./switches":29}],22:[function(require,module,exports){
-var on = require("../events/on")
-var clone = require("../util/clone")
-
-var attrState = "data-pjax-state"
-
-var formAction = function(el, event) {
-  if (isDefaultPrevented(event)) {
-    return
-  }
-
-  // Since loadUrl modifies options and we may add our own modifications below,
-  // clone it so the changes don't persist
-  var options = clone(this.options)
-
-  // Initialize requestOptions
-  options.requestOptions = {
-    requestUrl: el.getAttribute("action") || window.location.href,
-    requestMethod: el.getAttribute("method") || "GET"
-  }
-
-  // create a testable virtual link of the form action
-  var virtLinkElement = document.createElement("a")
-  virtLinkElement.setAttribute("href", options.requestOptions.requestUrl)
-
-  var attrValue = checkIfShouldAbort(virtLinkElement, options)
-  if (attrValue) {
-    el.setAttribute(attrState, attrValue)
-    return
-  }
-
-  event.preventDefault()
-
-  if (el.enctype === "multipart/form-data") {
-    options.requestOptions.formData = new FormData(el)
-  }
-  else {
-    options.requestOptions.requestParams = parseFormElements(el)
-  }
-
-  el.setAttribute(attrState, "submit")
-
-  options.triggerElement = el
-  this.loadUrl(virtLinkElement.href, options)
-}
-
-function parseFormElements(el) {
-  var requestParams = []
-
-  for (var elementKey in el.elements) {
-    if (Number.isNaN(Number(elementKey))) {
-      continue;
-    }
-
-    var element = el.elements[elementKey]
-    var tagName = element.tagName.toLowerCase()
-    // jscs:disable disallowImplicitTypeConversion
-    if (!!element.name && element.attributes !== undefined && tagName !== "button") {
-      // jscs:enable disallowImplicitTypeConversion
-      var type = element.attributes.type
-
-      if ((!type || type.value !== "checkbox" && type.value !== "radio") || element.checked) {
-        // Build array of values to submit
-        var values = []
-
-        if (tagName === "select") {
-          var opt
-
-          for (var i = 0; i < element.options.length; i++) {
-            opt = element.options[i]
-            if (opt.selected) {
-              values.push(opt.value || opt.text)
-            }
-          }
-        }
-        else {
-          values.push(element.value)
-        }
-
-        for (var j = 0; j < values.length; j++) {
-          requestParams.push({
-            name: encodeURIComponent(element.name),
-            value: encodeURIComponent(values[j])
-          })
-        }
-      }
-    }
-  }
-
-  return requestParams
-}
-
-function checkIfShouldAbort(virtLinkElement, options) {
-  // Ignore external links.
-  if (virtLinkElement.protocol !== window.location.protocol || virtLinkElement.host !== window.location.host) {
-    return "external"
-  }
-
-  // Ignore click if we are on an anchor on the same page
-  if (virtLinkElement.hash && virtLinkElement.href.replace(virtLinkElement.hash, "") === window.location.href.replace(location.hash, "")) {
-    return "anchor"
-  }
-
-  // Ignore empty anchor "foo.html#"
-  if (virtLinkElement.href === window.location.href.split("#")[0] + "#") {
-    return "anchor-empty"
-  }
-
-  // if declared as a full reload, just normally submit the form
-  if (options.currentUrlFullReload && virtLinkElement.href === window.location.href.split("#")[0]) {
-    return "reload"
-  }
-}
-
-var isDefaultPrevented = function(event) {
-  return event.defaultPrevented || event.returnValue === false
-}
-
-module.exports = function(el) {
-  var that = this
-
-  el.setAttribute(attrState, "")
-
-  on(el, "submit", function(event) {
-    formAction.call(that, el, event)
-  })
-
-  on(el, "keyup", function(event) {
-    if (event.keyCode === 13) {
-      formAction.call(that, el, event)
-    }
-  }.bind(this))
-}
-
-},{"../events/on":15,"../util/clone":31}],23:[function(require,module,exports){
-var on = require("../events/on")
-var clone = require("../util/clone")
-
-var attrState = "data-pjax-state"
-
-var linkAction = function(el, event) {
-  if (isDefaultPrevented(event)) {
-    return
-  }
-
-  // Since loadUrl modifies options and we may add our own modifications below,
-  // clone it so the changes don't persist
-  var options = clone(this.options)
-
-  var attrValue = checkIfShouldAbort(el, event)
-  if (attrValue) {
-    el.setAttribute(attrState, attrValue)
-    return
-  }
-
-  event.preventDefault()
-
-  // don’t do "nothing" if user try to reload the page by clicking the same link twice
-  if (
-    this.options.currentUrlFullReload &&
-    el.href === window.location.href.split("#")[0]
-  ) {
-    el.setAttribute(attrState, "reload")
-    this.reload()
-    return
-  }
-
-  el.setAttribute(attrState, "load")
-
-  options.triggerElement = el
-  this.loadUrl(el.href, options)
-}
-
-function checkIfShouldAbort(el, event) {
-  // Don’t break browser special behavior on links (like page in new window)
-  if (event.which > 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-    return "modifier"
-  }
-
-  // we do test on href now to prevent unexpected behavior if for some reason
-  // user have href that can be dynamically updated
-
-  // Ignore external links.
-  if (el.protocol !== window.location.protocol || el.host !== window.location.host) {
-    return "external"
-  }
-
-  // Ignore anchors on the same page (keep native behavior)
-  if (el.hash && el.href.replace(el.hash, "") === window.location.href.replace(location.hash, "")) {
-    return "anchor"
-  }
-
-  // Ignore empty anchor "foo.html#"
-  if (el.href === window.location.href.split("#")[0] + "#") {
-    return "anchor-empty"
-  }
-}
-
-var isDefaultPrevented = function(event) {
-  return event.defaultPrevented || event.returnValue === false
-}
-
-module.exports = function(el) {
-  var that = this
-
-  el.setAttribute(attrState, "")
-
-  on(el, "click", function(event) {
-    linkAction.call(that, el, event)
-  })
-
-  on(el, "keyup", function(event) {
-    if (event.keyCode === 13) {
-      linkAction.call(that, el, event)
-    }
-  }.bind(this))
-}
-
-},{"../events/on":15,"../util/clone":31}],24:[function(require,module,exports){
-var clone = require("../util/clone.js")
-var newUid = require("../uniqueid.js")
-var trigger = require("../events/trigger.js")
-
-module.exports = function(responseText, request, href, options) {
-  options = clone(options  || this.options)
-  options.request = request
-
-  // Fail if unable to load HTML via AJAX
-  if (responseText === false) {
-    trigger(document, "pjax:complete pjax:error", options)
-
-    return
-  }
-
-  // push scroll position to history
-  var currentState = window.history.state || {}
-  window.history.replaceState({
-      url: currentState.url || window.location.href,
-      title: currentState.title || document.title,
-      uid: currentState.uid || newUid(),
-      scrollPos: [document.documentElement.scrollLeft || document.body.scrollLeft,
-        document.documentElement.scrollTop || document.body.scrollTop]
-    },
-    document.title, window.location)
-
-  // Check for redirects
-  var oldHref = href
-  if (request.responseURL) {
-    if (href !== request.responseURL) {
-      href = request.responseURL
-    }
-  }
-  else if (request.getResponseHeader("X-PJAX-URL")) {
-    href = request.getResponseHeader("X-PJAX-URL")
-  }
-  else if (request.getResponseHeader("X-XHR-Redirected-To")) {
-    href = request.getResponseHeader("X-XHR-Redirected-To")
-  }
-
-  // Add back the hash if it was removed
-  var a = document.createElement("a")
-  a.href = oldHref
-  var oldHash = a.hash
-  a.href = href
-  if (oldHash && !a.hash) {
-    a.hash = oldHash
-    href = a.href
-  }
-
-  this.state.href = href
-  this.state.options = options
-
-  try {
-    this.loadContent(responseText, this.options)
-  }
-  catch (e) {
-    trigger(document, "pjax:error", options)
-
-    if (!this.options.debug) {
-      if (console && console.error) {
-        console.error("Pjax switch fail: ", e)
-      }
-      return this.latestChance(href)
-    }
-    else {
-      throw e
-    }
-  }
-}
-
-},{"../events/trigger.js":16,"../uniqueid.js":30,"../util/clone.js":31}],25:[function(require,module,exports){
-module.exports = function() {
-  if (this.options.debug && console) {
-    if (typeof console.log === "function") {
-      console.log.apply(console, arguments)
-    }
-    // IE is weird
-    else if (console.log) {
-      console.log(arguments)
-    }
-  }
-}
-
-},{}],26:[function(require,module,exports){
-var attrState = "data-pjax-state"
-
-module.exports = function(el) {
-  switch (el.tagName.toLowerCase()) {
-    case "a":
-      // only attach link if el does not already have link attached
-      if (!el.hasAttribute(attrState)) {
-        this.attachLink(el)
-      }
-      break
-
-    case "form":
-      // only attach link if el does not already have link attached
-      if (!el.hasAttribute(attrState)) {
-        this.attachForm(el)
-      }
-      break
-
-    default:
-      throw "Pjax can only be applied on <a> or <form> submit"
-  }
-}
-
-},{}],27:[function(require,module,exports){
-var updateQueryString = require("./util/update-query-string");
-
-module.exports = function(location, options, callback) {
-  options = options || {}
-  var queryString
-  var requestOptions = options.requestOptions || {}
-  var requestMethod = (requestOptions.requestMethod || "GET").toUpperCase()
-  var requestParams = requestOptions.requestParams || null
-  var formData = requestOptions.formData || null;
-  var requestPayload = null
-  var request = new XMLHttpRequest()
-  var timeout = options.timeout || 0
-
-  request.onreadystatechange = function() {
-    if (request.readyState === 4) {
-      if (request.status === 200) {
-        callback(request.responseText, request, location, options)
-      }
-      else if (request.status !== 0) {
-        callback(null, request, location, options)
-      }
-    }
-  }
-
-  request.onerror = function(e) {
-    console.log(e)
-    callback(null, request, location, options)
-  }
-
-  request.ontimeout = function() {
-    callback(null, request, location, options)
-  }
-
-  // Prepare the request payload for forms, if available
-  if (requestParams && requestParams.length) {
-    // Build query string
-    queryString = (requestParams.map(function(param) {return param.name + "=" + param.value})).join("&")
-
-    switch (requestMethod) {
-      case "GET":
-        // Reset query string to avoid an issue with repeat submissions where checkboxes that were
-        // previously checked are incorrectly preserved
-        location = location.split("?")[0]
-
-        // Append new query string
-        location += "?" + queryString
-        break
-
-      case "POST":
-        // Send query string as request payload
-        requestPayload = queryString
-        break
-    }
-  }
-  else if (formData) {
-    requestPayload = formData
-  }
-
-  // Add a timestamp as part of the query string if cache busting is enabled
-  if (options.cacheBust) {
-    location = updateQueryString(location, "t", Date.now())
-  }
-
-  request.open(requestMethod, location, true)
-  request.timeout = timeout
-  request.setRequestHeader("X-Requested-With", "XMLHttpRequest")
-  request.setRequestHeader("X-PJAX", "true")
-  request.setRequestHeader("X-PJAX-Selectors", JSON.stringify(options.selectors))
-
-  // Send the proper header information for POST forms
-  if (requestPayload && requestMethod === "POST") {
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-  }
-
-  request.send(requestPayload)
-
-  return request
-}
-
-},{"./util/update-query-string":35}],28:[function(require,module,exports){
-var forEachEls = require("./foreach-els")
-
-var defaultSwitches = require("./switches")
-
-module.exports = function(switches, switchesOptions, selectors, fromEl, toEl, options) {
-  var switchesQueue = []
-
-  selectors.forEach(function(selector) {
-    var newEls = fromEl.querySelectorAll(selector)
-    var oldEls = toEl.querySelectorAll(selector)
-    if (this.log) {
-      this.log("Pjax switch", selector, newEls, oldEls)
-    }
-    if (newEls.length !== oldEls.length) {
-      throw "DOM doesn’t look the same on new loaded page: ’" + selector + "’ - new " + newEls.length + ", old " + oldEls.length
-    }
-
-    forEachEls(newEls, function(newEl, i) {
-      var oldEl = oldEls[i]
-      if (this.log) {
-        this.log("newEl", newEl, "oldEl", oldEl)
-      }
-
-      var callback = (switches[selector]) ?
-        switches[selector].bind(this, oldEl, newEl, options, switchesOptions[selector]) :
-        defaultSwitches.outerHTML.bind(this, oldEl, newEl, options)
-
-      switchesQueue.push(callback)
-    }, this)
-  }, this)
-
-  this.state.numPendingSwitches = switchesQueue.length
-
-  switchesQueue.forEach(function(queuedSwitch) {
-    queuedSwitch()
-  })
-}
-
-},{"./foreach-els":18,"./switches":29}],29:[function(require,module,exports){
-var on = require("./events/on.js")
-
-module.exports = {
-  outerHTML: function(oldEl, newEl) {
-    oldEl.outerHTML = newEl.outerHTML
-    this.onSwitch()
-  },
-
-  innerHTML: function(oldEl, newEl) {
-    oldEl.innerHTML = newEl.innerHTML
-
-    if (newEl.className === "") {
-      oldEl.removeAttribute("class")
-    }
-    else {
-      oldEl.className = newEl.className
-    }
-
-    this.onSwitch()
-  },
-
-  switchElementsAlt: function(oldEl, newEl) {
-    oldEl.innerHTML = newEl.innerHTML
-
-    // Copy attributes from the new element to the old one
-    if (newEl.hasAttributes()) {
-      var attrs = newEl.attributes
-      for (var i = 0; i < attrs.length; i++) {
-        oldEl.attributes.setNamedItem(attrs[i].cloneNode())
-      }
-    }
-
-    this.onSwitch()
-  },
-
-  // Equivalent to outerHTML(), but doesn't require switchElementsAlt() for <head> and <body>
-  replaceNode: function(oldEl, newEl) {
-    oldEl.parentNode.replaceChild(newEl, oldEl)
-    this.onSwitch()
-  },
-
-  sideBySide: function(oldEl, newEl, options, switchOptions) {
-    var forEach = Array.prototype.forEach
-    var elsToRemove = []
-    var elsToAdd = []
-    var fragToAppend = document.createDocumentFragment()
-    var animationEventNames = "animationend webkitAnimationEnd MSAnimationEnd oanimationend"
-    var animatedElsNumber = 0
-    var sexyAnimationEnd = function(e) {
-          if (e.target !== e.currentTarget) {
-            // end triggered by an animation on a child
-            return
-          }
-
-          animatedElsNumber--
-          if (animatedElsNumber <= 0 && elsToRemove) {
-            elsToRemove.forEach(function(el) {
-              // browsing quickly can make the el
-              // already removed by last page update ?
-              if (el.parentNode) {
-                el.parentNode.removeChild(el)
-              }
-            })
-
-            elsToAdd.forEach(function(el) {
-              el.className = el.className.replace(el.getAttribute("data-pjax-classes"), "")
-              el.removeAttribute("data-pjax-classes")
-            })
-
-            elsToAdd = null // free memory
-            elsToRemove = null // free memory
-
-            // this is to trigger some repaint (example: picturefill)
-            this.onSwitch()
-          }
-        }.bind(this)
-
-    switchOptions = switchOptions || {}
-
-    forEach.call(oldEl.childNodes, function(el) {
-      elsToRemove.push(el)
-      if (el.classList && !el.classList.contains("js-Pjax-remove")) {
-        // for fast switch, clean element that just have been added, & not cleaned yet.
-        if (el.hasAttribute("data-pjax-classes")) {
-          el.className = el.className.replace(el.getAttribute("data-pjax-classes"), "")
-          el.removeAttribute("data-pjax-classes")
-        }
-        el.classList.add("js-Pjax-remove")
-        if (switchOptions.callbacks && switchOptions.callbacks.removeElement) {
-          switchOptions.callbacks.removeElement(el)
-        }
-        if (switchOptions.classNames) {
-          el.className += " " + switchOptions.classNames.remove + " " + (options.backward ? switchOptions.classNames.backward : switchOptions.classNames.forward)
-        }
-        animatedElsNumber++
-        on(el, animationEventNames, sexyAnimationEnd, true)
-      }
-    })
-
-    forEach.call(newEl.childNodes, function(el) {
-      if (el.classList) {
-        var addClasses = ""
-        if (switchOptions.classNames) {
-          addClasses = " js-Pjax-add " + switchOptions.classNames.add + " " + (options.backward ? switchOptions.classNames.forward : switchOptions.classNames.backward)
-        }
-        if (switchOptions.callbacks && switchOptions.callbacks.addElement) {
-          switchOptions.callbacks.addElement(el)
-        }
-        el.className += addClasses
-        el.setAttribute("data-pjax-classes", addClasses)
-        elsToAdd.push(el)
-        fragToAppend.appendChild(el)
-        animatedElsNumber++
-        on(el, animationEventNames, sexyAnimationEnd, true)
-      }
-    })
-
-    // pass all className of the parent
-    oldEl.className = newEl.className
-    oldEl.appendChild(fragToAppend)
-  }
-}
-
-},{"./events/on.js":15}],30:[function(require,module,exports){
-module.exports = (function() {
-  var counter = 0
-  return function() {
-    var id = ("pjax" + (new Date().getTime())) + "_" + counter
-    counter++
-    return id
-  }
-})()
-
-},{}],31:[function(require,module,exports){
-module.exports = function(obj) {
-  /* istanbul ignore if */
-  if (null === obj || "object" !== typeof obj) {
-    return obj
-  }
-  var copy = obj.constructor()
-  for (var attr in obj) {
-    if (obj.hasOwnProperty(attr)) {
-      copy[attr] = obj[attr]
-    }
-  }
-  return copy
-}
-
-},{}],32:[function(require,module,exports){
-module.exports = function contains(doc, selectors, el) {
-  for (var i = 0; i < selectors.length; i++) {
-    var selectedEls = doc.querySelectorAll(selectors[i])
-    for (var j = 0; j < selectedEls.length; j++) {
-      if (selectedEls[j].contains(el)) {
-        return true
-      }
-    }
-  }
-
-  return false
-}
-
-},{}],33:[function(require,module,exports){
-module.exports = function(target) {
-  if (target == null) {
-    return null
-  }
-
-  var to = Object(target)
-
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i]
-
-    if (source != null) {
-      for (var key in source) {
-        // Avoid bugs when hasOwnProperty is shadowed
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          to[key] = source[key]
-        }
-      }
-    }
-  }
-  return to
-}
-
-},{}],34:[function(require,module,exports){
-module.exports = function() {}
-
-},{}],35:[function(require,module,exports){
-module.exports = function(uri, key, value) {
-  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i")
-  var separator = uri.indexOf("?") !== -1 ? "&" : "?"
-  if (uri.match(re)) {
-    return uri.replace(re, "$1" + key + "=" + value + "$2")
-  }
-  else {
-    return uri + separator + key + "=" + value
-  }
-}
-
-},{}],36:[function(require,module,exports){
-var Pjax = require('pjax')
-var Nprogress = require('nprogress')
-var onmount = require('onmount')
-var toggleClass = require('dom101/toggle-class')
-var ready = require('dom101/ready')
-var Scrolltrack = require('./scrolltrack')
-var Scrollclass = require('./scrollclass')
-
-/*
- * pjax/nprogress
- */
-
-// void (function () {
-//   ready(function () {
-//     new Pjax({ // eslint-disable-line
-//       selectors: ['.body', '.toc-menu', 'title']
-//     })
-//   })
-
-//   document.addEventListener('pjax:send', function () {
-//     Nprogress.start()
-//   })
-
-//   document.addEventListener('pjax:error', function () {
-//     Nprogress.done()
-//   })
-
-//   document.addEventListener('pjax:complete', function () {
-//     Nprogress.done()
-//     window.location.href = window.location.href.replace(window.location.search, '')
-//   })
-// }())
-
-/*
- * menu toggle
- */
-
-onmount('.js-menu-toggle', function () {
-  this.addEventListener('click', function () {
-    toggleClass(document.body, '-menu-visible')
-  })
-})
-
-/*
- * onmount
- */
-
-void (function () {
-  ready(function () {
-    onmount()
-  })
-
-  document.addEventListener('pjax:complete', function () {
-    onmount()
-  })
-}())
-
-/*
- * scrolltrack
- */
-
-void (function () {
-  var st = new Scrolltrack({
-    menu: '.toc-menu',
-    selector: 'h2, h3',
-    onupdate: function (active, last) {
-      var menu = document.querySelector('.toc-menu')
-      var link = menu.querySelector('.link.-active, .link.-notactive')
-
-      toggleClass(link, '-active', !active)
-      toggleClass(link, '-notactive', active)
-    }
-  })
-
-  document.addEventListener('pjax:complete', function () {
-    st.update()
-  })
-
-  ready(function () {
-    st.update()
-  })
-}())
-
-void (function () {
-  onmount('.footer-nav', function (b) {
-    b.sc = Scrollclass(this, {
-      className: '-expanded',
-      onscroll: function (y) {
-        return this.maxScroll - y < 88
-      }
-    })
-  }, function (b) {
-    b.sc.destroy()
-  })
-}())
-
-void (function () {
-  onmount('.header-nav', function (b) {
-    b.sc = Scrollclass(this, {
-      className: '-expanded',
-      onscroll: function (y) { return y < 40 }
-    })
-  }, function (b) {
-    b.sc.destroy()
-  })
-}())
-
-// Custom scripts
-
-// Polyfills
-// from:https://github.com/jserz/js_piece/blob/master/DOM/ChildNode/remove()/remove().md
-void (function (arr) {
-  arr.forEach(function (item) {
-    if (item.hasOwnProperty('remove')) {
-      return;
-    }
-    Object.defineProperty(item, 'remove', {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function remove() {
-        this.parentNode.removeChild(this);
-      }
-    });
-  });
-})([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
-
-
-// Custom menu toggle 
-function chaptersToggle () {
-  var chapters = document.querySelectorAll('.menu-item.-level-1.-parent > .title')
-
-  chapters.forEach(addEventListener)
-  chapters.forEach(openActive)
-
-  function openActive(el) {
-    var active = el.parentNode.querySelector('.-active')
-    if (active) el.parentNode.classList.add('-open')
-  }
-
-  function addEventListener (el) {
-    el.removeEventListener('click', handleClick.bind(el))
-    el.addEventListener('click', handleClick.bind(el))
-  }
-
-  function handleClick(e) {
-    this.parentNode.classList.toggle('-open')
-  }
-}
-
-
-// Add WP Icon
-function addWPIcon () {
-  var githubLink = document.querySelector('.iconlink')
-  var wpLink = document.createElement('a')
-  wpLink.classList.add('iconlink')
-  wpLink.setAttribute('href', 'https://make.wordpress.org/tide/')
-  wpLink.setAttribute('data-title', 'make.wordpress.org/tide')
-  wpLink.innerHTML = '<svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg>'
-
-  githubLink.parentElement.appendChild(wpLink)
-}
-
-
+},{}],11:[function(require,module,exports){
 // Check API component
+
 function ApiCheck (el) {
   var form = el.querySelector('[data-api-check-form]')
   var button = el.querySelector('button')
@@ -2567,115 +805,126 @@ function ApiCheck (el) {
   }
 }
 
+module.exports = ApiCheck
+},{}],12:[function(require,module,exports){
+// from:https://github.com/jserz/js_piece/blob/master/DOM/ChildNode/remove()/remove().md
 
-// Waves for homepage hero section
-function Waves (canvas) {
-  var ctx = canvas.getContext('2d')
-  var parentRect = canvas.parentNode.getBoundingClientRect()
-  var height = canvas.height = parentRect.height
-  var width = canvas.width = Math.min(parentRect.width + 300, window.innerWidth - 400)
-
-  // Stage
-  var fov = 1024
-  var zRows = width / 60
-  var xRows = width / 50
-  var yBase = 800
-  var spacing = width / xRows
-  var dotSize = 2
-  var tickDiv = 20
-  var tick = 0
-  var isStop = false
-
-  // Points
-  var points = []
-  
-  for (var z = 0; z < zRows; z++) {
-    for (var x = -xRows/2; x < xRows/2; x++) {
-      points.push(new Point({
-        x: x * spacing + dotSize,
-        y: yBase,
-        z: z * spacing,
-        yRange: 20,
-        tickOffset: (z * 7) + (x * 5)
-      }))
+void (function (arr) {
+  arr.forEach(function (item) {
+    if (item.hasOwnProperty('remove')) {
+      return;
     }
-  }
+    Object.defineProperty(item, 'remove', {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function remove() {
+        this.parentNode.removeChild(this);
+      }
+    });
+  });
+})([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
+},{}],13:[function(require,module,exports){
+require('./polyfills')
+var onmount = require('onmount')
+var toggleClass = require('dom101/toggle-class')
+var ready = require('dom101/ready')
+var Scrolltrack = require('./scrolltrack')
+var Scrollclass = require('./scrollclass')
+var Waves = require('./waves')
+var ApiCheck = require('./apicheck')
 
-  function Point (config) {
-    for (var key in config) this[key] = config[key]
-  }
+/*
+ * onmount
+ */
 
-  Point.prototype.update = function () {
-    var z2d = fov / (this.z + fov)
-
-    this.yFloat = this.yRange * Math.sin((tick + this.tickOffset) / tickDiv)
-    this.distance = (this.z / spacing) / zRows
-    this.x2d = (this.x * z2d) + (width / 2)
-    this.y2d = (this.y * z2d) + (height / 2) - (this.y * 0.7) + this.yFloat
-    this.dotSize = dotSize * (1 - this.distance)
-    this.alpha = 1 * (1 - this.distance)
-  }
-
-  Point.prototype.drawDot = function () {
-    ctx.beginPath()
-    ctx.arc(this.x2d, this.y2d, this.dotSize, 0, 2 * Math.PI)
-    ctx.fillStyle = `rgba(0,0,0,${this.alpha})`
-    ctx.fill()
-  }
-  
-  function animate () {
-    if (isStop) return
-    ++tick
-    ctx.clearRect(0,0,width,height)
-  
-    points.forEach((point, i) => {
-      var prevX = points[i-1]
-      var prevY = points[i - xRows]
-      point.update()
-      point.drawDot()
-    })
-  
-    requestAnimationFrame(animate)
-  }
-
-  function stop () {
-    isStop = true
-  }
-
-  return {
-    run: animate,
-    stop: stop
-  }
-}
-
-
-// Init everything
-document.addEventListener('DOMContentLoaded', function() {
-  var waves
-  
-  function createWaves() {
-    var canvas = document.getElementById('canvas')
-    if (waves) waves.stop()
-    if (matchMedia('(min-width: 959px)').matches && canvas) {
-      waves = new Waves( canvas )
-      waves.run()
-    }
-  }
-  
-  function handlePageLoad () {
-    createWaves()
-    addWPIcon()
-    chaptersToggle()
-    var apiCheck = document.querySelector('[data-api-check]')
-    if (apiCheck) new ApiCheck( apiCheck )
-  }
-  
-  window.addEventListener('load', handlePageLoad)
-  document.addEventListener('pjax:complete', handlePageLoad)
-  window.addEventListener('resize', createWaves)
+ready(function () {
+  onmount()
 })
 
-},{"./scrollclass":37,"./scrolltrack":38,"dom101/ready":6,"dom101/toggle-class":9,"nprogress":10,"onmount":11,"pjax":12}],37:[function(require,module,exports){
+/*
+ * menu toggle
+ */
+
+onmount('.js-menu-toggle', function () {
+  this.addEventListener('click', function () {
+    toggleClass(document.body, '-menu-visible')
+  })
+})
+
+/*
+ * scrolltrack
+ */
+
+void (function () {
+  var st = new Scrolltrack({
+    menu: '.toc-menu',
+    selector: 'h2, h3',
+    onupdate: function (active, last) {
+      var menu = document.querySelector('.toc-menu')
+      var link = menu.querySelector('.link.-active, .link.-notactive')
+
+      toggleClass(link, '-active', !active)
+      toggleClass(link, '-notactive', active)
+    }
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    st.update()
+  })
+
+  ready(function () {
+    st.update()
+  })
+}())
+
+/*
+ * scrollclass
+ */
+
+onmount('.footer-nav', function (b) {
+  b.sc = Scrollclass(this, {
+    className: '-expanded',
+    onscroll: function (y) {
+      return this.maxScroll - y < 88
+    }
+  })
+})
+
+onmount('.header-nav', function (b) {
+  b.sc = Scrollclass(this, {
+    className: '-expanded',
+    onscroll: function (y) { return y < 40 }
+  })
+})
+
+/*
+ * waves
+ */
+
+onmount('canvas', function (b) {
+  var el = this
+  function create() {
+    if (b.waves) b.waves.stop()
+    if (matchMedia('(min-width: 959px)')) {
+      b.waves = new Waves(el)
+      b.waves.run()
+    }
+  }
+
+  create()
+  window.addEventListener('resize', create)
+})
+
+/*
+ * apicheck
+ */
+
+onmount('[data-api-check]', function (b) {
+  b.apicheck = new ApiCheck(this)
+})
+
+},{"./apicheck":11,"./polyfills":12,"./scrollclass":14,"./scrolltrack":15,"./waves":16,"dom101/ready":6,"dom101/toggle-class":9,"onmount":10}],14:[function(require,module,exports){
 var debounce = require('debounce')
 var documentHeight = require('dom101/document-height')
 var toggleClass = require('dom101/toggle-class')
@@ -2772,7 +1021,7 @@ function q (el) {
 
 module.exports = Scrollclass
 
-},{"debounce":1,"dom101/document-height":3,"dom101/scroll-top":8,"dom101/toggle-class":9}],38:[function(require,module,exports){
+},{"debounce":1,"dom101/document-height":3,"dom101/scroll-top":8,"dom101/toggle-class":9}],15:[function(require,module,exports){
 var toggleClass = require('dom101/toggle-class')
 var scrollTop = require('dom101/scroll-top')
 var documentHeight = require('dom101/document-height')
@@ -2955,4 +1204,87 @@ function q (el) {
 
 module.exports = Scrolltrack
 
-},{"debounce":1,"dom101/document-height":3,"dom101/each":4,"dom101/scroll-top":8,"dom101/toggle-class":9}]},{},[36]);
+},{"debounce":1,"dom101/document-height":3,"dom101/each":4,"dom101/scroll-top":8,"dom101/toggle-class":9}],16:[function(require,module,exports){
+// Waves for homepage hero section
+
+function Waves (canvas) {
+  var ctx = canvas.getContext('2d')
+  var parentRect = canvas.parentNode.getBoundingClientRect()
+  var height = canvas.height = parentRect.height
+  var width = canvas.width = Math.min(parentRect.width + 300, window.innerWidth - 400)
+
+  // Stage
+  var fov = 1024
+  var zRows = width / 60
+  var xRows = width / 50
+  var yBase = 800
+  var spacing = width / xRows
+  var dotSize = 2
+  var tickDiv = 20
+  var tick = 0
+  var isStop = false
+
+  // Points
+  var points = []
+  
+  for (var z = 0; z < zRows; z++) {
+    for (var x = -xRows/2; x < xRows/2; x++) {
+      points.push(new Point({
+        x: x * spacing + dotSize,
+        y: yBase,
+        z: z * spacing,
+        yRange: 20,
+        tickOffset: (z * 7) + (x * 5)
+      }))
+    }
+  }
+
+  function Point (config) {
+    for (var key in config) this[key] = config[key]
+  }
+
+  Point.prototype.update = function () {
+    var z2d = fov / (this.z + fov)
+
+    this.yFloat = this.yRange * Math.sin((tick + this.tickOffset) / tickDiv)
+    this.distance = (this.z / spacing) / zRows
+    this.x2d = (this.x * z2d) + (width / 2)
+    this.y2d = (this.y * z2d) + (height / 2) - (this.y * 0.7) + this.yFloat
+    this.dotSize = dotSize * (1 - this.distance)
+    this.alpha = 1 * (1 - this.distance)
+  }
+
+  Point.prototype.drawDot = function () {
+    ctx.beginPath()
+    ctx.arc(this.x2d, this.y2d, this.dotSize, 0, 2 * Math.PI)
+    ctx.fillStyle = `rgba(0,0,0,${this.alpha})`
+    ctx.fill()
+  }
+  
+  function animate () {
+    if (isStop) return
+    ++tick
+    ctx.clearRect(0,0,width,height)
+  
+    points.forEach((point, i) => {
+      var prevX = points[i-1]
+      var prevY = points[i - xRows]
+      point.update()
+      point.drawDot()
+    })
+  
+    requestAnimationFrame(animate)
+  }
+
+  function stop () {
+    isStop = true
+  }
+
+  return {
+    run: animate,
+    stop: stop
+  }
+}
+
+module.exports = Waves
+},{}]},{},[13]);
