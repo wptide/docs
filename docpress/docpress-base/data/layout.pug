@@ -86,6 +86,6 @@ mixin footer-nav(prev, next)
   .body(class=('page-' + slug))
     +header-nav
     .markdown-body
-      != contents
+      != contents.replace(/.html/g, '')
 
     +footer-nav(prev, next)
