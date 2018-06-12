@@ -57,7 +57,6 @@ with `make api.up`.
 
 API Root
 
-
 ### `/tide/v1/report`
 
 #### GET
@@ -122,6 +121,16 @@ Create an audit.
 | :--- | :--- |
 | `date` | The date the object was published, in the site's timezone. |
 | `date_gmt` | The date the object was published, as GMT. |
+| `slug` | An alphanumeric identifier for the object unique to its type. |
+| `status` | A named status for the object. |
+| `password` | A password to protect access to the content and excerpt. |
+| `title` | The title for the object. |
+| `content` | The content for the object. |
+| `author` | The ID for the author of the object. |
+| `excerpt` | The excerpt for the object. |
+| `meta` | Meta fields. |
+| `template` | The theme file to use to display the object. |
+| `audit_project` | The terms assigned to the object in the audit_project taxonomy. |
 
 ### `/tide/v1/audit/{id}`
 
@@ -129,9 +138,40 @@ Create an audit.
 
 Get an audit by id.
 
-#### POST
+| Parameter | Description |
+| :--- | :--- |
+| `id` | Unique identifier for the object. |
+| `context` | Scope under which the request is made; determines fields present in response. |
+| `password` | The password for the post if it is password protected. |
+
+#### POST, PUT, PATCH
 
 Update an audit.
+
+| Parameter | Description |
+| :--- | :--- |
+| `id` | Unique identifier for the object. |
+| `date` | The date the object was published, in the site's timezone. |
+| `date_gmt` | The date the object was published, as GMT. |
+| `slug` | An alphanumeric identifier for the object unique to its type. |
+| `status` | A named status for the object. |
+| `password` | A password to protect access to the content and excerpt. |
+| `title` | The title for the object. |
+| `content` | The content for the object. |
+| `author` | The ID for the author of the object. |
+| `excerpt` | The excerpt for the object. |
+| `meta` | Meta fields. |
+| `template` | The theme file to use to display the object. |
+| `audit_project` | The terms assigned to the object in the audit_project taxonomy. |
+
+#### DELETE
+
+Delete an audit.
+
+| Parameter | Description |
+| :--- | :--- |
+| `id` | Unique identifier for the object. |
+| `force` | Whether to bypass trash and force deletion. |
 
 ### `/tide/v1/audit/{checksum}`
 
@@ -139,9 +179,40 @@ Update an audit.
 
 Get an audit by checksum.
 
-#### POST
+| Parameter | Description |
+| :--- | :--- |
+| `altid` | An alternate unique id to query on (e.g. checksum). |
+| `context` | Scope under which the request is made; determines fields present in response. |
+| `password` | The password for the post if it is password protected. |
+
+#### POST, PUT, PATCH
 
 Update an audit.
+
+| Parameter | Description |
+| :--- | :--- |
+| `altid` | An alternate unique id to query on (e.g. checksum). |
+| `date` | The date the object was published, in the site's timezone. |
+| `date_gmt` | The date the object was published, as GMT. |
+| `slug` | An alphanumeric identifier for the object unique to its type. |
+| `status` | A named status for the object. |
+| `password` | A password to protect access to the content and excerpt. |
+| `title` | The title for the object. |
+| `content` | The content for the object. |
+| `author` | The ID for the author of the object. |
+| `excerpt` | The excerpt for the object. |
+| `meta` | Meta fields. |
+| `template` | The theme file to use to display the object. |
+| `audit_project` | The terms assigned to the object in the audit_project taxonomy. |
+
+#### DELETE
+
+Delete an audit.
+
+| Parameter | Description |
+| :--- | :--- |
+| `altid` | An alternate unique id to query on (e.g. checksum). |
+| `force` | Whether to bypass trash and force deletion. |
 
 ### `/tide/v1/audit/{project_client}`
 
