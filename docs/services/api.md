@@ -51,6 +51,140 @@ with `make api.up`.
 
 ## Endpoints
 
-| Endpoint | Description |
+### `/tide/v1/`
+
+#### GET
+
+API Root
+
+
+### `/tide/v1/report`
+
+#### GET
+
+Get a report.
+
+### `/tide/v1/report/{checksum}/{type}/{standard}/`
+
+#### GET
+
+Get a report by checksum.
+
+### `/tide/v1/report/{post_id}/{type}/{standard}/`
+
+Get a report by id.
+
+### `/tide/v1/auth`
+
+#### POST
+
+Authenticate user.
+
+### `/tide/v1/keypair/{id}`
+
+#### POST
+
+[Description]
+
+#### GET
+
+[Description]
+
+### `/tide/v1/audit/`
+
+#### GET
+Get collection of audits.
+
+| Parameter | Description |
 | :--- | :--- |
-| `/api/tide/v1/` | Description |
+| `context` | Scope under which the request is made; determines fields present in response - `view | embed | edit`. Default is `view`. |
+| `page` | Current page of the collection. |
+| `per_page` | Maximum number of items to be returned in result set. Default is `10`. |
+| `search` | Limit results to those matching a string. |
+| `after` | Limit response to posts published after a given ISO8601 compliant date. |
+| `author` | Limit result set to posts assigned to specific authors. |
+| `author_exclude` | Ensure result set excludes posts assigned to specific authors. |
+| `before` | Limit response to posts published before a given ISO8601 compliant date. |
+| `exclude` | Ensure result set excludes specific IDs. |
+| `include` | Limit result set to specific IDs. |
+| `offset` | Offset the result set by a specific number of items. |
+| `order` | Order sort attribute ascending or descending. |
+| `orderby` | Sort collection by object attribute. |
+| `slug` | Limit result set to posts with one or more specific slugs. |
+| `status` | Limit result set to posts assigned one or more statuses. |
+| `audit_project` | Limit result set to all items that have the specified term assigned in the audit_project taxonomy. |
+| `audit_project_exclude` | Limit result set to all items except those that have the specified term assigned in the audit_project taxonomy. |
+
+#### POST
+Create an audit.
+
+| Parameter | Description |
+| :--- | :--- |
+| `date` | The date the object was published, in the site's timezone. |
+| `date_gmt` | The date the object was published, as GMT. |
+
+### `/tide/v1/audit/{id}`
+
+#### GET
+
+Get an audit by id.
+
+#### POST
+
+Update an audit.
+
+### `/tide/v1/audit/{checksum}`
+
+#### GET
+
+Get an audit by checksum.
+
+#### POST
+
+Update an audit.
+
+### `/tide/v1/audit/{project_client}`
+
+#### GET
+
+Get collection of audits for a project client.
+
+| Parameter | Description |
+| :--- | :--- |
+| `project_client` | User login name representing a project client. |
+
+### `/tide/v1/audit/{project_client}/{project_type}`
+
+#### GET
+
+Get collection of audits for a project client of certain type: theme or plugin.
+
+| Parameter | Description |
+| :--- | :--- |
+| `project_client` | User login name representing a project client. |
+| `project_type` | The project type: theme or plugin. |
+
+### `/tide/v1/audit/{project_client}/{project_type}/{project_slug}`
+
+#### GET
+
+Get an audit for a theme or plugin defined by a project slug.
+
+| Parameter | Description |
+| :--- | :--- |
+| `project_client` | User login name representing a project client. |
+| `project_type` | The project type: theme or plugin. |
+| `project_slug` | The taxonomy term representing the project. |
+
+### `/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`
+
+#### GET
+
+Get an audit for a theme or plugin defined by a project slug and version.
+
+| Parameter | Description |
+| :--- | :--- |
+| `project_client` | User login name representing a project client. |
+| `project_type` | The project type: theme or plugin. |
+| `project_slug` | The taxonomy term representing the project. |
+| `version` | The version representing the project. |
