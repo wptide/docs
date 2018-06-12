@@ -1,0 +1,116 @@
+
+<div class="doc-layout">
+  <div class="toggle menu-toggle js-menu-toggle"></div>
+  <div class="menu toc-menu">
+    <li class="menu-item -level-0 -parent">
+      <ul class="submenu">
+        <li class="menu-item -level-1"><a class="link title  link-index" href="/"></a>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-search" href="/search">Search plugins &amp; themes</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="/installation/">Installation</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="/installation/prerequisites">Prerequisites</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="/installation/cloning">Cloning</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="/installation/setup">Setup</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-services" href="/services/">Services</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="/services/api">API</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync" href="/services/sync">Sync Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="/services/phpcs">PHPCS Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="/services/lighthouse">Lighthouse Server</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="/gcp/">Google Cloud Platform</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title -active link-gcpsetup" href="/gcp/setup">Setup</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-prerequisites" href="#prerequisites">Prerequisites</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-setup" href="#setup">Setup</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-environment-variables" href="#environment-variables">Environment variables</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-google-app-engine" href="#google-app-engine">Google App Engine</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-google-cloud-storage-for-app-engine" href="#google-cloud-storage-for-app-engine">Google Cloud Storage for App Engine</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-service-account" href="#service-account">Service Account</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpdeployments" href="/gcp/deployments">Deployments</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgcs" href="/gcp/gcs">Google Cloud Storage</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgcf" href="/gcp/gcf">Google Cloud Firestore</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-aws" href="/aws/">Amazon Web Services</a>
+        </li>
+      </ul>
+    </li>
+  </div>
+  <div class="body page-gcpsetup">
+    <div class="header-nav">
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+    </div>
+    <div class="markdown-body"><h1 id="google-cloud-platform-setup">Google Cloud Platform Setup</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Enable the <a href="https://console.cloud.google.com/flows/enableapi?apiid=sqladmin">Cloud SQL API</a> (<em>optional</em>)</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<h3 id="environment-variables">Environment variables</h3>
+<p>You can create an <code>.env.gcp</code> file in the project root. This will make
+deploying services to GCP a bit easier since the <code>.env.gcp</code> file will override
+values in the <code>.env</code> file. The <code>.env.gcp</code> is optional for local development. If
+you see warnings in the console about the file missing when running certain <code>make</code>
+commands, that&apos;s ok. The <code>.env.gcp</code> file will only affect the <code>.tpl</code> files and you
+should only add overrides for GCP specific resources.</p>
+<h3 id="google-app-engine">Google App Engine</h3>
+<p>Create an App Engine application within your new project:</p>
+<pre><code>$ gcloud app create
+</code></pre>
+<h3 id="google-cloud-storage-for-app-engine">Google Cloud Storage for App Engine</h3>
+<p>Configure the App Engine default GCS bucket for later use. The default App Engine
+bucket is named YOUR_PROJECT_ID.appspot.com. Change the default Access Control
+List (ACL) of that bucket as follows:</p>
+<pre><code>$ gsutil defacl ch -u AllUsers:R gs://YOUR_PROJECT_ID.appspot.com
+</code></pre>
+<p>If you want to upload images to WordPress then you&apos;ll need to create a bucket for
+those images to live (unless you opt to use the local file system). Open the
+[Cloud Storage Browser][cloud-storage-browser] and click <strong>Create Bucket</strong>.</p>
+<p>Run the following command to change the ACL&apos;s of your new bucket:</p>
+<pre><code>$ gsutil defacl ch -u AllUsers:R gs://YOUR_BUCKET_NAME
+</code></pre>
+<p>When the API is up and running, log into the WordPress admin and go to the plugin
+settings page for <code>GCS Upload</code> then add your bucket name to the form field and
+click <strong>Save Settings</strong>.</p>
+<h3 id="service-account">Service Account</h3>
+<p>Finally, go to the <a href="https://console.cloud.google.com/apis/credentials/">the Credentials section</a> of your project
+in the Console. Click &apos;Create credentials&apos; and then click &apos;Service account key.&apos;
+For the Service account, select &apos;App Engine app default service account.&apos; Then
+click &apos;Create&apos; to create and download the JSON service account key to your local
+machine. Save it as <code>service-account.json</code> in the the projects root directory for
+use with connecting to both Cloud Storage and Cloud SQL.</p>
+
+    </div>
+    <div class="footer-nav">
+      <div class="left"><a href="../gcp/"><span class="title">Google Cloud Platform</span></a></div>
+      <div class="right"><a href="../gcp/deployments"><span class="label">Next: </span><span class="title">Deployments</span></a></div>
+    </div>
+  </div>
+</div>
