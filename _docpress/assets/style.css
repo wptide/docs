@@ -1792,6 +1792,17 @@ ul.heading-list .hlink:before {
   border-top-color: #4078c0;
   border-left-color: #4078c0;
 }
+.page-404 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  font-weight: bold;
+  font-size: 100px;
+  padding-top: 200px !important;
+}
 .toc-menu::-webkit-scrollbar {
   width: 4px;
 }

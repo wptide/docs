@@ -16,8 +16,9 @@ get_header();
 
 	if (file_exists($file)) {
 		include($file);
-		
+
 	} else {
+		include(dirname(__FILE__) . '/docs-404.html');
 
 	}
 
