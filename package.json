@@ -12,12 +12,6 @@
   },
   "docpress": {
     "github": "wptide/docs",
-    "css": [
-      "docs/style.css"
-    ],
-    "scripts": [
-      "scripts/scripts.js"
-    ],
     "markdown": {
       "typographer": true,
       "plugins": {

@@ -1,9 +1,11 @@
 //
 // Header
 //
+
 .header-nav
   &
     font-size: 16px
+    margin: 12px
 
   &
     position: fixed
@@ -43,10 +45,19 @@
     line-height: 1em
     color: rgba($slate, 0.75)
     transition: all 150ms linear
-    padding: $xpad
+    padding: 12px
+    svg
+      position: relative
+      top: 1px
+      width: 22px
+      height: 22px
 
   .iconlink:hover
     color: $accent
+    .icon
+      color: #1626ff
+    svg
+      fill: #1626ff
 
   .iconlink
     white-space: nowrap

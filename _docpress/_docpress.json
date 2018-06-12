@@ -230,9 +230,6 @@
     "docs/gcp/index.md": "gcp/index.html",
     "docs/gcp/deployments.md": "gcp/deployments.html",
     "docs/gcp/gcs.md": "gcp/gcs.html",
-    "docs/gcp/gcf.md": "gcp/gcf.html",
-    "docs/style.css": "style.css",
-    "docs/tide-logo.svg": "tide-logo.svg",
-    "docs/scripts/scripts.js": "scripts/scripts.js"
+    "docs/gcp/gcf.md": "gcp/gcf.html"
   }
 }
