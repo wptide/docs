@@ -28,6 +28,8 @@
             </li>
             <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
             </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesmongodb" href="services/mongodb.html">MongoDB</a>
+            </li>
           </ul>
         </li>
         <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
@@ -58,7 +60,10 @@
     <div class="markdown-body"><h1 id="google-cloud-platform-setup">Google Cloud Platform Setup</h1>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li>Enable the <a href="https://console.cloud.google.com/flows/enableapi?apiid=sqladmin">Cloud SQL API</a> (<em>optional</em>)</li>
+<li>Install <a href="https://cloud.google.com/sdk/">Google Cloud SDK</a></li>
+<li>Create a new Cloud Project using the <a href="https://console.cloud.google.com/">Cloud Console</a></li>
+<li>Enable Billing on that project</li>
+<li>Enable the <a href="https://console.cloud.google.com/flows/enableapi?apiid=sqladmin">Cloud SQL API</a></li>
 </ul>
 <h2 id="setup">Setup</h2>
 <h3 id="environment-variables">Environment variables</h3>
@@ -72,6 +77,32 @@ should only add overrides for GCP specific resources.</p>
 <p>Create an App Engine application within your new project:</p>
 <pre><code>$ gcloud app create
 </code></pre>
+<p>Configure Google Cloud SDK with your account and the project ID you&apos;ve just created:</p>
+<pre><code>$ gcloud init
+</code></pre>
+<p>Update the following environment variables in <code>.env</code> file:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>GCP_PROJECT</code></td>
+<td style="text-align:left">The unique ID of you Google project. Default is <code>tide-local</code>. Note: you must update this value if you plan to use <strong>any</strong> GCP resources, for purely local development the default value will work as-is.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCP_REGION</code></td>
+<td style="text-align:left">The [region][regions-and-zones] where all your resources will be created. For example, <code>us-west1</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCP_ZONE</code></td>
+<td style="text-align:left">The preferred [zone][regions-and-zones] in your region that resources will be created, For example, <code>us-west1-a</code>.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="google-cloud-storage-for-app-engine">Google Cloud Storage for App Engine</h3>
 <p>Configure the App Engine default GCS bucket for later use. The default App Engine
 bucket is named YOUR_PROJECT_ID.appspot.com. Change the default Access Control

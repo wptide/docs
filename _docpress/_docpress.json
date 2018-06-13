@@ -68,11 +68,6 @@
                 "id": "docker"
               },
               {
-                "title": "Google Cloud SDK",
-                "depth": 2,
-                "id": "google-cloud-sdk"
-              },
-              {
                 "title": "Go",
                 "depth": 2,
                 "id": "go"
@@ -81,11 +76,6 @@
                 "title": "Glide",
                 "depth": 2,
                 "id": "glide"
-              },
-              {
-                "title": "MongoDB",
-                "depth": 2,
-                "id": "mongodb"
               },
               {
                 "title": "Make",
@@ -112,39 +102,19 @@
                 "id": "environment-variables"
               },
               {
-                "title": "Google Cloud SDK",
-                "depth": 2,
-                "id": "google-cloud-sdk"
-              },
-              {
                 "title": "API",
                 "depth": 2,
                 "id": "api"
               },
               {
-                "title": "MongoDB",
+                "title": "Build images",
                 "depth": 2,
-                "id": "mongodb"
+                "id": "build-images"
               },
               {
-                "title": "Install Go dependencies",
+                "title": "Start servers",
                 "depth": 2,
-                "id": "install-go-dependencies"
-              },
-              {
-                "title": "Lighthouse Server",
-                "depth": 2,
-                "id": "lighthouse-server"
-              },
-              {
-                "title": "PHPCS Server",
-                "depth": 2,
-                "id": "phpcs-server"
-              },
-              {
-                "title": "Sync Server",
-                "depth": 2,
-                "id": "sync-server"
+                "id": "start-servers"
               }
             ]
           }
@@ -304,6 +274,12 @@
                 "id": "running-audits"
               }
             ]
+          },
+          {
+            "title": "MongoDB",
+            "source": "docs/services/mongodb.md",
+            "url": "services/mongodb.html",
+            "slug": "servicesmongodb"
           }
         ]
       },
@@ -535,11 +511,6 @@
           "id": "docker"
         },
         {
-          "title": "Google Cloud SDK",
-          "depth": 2,
-          "id": "google-cloud-sdk"
-        },
-        {
           "title": "Go",
           "depth": 2,
           "id": "go"
@@ -548,11 +519,6 @@
           "title": "Glide",
           "depth": 2,
           "id": "glide"
-        },
-        {
-          "title": "MongoDB",
-          "depth": 2,
-          "id": "mongodb"
         },
         {
           "title": "Make",
@@ -579,39 +545,19 @@
           "id": "environment-variables"
         },
         {
-          "title": "Google Cloud SDK",
-          "depth": 2,
-          "id": "google-cloud-sdk"
-        },
-        {
           "title": "API",
           "depth": 2,
           "id": "api"
         },
         {
-          "title": "MongoDB",
+          "title": "Build images",
           "depth": 2,
-          "id": "mongodb"
+          "id": "build-images"
         },
         {
-          "title": "Install Go dependencies",
+          "title": "Start servers",
           "depth": 2,
-          "id": "install-go-dependencies"
-        },
-        {
-          "title": "Lighthouse Server",
-          "depth": 2,
-          "id": "lighthouse-server"
-        },
-        {
-          "title": "PHPCS Server",
-          "depth": 2,
-          "id": "phpcs-server"
-        },
-        {
-          "title": "Sync Server",
-          "depth": 2,
-          "id": "sync-server"
+          "id": "start-servers"
         }
       ]
     },
@@ -769,6 +715,12 @@
           "id": "running-audits"
         }
       ]
+    },
+    "services/mongodb.html": {
+      "source": "docs/services/mongodb.md",
+      "title": "MongoDB - ",
+      "pageTitle": "MongoDB",
+      "slug": "servicesmongodb"
     },
     "gcp/index.html": {
       "source": "docs/gcp/index.md",
@@ -939,6 +891,7 @@
     "docs/services/sync.md": "services/sync.html",
     "docs/services/phpcs.md": "services/phpcs.html",
     "docs/services/lighthouse.md": "services/lighthouse.html",
+    "docs/services/mongodb.md": "services/mongodb.html",
     "docs/gcp/index.md": "gcp/index.html",
     "docs/gcp/setup.md": "gcp/setup.html",
     "docs/gcp/deployments.md": "gcp/deployments.html",

@@ -1,7 +1,11 @@
 # Google Cloud Platform Setup
 
 ## Prerequisites
-* Enable the [Cloud SQL API][cloud-sql-api-enable] (_optional_)
+* Install [Google Cloud SDK](https://cloud.google.com/sdk/)
+* Create a new Cloud Project using the [Cloud Console][cloud-console]
+* Enable Billing on that project
+* Enable the [Cloud SQL API][cloud-sql-api-enable]
+
 
 ## Setup
 
@@ -21,6 +25,20 @@ Create an App Engine application within your new project:
 ```
 $ gcloud app create
 ```
+
+Configure Google Cloud SDK with your account and the project ID you've just created:
+
+```
+$ gcloud init
+```
+
+Update the following environment variables in `.env` file:
+
+| Variable | Description |
+| :--- | :--- |
+| `GCP_PROJECT` | The unique ID of you Google project. Default is `tide-local`. Note: you must update this value if you plan to use **any** GCP resources, for purely local development the default value will work as-is. |
+| `GCP_REGION` | The [region][regions-and-zones] where all your resources will be created. For example, `us-west1`. |
+| `GCP_ZONE` | The preferred [zone][regions-and-zones] in your region that resources will be created, For example, `us-west1-a`. |
 
 ### Google Cloud Storage for App Engine
 

@@ -17,13 +17,9 @@
             <li class="menu-item -level-2"><a class="link title -active link-installationsetup" href="installation/setup.html">Setup</a>
               <ul class="headings heading-list">
                 <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-google-cloud-sdk" href="#google-cloud-sdk">Google Cloud SDK</a></li>
                 <li class="heading-item -depth-2"><a class="hlink link-api" href="#api">API</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-mongodb" href="#mongodb">MongoDB</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-install-go-dependencies" href="#install-go-dependencies">Install Go dependencies</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-lighthouse-server" href="#lighthouse-server">Lighthouse Server</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-phpcs-server" href="#phpcs-server">PHPCS Server</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-sync-server" href="#sync-server">Sync Server</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-build-images" href="#build-images">Build images</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-start-servers" href="#start-servers">Start servers</a></li>
               </ul>
             </li>
           </ul>
@@ -37,6 +33,8 @@
             <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesmongodb" href="services/mongodb.html">MongoDB</a>
             </li>
           </ul>
         </li>
@@ -74,34 +72,6 @@ generating the correct output, please <a href="#contact-us">contact us</a> to tr
 figure out a solution for your OS.</p>
 <p>So far we&apos;ve only tested on OS X with and without the <code>envsubst</code> command available.
 Other systems may not work correctly and we want to resolve that quickly.</p>
-<h2 id="google-cloud-sdk">Google Cloud SDK</h2>
-<p>Create a new Cloud Project using the <a href="https://console.cloud.google.com/">Cloud Console</a>.</p>
-<p>Configure Google Cloud SDK with your account and the project ID you&apos;ve just created:</p>
-<pre><code>$ gcloud init
-</code></pre>
-<p>Update the following environment variables in <code>.env</code> file:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>GCP_PROJECT</code></td>
-<td style="text-align:left">The unique ID of you Google project.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>GCP_REGION</code></td>
-<td style="text-align:left">The [region][regions-and-zones] where all your resources will be created. For example, <code>us-west1</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>GCP_ZONE</code></td>
-<td style="text-align:left">The preferred [zone][regions-and-zones] in your region that resources will be created, For example, <code>us-west1-a</code>.</td>
-</tr>
-</tbody>
-</table>
 <h2 id="api">API</h2>
 <p>Update the following environment variables in <code>.env</code> file:</p>
 <table>
@@ -156,57 +126,13 @@ directory to the <code>Preferences -&gt; File Sharing</code> section of the Dock
 <pre><code>ERROR: for gotide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
 </code></pre>
 <p>Add <code>127.0.0.1 tide.local</code> to your <code>hosts</code> file. You should be now able to run API at <a href="http://tide.local">tide.local</a></p>
-<h2 id="mongodb">MongoDB</h2>
-<p>By default MongoDB is used as the local message provider for the Lighthouse/PHPCS Servers. In order for these services to use MongoDB you&apos;ll need to ensure the following settings are in you <code>.env</code>. The only setting that you should <strong>not</strong> change is <code>MONGO_HOST</code>.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>MONGO_DATABASE_NAME</code></td>
-<td style="text-align:left">The name of the database. Default is <code>queue</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>MONGO_DATABASE_PASSWORD</code></td>
-<td style="text-align:left">The database root password. Default is <code>root</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>MONGO_DATABASE_USERNAME</code></td>
-<td style="text-align:left">The database root username. Default is <code>root</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>MONGO_HOST</code></td>
-<td style="text-align:left">The MongoDB database host and port. Default is <code>localhost:27017</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>MONGO_QUEUE_LH</code></td>
-<td style="text-align:left">Specifies which collection in MongoDB to use for the Lighthouse message queue. Default is <code>lighthouse</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>MONGO_QUEUE_PHPCS</code></td>
-<td style="text-align:left">Specifies which collection in MongoDB to use for the PHPCS message queue. Default is <code>phpcs</code>.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="install-go-dependencies">Install Go dependencies</h2>
-<p>Install Go dependencies to be able to build servers.</p>
-<pre><code>$ glide install
+<h2 id="build-images">Build images</h2>
+<p>Install Glide dependencies and build images:</p>
+<pre><code>$ make build.images
 </code></pre>
-<h2 id="lighthouse-server">Lighthouse Server</h2>
-<p>Build the Lighthouse Server Docker image and start the server</p>
-<pre><code>$ make lighthouse.build.up
-</code></pre>
-<h2 id="phpcs-server">PHPCS Server</h2>
-<p>Build the PHPCS Server Docker image and start the server:</p>
-<pre><code>$ make phpcs.build.up
-</code></pre>
-<h2 id="sync-server">Sync Server</h2>
-<p>Build the Sync Server Docker image and start the server:</p>
-<pre><code>$ make sync.build.up
+<h2 id="start-servers">Start servers</h2>
+<p>Start the servers (Lighthouse Server, PHPCS Server, Sync Server):</p>
+<pre><code>$ make up
 </code></pre>
 
     </div>

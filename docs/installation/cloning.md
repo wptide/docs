@@ -11,7 +11,7 @@ cd src/github.com/xwp
 Now clone Tide:
 
 ```
-git clone -b gcp-providers --recursive https://github.com/xwp/go-tide.git
+git clone -b develop --recursive https://github.com/xwp/go-tide.git
 ```
 
 Change to Tide working directory:  
