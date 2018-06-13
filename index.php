@@ -11,7 +11,6 @@ if (file_exists($file)) {
 	header('HTTP/1.1 200 OK');
 }
 
-
 get_header();
 
 	if (file_exists($file)) {
