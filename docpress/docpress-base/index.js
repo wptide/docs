@@ -189,7 +189,7 @@ function relayout (files, ms, done) {
   const meta = ms.metadata()
 
   const addDisqus = injectDisqus(meta.disqus)
-  const pugData = fs.readFileSync(join(__dirname, 'data/layout.pug'), 'utf-8')
+  const pugData = fs.readFileSync(join(__dirname, '../../src/layout.pug'), 'utf-8')
   const layout = memoize(['pug', pugData], () => {
     return pug.compile(pugData, { pretty: true })
   })
