@@ -16,7 +16,7 @@ function docpress_make_absolute_urls ($file_contents) {
 	}, $relative_paths);
 	
 	$href_replace = array_map( function ($file) {
-		return 'href="'. site_url() .'/'. str_replace(['/index.html', 'index.html', '.html'], '', $file) .'"';
+		return 'href="'. site_url() .'/'. str_replace(array('/index.html', 'index.html', '.html'), '', $file) .'"';
 	}, $relative_paths );
 
 	$content = preg_replace('#href="((\.\.\/)+)(.+)"#im', 'href="$3"', $file_contents); // replace ../
