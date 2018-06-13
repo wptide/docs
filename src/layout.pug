@@ -1,0 +1,91 @@
+//- Menu:
+//- renders the menu item recursively
+
+mixin menu(m, depth)
+  li.menu-item(class=('-level-' + depth + (m.sections ? ' -parent' : '')))
+    if m.url
+      a.link.title(href=('/' + m.url.replace('.html', '').replace('index', '') + (m.anchor || '')) class=((active === m.url && !m.anchor ? '-active' : '') + (' link-' + m.slug)))= m.title
+    else if m.title
+      span.title= m.title
+
+    //- Headings
+    if m.headings && m.url === active && !m.expand && !m.anchor
+      ul.headings.heading-list
+        - for (var key in m.headings)
+          +heading(m.headings[key], 0)
+
+    //- Sub-pages
+    if m.sections
+      ul.submenu
+        - for (var key in m.sections)
+          +menu(m.sections[key], depth + 1)
+
+  //- Headings as subpages
+  if m.headings && m.url === active && m.expand && !m.anchor
+    - for (var key in m.headings)
+      +heading-menu(m.headings[key], depth)
+
+//- Heading:
+//- renders the heading item recursively
+
+mixin heading(h, depth)
+  li.heading-item(class=('-depth-' + h.depth))
+    a.hlink(href=('#' + h.id) class=('link-' + h.id))
+      = h.title
+    //- if h.headings
+    //-   ul.heading-list(class=('-depth-' + h.depth))
+    //-     - for (var key in h.headings)
+    //-       +heading(h.headings[key], depth + 1)
+
+//- Heading-menu:
+//- Renders the heading item recursively, but in the markup of a regular menu.
+//- Used for single-page sites
+
+mixin heading-menu(h, depth)
+  li.menu-item(class=('-level-' + depth + (h.headings ? ' -parent' : '')))
+    a.link.title(href=('#' + h.id) class=('link-' + h.id))
+      = h.title
+    if h.headings
+      ul.submenu
+        - for (var key in h.headings)s
+          +heading-menu(h.headings[key], depth + 1)
+
+//-
+//- Heading
+//-
+
+mixin header-nav
+  .header-nav
+    .right
+      a.iconlink(href='https://github.com/wptide/docs', data-title='wptide/docs')
+        span.icon.-github
+      a.iconlink(href='https://make.wordpress.org/tide/', data-title='make.wordpress.org/tide')
+        <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg>
+
+mixin footer-nav(prev, next)
+  if prev || next
+    .footer-nav
+      if prev
+        .left
+          a(href=prev.url.replace('.html', '').replace('index', ''))
+            span.title= prev.pageTitle
+      if next
+        .right
+          a(href=next.url.replace('.html', '').replace('index', ''))
+            span.label= "Next: "
+            span.title= next.pageTitle
+
+//-
+//- Content
+//-
+
+.doc-layout
+  .toggle.menu-toggle.js-menu-toggle
+  .menu.toc-menu
+    +menu(toc, 0)
+  .body(class=('page-' + slug))
+    +header-nav
+    .markdown-body
+      != contents.replace(/.html/g, '')
+
+    +footer-nav(prev, next)

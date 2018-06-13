@@ -1,0 +1,690 @@
+
+<div class="doc-layout">
+  <div class="toggle menu-toggle js-menu-toggle"></div>
+  <div class="menu toc-menu">
+    <li class="menu-item -level-0 -parent">
+      <ul class="submenu">
+        <li class="menu-item -level-1"><a class="link title  link-index" href="/"></a>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-search" href="/search">Search plugins &amp; themes</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="/installation/">Installation</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="/installation/prerequisites">Prerequisites</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="/installation/cloning">Cloning</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="/installation/setup">Setup</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-services" href="/services/">Services</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title -active link-servicesapi" href="/services/api">API</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-endpoints" href="#endpoints">Endpoints</a></li>
+              </ul>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync" href="/services/sync">Sync Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="/services/phpcs">PHPCS Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="/services/lighthouse">Lighthouse Server</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="/gcp/">Google Cloud Platform</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-gcpsetup" href="/gcp/setup">Setup</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpdeployments" href="/gcp/deployments">Deployments</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgcs" href="/gcp/gcs">Google Cloud Storage</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgcf" href="/gcp/gcf">Google Cloud Firestore</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-aws" href="/aws/">Amazon Web Services</a>
+        </li>
+      </ul>
+    </li>
+  </div>
+  <div class="body page-servicesapi">
+    <div class="header-nav">
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+    </div>
+    <div class="markdown-body"><h1 id="api">API</h1>
+<p>The API implements MySQL, PHP-FPM, and an Nginx web server with WordPress installed
+serving a theme and a REST API.</p>
+<p>The local database is stored in the <code>data/api/mysql</code> directory. If you ever need
+to start from scratch delete that directory and run <code>make api.setup</code> again. Be
+sure to stop the API with <code>make api.down</code> or <code>make down</code> and then start it again
+with <code>make api.up</code>.</p>
+<h2 id="commands">Commands</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>$ make api.tpl</code></td>
+<td style="text-align:left">Generates the API templates.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make api.composer</code></td>
+<td style="text-align:left">Runs the previous command and installs the dependencies.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make api.up</code></td>
+<td style="text-align:left">Starts the API Docker images in isolation.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make api.setup</code></td>
+<td style="text-align:left">Runs the setup script.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make api.down</code></td>
+<td style="text-align:left">Stops the API.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make down</code></td>
+<td style="text-align:left">Stops all Docker services.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="settings">Settings</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>API_ADMIN_EMAIL</code></td>
+<td style="text-align:left">The email associated with the local admin account.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_ADMIN_PASSWORD</code></td>
+<td style="text-align:left">The password associated with the local admin account.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_ADMIN_USER</code></td>
+<td style="text-align:left">The username associated with the local admin account.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_AUTH_URL</code></td>
+<td style="text-align:left">The [<code>wp-tide-api</code>][wp-tide-api] authentication REST endpoint, used both locally and on GCP. Default is <code>http://tide.local/api/tide/v1/auth</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_BLOG_DESCRIPTION</code></td>
+<td style="text-align:left">Site tagline (set in Settings &gt; General). Default is <code>Automated insight into your WordPress code</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_BLOG_NAME</code></td>
+<td style="text-align:left">Site title (set in Settings &gt; General). Default is <code>Tide</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_CACHE</code></td>
+<td style="text-align:left">Whether caching should be active or not. Must be one of: <code>true</code>, <code>false</code>. Default is <code>true</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_CACHE_DEBUG</code></td>
+<td style="text-align:left">Whether or not to display the caching headers for debugging. Must be one of: <code>true</code>, <code>false</code>. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_CACHE_TTL</code></td>
+<td style="text-align:left">Sets the numeric time to live (TTL) in seconds for page caching. Default is <code>300</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_DB_HOST</code></td>
+<td style="text-align:left">The host of the local database, which connects to a Docker container. Default is <code>api-mysql</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_DB_NAME</code></td>
+<td style="text-align:left">Name of the local database. Default is <code>wordpress</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_DB_PASSWORD</code></td>
+<td style="text-align:left">Password used to access the local database. Default is <code>wordpress</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_DB_ROOT_PASSWORD</code></td>
+<td style="text-align:left">The local database root password. Default is <code>wordpress</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_DB_USER</code></td>
+<td style="text-align:left">Username used to access the local database. Default is <code>wordpress</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_HTTP_HOST</code></td>
+<td style="text-align:left">The API domain name, used both locally and on GCP. Default is <code>tide.local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_KEY</code></td>
+<td style="text-align:left">The API key used locally to authenticate the <code>audit-server</code> user.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_PROTOCOL</code></td>
+<td style="text-align:left">The API protocol, used both locally and on GCP Default is <code>http</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_REDIS_AUTH</code></td>
+<td style="text-align:left">The Redis database password. Default is <code>redis</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_REDIS_DATABASE</code></td>
+<td style="text-align:left">Use a specific numeric Redis database. Default is <code>0</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_REDIS_HOST</code></td>
+<td style="text-align:left">The host where the Redis database can be reached. Default is <code>api-redis</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_REDIS_PORT</code></td>
+<td style="text-align:left">The port where the Redis database can be reached. Default is <code>6379</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_SECRET</code></td>
+<td style="text-align:left">The API secret used locally to authenticate the <code>audit-server</code> user.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_THEME</code></td>
+<td style="text-align:left">The slug of the local WordPress theme. Default is <code>twentyseventeen</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_UPLOAD_HANDLER</code></td>
+<td style="text-align:left">Tells WordPress how media upload is handled. Uses either the local file system or Google Cloud Storage. Must be one of: <code>local</code>, <code>gcs</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>API_VERSION</code></td>
+<td style="text-align:left">The API version found in the Tide API REST url, used both locally and on GCP. Default is <code>v1</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="endpoints">Endpoints</h2>
+<h3 id="tidev1"><code>/tide/v1/</code></h3>
+<h4 id="get">GET</h4>
+<p>API Root</p>
+<h3 id="tidev1report"><code>/tide/v1/report</code></h3>
+<h4 id="get">GET</h4>
+<p>Get a report.</p>
+<h3 id="tidev1reportchecksumtypestandard"><code>/tide/v1/report/{checksum}/{type}/{standard}/</code></h3>
+<h4 id="get">GET</h4>
+<p>Get a report by checksum.</p>
+<h3 id="tidev1reportpost_idtypestandard"><code>/tide/v1/report/{post_id}/{type}/{standard}/</code></h3>
+<p>Get a report by id.</p>
+<h3 id="tidev1auth"><code>/tide/v1/auth</code></h3>
+<h4 id="post">POST</h4>
+<p>Authenticate user.</p>
+<h3 id="tidev1keypairid"><code>/tide/v1/keypair/{id}</code></h3>
+<h4 id="post">POST</h4>
+<p>[Description]</p>
+<h4 id="get">GET</h4>
+<p>[Description]</p>
+<h3 id="tidev1audit"><code>/tide/v1/audit/</code></h3>
+<h4 id="get">GET</h4>
+<p>Get collection of audits.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>context</code></td>
+<td style="text-align:left">Scope under which the request is made; determines fields present in response - <code>view | embed | edit</code>. Default is <code>view</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>page</code></td>
+<td style="text-align:left">Current page of the collection.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>per_page</code></td>
+<td style="text-align:left">Maximum number of items to be returned in result set. Default is <code>10</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>search</code></td>
+<td style="text-align:left">Limit results to those matching a string.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>after</code></td>
+<td style="text-align:left">Limit response to posts published after a given ISO8601 compliant date.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>author</code></td>
+<td style="text-align:left">Limit result set to posts assigned to specific authors.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>author_exclude</code></td>
+<td style="text-align:left">Ensure result set excludes posts assigned to specific authors.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>before</code></td>
+<td style="text-align:left">Limit response to posts published before a given ISO8601 compliant date.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>exclude</code></td>
+<td style="text-align:left">Ensure result set excludes specific IDs.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>include</code></td>
+<td style="text-align:left">Limit result set to specific IDs.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>offset</code></td>
+<td style="text-align:left">Offset the result set by a specific number of items.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>order</code></td>
+<td style="text-align:left">Order sort attribute ascending or descending.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>orderby</code></td>
+<td style="text-align:left">Sort collection by object attribute.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>slug</code></td>
+<td style="text-align:left">Limit result set to posts with one or more specific slugs.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>status</code></td>
+<td style="text-align:left">Limit result set to posts assigned one or more statuses.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>audit_project</code></td>
+<td style="text-align:left">Limit result set to all items that have the specified term assigned in the audit_project taxonomy.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>audit_project_exclude</code></td>
+<td style="text-align:left">Limit result set to all items except those that have the specified term assigned in the audit_project taxonomy.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="post">POST</h4>
+<p>Create an audit.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>date</code></td>
+<td style="text-align:left">The date the object was published, in the site&apos;s timezone.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>date_gmt</code></td>
+<td style="text-align:left">The date the object was published, as GMT.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>slug</code></td>
+<td style="text-align:left">An alphanumeric identifier for the object unique to its type.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>status</code></td>
+<td style="text-align:left">A named status for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>password</code></td>
+<td style="text-align:left">A password to protect access to the content and excerpt.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>title</code></td>
+<td style="text-align:left">The title for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left">The content for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>author</code></td>
+<td style="text-align:left">The ID for the author of the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>excerpt</code></td>
+<td style="text-align:left">The excerpt for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>meta</code></td>
+<td style="text-align:left">Meta fields.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>template</code></td>
+<td style="text-align:left">The theme file to use to display the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>audit_project</code></td>
+<td style="text-align:left">The terms assigned to the object in the audit_project taxonomy.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tidev1auditid"><code>/tide/v1/audit/{id}</code></h3>
+<h4 id="get">GET</h4>
+<p>Get an audit by id.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">Unique identifier for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>context</code></td>
+<td style="text-align:left">Scope under which the request is made; determines fields present in response.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>password</code></td>
+<td style="text-align:left">The password for the post if it is password protected.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="post-put-patch">POST, PUT, PATCH</h4>
+<p>Update an audit.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">Unique identifier for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>date</code></td>
+<td style="text-align:left">The date the object was published, in the site&apos;s timezone.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>date_gmt</code></td>
+<td style="text-align:left">The date the object was published, as GMT.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>slug</code></td>
+<td style="text-align:left">An alphanumeric identifier for the object unique to its type.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>status</code></td>
+<td style="text-align:left">A named status for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>password</code></td>
+<td style="text-align:left">A password to protect access to the content and excerpt.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>title</code></td>
+<td style="text-align:left">The title for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left">The content for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>author</code></td>
+<td style="text-align:left">The ID for the author of the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>excerpt</code></td>
+<td style="text-align:left">The excerpt for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>meta</code></td>
+<td style="text-align:left">Meta fields.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>template</code></td>
+<td style="text-align:left">The theme file to use to display the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>audit_project</code></td>
+<td style="text-align:left">The terms assigned to the object in the audit_project taxonomy.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="delete">DELETE</h4>
+<p>Delete an audit.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">Unique identifier for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>force</code></td>
+<td style="text-align:left">Whether to bypass trash and force deletion.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tidev1auditchecksum"><code>/tide/v1/audit/{checksum}</code></h3>
+<h4 id="get">GET</h4>
+<p>Get an audit by checksum.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>altid</code></td>
+<td style="text-align:left">An alternate unique id to query on (e.g. checksum).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>context</code></td>
+<td style="text-align:left">Scope under which the request is made; determines fields present in response.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>password</code></td>
+<td style="text-align:left">The password for the post if it is password protected.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="post-put-patch">POST, PUT, PATCH</h4>
+<p>Update an audit.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>altid</code></td>
+<td style="text-align:left">An alternate unique id to query on (e.g. checksum).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>date</code></td>
+<td style="text-align:left">The date the object was published, in the site&apos;s timezone.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>date_gmt</code></td>
+<td style="text-align:left">The date the object was published, as GMT.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>slug</code></td>
+<td style="text-align:left">An alphanumeric identifier for the object unique to its type.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>status</code></td>
+<td style="text-align:left">A named status for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>password</code></td>
+<td style="text-align:left">A password to protect access to the content and excerpt.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>title</code></td>
+<td style="text-align:left">The title for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left">The content for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>author</code></td>
+<td style="text-align:left">The ID for the author of the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>excerpt</code></td>
+<td style="text-align:left">The excerpt for the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>meta</code></td>
+<td style="text-align:left">Meta fields.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>template</code></td>
+<td style="text-align:left">The theme file to use to display the object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>audit_project</code></td>
+<td style="text-align:left">The terms assigned to the object in the audit_project taxonomy.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="delete">DELETE</h4>
+<p>Delete an audit.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>altid</code></td>
+<td style="text-align:left">An alternate unique id to query on (e.g. checksum).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>force</code></td>
+<td style="text-align:left">Whether to bypass trash and force deletion.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tidev1auditproject_client"><code>/tide/v1/audit/{project_client}</code></h3>
+<h4 id="get">GET</h4>
+<p>Get collection of audits for a project client.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>project_client</code></td>
+<td style="text-align:left">User login name representing a project client.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tidev1auditproject_clientproject_type"><code>/tide/v1/audit/{project_client}/{project_type}</code></h3>
+<h4 id="get">GET</h4>
+<p>Get collection of audits for a project client of certain type: theme or plugin.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>project_client</code></td>
+<td style="text-align:left">User login name representing a project client.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>project_type</code></td>
+<td style="text-align:left">The project type: theme or plugin.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tidev1auditproject_clientproject_typeproject_slug"><code>/tide/v1/audit/{project_client}/{project_type}/{project_slug}</code></h3>
+<h4 id="get">GET</h4>
+<p>Get an audit for a theme or plugin defined by a project slug.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>project_client</code></td>
+<td style="text-align:left">User login name representing a project client.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>project_type</code></td>
+<td style="text-align:left">The project type: theme or plugin.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>project_slug</code></td>
+<td style="text-align:left">The taxonomy term representing the project.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tidev1auditproject_clientproject_typeproject_slugversion"><code>/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}</code></h3>
+<h4 id="get">GET</h4>
+<p>Get an audit for a theme or plugin defined by a project slug and version.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>project_client</code></td>
+<td style="text-align:left">User login name representing a project client.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>project_type</code></td>
+<td style="text-align:left">The project type: theme or plugin.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>project_slug</code></td>
+<td style="text-align:left">The taxonomy term representing the project.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>version</code></td>
+<td style="text-align:left">The version representing the project.</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <div class="footer-nav">
+      <div class="left"><a href="../services/"><span class="title">Services</span></a></div>
+      <div class="right"><a href="../services/sync"><span class="label">Next: </span><span class="title">Sync Server</span></a></div>
+    </div>
+  </div>
+</div>
