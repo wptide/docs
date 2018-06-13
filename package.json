@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "node docpress/docpress/bin/docpress"
+    "dev": "node docpress/docpress/bin/docpress",
+    "build": "node docpress/docpress/bin/docpress b"
   },
   "repository": {
     "type": "git",
