@@ -15,3 +15,10 @@ require_once( 'functions/get-current-url.php' );
 require_once( 'functions/docpress-get-dirs.php' );
 require_once( 'functions/docpress-get-file-path.php' );
 require_once( 'functions/docpress-make-absolute-urls.php' );
+
+// Block 301 redirect.
+add_filter( 'redirect_canonical', function( $redirect_url, $requested_url ) {
+    if ( strpos( $requested_url, 'api/tide/v1' ) === false ) {
+        return '';
+    }
+}, 10, 2 );

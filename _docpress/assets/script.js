@@ -770,7 +770,7 @@ function ApiCheck (el) {
 
   function fetchApi (type, name, cb) {
     var req = new XMLHttpRequest()
-    req.open('GET', 'https://wptide.org/api/tide/v1/audit/wporg/'+ type +'/'+ name, true)
+    req.open('GET', '/api/tide/v1/audit/wporg/'+ type +'/'+ name, true)
     req.onreadystatechange = function () {
       if (req.readyState == 4) {
         if(req.status == 200) showResponse(JSON.parse(req.responseText), 'success')
