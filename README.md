@@ -14,7 +14,11 @@ To develop locally, run:
 2. `npm i` to install the repo's dependencies.
 3. Link the local docpress packages and install its dependencies:
 ```
-(cd docpress/docpress && npm link) && (cd docpress/docpress-base && npm link) && (cd docpress/docpress-core && npm link) && (cd docpress/docpress && npm i && npm link docpress-base && npm link docpress-core) && (cd docpress/docpress-base && npm i && npm link npm link docpress-core)
+(cd docpress/docpress && npm link)
+(cd docpress/docpress-base && npm link)
+(cd docpress/docpress-core && npm link)
+(cd docpress/docpress && npm i && npm link docpress-base && npm link docpress-core)
+(cd docpress/docpress-base && npm i && npm link npm link docpress-core)
 ```
 4. Run `npm run dev` to build and watch assets. 
 5. Activate the theme and visit the homepage.
