@@ -50,7 +50,7 @@ function Waves (canvas) {
   Point.prototype.drawDot = function () {
     ctx.beginPath()
     ctx.arc(this.x2d, this.y2d, this.dotSize, 0, 2 * Math.PI)
-    ctx.fillStyle = `rgba(0,0,0,${this.alpha})`
+    ctx.fillStyle = 'rgba(0,0,0,' + this.alpha + ')'
     ctx.fill()
   }
   
@@ -59,7 +59,7 @@ function Waves (canvas) {
     ++tick
     ctx.clearRect(0,0,width,height)
   
-    points.forEach((point, i) => {
+    points.forEach(function (point, i) {
       var prevX = points[i-1]
       var prevY = points[i - xRows]
       point.update()
