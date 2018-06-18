@@ -670,7 +670,10 @@ body {
   line-height: 24px;
 }
 .footer-nav a {
-  display: block;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -699,6 +702,11 @@ body {
 }
 .footer-nav.-expanded .right {
   width: 60%;
+}
+.footer-nav .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .footer-nav .title,
 .footer-nav .label {
@@ -732,6 +740,7 @@ body {
 }
 .footer-nav .right .title {
   margin-right: 0.1em;
+  margin-left: auto;
   color: #111;
 }
 .footer-nav .left a:hover:before,

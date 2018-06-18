@@ -24,7 +24,8 @@
     line-height: 24px
 
   a
-    display: block
+    display: flex
+    align-items: center
     white-space: nowrap
     text-overflow: ellipsis
 
@@ -57,6 +58,11 @@
     width: 60%
 
   // Title and labels
+  .title
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
   .title,
   .label
     opacity: 0
@@ -91,6 +97,7 @@
 
   .right .title
     margin-right: 0.1em
+    margin-left: auto
     color: $black
 
   .left a:hover:before,

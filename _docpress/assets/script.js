@@ -770,7 +770,7 @@ function ApiCheck (el) {
 
   function fetchApi (type, name, cb) {
     var req = new XMLHttpRequest()
-    req.open('GET', '/api/tide/v1/audit/wporg/'+ type +'/'+ name, true)
+    req.open('GET', 'https://wptide.org/api/tide/v1/audit/wporg/'+ type +'/'+ name, true)
     req.onreadystatechange = function () {
       if (req.readyState == 4) {
         if(req.status == 200) showResponse(JSON.parse(req.responseText), 'success')
@@ -1257,7 +1257,7 @@ function Waves (canvas) {
   Point.prototype.drawDot = function () {
     ctx.beginPath()
     ctx.arc(this.x2d, this.y2d, this.dotSize, 0, 2 * Math.PI)
-    ctx.fillStyle = `rgba(0,0,0,${this.alpha})`
+    ctx.fillStyle = 'rgba(0,0,0,' + this.alpha + ')'
     ctx.fill()
   }
   
@@ -1266,7 +1266,7 @@ function Waves (canvas) {
     ++tick
     ctx.clearRect(0,0,width,height)
   
-    points.forEach((point, i) => {
+    points.forEach(function (point, i) {
       var prevX = points[i-1]
       var prevY = points[i - xRows]
       point.update()
