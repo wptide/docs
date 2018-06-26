@@ -1,0 +1,164 @@
+
+<div class="doc-layout">
+  <div class="toggle menu-toggle js-menu-toggle"></div>
+  <div class="menu toc-menu">
+    <li class="menu-item -level-0 -parent">
+      <ul class="submenu">
+        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html"></a>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-search" href="search.html">Search plugins &amp; themes</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="installation/index.html">Installation</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="installation/prerequisites.html">Prerequisites</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="installation/cloning.html">Cloning</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="installation/setup.html">Setup</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-services" href="services/index.html">Services</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title -active link-servicessync" href="services/sync.html">Sync Server</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a></li>
+              </ul>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesmongodb" href="services/mongodb.html">MongoDB</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-gcpsetup" href="gcp/setup.html">Setup</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpdeployments" href="gcp/deployments.html">Deployments</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgcs" href="gcp/gcs.html">Google Cloud Storage</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgcf" href="gcp/gcf.html">Google Cloud Firestore</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-aws" href="aws/index.html">Amazon Web Services</a>
+        </li>
+      </ul>
+    </li>
+  </div>
+  <div class="body page-servicessync">
+    <div class="header-nav">
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+    </div>
+    <div class="markdown-body"><h1 id="sync-server">Sync server</h1>
+<p>The Sync Server is a Go binary that polls the <a href="http://WordPress.org">WordPress.org</a> API&apos;s for themes and
+plugins to process and writes them to a queue.</p>
+<h2 id="commands">Commands</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>$ make sync.build.image</code></td>
+<td style="text-align:left">Builds the Sync Server Docker image.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make sync.up</code></td>
+<td style="text-align:left">Starts the Sync Server in isolation.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make sync.build.up</code></td>
+<td style="text-align:left">Combine the previous two steps.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$ make sync.down</code></td>
+<td style="text-align:left">Take the isolated Sync Server down.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="settings">Settings</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>SYNC_ACTIVE</code></td>
+<td style="text-align:left">Whether the Sync Server is active or not. Must be one of: <code>on</code>, <code>off</code>. Default is <code>off</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_API_BROWSE_CATEGORY</code></td>
+<td style="text-align:left">The API category used to ingest the <a href="http://wp.org">wp.org</a> themes and plugins. Must be one of: <code>popular</code>, <code>featured</code>, <code>updated</code>, <code>new</code>. Default is <code>updated</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DATA</code></td>
+<td style="text-align:left">When the database provider is set to <code>local</code> this will be where the data is stored relative to the <code>/srv/data</code> working directory. Default is <code>./db</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DATABASE_DOCUMENT_PATH</code></td>
+<td style="text-align:left">When the database provider is set to <code>firestore</code> this value is the path to the document in Cloud Firestore. Must be in the form of <code>&lt;collection&gt;/&lt;document&gt;</code>. Default is <code>sync-server/wporg</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DATABASE_PROVIDER</code></td>
+<td style="text-align:left">Tells the Sync Server which database provider to use; either the local file system or Google Cloud Firestore. Must be one of: <code>local</code>, <code>firestore</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DEFAULT_CLIENT</code></td>
+<td style="text-align:left">The API client used to make requests by the audit servers; also associated with the key and secret those server use. Default is <code>wporg</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DEFAULT_VISIBILITY</code></td>
+<td style="text-align:left">The audit and report visibility. Must be one of: <code>public</code>, <code>private</code>. Default is <code>public</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_FORCE_AUDITS</code></td>
+<td style="text-align:left">Forces audit reports to be generated even if a report exists for the checksum and standard. Must be one of: <code>yes</code>, <code>no</code>. Default is <code>no</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_ITEMS_PER_PAGE</code></td>
+<td style="text-align:left">The number of plugins or themes per page in the API request. Default is <code>250</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_LH_ACTIVE</code></td>
+<td style="text-align:left">Send messages to the Lighthouse SQS queue. Must be one of: <code>on</code>, <code>off</code>. Default is <code>on</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_MESSAGE_PROVIDER</code></td>
+<td style="text-align:left">Queue audit messages using the local MongoDB, Google Cloud Firestore, or AWS SQS. Must be one of: <code>local</code>, <code>firestore</code>, <code>sqs</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_PHPCS_ACTIVE</code></td>
+<td style="text-align:left">Send messages to the PHPCS SQS queue. Must be one of: <code>on</code>, <code>off</code>. Default is <code>on</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_POOL_DELAY</code></td>
+<td style="text-align:left">The wait time in seconds between the <a href="http://wp.org">wp.org</a> theme and plugin ingests. Default is <code>600</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_POOL_WORKERS</code></td>
+<td style="text-align:left">The number of workers (concurrent goroutines) the server will create to ingest the <a href="http://wp.org">wp.org</a> API. Default is <code>125</code>.</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <div class="footer-nav">
+      <div class="left"><a href="../services/api.html"><span class="title">API</span></a></div>
+      <div class="right"><a href="../services/phpcs.html"><span class="title">PHPCS Server</span></a></div>
+    </div>
+  </div>
+</div>
