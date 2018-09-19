@@ -7,6 +7,6 @@ The following items are currently planned as part of the upcoming Tide roadmap. 
 * Goal: Begins integration on .ORG (via PHP Compatability results) and first step in actually improving the quality of code on 30% of the web.
 * Agile planning: [View in GitHub](https://github.com/wptide/wptide#boards?releases=5b030c381a00905b6c50f1df&repos=107737502), [View in ZenHub](https://app.zenhub.com/workspace/o/wptide/wptide/boards?releases=5b030c381a00905b6c50f1df&repos=107737502)
 
-## Future Release
-* Goal: No plans yet, so everything here is what's NOT included in v1.0.0.
+## Future Release (aka Backlog)
+* Goal: The following items are currently unplanned as part of the Tide backlog.
 * Agile planning: [View in GitHub](https://github.com/wptide/wptide#boards?releases=5b7c70fee4dbc16531a27c3c&activeFilters=releases&repos=107737502), [View in ZenHub](https://app.zenhub.com/workspace/o/wptide/wptide/boards?releases=5b0321391a00905b6c50f25e,5b7c70fee4dbc16531a27c3c&activeFilters=releases&repos=107737502)
