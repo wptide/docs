@@ -1,6 +1,6 @@
 # MongoDB
 
-By default MongoDB is used as the local message provider for the Lighthouse/PHPCS Servers. In order for these services to use MongoDB you'll need to ensure the following settings are in you `.env`. The only setting that you should **not** change is `MONGO_HOST`.
+By default MongoDB is used as the local message provider for the Lighthouse/PHPCS Servers. In order for these services to use MongoDB you'll need to ensure the following settings are in your `.env`. The only setting that you should **not** change is `MONGO_HOST`.
 
 | Variable | Description |
 | :--- | :--- |

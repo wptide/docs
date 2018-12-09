@@ -30,3 +30,29 @@ plugins to process and writes them to a queue.
 | `SYNC_PHPCS_ACTIVE` | Send messages to the PHPCS SQS queue. Must be one of: `on`, `off`. Default is `on`. |
 | `SYNC_POOL_DELAY` | The wait time in seconds between the wp.org theme and plugin ingests. Default is `600`. |
 | `SYNC_POOL_WORKERS` | The number of workers (concurrent goroutines) the server will create to ingest the wp.org API. Default is `125`. |
+
+## Usage
+
+First build the Sync Server Docker image:
+
+```
+$ make sync.build.image
+```
+
+Next start the Sync Server in isolation:
+
+```
+$ make sync.up
+```
+
+You can combine the previous two steps and simply run:
+
+```
+$ make sync.build.up
+```
+
+Take the isolated Sync Server down:
+
+```
+$ make sync.down
+```

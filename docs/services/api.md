@@ -8,6 +8,21 @@ to start from scratch delete that directory and run `make api.setup` again. Be
 sure to stop the API with `make api.down` or `make down` and then start it again 
 with `make api.up`.
 
+Running `make down` will stop all Docker services.
+
+If you see an error like this on OS X when bringing up the API you need to add the 
+directory to the `Preferences -> File Sharing` section of the Docker for Mac app.
+
+```
+ERROR: for gotide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: ...'
+```
+
+For local development you can manually set the `API_KEY` and `API_SECRET` for the 
+`audit-server` user, which will automatically update the user meta values when 
+`make api.setup` is ran. If you do not set those environment variables, or are 
+running Tide in production, then you can access the auto generated key and secret 
+from the `audit-server` user profile. 
+
 ## Commands
 
 | Variable | Description |
