@@ -26,6 +26,7 @@
               <ul class="headings heading-list">
                 <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a></li>
                 <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-usage" href="#usage">Usage</a></li>
               </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
@@ -154,6 +155,19 @@ plugins to process and writes them to a queue.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="usage">Usage</h2>
+<p>First build the Sync Server Docker image:</p>
+<pre><code>$ make sync.build.image
+</code></pre>
+<p>Next start the Sync Server in isolation:</p>
+<pre><code>$ make sync.up
+</code></pre>
+<p>You can combine the previous two steps and simply run:</p>
+<pre><code>$ make sync.build.up
+</code></pre>
+<p>Take the isolated Sync Server down:</p>
+<pre><code>$ make sync.down
+</code></pre>
 
     </div>
     <div class="footer-nav">
