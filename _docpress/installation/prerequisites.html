@@ -68,7 +68,13 @@
 <h2 id="go">Go</h2>
 <p>Install <a href="https://golang.org/doc/install">Go</a> language and test if your installation works by following the instructions on the installation page.</p>
 <h2 id="glide">Glide</h2>
-<p>Install <a href="https://glide.readthedocs.io/en/latest/#installing-glide">Glide</a>, a package manager for Go.</p>
+<p>Install <a href="https://glide.readthedocs.io/en/latest/#installing-glide">Glide</a>, a package manager for Go. There are a few ways to install Glide:</p>
+<ul>
+<li>Use the shell script to try an automatically install it. <code>curl https://glide.sh/get | sh</code></li>
+<li>Download a <a href="https://github.com/Masterminds/glide/releases">versioned release</a>. Glide releases are semantically versioned.</li>
+<li>Use a system package manager to install Glide. For example, <code>brew install glide</code> can be used if you&apos;re using <a href="http://brew.sh/">Homebrew</a> on Mac.</li>
+<li>The latest development snapshot can be installed with go get. For example, <code>go get -u github.com/Masterminds/glide</code>. This is not a release version.</li>
+</ul>
 <h2 id="make">Make</h2>
 <p><em>(Windows only)</em></p>
 <p><code>make</code> command is not available on Windows by default. Install <a href="http://gnuwin32.sourceforge.net/packages/make.htm">Make for Windows</a> to be able to use Tide <code>make</code> commands. Add <code>C:\zlib\bin</code> to PATH.</p>
