@@ -2,7 +2,7 @@
   "name": "docpress-base",
   "description": "Base theme for Docpress.",
   "homepage": "https://github.com/docpress/docpress-base#readme",
-  "version": "0.7.4",
+  "version": "0.7.6",
   "main": "index.js",
   "author": {
     "email": "rico@ricostacruz.com",
@@ -27,7 +27,7 @@
     "onmount": "1.3.0",
     "pjax": "0.2.4",
     "postcss": "5.2.5",
-    "pug": "2.0.0-beta6",
+    "pug": "^2.0.3",
     "stylus": "0.54.5",
     "uglifyify": "3.0.4",
     "ware": "1.3.0"
@@ -37,22 +37,23 @@
     "docpress-core": "github:docpress/docpress-core",
     "expect": "1.20.2",
     "metalsmith": "2.3.0",
-    "mocha": "3.1.2",
+    "mocha": "^5.2.0",
     "mocha-clean": "1.0.0",
     "nyc": "9.0.1",
     "standard": "8.4.0",
+    "standard-version": "^4.4.0",
     "superstatic": "4.0.3"
   },
   "scripts": {
     "build": "mkdir -p cache && ./bin/build --css > cache/style.css && ./bin/build --js > cache/script.js",
-    "coverage": "istanbul cover _mocha -x '**/fixture/**' -- -R spec",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard",
     "prepublish": "npm run build",
     "pretest": "npm run lint",
     "serve": "ss fixture/onmount/_docpress",
     "test": "nyc mocha",
-    "watch": "mocha -R min --watch"
+    "watch": "mocha -R min --watch",
+    "release": "standard-version"
   },
   "license": "MIT",
   "standard": {
