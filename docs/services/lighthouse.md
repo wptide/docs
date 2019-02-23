@@ -23,3 +23,29 @@ Lighthouse reports against themes, then sends the results back to the Tide API.
 ## Running audits
 
 Details on running Lighthouse audits are [available in the Tide wiki](https://github.com/xwp/go-tide/wiki/Running-Lighthouse-audits).
+
+## Usage
+
+First build the Lighthouse Server Docker image:
+
+```
+$ make lighthouse.build.image
+```
+
+Next start the Lighthouse Server in isolation:
+
+```
+$ make lighthouse.up
+```
+
+You can combine the previous two steps and simply run:
+
+```
+$ make lighthouse.build.up
+```
+
+Take the isolated Lighthouse Server down:
+
+```
+$ make lighthouse.down
+```

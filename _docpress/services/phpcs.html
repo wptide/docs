@@ -28,6 +28,7 @@
               <ul class="headings heading-list">
                 <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a></li>
                 <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-usage" href="#usage">Usage</a></li>
               </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
@@ -114,6 +115,19 @@ reports against both plugins and themes, then sends the results back to the Tide
 </tr>
 </tbody>
 </table>
+<h2 id="usage">Usage</h2>
+<p>First build the PHPCS Server Docker image:</p>
+<pre><code>$ make phpcs.build.image
+</code></pre>
+<p>Next start the PHPCS Server in isolation:</p>
+<pre><code>$ make phpcs.up
+</code></pre>
+<p>You can combine the previous two steps and simply run:</p>
+<pre><code>$ make phpcs.build.up
+</code></pre>
+<p>Take the isolated PHPCS Server down:</p>
+<pre><code>$ make phpcs.down
+</code></pre>
 
     </div>
     <div class="footer-nav">
