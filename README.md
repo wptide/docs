@@ -45,4 +45,4 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 
 ### License
 
-Tide utilizes an [MIT license](LICENSE).
+Tide Docs utilizes an [MIT license](LICENSE).
