@@ -2,7 +2,7 @@
   "toc": {
     "sections": [
       {
-        "title": "tide",
+        "title": "Tide",
         "source": "docs/index.md",
         "url": "index.html",
         "slug": "index",
@@ -464,7 +464,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "404",
         "source": "docs/404.md",
         "url": "404.html",
         "slug": "404"
@@ -474,8 +474,8 @@
   "index": {
     "index.html": {
       "source": "docs/index.md",
-      "title": "tide",
-      "pageTitle": "tide",
+      "title": "Tide",
+      "pageTitle": "Tide",
       "slug": "index",
       "headings": [
         {
@@ -512,13 +512,13 @@
     },
     "installation/index.html": {
       "source": "docs/installation/index.md",
-      "title": "Installation - tide",
+      "title": "Installation - Tide",
       "pageTitle": "Installation",
       "slug": "installation"
     },
     "installation/prerequisites.html": {
       "source": "docs/installation/prerequisites.md",
-      "title": "Prerequisites - tide",
+      "title": "Prerequisites - Tide",
       "pageTitle": "Prerequisites",
       "slug": "installationprerequisites",
       "headings": [
@@ -551,13 +551,13 @@
     },
     "installation/cloning.html": {
       "source": "docs/installation/cloning.md",
-      "title": "Cloning - tide",
+      "title": "Cloning - Tide",
       "pageTitle": "Cloning",
       "slug": "installationcloning"
     },
     "installation/setup.html": {
       "source": "docs/installation/setup.md",
-      "title": "Setup - tide",
+      "title": "Setup - Tide",
       "pageTitle": "Setup",
       "slug": "installationsetup",
       "headings": [
@@ -585,13 +585,13 @@
     },
     "services/index.html": {
       "source": "docs/services/index.md",
-      "title": "Services - tide",
+      "title": "Services - Tide",
       "pageTitle": "Services",
       "slug": "services"
     },
     "services/api.html": {
       "source": "docs/services/api.md",
-      "title": "API - tide",
+      "title": "API - Tide",
       "pageTitle": "API",
       "slug": "servicesapi",
       "headings": [
@@ -681,7 +681,7 @@
     },
     "services/sync.html": {
       "source": "docs/services/sync.md",
-      "title": "Sync Server - tide",
+      "title": "Sync Server - Tide",
       "pageTitle": "Sync Server",
       "slug": "servicessync",
       "headings": [
@@ -704,7 +704,7 @@
     },
     "services/phpcs.html": {
       "source": "docs/services/phpcs.md",
-      "title": "PHPCS Server - tide",
+      "title": "PHPCS Server - Tide",
       "pageTitle": "PHPCS Server",
       "slug": "servicesphpcs",
       "headings": [
@@ -727,7 +727,7 @@
     },
     "services/lighthouse.html": {
       "source": "docs/services/lighthouse.md",
-      "title": "Lighthouse Server - tide",
+      "title": "Lighthouse Server - Tide",
       "pageTitle": "Lighthouse Server",
       "slug": "serviceslighthouse",
       "headings": [
@@ -755,19 +755,19 @@
     },
     "services/mongodb.html": {
       "source": "docs/services/mongodb.md",
-      "title": "MongoDB - tide",
+      "title": "MongoDB - Tide",
       "pageTitle": "MongoDB",
       "slug": "servicesmongodb"
     },
     "gcp/index.html": {
       "source": "docs/gcp/index.md",
-      "title": "Google Cloud Platform - tide",
+      "title": "Google Cloud Platform - Tide",
       "pageTitle": "Google Cloud Platform",
       "slug": "gcp"
     },
     "gcp/setup.html": {
       "source": "docs/gcp/setup.md",
-      "title": "Setup - tide",
+      "title": "Setup - Tide",
       "pageTitle": "Setup",
       "slug": "gcpsetup",
       "headings": [
@@ -807,7 +807,7 @@
     },
     "gcp/deployments.html": {
       "source": "docs/gcp/deployments.md",
-      "title": "Deployments - tide",
+      "title": "Deployments - Tide",
       "pageTitle": "Deployments",
       "slug": "gcpdeployments",
       "headings": [
@@ -878,7 +878,7 @@
     },
     "gcp/gcs.html": {
       "source": "docs/gcp/gcs.md",
-      "title": "Google Cloud Storage - tide",
+      "title": "Google Cloud Storage - Tide",
       "pageTitle": "Google Cloud Storage",
       "slug": "gcpgcs",
       "headings": [
@@ -891,7 +891,7 @@
     },
     "gcp/gcf.html": {
       "source": "docs/gcp/gcf.md",
-      "title": "Google Cloud Firestore - tide",
+      "title": "Google Cloud Firestore - Tide",
       "pageTitle": "Google Cloud Firestore",
       "slug": "gcpgcf",
       "headings": [
@@ -904,7 +904,7 @@
     },
     "aws/index.html": {
       "source": "docs/aws/index.md",
-      "title": "Amazon Web Services - tide",
+      "title": "Amazon Web Services - Tide",
       "pageTitle": "Amazon Web Services",
       "slug": "aws",
       "headings": [
@@ -917,7 +917,7 @@
     },
     "search.html": {
       "source": "docs/search.md",
-      "title": "API Search - tide",
+      "title": "API Search - Tide",
       "pageTitle": "API Search",
       "slug": "search",
       "headings": [
@@ -930,8 +930,8 @@
     },
     "404.html": {
       "source": "docs/404.md",
-      "title": " - tide",
-      "pageTitle": "",
+      "title": "404 - Tide",
+      "pageTitle": "404",
       "slug": "404"
     }
   },

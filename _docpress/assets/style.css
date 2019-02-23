@@ -830,6 +830,9 @@ body {
   width: 22px;
   height: 22px;
 }
+.header-nav .iconlink .label {
+  display: none;
+}
 .header-nav .iconlink:hover {
   color: #4078c0;
 }
@@ -1705,6 +1708,9 @@ ul.heading-list .hlink:before {
     font-size: 0.85em;
   }
 }
+.markdown-body blockquote {
+  color: #1526ff;
+}
 .menu-toggle {
   display: none;
   box-sizing: content-box;
@@ -1913,6 +1919,9 @@ ul.heading-list .hlink:before {
 }
 .toc-menu .-level-4 .title {
   padding-left: 40px;
+}
+.toc-menu .submenu > li:first-child {
+  text-transform: lowercase;
 }
 .toc-menu .submenu > li:last-child {
   display: none;

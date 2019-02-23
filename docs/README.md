@@ -1,6 +1,6 @@
 # Table of contents
 
-* [tide](index.md)
+* [Tide](index.md)
 * [Installation](installation/index.md)
  * [Prerequisites](installation/prerequisites.md)
  * [Cloning](installation/cloning.md)
@@ -18,4 +18,4 @@
  * [Google Cloud Firestore](gcp/gcf.md)
 * [Amazon Web Services](aws/index.md)
 * [API Search](search.md)
-* [](404.md)
+* [404](404.md)
