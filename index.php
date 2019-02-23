@@ -11,7 +11,7 @@ get_header();
 		);
 	} else {
 		echo docpress_make_absolute_urls(
-			file_get_contents( dirname( __FILE__ ) . '/docs-404.html' )
+			file_get_contents( DOCS_PATH . '/404.html' )
 		);
 	}
 

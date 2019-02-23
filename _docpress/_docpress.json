@@ -462,6 +462,12 @@
             "id": "search-plugins-and-themes"
           }
         ]
+      },
+      {
+        "title": "",
+        "source": "docs/404.md",
+        "url": "404.html",
+        "slug": "404"
       }
     ]
   },
@@ -921,6 +927,12 @@
           "id": "search-plugins-and-themes"
         }
       ]
+    },
+    "404.html": {
+      "source": "docs/404.md",
+      "title": " - tide",
+      "pageTitle": "",
+      "slug": "404"
     }
   },
   "sources": {
@@ -942,6 +954,7 @@
     "docs/gcp/gcf.md": "gcp/gcf.html",
     "docs/aws/index.md": "aws/index.html",
     "docs/search.md": "search.html",
+    "docs/404.md": "404.html",
     "docs/architecture-diagram.png": "architecture-diagram.png"
   }
 }

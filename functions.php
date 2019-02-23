@@ -36,6 +36,26 @@ add_filter( 'template_redirect', function() {
 
 	if ( file_exists( DOCS_FILE_PATH ) ) {
 		status_header( 200 );
-		$wp_query->is_404=false;
+		$wp_query->is_404 = false;
 	}
+} );
+
+/**
+ * Filter to override a 404.
+ *
+ * The links are actually 404 errors, the pages don't exist really. We're faking status 200
+ * We just use the routes to pass in info on what file we want to include within index.php.
+ */
+add_filter( 'body_class', function( $classes ) {
+	global $wp_query;
+
+	if ( strpos( DOCS_FILE_PATH, '404.html' ) !== false && file_exists( DOCS_FILE_PATH ) ) {
+		$classes[] = 'error404';
+	}
+
+	if ( strpos( DOCS_FILE_PATH, 'search.html' ) !== false && file_exists( DOCS_FILE_PATH ) ) {
+    	$classes[] = 'is-search';
+    }
+
+	return $classes;
 } );

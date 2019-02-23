@@ -1,4 +1,4 @@
-# TOC
+# Table of contents
 
 * [tide](index.md)
 * [Installation](installation/index.md)
@@ -18,3 +18,4 @@
  * [Google Cloud Firestore](gcp/gcf.md)
 * [Amazon Web Services](aws/index.md)
 * [API Search](search.md)
+* [](404.md)
