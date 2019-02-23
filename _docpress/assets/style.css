@@ -670,8 +670,7 @@ body {
   line-height: 24px;
 }
 .footer-nav a {
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   -ms-flex-align: center;
       align-items: center;
   white-space: nowrap;
