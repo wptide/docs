@@ -17,7 +17,6 @@
   <canvas class="hero__canvas" id="canvas"></canvas>
 </div>
 
-
 ## Vision
 
 > A rising tide lifts all boats. -- United States President, John F. Kennedy (borrowed from the New England Council)
@@ -51,13 +50,13 @@ Tide is actively developed. Currently you can:
 In the future you will be able to use Tide as a service - use it to test your plugins or themes during development.
 
 ## Contributing
-Please read [CONTRIBUTING.md](https://github.com/xwp/go-tide/blob/develop/CONTRIBUTING.md) for details on our code of conduct, 
+Please read [CONTRIBUTING.md](https://github.com/xwp/go-tide/blob/develop/CONTRIBUTING.md) for details on our code of conduct,
 and the process for submitting pull requests to us.
 
 ## Contact Us
-Have questions? Don't open an Issue, come join us in the 
-[`#tide` channel][tide-slack] in [WordPress Slack][wp-slack]. Even though Slack is 
-a chat service, sometimes it takes several hours for community members to respond 
+Have questions? Don't open an Issue, come join us in the
+[`#tide` channel][tide-slack] in [WordPress Slack][wp-slack]. Even though Slack is
+a chat service, sometimes it takes several hours for community members to respond
 — please be patient.
 
 [tide-slack]: https://wordpress.slack.com/messages/C7TK8FBUJ/

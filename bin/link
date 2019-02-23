@@ -13,4 +13,4 @@ echo "Install docpress ..."
 cd ../docpress && npm install && npm link docpress-base && npm link docpress-core
 
 echo "Install docpress-base ..."
-cd ../docpress-base && npm install && npm link docpress-core
+cd ../docpress-base && npm install && npm link npm link docpress-core

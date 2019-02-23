@@ -2,8 +2,8 @@
   "toc": {
     "sections": [
       {
-        "title": "",
-        "source": "docs/hello.md",
+        "title": "tide",
+        "source": "docs/index.md",
         "url": "index.html",
         "slug": "index",
         "headings": [
@@ -38,12 +38,6 @@
             "id": "contact-us"
           }
         ]
-      },
-      {
-        "title": "Search plugins & themes",
-        "source": "docs/search.md",
-        "url": "search.html",
-        "slug": "search"
       },
       {
         "title": "Installation",
@@ -455,14 +449,27 @@
             "id": "settings"
           }
         ]
+      },
+      {
+        "title": "API Search",
+        "source": "docs/search.md",
+        "url": "search.html",
+        "slug": "search",
+        "headings": [
+          {
+            "title": "Search Plugins & Themes",
+            "depth": 2,
+            "id": "search-plugins-and-themes"
+          }
+        ]
       }
     ]
   },
   "index": {
     "index.html": {
-      "source": "docs/hello.md",
-      "title": "",
-      "pageTitle": "",
+      "source": "docs/index.md",
+      "title": "tide",
+      "pageTitle": "tide",
       "slug": "index",
       "headings": [
         {
@@ -497,21 +504,15 @@
         }
       ]
     },
-    "search.html": {
-      "source": "docs/search.md",
-      "title": "Search plugins & themes - ",
-      "pageTitle": "Search plugins & themes",
-      "slug": "search"
-    },
     "installation/index.html": {
       "source": "docs/installation/index.md",
-      "title": "Installation - ",
+      "title": "Installation - tide",
       "pageTitle": "Installation",
       "slug": "installation"
     },
     "installation/prerequisites.html": {
       "source": "docs/installation/prerequisites.md",
-      "title": "Prerequisites - ",
+      "title": "Prerequisites - tide",
       "pageTitle": "Prerequisites",
       "slug": "installationprerequisites",
       "headings": [
@@ -544,13 +545,13 @@
     },
     "installation/cloning.html": {
       "source": "docs/installation/cloning.md",
-      "title": "Cloning - ",
+      "title": "Cloning - tide",
       "pageTitle": "Cloning",
       "slug": "installationcloning"
     },
     "installation/setup.html": {
       "source": "docs/installation/setup.md",
-      "title": "Setup - ",
+      "title": "Setup - tide",
       "pageTitle": "Setup",
       "slug": "installationsetup",
       "headings": [
@@ -578,13 +579,13 @@
     },
     "services/index.html": {
       "source": "docs/services/index.md",
-      "title": "Services - ",
+      "title": "Services - tide",
       "pageTitle": "Services",
       "slug": "services"
     },
     "services/api.html": {
       "source": "docs/services/api.md",
-      "title": "API - ",
+      "title": "API - tide",
       "pageTitle": "API",
       "slug": "servicesapi",
       "headings": [
@@ -674,7 +675,7 @@
     },
     "services/sync.html": {
       "source": "docs/services/sync.md",
-      "title": "Sync Server - ",
+      "title": "Sync Server - tide",
       "pageTitle": "Sync Server",
       "slug": "servicessync",
       "headings": [
@@ -697,7 +698,7 @@
     },
     "services/phpcs.html": {
       "source": "docs/services/phpcs.md",
-      "title": "PHPCS Server - ",
+      "title": "PHPCS Server - tide",
       "pageTitle": "PHPCS Server",
       "slug": "servicesphpcs",
       "headings": [
@@ -720,7 +721,7 @@
     },
     "services/lighthouse.html": {
       "source": "docs/services/lighthouse.md",
-      "title": "Lighthouse Server - ",
+      "title": "Lighthouse Server - tide",
       "pageTitle": "Lighthouse Server",
       "slug": "serviceslighthouse",
       "headings": [
@@ -748,19 +749,19 @@
     },
     "services/mongodb.html": {
       "source": "docs/services/mongodb.md",
-      "title": "MongoDB - ",
+      "title": "MongoDB - tide",
       "pageTitle": "MongoDB",
       "slug": "servicesmongodb"
     },
     "gcp/index.html": {
       "source": "docs/gcp/index.md",
-      "title": "Google Cloud Platform - ",
+      "title": "Google Cloud Platform - tide",
       "pageTitle": "Google Cloud Platform",
       "slug": "gcp"
     },
     "gcp/setup.html": {
       "source": "docs/gcp/setup.md",
-      "title": "Setup - ",
+      "title": "Setup - tide",
       "pageTitle": "Setup",
       "slug": "gcpsetup",
       "headings": [
@@ -800,7 +801,7 @@
     },
     "gcp/deployments.html": {
       "source": "docs/gcp/deployments.md",
-      "title": "Deployments - ",
+      "title": "Deployments - tide",
       "pageTitle": "Deployments",
       "slug": "gcpdeployments",
       "headings": [
@@ -871,7 +872,7 @@
     },
     "gcp/gcs.html": {
       "source": "docs/gcp/gcs.md",
-      "title": "Google Cloud Storage - ",
+      "title": "Google Cloud Storage - tide",
       "pageTitle": "Google Cloud Storage",
       "slug": "gcpgcs",
       "headings": [
@@ -884,7 +885,7 @@
     },
     "gcp/gcf.html": {
       "source": "docs/gcp/gcf.md",
-      "title": "Google Cloud Firestore - ",
+      "title": "Google Cloud Firestore - tide",
       "pageTitle": "Google Cloud Firestore",
       "slug": "gcpgcf",
       "headings": [
@@ -897,7 +898,7 @@
     },
     "aws/index.html": {
       "source": "docs/aws/index.md",
-      "title": "Amazon Web Services - ",
+      "title": "Amazon Web Services - tide",
       "pageTitle": "Amazon Web Services",
       "slug": "aws",
       "headings": [
@@ -907,11 +908,23 @@
           "id": "settings"
         }
       ]
+    },
+    "search.html": {
+      "source": "docs/search.md",
+      "title": "API Search - tide",
+      "pageTitle": "API Search",
+      "slug": "search",
+      "headings": [
+        {
+          "title": "Search Plugins & Themes",
+          "depth": 2,
+          "id": "search-plugins-and-themes"
+        }
+      ]
     }
   },
   "sources": {
-    "docs/hello.md": "index.html",
-    "docs/search.md": "search.html",
+    "docs/index.md": "index.html",
     "docs/installation/index.md": "installation/index.html",
     "docs/installation/prerequisites.md": "installation/prerequisites.html",
     "docs/installation/cloning.md": "installation/cloning.html",
@@ -928,6 +941,7 @@
     "docs/gcp/gcs.md": "gcp/gcs.html",
     "docs/gcp/gcf.md": "gcp/gcf.html",
     "docs/aws/index.md": "aws/index.html",
+    "docs/search.md": "search.html",
     "docs/architecture-diagram.png": "architecture-diagram.png"
   }
 }

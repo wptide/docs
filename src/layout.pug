@@ -32,10 +32,10 @@ mixin heading(h, depth)
   li.heading-item(class=('-depth-' + h.depth))
     a.hlink(href=('#' + h.id) class=('link-' + h.id))
       = h.title
-    //- if h.headings
-    //-   ul.heading-list(class=('-depth-' + h.depth))
-    //-     - for (var key in h.headings)
-    //-       +heading(h.headings[key], depth + 1)
+    if h.headings
+      ul.heading-list(class=('-depth-' + h.depth))
+        - for (var key in h.headings)
+          +heading(h.headings[key], depth + 1)
 
 //- Heading-menu:
 //- Renders the heading item recursively, but in the markup of a regular menu.
@@ -47,7 +47,7 @@ mixin heading-menu(h, depth)
       = h.title
     if h.headings
       ul.submenu
-        - for (var key in h.headings)s
+        - for (var key in h.headings)
           +heading-menu(h.headings[key], depth + 1)
 
 //-
