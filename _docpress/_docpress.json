@@ -148,69 +148,69 @@
                 "id": "endpoints",
                 "headings": [
                   {
-                    "title": "`/tide/v1/`",
+                    "title": "`/api/tide/v1/`",
                     "depth": 3,
-                    "id": "tidev1"
+                    "id": "apitidev1"
                   },
                   {
-                    "title": "`/tide/v1/report`",
+                    "title": "`/api/tide/v1/report`",
                     "depth": 3,
-                    "id": "tidev1report"
+                    "id": "apitidev1report"
                   },
                   {
-                    "title": "`/tide/v1/report/{checksum}/{type}/{standard}/`",
+                    "title": "`/api/tide/v1/report/{checksum}/{type}/{standard}/`",
                     "depth": 3,
-                    "id": "tidev1reportchecksumtypestandard"
+                    "id": "apitidev1reportchecksumtypestandard"
                   },
                   {
-                    "title": "`/tide/v1/report/{post_id}/{type}/{standard}/`",
+                    "title": "`/api/tide/v1/report/{post_id}/{type}/{standard}/`",
                     "depth": 3,
-                    "id": "tidev1reportpost_idtypestandard"
+                    "id": "apitidev1reportpost_idtypestandard"
                   },
                   {
-                    "title": "`/tide/v1/auth`",
+                    "title": "`/api/tide/v1/auth`",
                     "depth": 3,
-                    "id": "tidev1auth"
+                    "id": "apitidev1auth"
                   },
                   {
-                    "title": "`/tide/v1/keypair/{id}`",
+                    "title": "`/api/tide/v1/keypair/{id}`",
                     "depth": 3,
-                    "id": "tidev1keypairid"
+                    "id": "apitidev1keypairid"
                   },
                   {
-                    "title": "`/tide/v1/audit/`",
+                    "title": "`/api/tide/v1/audit/`",
                     "depth": 3,
-                    "id": "tidev1audit"
+                    "id": "apitidev1audit"
                   },
                   {
-                    "title": "`/tide/v1/audit/{id}`",
+                    "title": "`/api/tide/v1/audit/{id}`",
                     "depth": 3,
-                    "id": "tidev1auditid"
+                    "id": "apitidev1auditid"
                   },
                   {
-                    "title": "`/tide/v1/audit/{checksum}`",
+                    "title": "`/api/tide/v1/audit/{checksum}`",
                     "depth": 3,
-                    "id": "tidev1auditchecksum"
+                    "id": "apitidev1auditchecksum"
                   },
                   {
-                    "title": "`/tide/v1/audit/{project_client}`",
+                    "title": "`/api/tide/v1/audit/{project_client}`",
                     "depth": 3,
-                    "id": "tidev1auditproject_client"
+                    "id": "apitidev1auditproject_client"
                   },
                   {
-                    "title": "`/tide/v1/audit/{project_client}/{project_type}`",
+                    "title": "`/api/tide/v1/audit/{project_client}/{project_type}`",
                     "depth": 3,
-                    "id": "tidev1auditproject_clientproject_type"
+                    "id": "apitidev1auditproject_clientproject_type"
                   },
                   {
-                    "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
+                    "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
                     "depth": 3,
-                    "id": "tidev1auditproject_clientproject_typeproject_slug"
+                    "id": "apitidev1auditproject_clientproject_typeproject_slug"
                   },
                   {
-                    "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
+                    "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
                     "depth": 3,
-                    "id": "tidev1auditproject_clientproject_typeproject_slugversion"
+                    "id": "apitidev1auditproject_clientproject_typeproject_slugversion"
                   }
                 ]
               }
@@ -589,69 +589,69 @@
           "id": "endpoints",
           "headings": [
             {
-              "title": "`/tide/v1/`",
+              "title": "`/api/tide/v1/`",
               "depth": 3,
-              "id": "tidev1"
+              "id": "apitidev1"
             },
             {
-              "title": "`/tide/v1/report`",
+              "title": "`/api/tide/v1/report`",
               "depth": 3,
-              "id": "tidev1report"
+              "id": "apitidev1report"
             },
             {
-              "title": "`/tide/v1/report/{checksum}/{type}/{standard}/`",
+              "title": "`/api/tide/v1/report/{checksum}/{type}/{standard}/`",
               "depth": 3,
-              "id": "tidev1reportchecksumtypestandard"
+              "id": "apitidev1reportchecksumtypestandard"
             },
             {
-              "title": "`/tide/v1/report/{post_id}/{type}/{standard}/`",
+              "title": "`/api/tide/v1/report/{post_id}/{type}/{standard}/`",
               "depth": 3,
-              "id": "tidev1reportpost_idtypestandard"
+              "id": "apitidev1reportpost_idtypestandard"
             },
             {
-              "title": "`/tide/v1/auth`",
+              "title": "`/api/tide/v1/auth`",
               "depth": 3,
-              "id": "tidev1auth"
+              "id": "apitidev1auth"
             },
             {
-              "title": "`/tide/v1/keypair/{id}`",
+              "title": "`/api/tide/v1/keypair/{id}`",
               "depth": 3,
-              "id": "tidev1keypairid"
+              "id": "apitidev1keypairid"
             },
             {
-              "title": "`/tide/v1/audit/`",
+              "title": "`/api/tide/v1/audit/`",
               "depth": 3,
-              "id": "tidev1audit"
+              "id": "apitidev1audit"
             },
             {
-              "title": "`/tide/v1/audit/{id}`",
+              "title": "`/api/tide/v1/audit/{id}`",
               "depth": 3,
-              "id": "tidev1auditid"
+              "id": "apitidev1auditid"
             },
             {
-              "title": "`/tide/v1/audit/{checksum}`",
+              "title": "`/api/tide/v1/audit/{checksum}`",
               "depth": 3,
-              "id": "tidev1auditchecksum"
+              "id": "apitidev1auditchecksum"
             },
             {
-              "title": "`/tide/v1/audit/{project_client}`",
+              "title": "`/api/tide/v1/audit/{project_client}`",
               "depth": 3,
-              "id": "tidev1auditproject_client"
+              "id": "apitidev1auditproject_client"
             },
             {
-              "title": "`/tide/v1/audit/{project_client}/{project_type}`",
+              "title": "`/api/tide/v1/audit/{project_client}/{project_type}`",
               "depth": 3,
-              "id": "tidev1auditproject_clientproject_type"
+              "id": "apitidev1auditproject_clientproject_type"
             },
             {
-              "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
+              "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
               "depth": 3,
-              "id": "tidev1auditproject_clientproject_typeproject_slug"
+              "id": "apitidev1auditproject_clientproject_typeproject_slug"
             },
             {
-              "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
+              "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
               "depth": 3,
-              "id": "tidev1auditproject_clientproject_typeproject_slugversion"
+              "id": "apitidev1auditproject_clientproject_typeproject_slugversion"
             }
           ]
         }

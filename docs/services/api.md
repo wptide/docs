@@ -51,35 +51,35 @@ with `make api.up`.
 
 ## Endpoints
 
-### `/tide/v1/`
+### `/api/tide/v1/`
 
 #### GET
 
 API Root
 
-### `/tide/v1/report`
+### `/api/tide/v1/report`
 
 #### GET
 
 Get a report.
 
-### `/tide/v1/report/{checksum}/{type}/{standard}/`
+### `/api/tide/v1/report/{checksum}/{type}/{standard}/`
 
 #### GET
 
 Get a report by checksum.
 
-### `/tide/v1/report/{post_id}/{type}/{standard}/`
+### `/api/tide/v1/report/{post_id}/{type}/{standard}/`
 
 Get a report by id.
 
-### `/tide/v1/auth`
+### `/api/tide/v1/auth`
 
 #### POST
 
 Authenticate user.
 
-### `/tide/v1/keypair/{id}`
+### `/api/tide/v1/keypair/{id}`
 
 #### POST
 
@@ -89,7 +89,7 @@ Authenticate user.
 
 [Description]
 
-### `/tide/v1/audit/`
+### `/api/tide/v1/audit/`
 
 #### GET
 Get collection of audits.
@@ -132,7 +132,7 @@ Create an audit.
 | `template` | The theme file to use to display the object. |
 | `audit_project` | The terms assigned to the object in the audit_project taxonomy. |
 
-### `/tide/v1/audit/{id}`
+### `/api/tide/v1/audit/{id}`
 
 #### GET
 
@@ -173,7 +173,7 @@ Delete an audit.
 | `id` | Unique identifier for the object. |
 | `force` | Whether to bypass trash and force deletion. |
 
-### `/tide/v1/audit/{checksum}`
+### `/api/tide/v1/audit/{checksum}`
 
 #### GET
 
@@ -214,7 +214,7 @@ Delete an audit.
 | `altid` | An alternate unique id to query on (e.g. checksum). |
 | `force` | Whether to bypass trash and force deletion. |
 
-### `/tide/v1/audit/{project_client}`
+### `/api/tide/v1/audit/{project_client}`
 
 #### GET
 
@@ -224,7 +224,7 @@ Get collection of audits for a project client.
 | :--- | :--- |
 | `project_client` | User login name representing a project client. |
 
-### `/tide/v1/audit/{project_client}/{project_type}`
+### `/api/tide/v1/audit/{project_client}/{project_type}`
 
 #### GET
 
@@ -235,7 +235,7 @@ Get collection of audits for a project client of certain type: theme or plugin.
 | `project_client` | User login name representing a project client. |
 | `project_type` | The project type: theme or plugin. |
 
-### `/tide/v1/audit/{project_client}/{project_type}/{project_slug}`
+### `/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}`
 
 #### GET
 
@@ -247,7 +247,7 @@ Get an audit for a theme or plugin defined by a project slug.
 | `project_type` | The project type: theme or plugin. |
 | `project_slug` | The taxonomy term representing the project. |
 
-### `/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`
+### `/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`
 
 #### GET
 
