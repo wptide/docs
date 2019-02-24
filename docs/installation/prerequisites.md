@@ -4,10 +4,10 @@
 Install [Composer](https://getcomposer.org/) and test if it works by running `composer --version`.
 
 ## Docker
-Install [Docker](https://docs.docker.com/install/). Note: you may not be able to setup and run Tide properly with legacy Docker Toolbox.
+Install [Docker](https://docs.docker.com/install/). _Note: you may not be able to setup and run Tide properly with legacy Docker Toolbox._
 
 ## Go
-Install [Go](https://golang.org/doc/install) language and test if your installation works by following the instructions on the installation page.
+Install [Go](https://golang.org/doc/install) and test if your installation works by following the instructions on the installation page.
 
 ## Glide
 Install [Glide](https://glide.readthedocs.io/en/latest/#installing-glide), a package manager for Go. There are a few ways to install Glide:
