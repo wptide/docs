@@ -1920,11 +1920,12 @@ ul.heading-list .hlink:before {
 .toc-menu .-level-4 .title {
   padding-left: 40px;
 }
-.toc-menu .submenu:first-child > li:first-child {
+.toc-menu .link-index {
   text-transform: lowercase;
 }
 .toc-menu .submenu:first-child > li:last-child {
   display: none;
+  visibility: hidden;
 }
 .toc-menu.-faded .title:not(.-active) {
   opacity: 0.2;

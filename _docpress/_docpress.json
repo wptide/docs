@@ -36,6 +36,16 @@
             "title": "Contact Us",
             "depth": 2,
             "id": "contact-us"
+          },
+          {
+            "title": "Maintainers",
+            "depth": 2,
+            "id": "maintainers"
+          },
+          {
+            "title": "Credits",
+            "depth": 2,
+            "id": "credits"
           }
         ]
       },
@@ -451,6 +461,78 @@
         ]
       },
       {
+        "title": "Important Links",
+        "sections": [
+          {
+            "title": "Contributing",
+            "source": "docs/contributing.md",
+            "url": "contributing.html",
+            "slug": "contributing",
+            "headings": [
+              {
+                "title": "Code of Conduct",
+                "depth": 2,
+                "id": "code-of-conduct"
+              },
+              {
+                "title": "Issue Reporting Guidelines",
+                "depth": 2,
+                "id": "issue-reporting-guidelines"
+              },
+              {
+                "title": "Pull Request Guidelines",
+                "depth": 2,
+                "id": "pull-request-guidelines"
+              }
+            ]
+          },
+          {
+            "title": "Code of Conduct",
+            "source": "docs/code-of-conduct.md",
+            "url": "code-of-conduct.html",
+            "slug": "code-of-conduct",
+            "headings": [
+              {
+                "title": "Our Pledge",
+                "depth": 2,
+                "id": "our-pledge"
+              },
+              {
+                "title": "Our Standards",
+                "depth": 2,
+                "id": "our-standards"
+              },
+              {
+                "title": "Our Responsibilities",
+                "depth": 2,
+                "id": "our-responsibilities"
+              },
+              {
+                "title": "Scope",
+                "depth": 2,
+                "id": "scope"
+              },
+              {
+                "title": "Enforcement",
+                "depth": 2,
+                "id": "enforcement"
+              },
+              {
+                "title": "Attribution",
+                "depth": 2,
+                "id": "attribution"
+              }
+            ]
+          },
+          {
+            "title": "License",
+            "source": "docs/license.md",
+            "url": "license.html",
+            "slug": "license"
+          }
+        ]
+      },
+      {
         "title": "API Search",
         "source": "docs/search.md",
         "url": "search.html",
@@ -507,6 +589,16 @@
           "title": "Contact Us",
           "depth": 2,
           "id": "contact-us"
+        },
+        {
+          "title": "Maintainers",
+          "depth": 2,
+          "id": "maintainers"
+        },
+        {
+          "title": "Credits",
+          "depth": 2,
+          "id": "credits"
         }
       ]
     },
@@ -915,6 +1007,73 @@
         }
       ]
     },
+    "contributing.html": {
+      "source": "docs/contributing.md",
+      "title": "Contributing - Tide",
+      "pageTitle": "Contributing",
+      "slug": "contributing",
+      "headings": [
+        {
+          "title": "Code of Conduct",
+          "depth": 2,
+          "id": "code-of-conduct"
+        },
+        {
+          "title": "Issue Reporting Guidelines",
+          "depth": 2,
+          "id": "issue-reporting-guidelines"
+        },
+        {
+          "title": "Pull Request Guidelines",
+          "depth": 2,
+          "id": "pull-request-guidelines"
+        }
+      ]
+    },
+    "code-of-conduct.html": {
+      "source": "docs/code-of-conduct.md",
+      "title": "Code of Conduct - Tide",
+      "pageTitle": "Code of Conduct",
+      "slug": "code-of-conduct",
+      "headings": [
+        {
+          "title": "Our Pledge",
+          "depth": 2,
+          "id": "our-pledge"
+        },
+        {
+          "title": "Our Standards",
+          "depth": 2,
+          "id": "our-standards"
+        },
+        {
+          "title": "Our Responsibilities",
+          "depth": 2,
+          "id": "our-responsibilities"
+        },
+        {
+          "title": "Scope",
+          "depth": 2,
+          "id": "scope"
+        },
+        {
+          "title": "Enforcement",
+          "depth": 2,
+          "id": "enforcement"
+        },
+        {
+          "title": "Attribution",
+          "depth": 2,
+          "id": "attribution"
+        }
+      ]
+    },
+    "license.html": {
+      "source": "docs/license.md",
+      "title": "License - Tide",
+      "pageTitle": "License",
+      "slug": "license"
+    },
     "search.html": {
       "source": "docs/search.md",
       "title": "API Search - Tide",
@@ -953,6 +1112,9 @@
     "docs/gcp/gcs.md": "gcp/gcs.html",
     "docs/gcp/gcf.md": "gcp/gcf.html",
     "docs/aws/index.md": "aws/index.html",
+    "docs/contributing.md": "contributing.html",
+    "docs/code-of-conduct.md": "code-of-conduct.html",
+    "docs/license.md": "license.html",
     "docs/search.md": "search.html",
     "docs/404.md": "404.html",
     "docs/architecture-diagram.png": "architecture-diagram.png"

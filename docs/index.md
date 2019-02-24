@@ -17,6 +17,8 @@
   <canvas class="hero__canvas" id="canvas"></canvas>
 </div>
 
+[![Build Status](https://travis-ci.org/wptide/wptide.svg?branch=develop)](https://travis-ci.org/wptide/wptide) [![Coverage Status](https://coveralls.io/repos/github/wptide/wptide/badge.svg?branch=develop)](https://coveralls.io/github/wptide/wptide?branch=develop) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](license.md) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](contributing.md) [![Shipping faster with ZenHub.io](https://img.shields.io/badge/Shipping_faster_with-ZenHub.io-6567bd.svg?style=flat)](https://www.zenhub.com/)
+
 ## Vision
 
 > A rising tide lifts all boats. -- United States President, John F. Kennedy (borrowed from the New England Council)
@@ -41,23 +43,44 @@ The following diagram notes the Google Cloud Platform (GCP) components, Tide ser
 
 ## Working with Tide
 
-Tide is actively developed. Currently you can:
+Currently you can:
 
-* [search for plugins & themes](search.md) on this site and see their audit reports
-* [install Tide](installation/index.md) locally
-* deploy Tide to [Google Cloud Platform](gcp/index.md)
+* [Search for plugins & themes](search.md) and view their audit reports in this documentation.
+* [Install](installation/index.md) Tide to help test and develop locally.
+* Deploy Tide to [Google Cloud Platform](gcp/index.md) and run your own variation of Tide in the cloud.
 
-In the future you will be able to use Tide as a service - use it to test your plugins or themes during development.
+In the future you will be able to use Tide as a service to test your plugins or themes during development.
 
 ## Contributing
-Please read [CONTRIBUTING.md](https://github.com/xwp/go-tide/blob/develop/CONTRIBUTING.md) for details on our code of conduct,
-and the process for submitting pull requests to us.
+
+Please read our [Contributing](contributing.md) guide for details on the process of creating a ticket or submitting a pull request to Tide, and our [Code of Conduct](code-of-conduct.md).
 
 ## Contact Us
-Have questions? Don't open an Issue, come join us in the
-[`#tide` channel][tide-slack] in [WordPress Slack][wp-slack]. Even though Slack is
-a chat service, sometimes it takes several hours for community members to respond
-— please be patient.
 
-[tide-slack]: https://wordpress.slack.com/messages/C7TK8FBUJ/
-[wp-slack]: https://make.wordpress.org/chat/
+Have questions? Don't open an Issue, come join us in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/). Even though Slack is a chat service, sometimes it takes several hours for community members to respond — please be patient.
+
+## Maintainers
+
+[Derek Herman (@valendesigns)](https://github.com/valendesigns), and
+[Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul)
+
+## Credits
+
+Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
+[Brendan Woods (@brendanwoods-xwp)](https://github.com/brendanwoods-xwp),
+[Daniel Louw (@danlouw)](https://github.com/danlouw),
+[David Cramer (@davidcramer)](https://github.com/davidcramer),
+[David Lonjon (@davidlonjon)](https://github.com/davidlonjon),
+[Derek Herman (@valendesigns)](https://github.com/valendesigns),
+[Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
+[Justin Kopepasah (@kopepasah)](https://github.com/kopepasah),
+[Keanan Koppenhaver (@kkoppenhaver)](https://github.com/kkoppenhaver),
+[Leo Postovoit (@postphotos)](https://github.com/postphotos),
+[Lubos Kmetko (@luboskmetko)](https://github.com/luboskmetko),
+[Luke Carbis (@lukecarbis)](https://github.com/lukecarbis),
+[Miina Sikk (@miina)](https://github.com/miina),
+[Mike Crantea (@mehigh)](https://github.com/mehigh),
+[Rheinard Korf (@rheinardkorf)](https://github.com/rheinardkorf),
+[Rob Stinson (@robstino)](https://github.com/robstino),
+[Sayed Taqui (@sayedtaqui)](https://github.com/sayedtaqui),
+[Utkarsh Patel (@PatelUtkarsh)](https://github.com/PatelUtkarsh)
