@@ -18,6 +18,7 @@ Install [Glide](https://glide.readthedocs.io/en/latest/#installing-glide), a pac
   - The latest development snapshot can be installed with go get. For example, `go get -u github.com/Masterminds/glide`. This is not a release version.
 
 ## Make
-_(Windows only)_
 
-`make` command is not available on Windows by default. Install [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) to be able to use Tide `make` commands. Add `C:\zlib\bin` to PATH.
+Install [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) _(Windows only)_
+  - The `make` command is not available on Windows by default and you must install it to be able to use the Tide `make` commands.
+  - Add `C:\zlib\bin` to your `$PATH` once you've install the package.
