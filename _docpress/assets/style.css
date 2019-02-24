@@ -1709,7 +1709,7 @@ ul.heading-list .hlink:before {
   }
 }
 .markdown-body blockquote {
-  color: #1526ff;
+  color: #555;
 }
 .menu-toggle {
   display: none;
@@ -1920,10 +1920,10 @@ ul.heading-list .hlink:before {
 .toc-menu .-level-4 .title {
   padding-left: 40px;
 }
-.toc-menu .submenu > li:first-child {
+.toc-menu .submenu:first-child > li:first-child {
   text-transform: lowercase;
 }
-.toc-menu .submenu > li:last-child {
+.toc-menu .submenu:first-child > li:last-child {
   display: none;
 }
 .toc-menu.-faded .title:not(.-active) {
