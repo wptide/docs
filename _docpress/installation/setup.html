@@ -17,10 +17,22 @@
                 <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-api" href="#api">API</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-hosts-file" href="#hosts-file">Hosts File</a>
+                    </li>
+                  </ul>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-build-images" href="#build-images">Build images</a>
+                <li class="heading-item -depth-2"><a class="hlink link-build-images" href="#build-images">Build Images</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-isolated-build" href="#isolated-build">Isolated Build</a>
+                    </li>
+                  </ul>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-start-servers" href="#start-servers">Start servers</a>
+                <li class="heading-item -depth-2"><a class="hlink link-start-servers" href="#start-servers">Start Servers</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-isolated-start" href="#isolated-start">Isolated Start</a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
@@ -80,16 +92,13 @@
 <p>Copy the <code>.env.dist</code> file to <code>.env</code>.</p>
 <pre><code>$ cp .env.dist .env
 </code></pre>
-<p><code>.env</code> file is used to store custom values of environment variables for various services. Before setting up any of the services, update values according instructions for each service. The variables and their descriptions can be found at the end of each relevant section.</p>
-<p>The <code>.tpl</code> files are template files that through variable interpolation are
-converted and used to deploy your project to GCP and even setup the local API. So
-these files play a critical role in getting Tide setup. If these files are not
-generating the correct output, please <a href="#contact-us">contact us</a> to troubleshoot and
-figure out a solution for your OS.</p>
-<p>So far we&apos;ve only tested on OS X with and without the <code>envsubst</code> command available.
-Other systems may not work correctly and we want to resolve that quickly.</p>
+<p><em>If you are running Tide locally, you do not need to change any of these <code>.env</code> values. If you are deploying this into the cloud, make sure to read all the documentation for which variables you should update and their values.</em></p>
+<p>Create an empty <code>.env.gcp</code> file.</p>
+<pre><code>touch .env.gcp
+</code></pre>
+<p>The <code>.env.gcp</code> file overwrites the <code>.env</code> file and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.</p>
 <h2 id="api">API</h2>
-<p>Update the following environment variables in <code>.env</code> file:</p>
+<p>We typically update the following environment variables in <code>.env</code> file at minimum:</p>
 <table>
 <thead>
 <tr>
@@ -120,35 +129,53 @@ Other systems may not work correctly and we want to resolve that quickly.</p>
 </tr>
 </tbody>
 </table>
-<p>For local development you have to manually set the <code>API_KEY</code> and <code>API_SECRET</code> for the
-<code>audit-server</code> user, which will automatically update the user meta values when
-<code>make api.setup</code> is ran. If you are
-running Tide in production, then you can access the auto generated key and secret
-from the <code>audit-server</code> user profile.</p>
-<p>Now install the dependencies as follows:</p>
+<p>To make local development simple we have added values for the <code>API_KEY</code> and <code>API_SECRET</code> associated with the <code>audit-server</code> user, which will automatically update the user meta values when <code>make api.setup</code> is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud.</p>
+<p>If you are running Tide in production, then you can access the auto generated key and secret from the <code>audit-server</code> user&apos;s profile after you setup the API and before you deploy the Kubernetes clusters.</p>
+<p>Install the dependencies as follows:</p>
 <pre><code>$ make api.composer
 </code></pre>
 <p>Then start the API Docker images in isolation:</p>
-<pre><code>$ make api.up
+<pre><code>make api.up
 </code></pre>
-<p>Last run the setup script:</p>
-<pre><code>$ make api.setup
+<p>Open a new shell and run the setup script:</p>
+<pre><code>make api.setup
 </code></pre>
-<p>Run the setup script to initialize WordPress for the first time or if you would
-like a convenient way to update the default values when you change relevant
-environment variables.</p>
-<p>If you see an error like this on OS X when bringing up the API you need to add the
-directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app.</p>
-<pre><code>ERROR: for gotide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
+<p><em>You can run the setup script to initialize WordPress for the first time or if you would like a convenient way to update the default values when you change relevant environment variables.</em></p>
+<p>If you see an error like this on OS X when bringing up the API you need to add the directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app.</p>
+<pre><code>ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
 </code></pre>
-<p>Add <code>127.0.0.1 tide.local</code> to your <code>hosts</code> file. You should be now able to run API at <a href="http://tide.local">tide.local</a></p>
-<h2 id="build-images">Build images</h2>
-<p>Install Glide dependencies and build images:</p>
-<pre><code>$ make build.images
+<h3 id="hosts-file">Hosts File</h3>
+<p>Add the following entry to your hosts file to make sure <code>tide.local</code> is pointed at your local Tide instance:</p>
+<pre><code>127.0.0.1 tide.local
 </code></pre>
-<h2 id="start-servers">Start servers</h2>
-<p>Start the servers (Lighthouse Server, PHPCS Server, Sync Server):</p>
-<pre><code>$ make up
+<p><em>You can change the <code>tide.local</code> URL to some other value by modifying the <code>API_AUTH_URL</code> and <code>API_HTTP_HOST</code> variables inside the <code>.env</code> file.</em></p>
+<h2 id="build-images">Build Images</h2>
+<p>Installs the Glide dependencies, creates the Go binaries, and builds all the Docker images:</p>
+<pre><code>make build.images
+</code></pre>
+<h3 id="isolated-build">Isolated Build</h3>
+<p>Lighthouse Image:</p>
+<pre><code>make lighthouse.build.image
+</code></pre>
+<p>PHPCS Image:</p>
+<pre><code>make phpcs.build.image
+</code></pre>
+<p>Sync Image:</p>
+<pre><code>make sync.build.image
+</code></pre>
+<h2 id="start-servers">Start Servers</h2>
+<p>It is recommended that you run these Docker containers separately and start the servers in new shells in order to isolate the output. However, you can start all services (API, Lighthouse Server, PHPCS Server, Sync Server) with the following command:</p>
+<pre><code>make up
+</code></pre>
+<h3 id="isolated-start">Isolated Start</h3>
+<p>Lighthouse Server:</p>
+<pre><code>make lighthouse.up
+</code></pre>
+<p>PHPCS Server:</p>
+<pre><code>make phpcs.up
+</code></pre>
+<p>Sync Server:</p>
+<pre><code>make sync.up
 </code></pre>
 
     </div>

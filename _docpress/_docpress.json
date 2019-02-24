@@ -108,17 +108,38 @@
               {
                 "title": "API",
                 "depth": 2,
-                "id": "api"
+                "id": "api",
+                "headings": [
+                  {
+                    "title": "Hosts File",
+                    "depth": 3,
+                    "id": "hosts-file"
+                  }
+                ]
               },
               {
-                "title": "Build images",
+                "title": "Build Images",
                 "depth": 2,
-                "id": "build-images"
+                "id": "build-images",
+                "headings": [
+                  {
+                    "title": "Isolated Build",
+                    "depth": 3,
+                    "id": "isolated-build"
+                  }
+                ]
               },
               {
-                "title": "Start servers",
+                "title": "Start Servers",
                 "depth": 2,
-                "id": "start-servers"
+                "id": "start-servers",
+                "headings": [
+                  {
+                    "title": "Isolated Start",
+                    "depth": 3,
+                    "id": "isolated-start"
+                  }
+                ]
               }
             ]
           }
@@ -661,17 +682,38 @@
         {
           "title": "API",
           "depth": 2,
-          "id": "api"
+          "id": "api",
+          "headings": [
+            {
+              "title": "Hosts File",
+              "depth": 3,
+              "id": "hosts-file"
+            }
+          ]
         },
         {
-          "title": "Build images",
+          "title": "Build Images",
           "depth": 2,
-          "id": "build-images"
+          "id": "build-images",
+          "headings": [
+            {
+              "title": "Isolated Build",
+              "depth": 3,
+              "id": "isolated-build"
+            }
+          ]
         },
         {
-          "title": "Start servers",
+          "title": "Start Servers",
           "depth": 2,
-          "id": "start-servers"
+          "id": "start-servers",
+          "headings": [
+            {
+              "title": "Isolated Start",
+              "depth": 3,
+              "id": "isolated-start"
+            }
+          ]
         }
       ]
     },

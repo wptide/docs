@@ -8,20 +8,19 @@ Copy the `.env.dist` file to `.env`.
 $ cp .env.dist .env
 ```
 
-`.env` file is used to store custom values of environment variables for various services. Before setting up any of the services, update values according instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
+_If you are running Tide locally, you do not need to change any of these `.env` values. If you are deploying this into the cloud, make sure to read all the documentation for which variables you should update and their values._
 
-The `.tpl` files are template files that through variable interpolation are 
-converted and used to deploy your project to GCP and even setup the local API. So 
-these files play a critical role in getting Tide setup. If these files are not 
-generating the correct output, please [contact us](#contact-us) to troubleshoot and 
-figure out a solution for your OS.
+Create an empty `.env.gcp` file.
 
-So far we've only tested on OS X with and without the `envsubst` command available. 
-Other systems may not work correctly and we want to resolve that quickly.
+```
+touch .env.gcp
+```
+
+The `.env.gcp` file overwrites the `.env` file and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
 
 ## API
 
-Update the following environment variables in `.env` file:
+We typically update the following environment variables in `.env` file at minimum:
 
 | Variable | Description |
 | :--- | :--- |
@@ -31,13 +30,11 @@ Update the following environment variables in `.env` file:
 | `API_KEY` | The API key used locally to authenticate the `audit-server` user. |
 | `API_SECRET` | The API secret used locally to authenticate the `audit-server` user. |
 
-For local development you have to manually set the `API_KEY` and `API_SECRET` for the 
-`audit-server` user, which will automatically update the user meta values when 
-`make api.setup` is ran. If you are 
-running Tide in production, then you can access the auto generated key and secret 
-from the `audit-server` user profile. 
+To make local development simple we have added values for the `API_KEY` and `API_SECRET` associated with the `audit-server` user, which will automatically update the user meta values when `make api.setup` is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud.
 
-Now install the dependencies as follows:
+If you are running Tide in production, then you can access the auto generated key and secret from the `audit-server` user's profile after you setup the API and before you deploy the Kubernetes clusters.
+
+Install the dependencies as follows:
 
 ```
 $ make api.composer
@@ -46,39 +43,84 @@ $ make api.composer
 Then start the API Docker images in isolation:
 
 ```
-$ make api.up
+make api.up
 ```
 
-Last run the setup script:
+Open a new shell and run the setup script:
 
 ```
-$ make api.setup
+make api.setup
 ```
 
-Run the setup script to initialize WordPress for the first time or if you would 
-like a convenient way to update the default values when you change relevant 
-environment variables.
+_You can run the setup script to initialize WordPress for the first time or if you would like a convenient way to update the default values when you change relevant environment variables._
 
-If you see an error like this on OS X when bringing up the API you need to add the 
-directory to the `Preferences -> File Sharing` section of the Docker for Mac app.
+If you see an error like this on OS X when bringing up the API you need to add the directory to the `Preferences -> File Sharing` section of the Docker for Mac app.
 
 ```
-ERROR: for gotide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: ...'
+ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: ...'
 ```
 
-Add `127.0.0.1 tide.local` to your `hosts` file. You should be now able to run API at [tide.local](http://tide.local)
+### Hosts File
 
-## Build images
-Install Glide dependencies and build images:
-
-```
-$ make build.images
-```
-
-## Start servers
-
-Start the servers (Lighthouse Server, PHPCS Server, Sync Server):
+Add the following entry to your hosts file to make sure `tide.local` is pointed at your local Tide instance:
 
 ```
-$ make up
+127.0.0.1 tide.local
+```
+_You can change the `tide.local` URL to some other value by modifying the `API_AUTH_URL` and `API_HTTP_HOST` variables inside the `.env` file._
+
+## Build Images
+
+Installs the Glide dependencies, creates the Go binaries, and builds all the Docker images:
+
+```
+make build.images
+```
+
+### Isolated Build
+
+Lighthouse Image:
+
+```
+make lighthouse.build.image
+```
+
+PHPCS Image:
+
+```
+make phpcs.build.image
+```
+
+Sync Image:
+
+```
+make sync.build.image
+```
+
+## Start Servers
+
+It is recommended that you run these Docker containers separately and start the servers in new shells in order to isolate the output. However, you can start all services (API, Lighthouse Server, PHPCS Server, Sync Server) with the following command:
+
+```
+make up
+```
+
+### Isolated Start
+
+Lighthouse Server:
+
+```
+make lighthouse.up
+```
+
+PHPCS Server:
+
+```
+make phpcs.up
+```
+
+Sync Server:
+
+```
+make sync.up
 ```
