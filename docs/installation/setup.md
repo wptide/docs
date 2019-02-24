@@ -32,24 +32,28 @@ By default MongoDB is used as the local message provider for the Lighthouse & PH
 
 ## API
 
-We typically update the following environment variables in `.env` file at minimum:
+We typically update at minimum the following environment variables in the `.env` file:
 
 | Variable | Description |
 | :--- | :--- |
-| `API_ADMIN_EMAIL` | The email associated with the local admin account. |
-| `API_ADMIN_PASSWORD` | The password associated with the local admin account. |
-| `API_ADMIN_USER` | The username associated with the local admin account. |
-| `API_KEY` | The API key used locally to authenticate the `audit-server` user. |
-| `API_SECRET` | The API secret used locally to authenticate the `audit-server` user. |
+| `API_ADMIN_EMAIL` | The email associated with the local admin account. Default is `admin@tide.local`. _Note: unless you setup the Gmail SMTP plugin, any generated emails will not get sent by WordPress._ |
+| `API_ADMIN_PASSWORD` | The password associated with the local admin account. Default is `wordpress`. |
+| `API_ADMIN_USER` | The username associated with the local admin account. Default is `admin`. |
+| `API_KEY` | The API key used to authenticate the `audit-server` user. Default is `uRhZgeYt$v5u0vR5fpcDSWcZU`. |
+| `API_SECRET` | The API secret used to authenticate the `audit-server` user. Default is `rVvUWQlPQr8trSEd2qdwmE4Eiua$MjLX`. |
 
-To make local development simple we have added values for the `API_KEY` and `API_SECRET` associated with the `audit-server` user, which will automatically update the user meta values when `make api.setup` is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud.
+To make local development simple we have added default values for the `API_KEY` and `API_SECRET` associated with the `audit-server` user, which will automatically update the user meta values when `make api.setup` is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud.
 
 If you are running Tide in production, then you can access the auto generated key and secret from the `audit-server` user's profile after you setup the API and before you deploy the Kubernetes clusters.
 
-Install the dependencies as follows:
+### Initialize WordPress
+
+From the project root directory run the following `make` commands to initialize and setup WordPress.
+
+Install the dependencies:
 
 ```
-$ make api.composer
+make api.composer
 ```
 
 Then start the API Docker images in isolation:
@@ -66,7 +70,9 @@ make api.setup
 
 _You can run the setup script to initialize WordPress for the first time or if you would like a convenient way to update the default values when you change relevant environment variables._
 
-If you see an error like this on OS X when bringing up the API you need to add the directory to the `Preferences -> File Sharing` section of the Docker for Mac app.
+### Frequent Issues
+
+If you see the following error in your OS X terminal when bringing up the API you need to add the `/Users` directory to the `Preferences -> File Sharing` section of the Docker for Mac app, or whatever the root directory is for you `$GOPATH`.
 
 ```
 ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: ...'

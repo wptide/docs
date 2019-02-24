@@ -20,6 +20,10 @@
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-api" href="#api">API</a>
                   <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-initialize-wordpress" href="#initialize-wordpress">Initialize WordPress</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-frequent-issues" href="#frequent-issues">Frequent Issues</a>
+                    </li>
                     <li class="heading-item -depth-3"><a class="hlink link-hosts-file" href="#hosts-file">Hosts File</a>
                     </li>
                   </ul>
@@ -130,7 +134,7 @@
 </tbody>
 </table>
 <h2 id="api">API</h2>
-<p>We typically update the following environment variables in <code>.env</code> file at minimum:</p>
+<p>We typically update at minimum the following environment variables in the <code>.env</code> file:</p>
 <table>
 <thead>
 <tr>
@@ -141,30 +145,32 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_EMAIL</code></td>
-<td style="text-align:left">The email associated with the local admin account.</td>
+<td style="text-align:left">The email associated with the local admin account. Default is <code>admin@tide.local</code>. <em>Note: unless you setup the Gmail SMTP plugin, any generated emails will not get sent by WordPress.</em></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_PASSWORD</code></td>
-<td style="text-align:left">The password associated with the local admin account.</td>
+<td style="text-align:left">The password associated with the local admin account. Default is <code>wordpress</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_USER</code></td>
-<td style="text-align:left">The username associated with the local admin account.</td>
+<td style="text-align:left">The username associated with the local admin account. Default is <code>admin</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_KEY</code></td>
-<td style="text-align:left">The API key used locally to authenticate the <code>audit-server</code> user.</td>
+<td style="text-align:left">The API key used to authenticate the <code>audit-server</code> user. Default is <code>uRhZgeYt$v5u0vR5fpcDSWcZU</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_SECRET</code></td>
-<td style="text-align:left">The API secret used locally to authenticate the <code>audit-server</code> user.</td>
+<td style="text-align:left">The API secret used to authenticate the <code>audit-server</code> user. Default is <code>rVvUWQlPQr8trSEd2qdwmE4Eiua$MjLX</code>.</td>
 </tr>
 </tbody>
 </table>
-<p>To make local development simple we have added values for the <code>API_KEY</code> and <code>API_SECRET</code> associated with the <code>audit-server</code> user, which will automatically update the user meta values when <code>make api.setup</code> is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud.</p>
+<p>To make local development simple we have added default values for the <code>API_KEY</code> and <code>API_SECRET</code> associated with the <code>audit-server</code> user, which will automatically update the user meta values when <code>make api.setup</code> is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud.</p>
 <p>If you are running Tide in production, then you can access the auto generated key and secret from the <code>audit-server</code> user&apos;s profile after you setup the API and before you deploy the Kubernetes clusters.</p>
-<p>Install the dependencies as follows:</p>
-<pre><code>$ make api.composer
+<h3 id="initialize-wordpress">Initialize WordPress</h3>
+<p>From the project root directory run the following <code>make</code> commands to initialize and setup WordPress.</p>
+<p>Install the dependencies:</p>
+<pre><code>make api.composer
 </code></pre>
 <p>Then start the API Docker images in isolation:</p>
 <pre><code>make api.up
@@ -173,7 +179,8 @@
 <pre><code>make api.setup
 </code></pre>
 <p><em>You can run the setup script to initialize WordPress for the first time or if you would like a convenient way to update the default values when you change relevant environment variables.</em></p>
-<p>If you see an error like this on OS X when bringing up the API you need to add the directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app.</p>
+<h3 id="frequent-issues">Frequent Issues</h3>
+<p>If you see the following error in your OS X terminal when bringing up the API you need to add the <code>/Users</code> directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app, or whatever the root directory is for you <code>$GOPATH</code>.</p>
 <pre><code>ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
 </code></pre>
 <h3 id="hosts-file">Hosts File</h3>

@@ -116,6 +116,16 @@
                 "id": "api",
                 "headings": [
                   {
+                    "title": "Initialize WordPress",
+                    "depth": 3,
+                    "id": "initialize-wordpress"
+                  },
+                  {
+                    "title": "Frequent Issues",
+                    "depth": 3,
+                    "id": "frequent-issues"
+                  },
+                  {
                     "title": "Hosts File",
                     "depth": 3,
                     "id": "hosts-file"
@@ -688,6 +698,16 @@
           "depth": 2,
           "id": "api",
           "headings": [
+            {
+              "title": "Initialize WordPress",
+              "depth": 3,
+              "id": "initialize-wordpress"
+            },
+            {
+              "title": "Frequent Issues",
+              "depth": 3,
+              "id": "frequent-issues"
+            },
             {
               "title": "Hosts File",
               "depth": 3,
