@@ -18,15 +18,27 @@ touch .env.gcp
 
 The `.env.gcp` file overwrites the `.env` file and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
 
+## MongoDB
+
+By default MongoDB is used as the local message provider for the Lighthouse & PHPCS Servers. You do not need to change any of the default settings in your `.env` file, but you could before starting the API if you wanted.
+
+| Variable | Description |
+| :--- | :--- |
+| `MONGO_DATABASE_NAME` | The name of the database. Default is `queue`. |
+| `MONGO_DATABASE_PASSWORD` | The database root password. Default is `root`. |
+| `MONGO_DATABASE_USERNAME` | The database root username. Default is `root`. |
+| `MONGO_QUEUE_LH` | Specifies which collection in MongoDB to use for the Lighthouse message queue. Default is `lighthouse`. |
+| `MONGO_QUEUE_PHPCS` | Specifies which collection in MongoDB to use for the PHPCS message queue. Default is `phpcs`. |
+
 ## API
 
 We typically update the following environment variables in `.env` file at minimum:
 
 | Variable | Description |
 | :--- | :--- |
-| `API_ADMIN_EMAIL` | The email associated with the local admin account |
-| `API_ADMIN_PASSWORD` | The password associated with the local admin account |
-| `API_ADMIN_USER` | The username associated with the local admin account |
+| `API_ADMIN_EMAIL` | The email associated with the local admin account. |
+| `API_ADMIN_PASSWORD` | The password associated with the local admin account. |
+| `API_ADMIN_USER` | The username associated with the local admin account. |
 | `API_KEY` | The API key used locally to authenticate the `audit-server` user. |
 | `API_SECRET` | The API secret used locally to authenticate the `audit-server` user. |
 

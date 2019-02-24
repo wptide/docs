@@ -106,6 +106,11 @@
                 "id": "environment-variables"
               },
               {
+                "title": "MongoDB",
+                "depth": 2,
+                "id": "mongodb"
+              },
+              {
                 "title": "API",
                 "depth": 2,
                 "id": "api",
@@ -314,12 +319,6 @@
                 "id": "usage"
               }
             ]
-          },
-          {
-            "title": "MongoDB",
-            "source": "docs/services/mongodb.md",
-            "url": "services/mongodb.html",
-            "slug": "servicesmongodb"
           }
         ]
       },
@@ -680,6 +679,11 @@
           "id": "environment-variables"
         },
         {
+          "title": "MongoDB",
+          "depth": 2,
+          "id": "mongodb"
+        },
+        {
           "title": "API",
           "depth": 2,
           "id": "api",
@@ -886,12 +890,6 @@
           "id": "usage"
         }
       ]
-    },
-    "services/mongodb.html": {
-      "source": "docs/services/mongodb.md",
-      "title": "MongoDB - Tide",
-      "pageTitle": "MongoDB",
-      "slug": "servicesmongodb"
     },
     "gcp/index.html": {
       "source": "docs/gcp/index.md",
@@ -1147,7 +1145,6 @@
     "docs/services/sync.md": "services/sync.html",
     "docs/services/phpcs.md": "services/phpcs.html",
     "docs/services/lighthouse.md": "services/lighthouse.html",
-    "docs/services/mongodb.md": "services/mongodb.html",
     "docs/gcp/index.md": "gcp/index.html",
     "docs/gcp/setup.md": "gcp/setup.html",
     "docs/gcp/deployments.md": "gcp/deployments.html",

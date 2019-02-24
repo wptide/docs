@@ -10,7 +10,6 @@
   * [Sync Server](services/sync.md)
   * [PHPCS Server](services/phpcs.md)
   * [Lighthouse Server](services/lighthouse.md)
-  * [MongoDB](services/mongodb.md)
 * [Google Cloud Platform](gcp/index.md)
   * [Setup](gcp/setup.md)
   * [Deployments](gcp/deployments.md)

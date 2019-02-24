@@ -16,6 +16,8 @@
               <ul class="headings heading-list">
                 <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
                 </li>
+                <li class="heading-item -depth-2"><a class="hlink link-mongodb" href="#mongodb">MongoDB</a>
+                </li>
                 <li class="heading-item -depth-2"><a class="hlink link-api" href="#api">API</a>
                   <ul class="heading-list -depth-2">
                     <li class="heading-item -depth-3"><a class="hlink link-hosts-file" href="#hosts-file">Hosts File</a>
@@ -47,8 +49,6 @@
             <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
-            </li>
-            <li class="menu-item -level-2"><a class="link title  link-servicesmongodb" href="services/mongodb.html">MongoDB</a>
             </li>
           </ul>
         </li>
@@ -97,6 +97,38 @@
 <pre><code>touch .env.gcp
 </code></pre>
 <p>The <code>.env.gcp</code> file overwrites the <code>.env</code> file and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.</p>
+<h2 id="mongodb">MongoDB</h2>
+<p>By default MongoDB is used as the local message provider for the Lighthouse &amp; PHPCS Servers. You do not need to change any of the default settings in your <code>.env</code> file, but you could before starting the API if you wanted.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>MONGO_DATABASE_NAME</code></td>
+<td style="text-align:left">The name of the database. Default is <code>queue</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_DATABASE_PASSWORD</code></td>
+<td style="text-align:left">The database root password. Default is <code>root</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_DATABASE_USERNAME</code></td>
+<td style="text-align:left">The database root username. Default is <code>root</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_QUEUE_LH</code></td>
+<td style="text-align:left">Specifies which collection in MongoDB to use for the Lighthouse message queue. Default is <code>lighthouse</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_QUEUE_PHPCS</code></td>
+<td style="text-align:left">Specifies which collection in MongoDB to use for the PHPCS message queue. Default is <code>phpcs</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="api">API</h2>
 <p>We typically update the following environment variables in <code>.env</code> file at minimum:</p>
 <table>
@@ -109,15 +141,15 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_EMAIL</code></td>
-<td style="text-align:left">The email associated with the local admin account</td>
+<td style="text-align:left">The email associated with the local admin account.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_PASSWORD</code></td>
-<td style="text-align:left">The password associated with the local admin account</td>
+<td style="text-align:left">The password associated with the local admin account.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_USER</code></td>
-<td style="text-align:left">The username associated with the local admin account</td>
+<td style="text-align:left">The username associated with the local admin account.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_KEY</code></td>
