@@ -1,23 +1,29 @@
 # Cloning
 
-Tide needs to be cloned to a directory inside Go workspace specified by [GOPATH](https://golang.org/doc/code.html#GOPATH) environment variable. It defaults to a directory named `go` inside your home directory, so `$HOME/go` on Mac/Unix and `%USERPROFILE%\go` (usually `C:\Users\YourName\go`) on Windows.
+Tide needs to be cloned to a directory inside your Go workspace specified by the [`$GOPATH`](https://golang.org/doc/code#GOPATH) environment variable. Your `$GOPATH` defaults to a directory named `go` inside your home directory, so `$HOME/go` on Mac/Unix and `%USERPROFILE%\go` (usually `C:\Users\YourName\go`) on Windows.
 
-Create the following directory `src/github.com/xwp` inside your Go workspace and change to that directory:
-
-```
-cd src/github.com/xwp
-```
-
-Now clone Tide:
+Create the following directory inside your Go workspace:
 
 ```
-git clone -b develop --recursive https://github.com/xwp/go-tide.git
+src/github.com/wptide
 ```
 
-Change to Tide working directory:  
+Open a shell and change into the directory:
 
 ```
-cd go-tide
+cd $GOPATH/src/github.com/wptide
+```
+
+Clone Tide:
+
+```
+git clone -b develop --recursive https://github.com/wptide/wptide.git
+```
+
+Change to Tide working directory:
+
+```
+cd wptide
 ```
 
 Update submodules:
