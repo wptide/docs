@@ -24,8 +24,6 @@
                     </li>
                     <li class="heading-item -depth-3"><a class="hlink link-database" href="#database">Database</a>
                     </li>
-                    <li class="heading-item -depth-3"><a class="hlink link-frequent-issues" href="#frequent-issues">Frequent Issues</a>
-                    </li>
                     <li class="heading-item -depth-3"><a class="hlink link-hosts-file" href="#hosts-file">Hosts File</a>
                     </li>
                   </ul>
@@ -41,6 +39,8 @@
                     <li class="heading-item -depth-3"><a class="hlink link-isolated-start" href="#isolated-start">Isolated Start</a>
                     </li>
                   </ul>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-run-audits" href="#run-audits">Run Audits</a>
                 </li>
               </ul>
             </li>
@@ -74,6 +74,8 @@
         </li>
         <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
           <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
             <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
@@ -102,7 +104,7 @@
 <p>Create an empty <code>.env.gcp</code> file.</p>
 <pre><code>touch .env.gcp
 </code></pre>
-<p>The <code>.env.gcp</code> file overwrites the <code>.env</code> file and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.</p>
+<p>The <code>.env.gcp</code> file overwrites the <code>.env</code> file values and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.</p>
 <h2 id="mongodb">MongoDB</h2>
 <p>By default MongoDB is used as the local message provider for the Lighthouse &amp; PHPCS Servers. You do not need to change any of the default settings in your <code>.env</code> file, but you could before starting the API if you wanted.</p>
 <table>
@@ -184,10 +186,6 @@
 <h3 id="database">Database</h3>
 <p>The local database is stored in the <code>data/api/mysql</code> directory. If you ever need to start from scratch delete that directory and run <code>make api.setup</code> again. Be sure to stop the API with <code>make api.down</code> or <code>make down</code> and then start it again with <code>make api.up</code>.</p>
 <p><em>Running <code>make down</code> will stop all Docker services.</em></p>
-<h3 id="frequent-issues">Frequent Issues</h3>
-<p>If you see the following error in your OS X terminal when bringing up the API you need to add the <code>/Users</code> directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app, or whatever the root directory is for you <code>$GOPATH</code>.</p>
-<pre><code>ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
-</code></pre>
 <h3 id="hosts-file">Hosts File</h3>
 <p>Add the following entry to your hosts file to make sure <code>tide.local</code> is pointed at your local Tide instance:</p>
 <pre><code>127.0.0.1 tide.local
@@ -221,6 +219,17 @@
 <p>Sync Server:</p>
 <pre><code>make sync.up
 </code></pre>
+<h2 id="run-audits">Run Audits</h2>
+<p>Now that all the Tide services are up and running, you can run audits on themes and plugins by doing a <code>GET</code> request to a special endpoint either in your browser or with an app like Postman. This endpoint only initiates an audit for the <code>wporg</code> Tide user and for <a href="http://WordPress.org">WordPress.org</a> hosted themes and plugins.</p>
+<p>If we want to run an audit against the <code>twentyseventeen</code> theme version <code>2.1</code> for example, we would use this endpoint:</p>
+<pre><code>http://tide.local/api/tide/v1/audit/wporg/theme/twentyseventeen/2.1
+</code></pre>
+<p>Or for the <code>akismet</code> plugin version <code>4.1.1</code>:</p>
+<pre><code>http://tide.local/api/tide/v1/audit/wporg/plugin/akismet/4.1.1
+</code></pre>
+<p>When you request an audit you will receive a JSON object back that indicates the audit is pending. If the audit has previously been requested and is complete then you will receive a JSON object with information about the theme/plugin and summary reports with links to the full report.</p>
+<p>If the audit is pending, your shell should have some output to indicate that the audit is running. Once this output stops and all your services go back to the <code>polling</code> status, you can refresh the API request in the browser and you should see the updated JSON object with completed Tide reports.</p>
+<p>For a full list of API Endpoints that can be used with Tide, see the <a href="/services/api#endpoints">API Endpoints</a> section.</p>
 
     </div>
     <div class="footer-nav">

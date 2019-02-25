@@ -16,7 +16,7 @@ Create an empty `.env.gcp` file.
 touch .env.gcp
 ```
 
-The `.env.gcp` file overwrites the `.env` file and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
+The `.env.gcp` file overwrites the `.env` file values and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
 
 ## MongoDB
 
@@ -75,14 +75,6 @@ _You can run the setup script to initialize WordPress for the first time or if y
 The local database is stored in the `data/api/mysql` directory. If you ever need to start from scratch delete that directory and run `make api.setup` again. Be sure to stop the API with `make api.down` or `make down` and then start it again with `make api.up`.
 
 _Running `make down` will stop all Docker services._
-
-### Frequent Issues
-
-If you see the following error in your OS X terminal when bringing up the API you need to add the `/Users` directory to the `Preferences -> File Sharing` section of the Docker for Mac app, or whatever the root directory is for you `$GOPATH`.
-
-```
-ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: ...'
-```
 
 ### Hosts File
 
@@ -148,3 +140,25 @@ Sync Server:
 ```
 make sync.up
 ```
+
+## Run Audits
+
+Now that all the Tide services are up and running, you can run audits on themes and plugins by doing a `GET` request to a special endpoint either in your browser or with an app like Postman. This endpoint only initiates an audit for the `wporg` Tide user and for WordPress.org hosted themes and plugins.
+
+If we want to run an audit against the `twentyseventeen` theme version `2.1` for example, we would use this endpoint:
+
+```
+http://tide.local/api/tide/v1/audit/wporg/theme/twentyseventeen/2.1
+```
+
+Or for the `akismet` plugin version `4.1.1`:
+
+```
+http://tide.local/api/tide/v1/audit/wporg/plugin/akismet/4.1.1
+```
+
+When you request an audit you will receive a JSON object back that indicates the audit is pending. If the audit has previously been requested and is complete then you will receive a JSON object with information about the theme/plugin and summary reports with links to the full report.
+
+If the audit is pending, your shell should have some output to indicate that the audit is running. Once this output stops and all your services go back to the `polling` status, you can refresh the API request in the browser and you should see the updated JSON object with completed Tide reports.
+
+For a full list of API Endpoints that can be used with Tide, see the [API Endpoints](/services/api#endpoints) section.

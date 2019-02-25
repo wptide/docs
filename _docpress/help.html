@@ -24,17 +24,7 @@
             </li>
             <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title -active link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
-              <ul class="headings heading-list">
-                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
-                </li>
-                <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a>
-                </li>
-                <li class="heading-item -depth-2"><a class="hlink link-running-audits" href="#running-audits">Running audits</a>
-                </li>
-                <li class="heading-item -depth-2"><a class="hlink link-usage" href="#usage">Usage</a>
-                </li>
-              </ul>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
             </li>
           </ul>
         </li>
@@ -54,7 +44,13 @@
         </li>
         <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
           <ul class="submenu">
-            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            <li class="menu-item -level-2"><a class="link title -active link-help" href="help.html">Help</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-failed-audit-request" href="#failed-audit-request">Failed Audit Request</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-mounts-denied" href="#mounts-denied">Mounts Denied</a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
             </li>
@@ -71,87 +67,37 @@
       </ul>
     </li>
   </ul>
-  <div class="body page-serviceslighthouse">
+  <div class="body page-help">
     <div class="header-nav">
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
-    <div class="markdown-body"><h1 id="lighthouse-server">Lighthouse Server</h1>
-<p>The Lighthouse Server is a Go binary that reads messages from a queue and runs Google
-Lighthouse reports against themes, then sends the results back to the Tide API.</p>
-<h2 id="commands">Commands</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Command</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>$ make lighthouse.build.image</code></td>
-<td style="text-align:left">Builds the Lighthouse Server Docker image.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$ make lighthouse.up</code></td>
-<td style="text-align:left">Starts the Lighthouse Server in isolation.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$ make lighthouse.build.up</code></td>
-<td style="text-align:left">Combines the previous two steps.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$ make lighthouse.down</code></td>
-<td style="text-align:left">Takes the isolated Lighthouse Server down.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="settings">Settings</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>LH_CONCURRENT_AUDITS</code></td>
-<td style="text-align:left">Sets the number of goroutines the server will perform concurrently. Default is <code>5</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>LH_MESSAGE_PROVIDER</code></td>
-<td style="text-align:left">Queue audit messages using the local MongoDB, Google Cloud Firestore, or AWS SQS. Must be one of: <code>local</code>, <code>firestore</code>, <code>sqs</code>. Default is <code>local</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>LH_STORAGE_PROVIDER</code></td>
-<td style="text-align:left">Upload reports to the local file system, Google Cloud Storage, or AWS S3. Must be one of: <code>local</code>, <code>gcs</code>, <code>s3</code>. Default is <code>local</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>LH_TEMP_FOLDER</code></td>
-<td style="text-align:left">Sets the temporary folder inside the container used to store downloaded files. Default is <code>/tmp</code>.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="running-audits">Running audits</h2>
-<p>Details on running Lighthouse audits are <a href="https://github.com/xwp/go-tide/wiki/Running-Lighthouse-audits">available in the Tide wiki</a>.</p>
-<h2 id="usage">Usage</h2>
-<p>First build the Lighthouse Server Docker image:</p>
-<pre><code>$ make lighthouse.build.image
+    <div class="markdown-body"><h1 id="help">Help</h1>
+<h2 id="failed-audit-request">Failed Audit Request</h2>
+<p>If you attempt to audit a theme or plugin without adding a version number to the endpoint, or an invalid version, the API will respond with the following error message.</p>
+<pre><code>{
+    &quot;code&quot;: &quot;rest_post_invalid_altid_lookup&quot;,
+    &quot;message&quot;: &quot;Invalid post lookup.&quot;,
+    &quot;data&quot;: {
+        &quot;status&quot;: 404
+    }
+}
 </code></pre>
-<p>Next start the Lighthouse Server in isolation:</p>
-<pre><code>$ make lighthouse.up
+<p>This also means that if you attempt to view an audit that doesn&apos;t exist, you will get the same error. For example, if you try to go to the following endpoint and Tide does not have an audit yet.</p>
+<pre><code>https://wptide.org/api/tide/v1/audit/wporg/plugin/akismet
 </code></pre>
-<p>You can combine the previous two steps and simply run:</p>
-<pre><code>$ make lighthouse.build.up
+<p>You would need to initiate an audit for the plugin with the version first:</p>
+<pre><code>https://wptide.org/api/tide/v1/audit/wporg/plugin/akismet/4.1.1
 </code></pre>
-<p>Take the isolated Lighthouse Server down:</p>
-<pre><code>$ make lighthouse.down
+<p>Then the endpoint without a version would work as expected.</p>
+<h2 id="mounts-denied">Mounts Denied</h2>
+<p>If you see the following error in your OS X terminal when bringing up the API you need to add the <code>/Users</code> directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app, or whatever the root directory is for you <code>$GOPATH</code>.</p>
+<pre><code>ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
 </code></pre>
 
     </div>
     <div class="footer-nav">
-      <div class="left"><a href="../services/phpcs.html"><span class="title">PHPCS Server</span></a></div>
-      <div class="right"><a href="../gcp/index.html"><span class="label">Next: </span><span class="title">Google Cloud Platform</span></a></div>
+      <div class="left"><a href="aws/index.html"><span class="title">Amazon Web Services</span></a></div>
+      <div class="right"><a href="contributing.html"><span class="label">Next: </span><span class="title">Contributing</span></a></div>
     </div>
   </div>
 </div>

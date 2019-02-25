@@ -17,6 +17,7 @@
   * [Google Cloud Firestore](gcp/gcf.md)
 * [Amazon Web Services](aws/index.md)
 * Important Links
+  * [Help](help.md)
   * [Contributing](contributing.md)
   * [Code of Conduct](code-of-conduct.md)
   * [License](license.md)

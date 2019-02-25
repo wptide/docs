@@ -126,11 +126,6 @@
                     "id": "database"
                   },
                   {
-                    "title": "Frequent Issues",
-                    "depth": 3,
-                    "id": "frequent-issues"
-                  },
-                  {
                     "title": "Hosts File",
                     "depth": 3,
                     "id": "hosts-file"
@@ -160,6 +155,11 @@
                     "id": "isolated-start"
                   }
                 ]
+              },
+              {
+                "title": "Run Audits",
+                "depth": 2,
+                "id": "run-audits"
               }
             ]
           }
@@ -501,6 +501,24 @@
         "title": "Important Links",
         "sections": [
           {
+            "title": "Help",
+            "source": "docs/help.md",
+            "url": "help.html",
+            "slug": "help",
+            "headings": [
+              {
+                "title": "Failed Audit Request",
+                "depth": 2,
+                "id": "failed-audit-request"
+              },
+              {
+                "title": "Mounts Denied",
+                "depth": 2,
+                "id": "mounts-denied"
+              }
+            ]
+          },
+          {
             "title": "Contributing",
             "source": "docs/contributing.md",
             "url": "contributing.html",
@@ -716,11 +734,6 @@
               "id": "database"
             },
             {
-              "title": "Frequent Issues",
-              "depth": 3,
-              "id": "frequent-issues"
-            },
-            {
               "title": "Hosts File",
               "depth": 3,
               "id": "hosts-file"
@@ -750,6 +763,11 @@
               "id": "isolated-start"
             }
           ]
+        },
+        {
+          "title": "Run Audits",
+          "depth": 2,
+          "id": "run-audits"
         }
       ]
     },
@@ -1081,6 +1099,24 @@
         }
       ]
     },
+    "help.html": {
+      "source": "docs/help.md",
+      "title": "Help - Tide",
+      "pageTitle": "Help",
+      "slug": "help",
+      "headings": [
+        {
+          "title": "Failed Audit Request",
+          "depth": 2,
+          "id": "failed-audit-request"
+        },
+        {
+          "title": "Mounts Denied",
+          "depth": 2,
+          "id": "mounts-denied"
+        }
+      ]
+    },
     "contributing.html": {
       "source": "docs/contributing.md",
       "title": "Contributing - Tide",
@@ -1185,6 +1221,7 @@
     "docs/gcp/gcs.md": "gcp/gcs.html",
     "docs/gcp/gcf.md": "gcp/gcf.html",
     "docs/aws/index.md": "aws/index.html",
+    "docs/help.md": "help.html",
     "docs/contributing.md": "contributing.html",
     "docs/code-of-conduct.md": "code-of-conduct.html",
     "docs/license.md": "license.html",
