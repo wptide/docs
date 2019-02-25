@@ -46,11 +46,11 @@ function fixReferences ($, fname, sources, files, page) {
     var origUrl = $this.attr(attr)
     var anchor = ''
 
-    // Ignore http://, #anchor and mailto: links.
+    // Ignore http://, #anchor, mailto:, and links that don't end with .md.
     if (origUrl.match(/^[a-z]+:\/\//) ||
       origUrl.match(/^mailto:/) ||
       origUrl.match(/^#/) ||
-      ! origUrl.match(/^(.*\.md)/)) return
+      origUrl.match(/^((?!(.*\.md)).)*$/)) return
 
     if (m = origUrl.match(/^([^#]+)(#.*)$/)) {
       origUrl = m[1]
