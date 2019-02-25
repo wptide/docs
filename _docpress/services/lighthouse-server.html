@@ -26,9 +26,9 @@
             </li>
             <li class="menu-item -level-2"><a class="link title -active link-serviceslighthouse-server" href="services/lighthouse-server.html">Lighthouse Server</a>
               <ul class="headings heading-list">
-                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a>
+                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
                 </li>
               </ul>
             </li>
@@ -78,6 +78,33 @@
     <div class="markdown-body"><h1 id="lighthouse-server">Lighthouse Server</h1>
 <p>The Lighthouse Server is a Go binary installed on an Alpine Linux Docker image that reads messages from a queue and runs Google Lighthouse reports against themes, then sends the results back to the Tide API.</p>
 <p>It is important to note that the server only works for <a href="http://wp.org">wp.org</a> themes and the most recent version of it. This means that in a headless instance of Chromium the Lighthouse CLI audits each theme by loading the demo version found on <a href="http://wp-themes.com">wp-themes.com</a>, which is always the latest version so if you request a theme audit for a previous version the results will be for the latest one. Eventually, we will look into a way to load the theme into the container and audit any version on request.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>LH_CONCURRENT_AUDITS</code></td>
+<td style="text-align:left">Sets the number of goroutines the server will perform concurrently. Default is <code>5</code>. <em>This is currently deactivated and will have no impact during runtime.</em></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LH_MESSAGE_PROVIDER</code></td>
+<td style="text-align:left">Queue audit messages using the local MongoDB, Google Cloud Firestore, or AWS SQS. Must be one of: <code>local</code>, <code>firestore</code>, <code>sqs</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LH_STORAGE_PROVIDER</code></td>
+<td style="text-align:left">Upload reports to the local file system, Google Cloud Storage, or AWS S3. Must be one of: <code>local</code>, <code>gcs</code>, <code>s3</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LH_TEMP_FOLDER</code></td>
+<td style="text-align:left">Sets the temporary folder inside the container used to store downloaded files. Default is <code>/tmp</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="commands">Commands</h2>
 <table>
 <thead>
@@ -150,33 +177,6 @@
 <tr>
 <td style="text-align:left"><code>make lighthouse.clean.cluster</code></td>
 <td style="text-align:left">Clean the Lighthouse Server GKE cluster.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="settings">Settings</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>LH_CONCURRENT_AUDITS</code></td>
-<td style="text-align:left">Sets the number of goroutines the server will perform concurrently. Default is <code>5</code>. <em>This is currently deactivated and will have no impact during runtime.</em></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>LH_MESSAGE_PROVIDER</code></td>
-<td style="text-align:left">Queue audit messages using the local MongoDB, Google Cloud Firestore, or AWS SQS. Must be one of: <code>local</code>, <code>firestore</code>, <code>sqs</code>. Default is <code>local</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>LH_STORAGE_PROVIDER</code></td>
-<td style="text-align:left">Upload reports to the local file system, Google Cloud Storage, or AWS S3. Must be one of: <code>local</code>, <code>gcs</code>, <code>s3</code>. Default is <code>local</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>LH_TEMP_FOLDER</code></td>
-<td style="text-align:left">Sets the temporary folder inside the container used to store downloaded files. Default is <code>/tmp</code>.</td>
 </tr>
 </tbody>
 </table>

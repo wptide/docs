@@ -185,14 +185,14 @@
             "slug": "servicesapi",
             "headings": [
               {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
               },
               {
                 "title": "Endpoints",
@@ -275,14 +275,14 @@
             "slug": "servicessync-server",
             "headings": [
               {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
               }
             ]
           },
@@ -293,14 +293,14 @@
             "slug": "servicesphpcs-server",
             "headings": [
               {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
               }
             ]
           },
@@ -311,14 +311,14 @@
             "slug": "serviceslighthouse-server",
             "headings": [
               {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
               }
             ]
           }
@@ -786,14 +786,14 @@
       "slug": "servicesapi",
       "headings": [
         {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
-        },
-        {
-          "title": "Settings",
-          "depth": 2,
-          "id": "settings"
         },
         {
           "title": "Endpoints",
@@ -876,14 +876,14 @@
       "slug": "servicessync-server",
       "headings": [
         {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
-        },
-        {
-          "title": "Settings",
-          "depth": 2,
-          "id": "settings"
         }
       ]
     },
@@ -894,14 +894,14 @@
       "slug": "servicesphpcs-server",
       "headings": [
         {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
-        },
-        {
-          "title": "Settings",
-          "depth": 2,
-          "id": "settings"
         }
       ]
     },
@@ -912,14 +912,14 @@
       "slug": "serviceslighthouse-server",
       "headings": [
         {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
-        },
-        {
-          "title": "Settings",
-          "depth": 2,
-          "id": "settings"
         }
       ]
     },

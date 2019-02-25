@@ -4,24 +4,7 @@ The Tide API is a Docker implementation of MySQL, PHP-FPM, and Nginx. The web se
 
 _The API Docker containers must be up and running before you start any of the other services._
 
-## Commands
-
-| Command | Description |
-| :--- | :--- |
-| `make api.up` | Run the API Docker containers in isolation with docker-compose up. |
-| `make api.down` | Take the isolated API Docker containers down. |
-| `make api.stop` | Stop the isolated API Docker containers with docker-compose stop. |
-| `make api.rm` | Remove the stopped API Docker containers with docker-compose rm. |
-| `make api.composer` | Install the Composer dependencies. Runs `make api.tpl` automatically before installing the dependencies. |
-| `make api.setup` | Run the setup script; API containers must be running to `exec` into. |
-| `make api.tpl` | Generate the API YAML & PHP templates. |
-| `make api.deploy.sql` | Deploy the Cloud SQL database and setup the database users. |
-| `make api.deploy.app` | Deploy the API to Google App Engine. |
-| `make api.deploy.redis` | Deploy the Google Cloud Memorystore Redis instance. |
-| `make api.get.redis` | Get metadata, including the internal VPC IP address, for the Google Cloud Memorystore Redis instance. |
-| `make api.clean.redis` | Delete the Google Cloud Memorystore Redis instance. |
-
-## Settings
+## Environment Variables
 
 | Variable | Description |
 | :--- | :--- |
@@ -51,6 +34,23 @@ _The API Docker containers must be up and running before you start any of the ot
 | `API_THEME` | The slug of the local WordPress theme. Default is `docs`. |
 | `API_UPLOAD_HANDLER` | Tells WordPress how media upload is handled. Uses either the local file system or Google Cloud Storage. Must be one of: `local`, `gcs`. Default is `local`. Default is `local`. |
 | `API_VERSION` | The API version found in the Tide API REST url, used both locally and on GCP. Default is `v1`. |
+
+## Commands
+
+| Command | Description |
+| :--- | :--- |
+| `make api.up` | Run the API Docker containers in isolation with docker-compose up. |
+| `make api.down` | Take the isolated API Docker containers down. |
+| `make api.stop` | Stop the isolated API Docker containers with docker-compose stop. |
+| `make api.rm` | Remove the stopped API Docker containers with docker-compose rm. |
+| `make api.composer` | Install the Composer dependencies. Runs `make api.tpl` automatically before installing the dependencies. |
+| `make api.setup` | Run the setup script; API containers must be running to `exec` into. |
+| `make api.tpl` | Generate the API YAML & PHP templates. |
+| `make api.deploy.sql` | Deploy the Cloud SQL database and setup the database users. |
+| `make api.deploy.app` | Deploy the API to Google App Engine. |
+| `make api.deploy.redis` | Deploy the Google Cloud Memorystore Redis instance. |
+| `make api.get.redis` | Get metadata, including the internal VPC IP address, for the Google Cloud Memorystore Redis instance. |
+| `make api.clean.redis` | Delete the Google Cloud Memorystore Redis instance. |
 
 ## Endpoints
 

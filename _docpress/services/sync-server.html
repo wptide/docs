@@ -22,9 +22,9 @@
             </li>
             <li class="menu-item -level-2"><a class="link title -active link-servicessync-server" href="services/sync-server.html">Sync Server</a>
               <ul class="headings heading-list">
-                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a>
+                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
                 </li>
               </ul>
             </li>
@@ -79,6 +79,73 @@
 <p>The Sync Server is a Go binary installed on an Alpine Linux Docker image that polls the <a href="http://wp.org">wp.org</a> API&apos;s for themes and plugins to process and writes them to a queue.</p>
 <p>Unless you have good reason to set the <code>SYNC_ACTIVE</code> environment variable to <code>on</code> you should leave the server set to <code>off</code> and not bring up the container by running <code>make sync.up</code>. Turning on the Sync Server will put around 50k audits in the queue and will take days to process locally and potentially lock up all your computers resources. A better way to audit <a href="http://wp.org">wp.org</a> themes and plugins would be to follow the instructions found in the <a href="/installation/setup#run-audits">Run Audits</a> section of the setup page.</p>
 <p>If you do decide that you would like to seed the queue with plugins and themes, or are testing changes you&apos;ve made to the Go binary, you can run <code>make sync.up</code> for a second or two and then in a different shell run <code>make sync.down</code> which should add a few hundred items to the queue.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>SYNC_ACTIVE</code></td>
+<td style="text-align:left">Whether the Sync Server is active or not. Must be one of: <code>on</code>, <code>off</code>. Default is <code>off</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_API_BROWSE_CATEGORY</code></td>
+<td style="text-align:left">The API category used to ingest the <a href="http://wp.org">wp.org</a> themes and plugins. Must be one of: <code>popular</code>, <code>featured</code>, <code>updated</code>, <code>new</code>. Default is <code>updated</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DATA</code></td>
+<td style="text-align:left">When the database provider is set to <code>local</code> this will be where the data is stored relative to the <code>/srv/data</code> working directory. Default is <code>./db</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DATABASE_DOCUMENT_PATH</code></td>
+<td style="text-align:left">When the database provider is set to <code>firestore</code> this value is the path to the document in Cloud Firestore. Must be in the form of <code>&lt;collection&gt;/&lt;document&gt;</code>. Default is <code>sync-server/wporg</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DATABASE_PROVIDER</code></td>
+<td style="text-align:left">Tells the Sync Server which database provider to use; either the local file system or Google Cloud Firestore. Must be one of: <code>local</code>, <code>firestore</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DEFAULT_CLIENT</code></td>
+<td style="text-align:left">The API client used to make requests by the audit servers; also associated with the key and secret those server use. Default is <code>wporg</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_DEFAULT_VISIBILITY</code></td>
+<td style="text-align:left">The audit and report visibility. Must be one of: <code>public</code>, <code>private</code>. Default is <code>public</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_FORCE_AUDITS</code></td>
+<td style="text-align:left">Forces audit reports to be generated even if a report exists for the checksum and standard. Must be one of: <code>yes</code>, <code>no</code>. Default is <code>no</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_ITEMS_PER_PAGE</code></td>
+<td style="text-align:left">The number of plugins or themes per page in the API request. Default is <code>250</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_LH_ACTIVE</code></td>
+<td style="text-align:left">Send messages to the Lighthouse SQS queue. Must be one of: <code>on</code>, <code>off</code>. Default is <code>on</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_MESSAGE_PROVIDER</code></td>
+<td style="text-align:left">Queue audit messages using the local MongoDB, Google Cloud Firestore, or AWS SQS. Must be one of: <code>local</code>, <code>firestore</code>, <code>sqs</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_PHPCS_ACTIVE</code></td>
+<td style="text-align:left">Send messages to the PHPCS SQS queue. Must be one of: <code>on</code>, <code>off</code>. Default is <code>on</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_POOL_DELAY</code></td>
+<td style="text-align:left">The wait time in seconds between the <a href="http://wp.org">wp.org</a> theme and plugin ingests. Default is <code>600</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SYNC_POOL_WORKERS</code></td>
+<td style="text-align:left">The number of workers (concurrent goroutines) the server will create to ingest the <a href="http://wp.org">wp.org</a> API. Default is <code>125</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="commands">Commands</h2>
 <table>
 <thead>
@@ -155,73 +222,6 @@
 <tr>
 <td style="text-align:left"><code>make sync.clean.cluster</code></td>
 <td style="text-align:left">Clean the Sync Server GKE cluster.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="settings">Settings</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>SYNC_ACTIVE</code></td>
-<td style="text-align:left">Whether the Sync Server is active or not. Must be one of: <code>on</code>, <code>off</code>. Default is <code>off</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_API_BROWSE_CATEGORY</code></td>
-<td style="text-align:left">The API category used to ingest the <a href="http://wp.org">wp.org</a> themes and plugins. Must be one of: <code>popular</code>, <code>featured</code>, <code>updated</code>, <code>new</code>. Default is <code>updated</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_DATA</code></td>
-<td style="text-align:left">When the database provider is set to <code>local</code> this will be where the data is stored relative to the <code>/srv/data</code> working directory. Default is <code>./db</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_DATABASE_DOCUMENT_PATH</code></td>
-<td style="text-align:left">When the database provider is set to <code>firestore</code> this value is the path to the document in Cloud Firestore. Must be in the form of <code>&lt;collection&gt;/&lt;document&gt;</code>. Default is <code>sync-server/wporg</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_DATABASE_PROVIDER</code></td>
-<td style="text-align:left">Tells the Sync Server which database provider to use; either the local file system or Google Cloud Firestore. Must be one of: <code>local</code>, <code>firestore</code>. Default is <code>local</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_DEFAULT_CLIENT</code></td>
-<td style="text-align:left">The API client used to make requests by the audit servers; also associated with the key and secret those server use. Default is <code>wporg</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_DEFAULT_VISIBILITY</code></td>
-<td style="text-align:left">The audit and report visibility. Must be one of: <code>public</code>, <code>private</code>. Default is <code>public</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_FORCE_AUDITS</code></td>
-<td style="text-align:left">Forces audit reports to be generated even if a report exists for the checksum and standard. Must be one of: <code>yes</code>, <code>no</code>. Default is <code>no</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_ITEMS_PER_PAGE</code></td>
-<td style="text-align:left">The number of plugins or themes per page in the API request. Default is <code>250</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_LH_ACTIVE</code></td>
-<td style="text-align:left">Send messages to the Lighthouse SQS queue. Must be one of: <code>on</code>, <code>off</code>. Default is <code>on</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_MESSAGE_PROVIDER</code></td>
-<td style="text-align:left">Queue audit messages using the local MongoDB, Google Cloud Firestore, or AWS SQS. Must be one of: <code>local</code>, <code>firestore</code>, <code>sqs</code>. Default is <code>local</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_PHPCS_ACTIVE</code></td>
-<td style="text-align:left">Send messages to the PHPCS SQS queue. Must be one of: <code>on</code>, <code>off</code>. Default is <code>on</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_POOL_DELAY</code></td>
-<td style="text-align:left">The wait time in seconds between the <a href="http://wp.org">wp.org</a> theme and plugin ingests. Default is <code>600</code>.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SYNC_POOL_WORKERS</code></td>
-<td style="text-align:left">The number of workers (concurrent goroutines) the server will create to ingest the <a href="http://wp.org">wp.org</a> API. Default is <code>125</code>.</td>
 </tr>
 </tbody>
 </table>

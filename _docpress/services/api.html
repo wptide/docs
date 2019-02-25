@@ -20,9 +20,9 @@
           <ul class="submenu">
             <li class="menu-item -level-2"><a class="link title -active link-servicesapi" href="services/api.html">API</a>
               <ul class="headings heading-list">
-                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a>
+                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-endpoints" href="#endpoints">Endpoints</a>
                   <ul class="heading-list -depth-2">
@@ -108,66 +108,7 @@
     <div class="markdown-body"><h1 id="api">API</h1>
 <p>The Tide API is a Docker implementation of MySQL, PHP-FPM, and Nginx. The web server has WordPress installed with a documentation theme and a REST API for storing theme and plugin audits. If you plan on deploying to the cloud you should read the entire <a href="/gcp">Google Cloud Platform</a> section.</p>
 <p><em>The API Docker containers must be up and running before you start any of the other services.</em></p>
-<h2 id="commands">Commands</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Command</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>make api.up</code></td>
-<td style="text-align:left">Run the API Docker containers in isolation with docker-compose up.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.down</code></td>
-<td style="text-align:left">Take the isolated API Docker containers down.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.stop</code></td>
-<td style="text-align:left">Stop the isolated API Docker containers with docker-compose stop.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.rm</code></td>
-<td style="text-align:left">Remove the stopped API Docker containers with docker-compose rm.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.composer</code></td>
-<td style="text-align:left">Install the Composer dependencies. Runs <code>make api.tpl</code> automatically before installing the dependencies.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.setup</code></td>
-<td style="text-align:left">Run the setup script; API containers must be running to <code>exec</code> into.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.tpl</code></td>
-<td style="text-align:left">Generate the API YAML &amp; PHP templates.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.deploy.sql</code></td>
-<td style="text-align:left">Deploy the Cloud SQL database and setup the database users.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.deploy.app</code></td>
-<td style="text-align:left">Deploy the API to Google App Engine.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.deploy.redis</code></td>
-<td style="text-align:left">Deploy the Google Cloud Memorystore Redis instance.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.get.redis</code></td>
-<td style="text-align:left">Get metadata, including the internal VPC IP address, for the Google Cloud Memorystore Redis instance.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>make api.clean.redis</code></td>
-<td style="text-align:left">Delete the Google Cloud Memorystore Redis instance.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="settings">Settings</h2>
+<h2 id="environment-variables">Environment Variables</h2>
 <table>
 <thead>
 <tr>
@@ -279,6 +220,65 @@
 <tr>
 <td style="text-align:left"><code>API_VERSION</code></td>
 <td style="text-align:left">The API version found in the Tide API REST url, used both locally and on GCP. Default is <code>v1</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="commands">Commands</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Command</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>make api.up</code></td>
+<td style="text-align:left">Run the API Docker containers in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.down</code></td>
+<td style="text-align:left">Take the isolated API Docker containers down.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.stop</code></td>
+<td style="text-align:left">Stop the isolated API Docker containers with docker-compose stop.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.rm</code></td>
+<td style="text-align:left">Remove the stopped API Docker containers with docker-compose rm.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.composer</code></td>
+<td style="text-align:left">Install the Composer dependencies. Runs <code>make api.tpl</code> automatically before installing the dependencies.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.setup</code></td>
+<td style="text-align:left">Run the setup script; API containers must be running to <code>exec</code> into.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.tpl</code></td>
+<td style="text-align:left">Generate the API YAML &amp; PHP templates.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.deploy.sql</code></td>
+<td style="text-align:left">Deploy the Cloud SQL database and setup the database users.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.deploy.app</code></td>
+<td style="text-align:left">Deploy the API to Google App Engine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.deploy.redis</code></td>
+<td style="text-align:left">Deploy the Google Cloud Memorystore Redis instance.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.get.redis</code></td>
+<td style="text-align:left">Get metadata, including the internal VPC IP address, for the Google Cloud Memorystore Redis instance.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.clean.redis</code></td>
+<td style="text-align:left">Delete the Google Cloud Memorystore Redis instance.</td>
 </tr>
 </tbody>
 </table>
