@@ -28,8 +28,6 @@
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-usage" href="#usage">Usage</a>
-                </li>
               </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
@@ -74,32 +72,79 @@
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
     <div class="markdown-body"><h1 id="phpcs-server">PHPCS Server</h1>
-<p>The PHPCS Server is a Go binary that reads messages from a queue and runs PHPCS
-reports against both plugins and themes, then sends the results back to the Tide API.</p>
+<p>The PHPCS Server is a Go binary installed on an Alpine Linux Docker image that reads messages from a queue and runs PHPCS reports against both plugins and themes, then sends the results back to the Tide API. It is important to note that the PHPCS Server only does static analysis of PHP compatibility and WordPress coding standards and does not execute code or install themes and plugins into WordPress to run the audit.</p>
 <h2 id="commands">Commands</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Variable</th>
+<th style="text-align:left">Command</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>$ make phpcs.build.image</code></td>
-<td style="text-align:left">Builds the PHPCS Server Docker image.</td>
+<td style="text-align:left"><code>make phpcs.build.bin</code></td>
+<td style="text-align:left">Build the PHPCS Server Go binary.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make phpcs.up</code></td>
-<td style="text-align:left">Starts the PHPCS Server in isolation.</td>
+<td style="text-align:left"><code>make phpcs.clean.bin</code></td>
+<td style="text-align:left">Clean the PHPCS Server Go binary.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make phpcs.build.up</code></td>
-<td style="text-align:left">Combines the previous two steps.</td>
+<td style="text-align:left"><code>make phpcs.build.image</code></td>
+<td style="text-align:left">Build the PHPCS Server Docker image.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make phpcs.down</code></td>
-<td style="text-align:left">Takes the isolated PHPCS Server down.</td>
+<td style="text-align:left"><code>make phpcs.build.up</code></td>
+<td style="text-align:left">Rebuild the PHPCS Server Docker image and run the container in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.up</code></td>
+<td style="text-align:left">Run the PHPCS Server Docker container in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.down</code></td>
+<td style="text-align:left">Take the isolated PHPCS Server Docker container down.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.stop</code></td>
+<td style="text-align:left">Stop the isolated PHPCS Server Docker container with docker-compose stop.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.rm</code></td>
+<td style="text-align:left">Remove the stopped PHPCS Server Docker container with docker-compose rm.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.push.image</code></td>
+<td style="text-align:left">Push the PHPCS Server Docker image to GCR.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.clean.image</code></td>
+<td style="text-align:left">Clean the PHPCS Server Docker image from the host machine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.build.cluster</code></td>
+<td style="text-align:left">Build the PHPCS Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.creds</code></td>
+<td style="text-align:left">Get the PHPCS Server GKE cluster credentials.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.tpl</code></td>
+<td style="text-align:left">Generate the PHPCS Server GKE YAML template.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.deploy.cluster</code></td>
+<td style="text-align:left">Deploy the PHPCS Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.get.cluster</code></td>
+<td style="text-align:left">Get the PHPCS Server GKE cluster status.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.clean.cluster</code></td>
+<td style="text-align:left">Clean the PHPCS Server GKE cluster.</td>
 </tr>
 </tbody>
 </table>
@@ -114,7 +159,7 @@ reports against both plugins and themes, then sends the results back to the Tide
 <tbody>
 <tr>
 <td style="text-align:left"><code>PHPCS_CONCURRENT_AUDITS</code></td>
-<td style="text-align:left">Sets the number of goroutines the server will perform concurrently. Default is <code>5</code>.</td>
+<td style="text-align:left">Sets the number of goroutines the server will perform concurrently. Default is <code>5</code>. <em>This is currently deactivated and will have no impact during runtime.</em></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>PHPCS_MESSAGE_PROVIDER</code></td>
@@ -130,19 +175,6 @@ reports against both plugins and themes, then sends the results back to the Tide
 </tr>
 </tbody>
 </table>
-<h2 id="usage">Usage</h2>
-<p>First build the PHPCS Server Docker image:</p>
-<pre><code>$ make phpcs.build.image
-</code></pre>
-<p>Next start the PHPCS Server in isolation:</p>
-<pre><code>$ make phpcs.up
-</code></pre>
-<p>You can combine the previous two steps and simply run:</p>
-<pre><code>$ make phpcs.build.up
-</code></pre>
-<p>Take the isolated PHPCS Server down:</p>
-<pre><code>$ make phpcs.down
-</code></pre>
 
     </div>
     <div class="footer-nav">

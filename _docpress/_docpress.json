@@ -301,11 +301,6 @@
                 "title": "Settings",
                 "depth": 2,
                 "id": "settings"
-              },
-              {
-                "title": "Usage",
-                "depth": 2,
-                "id": "usage"
               }
             ]
           },
@@ -907,11 +902,6 @@
           "title": "Settings",
           "depth": 2,
           "id": "settings"
-        },
-        {
-          "title": "Usage",
-          "depth": 2,
-          "id": "usage"
         }
       ]
     },
