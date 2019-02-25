@@ -30,10 +30,6 @@
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-running-audits" href="#running-audits">Running audits</a>
-                </li>
-                <li class="heading-item -depth-2"><a class="hlink link-usage" href="#usage">Usage</a>
-                </li>
               </ul>
             </li>
           </ul>
@@ -76,8 +72,8 @@
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
     <div class="markdown-body"><h1 id="lighthouse-server">Lighthouse Server</h1>
-<p>The Lighthouse Server is a Go binary that reads messages from a queue and runs Google
-Lighthouse reports against themes, then sends the results back to the Tide API.</p>
+<p>The Lighthouse Server is a Go binary installed on an Alpine Linux Docker image that reads messages from a queue and runs Google Lighthouse reports against themes, then sends the results back to the Tide API.</p>
+<p>It is important to note that the server only works for <a href="http://wp.org">wp.org</a> themes and the most recent version of it. This means that in a headless instance of Chromium the Lighthouse CLI audits each theme by loading the demo version found on <a href="http://wp-themes.com">wp-themes.com</a>, which is always the latest version so if you request a theme audit for a previous version the results will be for the latest one. Eventually, we will look into a way to load the theme into the container and audit any version on request.</p>
 <h2 id="commands">Commands</h2>
 <table>
 <thead>
@@ -88,20 +84,68 @@ Lighthouse reports against themes, then sends the results back to the Tide API.<
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>$ make lighthouse.build.image</code></td>
-<td style="text-align:left">Builds the Lighthouse Server Docker image.</td>
+<td style="text-align:left"><code>make lighthouse.build.bin</code></td>
+<td style="text-align:left">Build the Lighthouse Server Go binary.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make lighthouse.up</code></td>
-<td style="text-align:left">Starts the Lighthouse Server in isolation.</td>
+<td style="text-align:left"><code>make lighthouse.clean.bin</code></td>
+<td style="text-align:left">Clean the Lighthouse Server Go binary.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make lighthouse.build.up</code></td>
-<td style="text-align:left">Combines the previous two steps.</td>
+<td style="text-align:left"><code>make lighthouse.build.image</code></td>
+<td style="text-align:left">Build the Lighthouse Server Docker image.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make lighthouse.down</code></td>
-<td style="text-align:left">Takes the isolated Lighthouse Server down.</td>
+<td style="text-align:left"><code>make lighthouse.build.up</code></td>
+<td style="text-align:left">Rebuild the Lighthouse Server Docker image and run the container in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.up</code></td>
+<td style="text-align:left">Run the Lighthouse Server Docker image in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.down</code></td>
+<td style="text-align:left">Take the isolated Lighthouse Server Docker container down.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.stop</code></td>
+<td style="text-align:left">Stop the isolated Lighthouse Server Docker container with docker-compose stop.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.rm</code></td>
+<td style="text-align:left">Remove the stopped Lighthouse Server Docker container with docker-compose rm.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.push.image</code></td>
+<td style="text-align:left">Push the Lighthouse Server Docker image to GCR.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.clean.image</code></td>
+<td style="text-align:left">Clean the Lighthouse Server Docker image from the host machine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.build.cluster</code></td>
+<td style="text-align:left">Build the Lighthouse Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.creds</code></td>
+<td style="text-align:left">Get the Lighthouse Server GKE cluster credentials.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.tpl</code></td>
+<td style="text-align:left">Generate the Lighthouse Server GKE YAML template.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.deploy.cluster</code></td>
+<td style="text-align:left">Deploy the Lighthouse Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.get.cluster</code></td>
+<td style="text-align:left">Get the Lighthouse Server GKE cluster status.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make lighthouse.clean.cluster</code></td>
+<td style="text-align:left">Clean the Lighthouse Server GKE cluster.</td>
 </tr>
 </tbody>
 </table>
@@ -132,21 +176,6 @@ Lighthouse reports against themes, then sends the results back to the Tide API.<
 </tr>
 </tbody>
 </table>
-<h2 id="running-audits">Running audits</h2>
-<p>Details on running Lighthouse audits are <a href="https://github.com/xwp/go-tide/wiki/Running-Lighthouse-audits">available in the Tide wiki</a>.</p>
-<h2 id="usage">Usage</h2>
-<p>First build the Lighthouse Server Docker image:</p>
-<pre><code>$ make lighthouse.build.image
-</code></pre>
-<p>Next start the Lighthouse Server in isolation:</p>
-<pre><code>$ make lighthouse.up
-</code></pre>
-<p>You can combine the previous two steps and simply run:</p>
-<pre><code>$ make lighthouse.build.up
-</code></pre>
-<p>Take the isolated Lighthouse Server down:</p>
-<pre><code>$ make lighthouse.down
-</code></pre>
 
     </div>
     <div class="footer-nav">
