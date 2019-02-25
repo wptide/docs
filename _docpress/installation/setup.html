@@ -22,6 +22,8 @@
                   <ul class="heading-list -depth-2">
                     <li class="heading-item -depth-3"><a class="hlink link-initialize-wordpress" href="#initialize-wordpress">Initialize WordPress</a>
                     </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-database" href="#database">Database</a>
+                    </li>
                     <li class="heading-item -depth-3"><a class="hlink link-frequent-issues" href="#frequent-issues">Frequent Issues</a>
                     </li>
                     <li class="heading-item -depth-3"><a class="hlink link-hosts-file" href="#hosts-file">Hosts File</a>
@@ -179,6 +181,9 @@
 <pre><code>make api.setup
 </code></pre>
 <p><em>You can run the setup script to initialize WordPress for the first time or if you would like a convenient way to update the default values when you change relevant environment variables.</em></p>
+<h3 id="database">Database</h3>
+<p>The local database is stored in the <code>data/api/mysql</code> directory. If you ever need to start from scratch delete that directory and run <code>make api.setup</code> again. Be sure to stop the API with <code>make api.down</code> or <code>make down</code> and then start it again with <code>make api.up</code>.</p>
+<p><em>Running <code>make down</code> will stop all Docker services.</em></p>
 <h3 id="frequent-issues">Frequent Issues</h3>
 <p>If you see the following error in your OS X terminal when bringing up the API you need to add the <code>/Users</code> directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app, or whatever the root directory is for you <code>$GOPATH</code>.</p>
 <pre><code>ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;

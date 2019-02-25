@@ -17,6 +17,10 @@
           </ul>
         </li>
         <li class="menu-item -level-1 -parent"><a class="link title -active link-services" href="services/index.html">Services</a>
+          <ul class="headings heading-list">
+            <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
+            </li>
+          </ul>
           <ul class="submenu">
             <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
             </li>
@@ -72,6 +76,54 @@ serving a theme and a REST API.</li>
 <li>The <a href="phpcs">PHPCS Server</a> reads messages from a queue and runs reports against both plugins and themes, then sends the results back to the Tide API.</li>
 <li>The <a href="lighthouse">Lighthouse Server</a> reads messages from a queue and runs Google Lighthouse reports against the themes only, then sends the results back to the Tide API.</li>
 </ul>
+<h2 id="commands">Commands</h2>
+<p>There are several <code>make</code> commands you can use to manage the Tide services. Some you run manually, and some are ran by other <code>make</code> commands &#x2014; these are the root level ones. There are additional commands associated with each service, which we&apos;ll see later in this section. If you run <code>make</code> from the root directory a full list of commands will output to your shell.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Command</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>make deps</code></td>
+<td style="text-align:left">Install dependencies.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make config</code></td>
+<td style="text-align:left">Set GCP configurations.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make build.bins</code></td>
+<td style="text-align:left">Build all the GO binaries.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make clean.bins</code></td>
+<td style="text-align:left">Clean all the GO binaries.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make build.images</code></td>
+<td style="text-align:left">Build all the Docker images.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make build.up</code></td>
+<td style="text-align:left">Rebuild &amp; run the Docker images with docker-compose up</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make up</code></td>
+<td style="text-align:left">Run the Docker images with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make down</code></td>
+<td style="text-align:left">Stop the Docker images with docker-compose down.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make test</code></td>
+<td style="text-align:left">Run the GO test suite.</td>
+</tr>
+</tbody>
+</table>
 
     </div>
     <div class="footer-nav">

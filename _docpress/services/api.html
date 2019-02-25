@@ -102,20 +102,6 @@
     <div class="markdown-body"><h1 id="api">API</h1>
 <p>The API implements MySQL, PHP-FPM, and an Nginx web server with WordPress installed
 serving a theme and a REST API.</p>
-<p>The local database is stored in the <code>data/api/mysql</code> directory. If you ever need
-to start from scratch delete that directory and run <code>make api.setup</code> again. Be
-sure to stop the API with <code>make api.down</code> or <code>make down</code> and then start it again
-with <code>make api.up</code>.</p>
-<p>Running <code>make down</code> will stop all Docker services.</p>
-<p>If you see an error like this on OS X when bringing up the API you need to add the
-directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app.</p>
-<pre><code>ERROR: for gotide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
-</code></pre>
-<p>For local development you can manually set the <code>API_KEY</code> and <code>API_SECRET</code> for the
-<code>audit-server</code> user, which will automatically update the user meta values when
-<code>make api.setup</code> is ran. If you do not set those environment variables, or are
-running Tide in production, then you can access the auto generated key and secret
-from the <code>audit-server</code> user profile.</p>
 <h2 id="commands">Commands</h2>
 <table>
 <thead>
@@ -144,10 +130,6 @@ from the <code>audit-server</code> user profile.</p>
 <tr>
 <td style="text-align:left"><code>$ make api.down</code></td>
 <td style="text-align:left">Stops the API.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>$ make down</code></td>
-<td style="text-align:left">Stops all Docker services.</td>
 </tr>
 </tbody>
 </table>

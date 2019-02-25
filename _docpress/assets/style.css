@@ -1711,6 +1711,10 @@ ul.heading-list .hlink:before {
 .markdown-body blockquote {
   color: #555;
 }
+.markdown-body table {
+  display: table;
+  margin-top: 1.5em;
+}
 .menu-toggle {
   display: none;
   box-sizing: content-box;

@@ -121,6 +121,11 @@
                     "id": "initialize-wordpress"
                   },
                   {
+                    "title": "Database",
+                    "depth": 3,
+                    "id": "database"
+                  },
+                  {
                     "title": "Frequent Issues",
                     "depth": 3,
                     "id": "frequent-issues"
@@ -165,6 +170,13 @@
         "source": "docs/services/index.md",
         "url": "services/index.html",
         "slug": "services",
+        "headings": [
+          {
+            "title": "Commands",
+            "depth": 2,
+            "id": "commands"
+          }
+        ],
         "sections": [
           {
             "title": "API",
@@ -704,6 +716,11 @@
               "id": "initialize-wordpress"
             },
             {
+              "title": "Database",
+              "depth": 3,
+              "id": "database"
+            },
+            {
               "title": "Frequent Issues",
               "depth": 3,
               "id": "frequent-issues"
@@ -745,7 +762,14 @@
       "source": "docs/services/index.md",
       "title": "Services - Tide",
       "pageTitle": "Services",
-      "slug": "services"
+      "slug": "services",
+      "headings": [
+        {
+          "title": "Commands",
+          "depth": 2,
+          "id": "commands"
+        }
+      ]
     },
     "services/api.html": {
       "source": "docs/services/api.md",
