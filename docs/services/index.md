@@ -14,12 +14,12 @@ There are several `make` commands you can use to manage the Tide services. Some 
 
 | Command | Description |
 | :--- | :--- |
-| `make deps` | Install dependencies. |
+| `make deps` | Install Glide dependencies. |
 | `make config` | Set GCP configurations. |
-| `make build.bins` | Build all the GO binaries. |
-| `make clean.bins` | Clean all the GO binaries. |
+| `make build.bins` | Build all the Go binaries. |
+| `make clean.bins` | Clean all the Go binaries. |
 | `make build.images` | Build all the Docker images. |
-| `make build.up` | Rebuild & run the Docker images with docker-compose up |
-| `make up` | Run the Docker images with docker-compose up. |
-| `make down` | Stop the Docker images with docker-compose down. |
-| `make test` | Run the GO test suite. |
+| `make build.up` | Rebuild the Docker images & run the containers with docker-compose up. |
+| `make up` | Run the Docker containers with docker-compose up. |
+| `make down` | Stop the Docker containers with docker-compose down. |
+| `make test` | Run the Go test suite. |

@@ -26,8 +26,6 @@
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-settings" href="#settings">Settings</a>
                 </li>
-                <li class="heading-item -depth-2"><a class="hlink link-usage" href="#usage">Usage</a>
-                </li>
               </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
@@ -72,32 +70,83 @@
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
     <div class="markdown-body"><h1 id="sync-server">Sync server</h1>
-<p>The Sync Server is a Go binary that polls the <a href="http://WordPress.org">WordPress.org</a> API&apos;s for themes and
-plugins to process and writes them to a queue.</p>
+<p>The Sync Server is a Go binary installed on an Alpine Linux Docker image that polls the <a href="http://WordPress.org">WordPress.org</a> API&apos;s for themes and plugins to process and writes them to a queue.</p>
 <h2 id="commands">Commands</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Variable</th>
+<th style="text-align:left">Command</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>$ make sync.build.image</code></td>
-<td style="text-align:left">Builds the Sync Server Docker image.</td>
+<td style="text-align:left"><code>make sync.build.bin</code></td>
+<td style="text-align:left">Build the Sync Server Go binary.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make sync.up</code></td>
-<td style="text-align:left">Starts the Sync Server in isolation.</td>
+<td style="text-align:left"><code>make sync.clean.bin</code></td>
+<td style="text-align:left">Clean the Sync Server Go binary.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make sync.build.up</code></td>
-<td style="text-align:left">Combine the previous two steps.</td>
+<td style="text-align:left"><code>make sync.build.image</code></td>
+<td style="text-align:left">Build the Sync Server Docker image.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make sync.down</code></td>
-<td style="text-align:left">Take the isolated Sync Server down.</td>
+<td style="text-align:left"><code>make sync.build.up</code></td>
+<td style="text-align:left">Rebuild the Sync Server Docker image &amp; run the container in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.up</code></td>
+<td style="text-align:left">Run the Sync Server Docker container in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.down</code></td>
+<td style="text-align:left">Take the isolated Sync Server Docker container down.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.stop</code></td>
+<td style="text-align:left">Stop the isolated Sync Server Docker container with docker-compose stop.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.rm</code></td>
+<td style="text-align:left">Remove the stopped Sync Server Docker container with docker-compose rm.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.push.image</code></td>
+<td style="text-align:left">Push the Sync Server Docker image to GCR.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.clean.image</code></td>
+<td style="text-align:left">Clean the Sync Server Docker image from the host machine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.build.disk</code></td>
+<td style="text-align:left">Build the Sync Server GKE persistent disk.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.build.cluster</code></td>
+<td style="text-align:left">Build the Sync Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.creds</code></td>
+<td style="text-align:left">Get the Sync Server GKE cluster credentials.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.tpl</code></td>
+<td style="text-align:left">Generate the Sync Server GKE YAML template.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.deploy.cluster</code></td>
+<td style="text-align:left">Deploy the Sync Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.get.cluster</code></td>
+<td style="text-align:left">Get the Sync Server GKE cluster status.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make sync.clean.cluster</code></td>
+<td style="text-align:left">Clean the Sync Server GKE cluster.</td>
 </tr>
 </tbody>
 </table>
@@ -168,19 +217,6 @@ plugins to process and writes them to a queue.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="usage">Usage</h2>
-<p>First build the Sync Server Docker image:</p>
-<pre><code>$ make sync.build.image
-</code></pre>
-<p>Next start the Sync Server in isolation:</p>
-<pre><code>$ make sync.up
-</code></pre>
-<p>You can combine the previous two steps and simply run:</p>
-<pre><code>$ make sync.build.up
-</code></pre>
-<p>Take the isolated Sync Server down:</p>
-<pre><code>$ make sync.down
-</code></pre>
 
     </div>
     <div class="footer-nav">

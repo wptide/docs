@@ -11,10 +11,10 @@ _The API Docker containers must be up and running before you start any of the ot
 | `make api.up` | Run the API Docker containers in isolation with docker-compose up. |
 | `make api.down` | Take the isolated API Docker containers down. |
 | `make api.stop` | Stop the isolated API Docker containers with docker-compose stop. |
-| `make api.rm` | Remove the isolated API Docker containers with docker-compose rm. |
+| `make api.rm` | Remove the stopped API Docker containers with docker-compose rm. |
 | `make api.composer` | Install the Composer dependencies. Runs `make api.tpl` automatically before installing the dependencies. |
 | `make api.setup` | Run the setup script; API containers must be running to `exec` into. |
-| `make api.tpl` | Generate the API templates. |
+| `make api.tpl` | Generate the API YAML & PHP templates. |
 | `make api.deploy.sql` | Deploy the Cloud SQL database and setup the database users. |
 | `make api.deploy.app` | Deploy the API to Google App Engine. |
 | `make api.deploy.redis` | Deploy the Google Cloud Memorystore Redis instance. |
