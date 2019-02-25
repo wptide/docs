@@ -1,6 +1,15 @@
-# Google Cloud Firestore (GCF)
+# Google Cloud Firestore
 
-If you want to use Cloud Firestore as the database provider for the Sync Server or as the message provider for the Lighthouse/PHPCS Server you'll need to setup Cloud Firestore for your project by following these steps.
+If you want to use Cloud Firestore as the database provider for the Sync Server or as the message provider for the Lighthouse/PHPCS Server you'll need to setup Cloud Firestore for your project.
+
+## Environment Variables
+
+| Variable | Description |
+| :--- | :--- |
+| `GCF_QUEUE_LH` | Specifies which collection in Cloud Firestore to use for the Lighthouse message queue. This is a Firestore collection **path**. Default is `queue-lighthouse`. |
+| `GCF_QUEUE_PHPCS` | Specifies which collection in CLoud Firestore to use for the PHPCS message queue. This is a Firestore collection **path**. Default is `queue-phpcs`. |
+
+## Setup
 
 1. If you don't already have a Firebase project, add one in the [Firebase console](https://console.firebase.google.com/u/0/project/_/database/firestore/data). The **Add project** dialog also gives you the option to add Firebase to an existing Google Cloud Platform project.
 
@@ -26,11 +35,4 @@ If you want to use Cloud Firestore as the database provider for the Sync Server 
     1. Add a new field named `created` and set sort to ascending.
     1. Click `Create Index` and repeat for `queue-lighthouse`.
 
-_Note: If you change the setting values below in your `.env` then the collection names in the third step should be the same as those values._
-
-## Settings
-
-| Variable | Description |
-| :--- | :--- |
-| `GCF_QUEUE_LH` | Specifies which collection in Cloud Firestore to use for the Lighthouse message queue. This is a Firestore collection **path**. Default is `queue-lighthouse`. |
-| `GCF_QUEUE_PHPCS` | Specifies which collection in CLoud Firestore to use for the PHPCS message queue. This is a Firestore collection **path**. Default is `queue-phpcs`. |
+_Note: If you change the values in your `.env` then the collection names in the third step should be the same as those values._

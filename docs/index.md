@@ -31,9 +31,9 @@ Tide is an automated tool to provide insight into WordPress code and highlight a
 
 Tide services are responsible for the following:
 
-* The [Sync Server](services/sync.md) polls the WordPress.org API's for themes and plugins to process and writes them to a queue.
-* The [PHPCS Server](services/phpcs.md) reads messages from a queue and runs reports against both plugins and themes, then sends the results back to the Tide API.
-* The [Lighthouse Server](services/lighthouse.md) reads messages from a queue and runs Google Lighthouse reports against the themes only, then sends the results back to the Tide API.
+* The [Sync Server](services/sync-server.md) polls the WordPress.org API's for themes and plugins to process and writes them to a queue.
+* The [PHPCS Server](services/phpcs-server.md) reads messages from a queue and runs reports against both plugins and themes, then sends the results back to the Tide API.
+* The [Lighthouse Server](services/lighthouse-server.md) reads messages from a queue and runs Google Lighthouse reports against the themes only, then sends the results back to the Tide API.
 
 ## Architecture diagram
 

@@ -270,9 +270,9 @@
           },
           {
             "title": "Sync Server",
-            "source": "docs/services/sync.md",
-            "url": "services/sync.html",
-            "slug": "servicessync",
+            "source": "docs/services/sync-server.md",
+            "url": "services/sync-server.html",
+            "slug": "servicessync-server",
             "headings": [
               {
                 "title": "Commands",
@@ -288,9 +288,9 @@
           },
           {
             "title": "PHPCS Server",
-            "source": "docs/services/phpcs.md",
-            "url": "services/phpcs.html",
-            "slug": "servicesphpcs",
+            "source": "docs/services/phpcs-server.md",
+            "url": "services/phpcs-server.html",
+            "slug": "servicesphpcs-server",
             "headings": [
               {
                 "title": "Commands",
@@ -306,9 +306,9 @@
           },
           {
             "title": "Lighthouse Server",
-            "source": "docs/services/lighthouse.md",
-            "url": "services/lighthouse.html",
-            "slug": "serviceslighthouse",
+            "source": "docs/services/lighthouse-server.md",
+            "url": "services/lighthouse-server.html",
+            "slug": "serviceslighthouse-server",
             "headings": [
               {
                 "title": "Commands",
@@ -329,141 +329,151 @@
         "source": "docs/gcp/index.md",
         "url": "gcp/index.html",
         "slug": "gcp",
+        "headings": [
+          {
+            "title": "Prerequisites",
+            "depth": 2,
+            "id": "prerequisites"
+          },
+          {
+            "title": "Service Account",
+            "depth": 2,
+            "id": "service-account"
+          },
+          {
+            "title": "Environment Variables",
+            "depth": 2,
+            "id": "environment-variables"
+          }
+        ],
         "sections": [
           {
-            "title": "Setup",
-            "source": "docs/gcp/setup.md",
-            "url": "gcp/setup.html",
-            "slug": "gcpsetup",
-            "headings": [
-              {
-                "title": "Prerequisites",
-                "depth": 2,
-                "id": "prerequisites"
-              },
-              {
-                "title": "Setup",
-                "depth": 2,
-                "id": "setup",
-                "headings": [
-                  {
-                    "title": "Environment variables",
-                    "depth": 3,
-                    "id": "environment-variables"
-                  },
-                  {
-                    "title": "Google App Engine",
-                    "depth": 3,
-                    "id": "google-app-engine"
-                  },
-                  {
-                    "title": "Google Cloud Storage for App Engine",
-                    "depth": 3,
-                    "id": "google-cloud-storage-for-app-engine"
-                  },
-                  {
-                    "title": "Service Account",
-                    "depth": 3,
-                    "id": "service-account"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Deployments",
-            "source": "docs/gcp/deployments.md",
-            "url": "gcp/deployments.html",
-            "slug": "gcpdeployments",
-            "headings": [
-              {
-                "title": "GCP Settings",
-                "depth": 2,
-                "id": "gcp-settings"
-              },
-              {
-                "title": "Google Cloud SQL (GCSQL)",
-                "depth": 2,
-                "id": "google-cloud-sql-(gcsql)",
-                "headings": [
-                  {
-                    "title": "GCSQL API Settings",
-                    "depth": 3,
-                    "id": "gcsql-api-settings"
-                  }
-                ]
-              },
-              {
-                "title": "Google Cloud Memorystore (GCM)",
-                "depth": 2,
-                "id": "google-cloud-memorystore-(gcm)",
-                "headings": [
-                  {
-                    "title": "GCM API Settings",
-                    "depth": 3,
-                    "id": "gcm-api-settings"
-                  }
-                ]
-              },
-              {
-                "title": "Google App Engine (GAE)",
-                "depth": 2,
-                "id": "google-app-engine-(gae)",
-                "headings": [
-                  {
-                    "title": "GAE API Settings",
-                    "depth": 3,
-                    "id": "gae-api-settings"
-                  }
-                ]
-              },
-              {
-                "title": "Google Kubernetes Engine (GKE)",
-                "depth": 2,
-                "id": "google-kubernetes-engine-(gke)",
-                "headings": [
-                  {
-                    "title": "GKE Lighthouse Server Settings",
-                    "depth": 3,
-                    "id": "gke-lighthouse-server-settings"
-                  },
-                  {
-                    "title": "GKE PHPCS Server Settings",
-                    "depth": 3,
-                    "id": "gke-phpcs-server-settings"
-                  },
-                  {
-                    "title": "GKE Sync Server Settings",
-                    "depth": 3,
-                    "id": "gke-sync-server-settings"
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "title": "Google Cloud Storage",
-            "source": "docs/gcp/gcs.md",
-            "url": "gcp/gcs.html",
-            "slug": "gcpgcs",
+            "source": "docs/gcp/google-cloud-storage.md",
+            "url": "gcp/google-cloud-storage.html",
+            "slug": "gcpgoogle-cloud-storage",
             "headings": [
               {
-                "title": "Settings",
+                "title": "Environment Variables",
                 "depth": 2,
-                "id": "settings"
+                "id": "environment-variables"
+              },
+              {
+                "title": "Media Uploads",
+                "depth": 2,
+                "id": "media-uploads"
               }
             ]
           },
           {
             "title": "Google Cloud Firestore",
-            "source": "docs/gcp/gcf.md",
-            "url": "gcp/gcf.html",
-            "slug": "gcpgcf",
+            "source": "docs/gcp/google-cloud-firestore.md",
+            "url": "gcp/google-cloud-firestore.html",
+            "slug": "gcpgoogle-cloud-firestore",
             "headings": [
               {
-                "title": "Settings",
+                "title": "Environment Variables",
                 "depth": 2,
-                "id": "settings"
+                "id": "environment-variables"
+              },
+              {
+                "title": "Setup",
+                "depth": 2,
+                "id": "setup"
+              }
+            ]
+          },
+          {
+            "title": "Google Cloud SQL",
+            "source": "docs/gcp/google-cloud-sql.md",
+            "url": "gcp/google-cloud-sql.html",
+            "slug": "gcpgoogle-cloud-sql",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
+              }
+            ]
+          },
+          {
+            "title": "Google Cloud Memorystore",
+            "source": "docs/gcp/google-cloud-memorystore.md",
+            "url": "gcp/google-cloud-memorystore.html",
+            "slug": "gcpgoogle-cloud-memorystore",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
+              }
+            ]
+          },
+          {
+            "title": "Google App Engine",
+            "source": "docs/gcp/google-app-engine.md",
+            "url": "gcp/google-app-engine.html",
+            "slug": "gcpgoogle-app-engine",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
+                "title": "Setup",
+                "depth": 2,
+                "id": "setup"
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
+              }
+            ]
+          },
+          {
+            "title": "Google Kubernetes Engine",
+            "source": "docs/gcp/google-kubernetes-engine.md",
+            "url": "gcp/google-kubernetes-engine.html",
+            "slug": "gcpgoogle-kubernetes-engine",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables",
+                "headings": [
+                  {
+                    "title": "Lighthouse Server",
+                    "depth": 3,
+                    "id": "lighthouse-server"
+                  },
+                  {
+                    "title": "PHPCS Server",
+                    "depth": 3,
+                    "id": "phpcs-server"
+                  },
+                  {
+                    "title": "Sync Server",
+                    "depth": 3,
+                    "id": "sync-server"
+                  }
+                ]
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
               }
             ]
           }
@@ -476,9 +486,9 @@
         "slug": "aws",
         "headings": [
           {
-            "title": "Settings",
+            "title": "Environment Variables",
             "depth": 2,
-            "id": "settings"
+            "id": "environment-variables"
           }
         ]
       },
@@ -859,11 +869,11 @@
         }
       ]
     },
-    "services/sync.html": {
-      "source": "docs/services/sync.md",
+    "services/sync-server.html": {
+      "source": "docs/services/sync-server.md",
       "title": "Sync Server - Tide",
       "pageTitle": "Sync Server",
-      "slug": "servicessync",
+      "slug": "servicessync-server",
       "headings": [
         {
           "title": "Commands",
@@ -877,11 +887,11 @@
         }
       ]
     },
-    "services/phpcs.html": {
-      "source": "docs/services/phpcs.md",
+    "services/phpcs-server.html": {
+      "source": "docs/services/phpcs-server.md",
       "title": "PHPCS Server - Tide",
       "pageTitle": "PHPCS Server",
-      "slug": "servicesphpcs",
+      "slug": "servicesphpcs-server",
       "headings": [
         {
           "title": "Commands",
@@ -895,11 +905,11 @@
         }
       ]
     },
-    "services/lighthouse.html": {
-      "source": "docs/services/lighthouse.md",
+    "services/lighthouse-server.html": {
+      "source": "docs/services/lighthouse-server.md",
       "title": "Lighthouse Server - Tide",
       "pageTitle": "Lighthouse Server",
-      "slug": "serviceslighthouse",
+      "slug": "serviceslighthouse-server",
       "headings": [
         {
           "title": "Commands",
@@ -917,13 +927,7 @@
       "source": "docs/gcp/index.md",
       "title": "Google Cloud Platform - Tide",
       "pageTitle": "Google Cloud Platform",
-      "slug": "gcp"
-    },
-    "gcp/setup.html": {
-      "source": "docs/gcp/setup.md",
-      "title": "Setup - Tide",
-      "pageTitle": "Setup",
-      "slug": "gcpsetup",
+      "slug": "gcp",
       "headings": [
         {
           "title": "Prerequisites",
@@ -931,128 +935,144 @@
           "id": "prerequisites"
         },
         {
-          "title": "Setup",
+          "title": "Service Account",
           "depth": 2,
-          "id": "setup",
-          "headings": [
-            {
-              "title": "Environment variables",
-              "depth": 3,
-              "id": "environment-variables"
-            },
-            {
-              "title": "Google App Engine",
-              "depth": 3,
-              "id": "google-app-engine"
-            },
-            {
-              "title": "Google Cloud Storage for App Engine",
-              "depth": 3,
-              "id": "google-cloud-storage-for-app-engine"
-            },
-            {
-              "title": "Service Account",
-              "depth": 3,
-              "id": "service-account"
-            }
-          ]
+          "id": "service-account"
+        },
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
         }
       ]
     },
-    "gcp/deployments.html": {
-      "source": "docs/gcp/deployments.md",
-      "title": "Deployments - Tide",
-      "pageTitle": "Deployments",
-      "slug": "gcpdeployments",
-      "headings": [
-        {
-          "title": "GCP Settings",
-          "depth": 2,
-          "id": "gcp-settings"
-        },
-        {
-          "title": "Google Cloud SQL (GCSQL)",
-          "depth": 2,
-          "id": "google-cloud-sql-(gcsql)",
-          "headings": [
-            {
-              "title": "GCSQL API Settings",
-              "depth": 3,
-              "id": "gcsql-api-settings"
-            }
-          ]
-        },
-        {
-          "title": "Google Cloud Memorystore (GCM)",
-          "depth": 2,
-          "id": "google-cloud-memorystore-(gcm)",
-          "headings": [
-            {
-              "title": "GCM API Settings",
-              "depth": 3,
-              "id": "gcm-api-settings"
-            }
-          ]
-        },
-        {
-          "title": "Google App Engine (GAE)",
-          "depth": 2,
-          "id": "google-app-engine-(gae)",
-          "headings": [
-            {
-              "title": "GAE API Settings",
-              "depth": 3,
-              "id": "gae-api-settings"
-            }
-          ]
-        },
-        {
-          "title": "Google Kubernetes Engine (GKE)",
-          "depth": 2,
-          "id": "google-kubernetes-engine-(gke)",
-          "headings": [
-            {
-              "title": "GKE Lighthouse Server Settings",
-              "depth": 3,
-              "id": "gke-lighthouse-server-settings"
-            },
-            {
-              "title": "GKE PHPCS Server Settings",
-              "depth": 3,
-              "id": "gke-phpcs-server-settings"
-            },
-            {
-              "title": "GKE Sync Server Settings",
-              "depth": 3,
-              "id": "gke-sync-server-settings"
-            }
-          ]
-        }
-      ]
-    },
-    "gcp/gcs.html": {
-      "source": "docs/gcp/gcs.md",
+    "gcp/google-cloud-storage.html": {
+      "source": "docs/gcp/google-cloud-storage.md",
       "title": "Google Cloud Storage - Tide",
       "pageTitle": "Google Cloud Storage",
-      "slug": "gcpgcs",
+      "slug": "gcpgoogle-cloud-storage",
       "headings": [
         {
-          "title": "Settings",
+          "title": "Environment Variables",
           "depth": 2,
-          "id": "settings"
+          "id": "environment-variables"
+        },
+        {
+          "title": "Media Uploads",
+          "depth": 2,
+          "id": "media-uploads"
         }
       ]
     },
-    "gcp/gcf.html": {
-      "source": "docs/gcp/gcf.md",
+    "gcp/google-cloud-firestore.html": {
+      "source": "docs/gcp/google-cloud-firestore.md",
       "title": "Google Cloud Firestore - Tide",
       "pageTitle": "Google Cloud Firestore",
-      "slug": "gcpgcf",
+      "slug": "gcpgoogle-cloud-firestore",
       "headings": [
         {
-          "title": "Settings",
+          "title": "Environment Variables",
           "depth": 2,
-          "id": "settings"
+          "id": "environment-variables"
+        },
+        {
+          "title": "Setup",
+          "depth": 2,
+          "id": "setup"
+        }
+      ]
+    },
+    "gcp/google-cloud-sql.html": {
+      "source": "docs/gcp/google-cloud-sql.md",
+      "title": "Google Cloud SQL - Tide",
+      "pageTitle": "Google Cloud SQL",
+      "slug": "gcpgoogle-cloud-sql",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
+          "title": "Deploy",
+          "depth": 2,
+          "id": "deploy"
+        }
+      ]
+    },
+    "gcp/google-cloud-memorystore.html": {
+      "source": "docs/gcp/google-cloud-memorystore.md",
+      "title": "Google Cloud Memorystore - Tide",
+      "pageTitle": "Google Cloud Memorystore",
+      "slug": "gcpgoogle-cloud-memorystore",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
+          "title": "Deploy",
+          "depth": 2,
+          "id": "deploy"
+        }
+      ]
+    },
+    "gcp/google-app-engine.html": {
+      "source": "docs/gcp/google-app-engine.md",
+      "title": "Google App Engine - Tide",
+      "pageTitle": "Google App Engine",
+      "slug": "gcpgoogle-app-engine",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
+          "title": "Setup",
+          "depth": 2,
+          "id": "setup"
+        },
+        {
+          "title": "Deploy",
+          "depth": 2,
+          "id": "deploy"
+        }
+      ]
+    },
+    "gcp/google-kubernetes-engine.html": {
+      "source": "docs/gcp/google-kubernetes-engine.md",
+      "title": "Google Kubernetes Engine - Tide",
+      "pageTitle": "Google Kubernetes Engine",
+      "slug": "gcpgoogle-kubernetes-engine",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables",
+          "headings": [
+            {
+              "title": "Lighthouse Server",
+              "depth": 3,
+              "id": "lighthouse-server"
+            },
+            {
+              "title": "PHPCS Server",
+              "depth": 3,
+              "id": "phpcs-server"
+            },
+            {
+              "title": "Sync Server",
+              "depth": 3,
+              "id": "sync-server"
+            }
+          ]
+        },
+        {
+          "title": "Deploy",
+          "depth": 2,
+          "id": "deploy"
         }
       ]
     },
@@ -1063,9 +1083,9 @@
       "slug": "aws",
       "headings": [
         {
-          "title": "Settings",
+          "title": "Environment Variables",
           "depth": 2,
-          "id": "settings"
+          "id": "environment-variables"
         }
       ]
     },
@@ -1182,14 +1202,16 @@
     "docs/installation/setup.md": "installation/setup.html",
     "docs/services/index.md": "services/index.html",
     "docs/services/api.md": "services/api.html",
-    "docs/services/sync.md": "services/sync.html",
-    "docs/services/phpcs.md": "services/phpcs.html",
-    "docs/services/lighthouse.md": "services/lighthouse.html",
+    "docs/services/sync-server.md": "services/sync-server.html",
+    "docs/services/phpcs-server.md": "services/phpcs-server.html",
+    "docs/services/lighthouse-server.md": "services/lighthouse-server.html",
     "docs/gcp/index.md": "gcp/index.html",
-    "docs/gcp/setup.md": "gcp/setup.html",
-    "docs/gcp/deployments.md": "gcp/deployments.html",
-    "docs/gcp/gcs.md": "gcp/gcs.html",
-    "docs/gcp/gcf.md": "gcp/gcf.html",
+    "docs/gcp/google-cloud-storage.md": "gcp/google-cloud-storage.html",
+    "docs/gcp/google-cloud-firestore.md": "gcp/google-cloud-firestore.html",
+    "docs/gcp/google-cloud-sql.md": "gcp/google-cloud-sql.html",
+    "docs/gcp/google-cloud-memorystore.md": "gcp/google-cloud-memorystore.html",
+    "docs/gcp/google-app-engine.md": "gcp/google-app-engine.html",
+    "docs/gcp/google-kubernetes-engine.md": "gcp/google-kubernetes-engine.html",
     "docs/aws/index.md": "aws/index.html",
     "docs/help.md": "help.html",
     "docs/contributing.md": "contributing.html",

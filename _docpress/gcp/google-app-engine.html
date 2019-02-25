@@ -1,0 +1,177 @@
+
+<div class="doc-layout">
+  <div class="toggle menu-toggle js-menu-toggle"></div>
+  <ul class="menu toc-menu">
+    <li class="menu-item -level-0 -parent">
+      <ul class="submenu">
+        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Tide</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="installation/index.html">Installation</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="installation/prerequisites.html">Prerequisites</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="installation/cloning.html">Cloning</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="installation/setup.html">Setup</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-services" href="services/index.html">Services</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync-server" href="services/sync-server.html">Sync Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs-server" href="services/phpcs-server.html">PHPCS Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse-server" href="services/lighthouse-server.html">Lighthouse Server</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-storage" href="gcp/google-cloud-storage.html">Google Cloud Storage</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-firestore" href="gcp/google-cloud-firestore.html">Google Cloud Firestore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-memorystore" href="gcp/google-cloud-memorystore.html">Google Cloud Memorystore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title -active link-gcpgoogle-app-engine" href="gcp/google-app-engine.html">Google App Engine</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-setup" href="#setup">Setup</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-deploy" href="#deploy">Deploy</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-kubernetes-engine" href="gcp/google-kubernetes-engine.html">Google Kubernetes Engine</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-aws" href="aws/index.html">Amazon Web Services</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-search" href="search.html">API Search</a>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-404" href="404.html">404</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="body page-gcpgoogle-app-engine">
+    <div class="header-nav">
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+    </div>
+    <div class="markdown-body"><h1 id="google-app-engine">Google App Engine</h1>
+<p>You need to setup App Engine before you can deploy to GCP or use GCP resources for local development.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Auto Scaling</strong>:</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_AS_COOL_DOWN_PERIOD_SEC</code></td>
+<td style="text-align:left">The number of seconds that the autoscaler should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. The cool-down period must be greater than or equal to 60 seconds. An example value is <code>120</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_AS_CPU_TARGET_UTILIZATION</code></td>
+<td style="text-align:left">Target CPU utilization. CPU use is averaged across all running instances and is used to decide when to reduce or increase the number of instances. Note that instances are downscaled irrespective of in-flight requests 25 seconds after an instance receives the shutdown signal. An example value is <code>0.5</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_AS_MAX_NUM_INSTANCES</code></td>
+<td style="text-align:left">The maximum number of instances that your service can scale up to. The maximum number of instances in your project is limited by your project&apos;s <a href="https://cloud.google.com/compute/docs/resource-quotas">resource quota</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_AS_MIN_NUM_INSTANCES</code></td>
+<td style="text-align:left">The minimum number of instances given to your service. When a service is deployed, it is given this many instances and scales according to traffic. Must be <code>1</code> or greater, use a minimum of <code>2</code> to reduce latency.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cron Schedule</strong>:</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_CRON_SCHEDULE_MINS</code></td>
+<td style="text-align:left">The number of minutes between cron intervals. An example value is <code>1</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Readiness Check</strong>:</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_RC_APP_START_TIMEOUT_SEC</code></td>
+<td style="text-align:left">The maximum time, in seconds, an instance has to become ready after the VM and other infrastructure are provisioned. After this period, the deployment fails and is rolled back. You might want to increase this setting if your application requires significant initialization tasks, such as downloading a large file, before it is ready to serve. Must be within range of: <code>1-3600</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_RC_CHECK_INTERVAL_SEC</code></td>
+<td style="text-align:left">Time interval between checks, in seconds. Must be within range of: <code>1-300</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_RC_FAILURE_THRESHOLD</code></td>
+<td style="text-align:left">An instance is unhealthy after failing this number of consecutive checks. Must be within range of: <code>1-10</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_RC_SUCCESS_THRESHOLD</code></td>
+<td style="text-align:left">An unhealthy instance becomes healthy after successfully responding to this number of consecutive checks. Must be within range of: <code>1-10</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GAE_API_RC_TIMEOUT_SEC</code></td>
+<td style="text-align:left">Timeout interval for each request, in seconds. Must be within range of: <code>1-300</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="setup">Setup</h2>
+<p>Create an App Engine application within your new project:</p>
+<pre><code>$ gcloud app create
+</code></pre>
+<p>Configure Google Cloud SDK with your account and the project ID you&apos;ve just created:</p>
+<pre><code>$ gcloud init
+</code></pre>
+<p>Configure the App Engine default GCS bucket for later use. The default App Engine bucket is named <code>YOUR_PROJECT_ID.appspot.com</code>. Change the default Access Control List (ACL) of that bucket as follows:</p>
+<pre><code>$ gsutil defacl ch -u AllUsers:R gs://YOUR_PROJECT_ID.appspot.com
+</code></pre>
+<h2 id="deploy">Deploy</h2>
+<p>Deploying the API to App Engine is fairly straight forward. You&apos;ll need to provision a database and then deploy the app. With one caveat. The first time you deploy the API you <strong>must</strong> remove the <code>readiness_check</code> section from your <code>service/api/app.yaml</code> or your app will never become healthy. The section looks like this:</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">readiness_check:</span>
+<span class="hljs-attr">  path:</span> <span class="pl-s">&quot;/health-check.php&quot;</span>
+<span class="hljs-attr">  timeout_sec:</span> <span class="hljs-number">4</span>
+<span class="hljs-attr">  check_interval_sec:</span> <span class="hljs-number">5</span>
+<span class="hljs-attr">  failure_threshold:</span> <span class="hljs-number">2</span>
+<span class="hljs-attr">  success_threshold:</span> <span class="hljs-number">2</span>
+<span class="hljs-attr">  app_start_timeout_sec:</span> <span class="hljs-number">60</span>
+</code></pre>
+<p><em>Once you&apos;ve deployed and installed WordPress add the <code>readiness_check</code> section back to <code>app.yaml</code> and re-deploy. The health check should be working and ensuring the health of your containers on App Engine.</em></p>
+<p>Deploy the API to App Engine:</p>
+<pre><code>make api.deploy.app
+</code></pre>
+<p><em>You will need to activate the plugins, create the necessary API user accounts, and setup permalinks manually.</em></p>
+
+    </div>
+    <div class="footer-nav">
+      <div class="left"><a href="../gcp/google-cloud-memorystore.html"><span class="title">Google Cloud Memorystore</span></a></div>
+      <div class="right"><a href="../gcp/google-kubernetes-engine.html"><span class="label">Next: </span><span class="title">Google Kubernetes Engine</span></a></div>
+    </div>
+  </div>
+</div>

@@ -28,21 +28,19 @@
             </li>
           </ul>
         </li>
-        <li class="menu-item -level-1 -parent"><a class="link title -active link-gcp" href="gcp/index.html">Google Cloud Platform</a>
-          <ul class="headings heading-list">
-            <li class="heading-item -depth-2"><a class="hlink link-prerequisites" href="#prerequisites">Prerequisites</a>
-            </li>
-            <li class="heading-item -depth-2"><a class="hlink link-service-account" href="#service-account">Service Account</a>
-            </li>
-            <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
-            </li>
-          </ul>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
           <ul class="submenu">
             <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-storage" href="gcp/google-cloud-storage.html">Google Cloud Storage</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-firestore" href="gcp/google-cloud-firestore.html">Google Cloud Firestore</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
+            <li class="menu-item -level-2"><a class="link title -active link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-deploy" href="#deploy">Deploy</a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-memorystore" href="gcp/google-cloud-memorystore.html">Google Cloud Memorystore</a>
             </li>
@@ -73,30 +71,13 @@
       </ul>
     </li>
   </ul>
-  <div class="body page-gcp">
+  <div class="body page-gcpgoogle-cloud-sql">
     <div class="header-nav">
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
-    <div class="markdown-body"><h1 id="google-cloud-platform">Google Cloud Platform</h1>
-<p>If you are going to use any GCP resources for local development or plan to deploy Tide to the cloud, then you will have to install some prerequisites and get everything properly setup first.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ul>
-<li>Create a new Cloud Project using the <a href="https://console.cloud.google.com/">Cloud Console</a></li>
-<li>Enable Billing on that project</li>
-<li>Enable the <a href="https://console.cloud.google.com/flows/enableapi?apiid=sqladmin">Cloud SQL API</a></li>
-<li>Enable <a href="https://console.cloud.google.com/appengine">App Engine</a></li>
-<li>Create a <code>service-account.json</code></li>
-<li>Install <a href="https://cloud.google.com/sdk/">Google Cloud SDK</a></li>
-<li>Install <a href="https://cloud.google.com/storage/docs/gsutil_install"><code>gsutil</code></a></li>
-</ul>
-<h2 id="service-account">Service Account</h2>
-<p>Go to the <a href="https://console.cloud.google.com/apis/credentials/">Credentials</a> section of your project in the Console. Click <strong>Create credentials</strong> and then click <strong>Service account key</strong>. For the Service account, select <strong>App Engine app default service account</strong>. Then click <strong>Create</strong> to generate and download the JSON service account key file to your local machine. Save the file as <code>service-account.json</code> in the the projects root directory. We will use this file to connect to Google Cloud Platform services and API&apos;s like Cloud Storage and Cloud SQL.</p>
-<p><em>If <strong>App Engine app default service account</strong> is missing from the list of service accounts, then you haven&apos;t activated App Engine for your project or it is still initializing.</em></p>
-<p>Deploying to GCP is optional and not required for local development. In this
-section we&apos;ve included some of the basic steps required to get setup on GCP.</p>
+    <div class="markdown-body"><h1 id="google-cloud-sql">Google Cloud SQL</h1>
+<p>Deploying a database to Cloud SQL for the WordPress API only requires a bit of configuration to the environment variables and then to run a single <code>make</code> command.</p>
 <h2 id="environment-variables">Environment Variables</h2>
-<p>You are required to create an <code>.env.gcp</code> file in the project root. You should also add the correct values to the variables in the <code>.env</code> file only if you plan to deploy or test real GCP resources. However, the <code>.env.gcp</code> file makes deploying services to GCP a lot easier, since the <code>.env.gcp</code> file will override values in the <code>.env</code> file to update any YAML deployment files, but not environment variables.</p>
-<p>These three variables are required for both local development and deployments to GCP.</p>
 <table>
 <thead>
 <tr>
@@ -106,25 +87,69 @@ section we&apos;ve included some of the basic steps required to get setup on GCP
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>GCP_PROJECT</code></td>
-<td style="text-align:left">The unique ID of you Google project. Default is <code>tide-local</code>. <em>Note: you must update this value if you plan to use <strong>any</strong> GCP resources, for purely local development the default value will work as-is.</em></td>
+<td style="text-align:left"><code>GCSQL_API_BACKUP_START_TIME</code></td>
+<td style="text-align:left">he start time of daily backups, specified in the 24 hour format - HH:MM, in the UTC timezone. This is the window of time when you would like backups to start. <a href="https://cloud.google.com/sql/docs/mysql/instance-settings#backups-and-binary-logging-2ndgen">Learn more</a>.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>GCP_REGION</code></td>
-<td style="text-align:left">The <a href="https://cloud.google.com/compute/docs/regions-zones/">region</a> where all your resources will be created. For example, <code>us-west1</code>.</td>
+<td style="text-align:left"><code>GCSQL_API_DATABASE_VERSION</code></td>
+<td style="text-align:left">The database engine type and version. Must be one of: <code>MYSQL_5_6</code>, <code>MYSQL_5_7</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>GCP_ZONE</code></td>
-<td style="text-align:left">The preferred <a href="https://cloud.google.com/compute/docs/regions-zones/">zone</a> in your region that resources will be created, For example, <code>us-west1-a</code>.</td>
+<td style="text-align:left"><code>GCSQL_API_DB_NAME</code></td>
+<td style="text-align:left">Name of the database.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_DB_PASSWORD</code></td>
+<td style="text-align:left">Password used to access the database.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_DB_ROOT_PASSWORD</code></td>
+<td style="text-align:left">The database root password.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_DB_USER</code></td>
+<td style="text-align:left">Username used to access the database.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_INSTANCE</code></td>
+<td style="text-align:left">Second Generation instance name. Do not include sensitive or personally identifiable information in your instance name; it is externally visible.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_FAILOVER_REPLICA_NAME</code></td>
+<td style="text-align:left">The name of the failover replica to be created for the new instance.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_TIER</code></td>
+<td style="text-align:left">The tier for this instance. For Second Generation instances, this is the instance&apos;s machine type (e.g., db-n1-standard-1). The machine type determines the number of CPUs and the amount of memory your instance has. <a href="https://cloud.google.com/sql/docs/mysql/instance-settings#tier-values">See valid values</a>. <a href="https://cloud.google.com/sql/docs/mysql/instance-settings#machine-type-2ndgen">Learn more</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_MAINTENANCE_RELEASE_CHANNEL</code></td>
+<td style="text-align:left">Your preferred timing for instance updates, relative to other instances in the same project. Use <code>preview</code> for earlier updates, and <code>production</code> for later updates. <a href="https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen">Learn more</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_MAINTENANCE_WINDOW_DAY</code></td>
+<td style="text-align:left">Day of week for maintenance window, in UTC time zone. Must be one of: <code>SUN</code>, <code>MON</code>, <code>TUE</code>, <code>WED</code>, <code>THU</code>, <code>FRI</code>, <code>SAT</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_MAINTENANCE_WINDOW_HOUR</code></td>
+<td style="text-align:left">Hour of day - <code>0</code> to <code>23</code>. Determines a one-hour window when Cloud SQL can perform disruptive maintenance on your instance.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCSQL_API_STORAGE_SIZE</code></td>
+<td style="text-align:left">Amount of storage allocated to the instance. Must be an integer number of <code>GB</code> between <code>10GB</code> and <code>10230GB</code> inclusive.</td>
 </tr>
 </tbody>
 </table>
-<p><em>Remember to add the region you end up using during the <code>gcloud app create</code> step on the <a href="google-app-engine">Google App Engine</a> page or you&apos;ll be troubleshooting the reason things are not working for hours.</em></p>
+<h2 id="deploy">Deploy</h2>
+<p>Create the Cloud SQL database:</p>
+<pre><code>make api.deploy.sql
+</code></pre>
+<p><em>This command will create a database instance and failover instance, set the root password, create a database for WordPress, and create a user for that database.</em></p>
 
     </div>
     <div class="footer-nav">
-      <div class="left"><a href="../services/lighthouse-server.html"><span class="title">Lighthouse Server</span></a></div>
-      <div class="right"><a href="../gcp/google-cloud-storage.html"><span class="label">Next: </span><span class="title">Google Cloud Storage</span></a></div>
+      <div class="left"><a href="../gcp/google-cloud-firestore.html"><span class="title">Google Cloud Firestore</span></a></div>
+      <div class="right"><a href="../gcp/google-cloud-memorystore.html"><span class="label">Next: </span><span class="title">Google Cloud Memorystore</span></a></div>
     </div>
   </div>
 </div>
