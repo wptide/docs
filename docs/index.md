@@ -14,7 +14,7 @@
 		<use xlink:href="#path3_fill" transform="translate(435 22)"/>
 		<use xlink:href="#path4_fill" transform="translate(576 70)"/>
 	</svg>
-  <canvas class="hero__canvas" id="canvas"></canvas>
+	<canvas class="hero__canvas" id="canvas"></canvas>
 </div>
 
 [![Build Status](https://travis-ci.org/wptide/wptide.svg?branch=develop)](https://travis-ci.org/wptide/wptide) [![Coverage Status](https://coveralls.io/repos/github/wptide/wptide/badge.svg?branch=develop)](https://coveralls.io/github/wptide/wptide?branch=develop) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](license.md) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](contributing.md) [![Shipping faster with ZenHub.io](https://img.shields.io/badge/Shipping_faster_with-ZenHub.io-6567bd.svg?style=flat)](https://www.zenhub.com/)
