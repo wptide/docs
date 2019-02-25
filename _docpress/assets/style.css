@@ -1715,6 +1715,9 @@ ul.heading-list .hlink:before {
   display: table;
   margin-top: 1.5em;
 }
+.markdown-body table tr > td:first-child {
+  white-space: nowrap;
+}
 .menu-toggle {
   display: none;
   box-sizing: content-box;

@@ -159,15 +159,15 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>API_KEY</code></td>
-<td style="text-align:left">The API key used to authenticate the <code>audit-server</code> user. Default is <code>uRhZgeYt$v5u0vR5fpcDSWcZU</code>.</td>
+<td style="text-align:left">The API key used both locally and on GCP to authenticate the <code>audit-server</code> user. Default is <code>uRhZgeYt$v5u0vR5fpcDSWcZU</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_SECRET</code></td>
-<td style="text-align:left">The API secret used to authenticate the <code>audit-server</code> user. Default is <code>rVvUWQlPQr8trSEd2qdwmE4Eiua$MjLX</code>.</td>
+<td style="text-align:left">The API secret used both locally and on GCP to authenticate the <code>audit-server</code> user. Default is <code>rVvUWQlPQr8trSEd2qdwmE4Eiua$MjLX</code>.</td>
 </tr>
 </tbody>
 </table>
-<p>To make local development simple we have added default values for the <code>API_KEY</code> and <code>API_SECRET</code> associated with the <code>audit-server</code> user, which will automatically update the user meta values when <code>make api.setup</code> is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud.</p>
+<p>To make local development simple we have added default values for the <code>API_KEY</code> and <code>API_SECRET</code> associated with the <code>audit-server</code> user, which will automatically update the user meta values when <code>make api.setup</code> is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud &#x2014; in that case you should overwrite these values in the <code>.env.gcp</code> file.</p>
 <p>If you are running Tide in production, then you can access the auto generated key and secret from the <code>audit-server</code> user&apos;s profile after you setup the API and before you deploy the Kubernetes clusters.</p>
 <h3 id="initialize-wordpress">Initialize WordPress</h3>
 <p>From the project root directory run the following <code>make</code> commands to initialize and setup WordPress.</p>

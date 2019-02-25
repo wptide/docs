@@ -49,7 +49,8 @@ function fixReferences ($, fname, sources, files, page) {
     // Ignore http://, #anchor and mailto: links.
     if (origUrl.match(/^[a-z]+:\/\//) ||
       origUrl.match(/^mailto:/) ||
-      origUrl.match(/^#/)) return
+      origUrl.match(/^#/) ||
+      ! origUrl.match(/^(.*\.md)/)) return
 
     if (m = origUrl.match(/^([^#]+)(#.*)$/)) {
       origUrl = m[1]

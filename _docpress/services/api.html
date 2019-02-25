@@ -100,36 +100,63 @@
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
     <div class="markdown-body"><h1 id="api">API</h1>
-<p>The API implements MySQL, PHP-FPM, and an Nginx web server with WordPress installed
-serving a theme and a REST API.</p>
+<p>The API implements MySQL, PHP-FPM, and an Nginx web server with WordPress installed serving a theme and a REST API. If you plan on deploying to the cloud you should read the entire <a href="/gcp">Google Cloud Platform</a> section.</p>
 <h2 id="commands">Commands</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Variable</th>
+<th style="text-align:left">Command</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>$ make api.tpl</code></td>
-<td style="text-align:left">Generates the API templates.</td>
+<td style="text-align:left"><code>make api.up</code></td>
+<td style="text-align:left">Run the API Docker images in isolation with docker-compose up.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make api.composer</code></td>
-<td style="text-align:left">Runs the previous command and installs the dependencies.</td>
+<td style="text-align:left"><code>make api.down</code></td>
+<td style="text-align:left">Take the isolated API Docker images down.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make api.up</code></td>
-<td style="text-align:left">Starts the API Docker images in isolation.</td>
+<td style="text-align:left"><code>make api.stop</code></td>
+<td style="text-align:left">Stop the isolated API Docker images with docker-compose stop.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make api.setup</code></td>
-<td style="text-align:left">Runs the setup script.</td>
+<td style="text-align:left"><code>make api.rm</code></td>
+<td style="text-align:left">Remove the isolated API Docker images with docker-compose rm.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>$ make api.down</code></td>
-<td style="text-align:left">Stops the API.</td>
+<td style="text-align:left"><code>make api.composer</code></td>
+<td style="text-align:left">Install the Composer dependencies. Runs <code>make api.tpl</code> automatically before installing the dependencies.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.setup</code></td>
+<td style="text-align:left">Run the setup script; API containers must be running to <code>exec</code> into.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.tpl</code></td>
+<td style="text-align:left">Generate the API templates.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.deploy.sql</code></td>
+<td style="text-align:left">Deploy the Cloud SQL database &amp; setup the users.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.deploy.app</code></td>
+<td style="text-align:left">Deploy the API to Google App Engine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.deploy.redis</code></td>
+<td style="text-align:left">Deploy the Google Cloud Memorystore Redis instance.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.get.redis</code></td>
+<td style="text-align:left">Get metadata, including the internal VPC IP address, for the Google Cloud Memorystore Redis instance.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make api.clean.redis</code></td>
+<td style="text-align:left">Delete the Google Cloud Memorystore Redis instance.</td>
 </tr>
 </tbody>
 </table>
@@ -204,7 +231,7 @@ serving a theme and a REST API.</p>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_KEY</code></td>
-<td style="text-align:left">The API key used locally to authenticate the <code>audit-server</code> user.</td>
+<td style="text-align:left">The API key used both locally and on GCP to authenticate the <code>audit-server</code> user.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_PROTOCOL</code></td>
@@ -228,7 +255,7 @@ serving a theme and a REST API.</p>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_SECRET</code></td>
-<td style="text-align:left">The API secret used locally to authenticate the <code>audit-server</code> user.</td>
+<td style="text-align:left">The API secret used both locally and on GCP to authenticate the <code>audit-server</code> user.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_THEME</code></td>

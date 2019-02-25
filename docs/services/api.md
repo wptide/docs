@@ -1,17 +1,23 @@
 # API
 
-The API implements MySQL, PHP-FPM, and an Nginx web server with WordPress installed 
-serving a theme and a REST API.
+The API implements MySQL, PHP-FPM, and an Nginx web server with WordPress installed serving a theme and a REST API. If you plan on deploying to the cloud you should read the entire [Google Cloud Platform](/gcp) section.
 
 ## Commands
 
-| Variable | Description |
+| Command | Description |
 | :--- | :--- |
-| `$ make api.tpl` | Generates the API templates. |
-| `$ make api.composer` | Runs the previous command and installs the dependencies. |
-| `$ make api.up` | Starts the API Docker images in isolation. |
-| `$ make api.setup` | Runs the setup script. |
-| `$ make api.down` | Stops the API. |
+| `make api.up` | Run the API Docker images in isolation with docker-compose up. |
+| `make api.down` | Take the isolated API Docker images down. |
+| `make api.stop` | Stop the isolated API Docker images with docker-compose stop. |
+| `make api.rm` | Remove the isolated API Docker images with docker-compose rm. |
+| `make api.composer` | Install the Composer dependencies. Runs `make api.tpl` automatically before installing the dependencies. |
+| `make api.setup` | Run the setup script; API containers must be running to `exec` into. |
+| `make api.tpl` | Generate the API templates. |
+| `make api.deploy.sql` | Deploy the Cloud SQL database & setup the users. |
+| `make api.deploy.app` | Deploy the API to Google App Engine. |
+| `make api.deploy.redis` | Deploy the Google Cloud Memorystore Redis instance. |
+| `make api.get.redis` | Get metadata, including the internal VPC IP address, for the Google Cloud Memorystore Redis instance. |
+| `make api.clean.redis` | Delete the Google Cloud Memorystore Redis instance. |
 
 ## Settings
 
@@ -32,13 +38,13 @@ serving a theme and a REST API.
 | `API_DB_ROOT_PASSWORD` | The local database root password. Default is `wordpress`. |
 | `API_DB_USER` | Username used to access the local database. Default is `wordpress`. |
 | `API_HTTP_HOST` | The API domain name, used both locally and on GCP. Default is `tide.local`. |
-| `API_KEY` | The API key used locally to authenticate the `audit-server` user. |
+| `API_KEY` | The API key used both locally and on GCP to authenticate the `audit-server` user. |
 | `API_PROTOCOL` | The API protocol, used both locally and on GCP Default is `http`. |
 | `API_REDIS_AUTH` | The Redis database password. Default is `redis`. |
 | `API_REDIS_DATABASE` | Use a specific numeric Redis database. Default is `0`. |
 | `API_REDIS_HOST` | The host where the Redis database can be reached. Default is `api-redis`. |
 | `API_REDIS_PORT` | The port where the Redis database can be reached. Default is `6379`. |
-| `API_SECRET` | The API secret used locally to authenticate the `audit-server` user. |
+| `API_SECRET` | The API secret used both locally and on GCP to authenticate the `audit-server` user. |
 | `API_THEME` | The slug of the local WordPress theme. Default is `twentyseventeen`. |
 | `API_UPLOAD_HANDLER` | Tells WordPress how media upload is handled. Uses either the local file system or Google Cloud Storage. Must be one of: `local`, `gcs`. Default is `local`. |
 | `API_VERSION` | The API version found in the Tide API REST url, used both locally and on GCP. Default is `v1`. |

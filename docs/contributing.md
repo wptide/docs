@@ -6,7 +6,7 @@ through the following guidelines.
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[Tide Code of Conduct](code-of-conduct.md). By participating, you are expected
+[Tide Code of Conduct](/code-of-conduct). By participating, you are expected
 to uphold this code. Please report unacceptable behavior to engage@xwp.co.
 
 ## Issue Reporting Guidelines
