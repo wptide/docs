@@ -1697,15 +1697,20 @@ ul.heading-list .hlink:before {
   }
   .markdown-body h3 {
     font-size: 1.5em;
+    overflow: scroll;
+    white-space: nowrap;
+  }
+  .markdown-body h3::-webkit-scrollbar {
+    display: none;
   }
   .markdown-body h4 {
     font-size: 1.25em;
   }
   .markdown-body h5 {
-    font-size: 0.875em;
+    font-size: 1.1em;
   }
   .markdown-body h6 {
-    font-size: 0.85em;
+    font-size: 0.875em;
   }
 }
 .markdown-body blockquote {

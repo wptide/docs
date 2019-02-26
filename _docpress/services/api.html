@@ -26,23 +26,13 @@
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-endpoints" href="#endpoints">Endpoints</a>
                   <ul class="heading-list -depth-2">
-                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1" href="#apitidev1">`/api/tide/v1/`</a>
-                    </li>
-                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1report" href="#apitidev1report">`/api/tide/v1/report`</a>
-                    </li>
-                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1reportchecksumtypestandard" href="#apitidev1reportchecksumtypestandard">`/api/tide/v1/report/{checksum}/{type}/{standard}/`</a>
-                    </li>
-                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1reportpost_idtypestandard" href="#apitidev1reportpost_idtypestandard">`/api/tide/v1/report/{post_id}/{type}/{standard}/`</a>
-                    </li>
                     <li class="heading-item -depth-3"><a class="hlink link-apitidev1auth" href="#apitidev1auth">`/api/tide/v1/auth`</a>
                     </li>
-                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1keypairid" href="#apitidev1keypairid">`/api/tide/v1/keypair/{id}`</a>
-                    </li>
-                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1audit" href="#apitidev1audit">`/api/tide/v1/audit/`</a>
+                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1audit" href="#apitidev1audit">`/api/tide/v1/audit`</a>
                     </li>
                     <li class="heading-item -depth-3"><a class="hlink link-apitidev1auditid" href="#apitidev1auditid">`/api/tide/v1/audit/{id}`</a>
                     </li>
-                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1auditchecksum" href="#apitidev1auditchecksum">`/api/tide/v1/audit/{checksum}`</a>
+                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1auditaltid" href="#apitidev1auditaltid">`/api/tide/v1/audit/{altid}`</a>
                     </li>
                     <li class="heading-item -depth-3"><a class="hlink link-apitidev1auditproject_client" href="#apitidev1auditproject_client">`/api/tide/v1/audit/{project_client}`</a>
                     </li>
@@ -51,6 +41,10 @@
                     <li class="heading-item -depth-3"><a class="hlink link-apitidev1auditproject_clientproject_typeproject_slug" href="#apitidev1auditproject_clientproject_typeproject_slug">`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}`</a>
                     </li>
                     <li class="heading-item -depth-3"><a class="hlink link-apitidev1auditproject_clientproject_typeproject_slugversion" href="#apitidev1auditproject_clientproject_typeproject_slugversion">`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1reportidtypestandard" href="#apitidev1reportidtypestandard">`/api/tide/v1/report/{id}/{type}/{standard}`</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-apitidev1reportaltidtypestandard" href="#apitidev1reportaltidtypestandard">`/api/tide/v1/report/{altid}/{type}/{standard}`</a>
                     </li>
                   </ul>
                 </li>
@@ -283,28 +277,40 @@
 </tbody>
 </table>
 <h2 id="endpoints">Endpoints</h2>
-<h3 id="apitidev1"><code>/api/tide/v1/</code></h3>
-<h4 id="get">GET</h4>
-<p>API Root</p>
-<h3 id="apitidev1report"><code>/api/tide/v1/report</code></h3>
-<h4 id="get">GET</h4>
-<p>Get a report.</p>
-<h3 id="apitidev1reportchecksumtypestandard"><code>/api/tide/v1/report/{checksum}/{type}/{standard}/</code></h3>
-<h4 id="get">GET</h4>
-<p>Get a report by checksum.</p>
-<h3 id="apitidev1reportpost_idtypestandard"><code>/api/tide/v1/report/{post_id}/{type}/{standard}/</code></h3>
-<p>Get a report by id.</p>
+<p>The Tide API has several endpoints. I&apos;ll try and cover them in as much detail as possible. One important workflow to note when working with the API is that you must authenticate with the API and generate a token that you then use to make authenticated requests.</p>
 <h3 id="apitidev1auth"><code>/api/tide/v1/auth</code></h3>
-<h4 id="post">POST</h4>
-<p>Authenticate user.</p>
-<h3 id="apitidev1keypairid"><code>/api/tide/v1/keypair/{id}</code></h3>
-<h4 id="post">POST</h4>
-<p>[Description]</p>
-<h4 id="get">GET</h4>
-<p>[Description]</p>
-<h3 id="apitidev1audit"><code>/api/tide/v1/audit/</code></h3>
-<h4 id="get">GET</h4>
-<p>Get collection of audits.</p>
+<p>Generates a user specific JSON Web Token (JWT) by making a basic authentication <code>POST</code> request with an API key and secret &#x2014; which can be found on your user profile page.</p>
+<h4 id="post"><code>POST</code></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>api_key</code></td>
+<td style="text-align:left">Tide user&apos;s API key.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>api_secret</code></td>
+<td style="text-align:left">Tide user&apos;s API secret.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="usage">Usage</h4>
+<p>Request a JWT with your API key and secret:</p>
+<pre><code>curl -X POST \
+    http://tide.local/api/tide/v1/auth \
+    -F &apos;api_key=&lt;api_key&gt;&apos; \
+    -F &apos;api_secret=&lt;api_secret&gt;&apos;
+</code></pre>
+<hr>
+<h3 id="apitidev1audit"><code>/api/tide/v1/audit</code></h3>
+<p>This endpoint is used to get audit results and generate audits. There are several ways to generate an audit and reports. One of them is to make a <code>POST</code> request to the audit endpoint in the Tide API. An unauthenticated <code>GET</code> request option is describe lower on this page and is specifically for the <code>wporg</code> user. Another possibility would be to create a message in the queue, but that requires more access than a simple Bearer token.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Request a collection of audits.</p>
 <table>
 <thead>
 <tr>
@@ -383,8 +389,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="post">POST</h4>
-<p>Create an audit.</p>
+<h4 id="post"><code>POST</code></h4>
+<p>Create an audit that generates various report standards for WordPress themes and plugins.</p>
 <table>
 <thead>
 <tr>
@@ -394,58 +400,69 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>date</code></td>
-<td style="text-align:left">The date the object was published, in the site&apos;s timezone.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>date_gmt</code></td>
-<td style="text-align:left">The date the object was published, as GMT.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>slug</code></td>
-<td style="text-align:left">An alphanumeric identifier for the object unique to its type.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>status</code></td>
-<td style="text-align:left">A named status for the object.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>password</code></td>
-<td style="text-align:left">A password to protect access to the content and excerpt.</td>
-</tr>
-<tr>
 <td style="text-align:left"><code>title</code></td>
-<td style="text-align:left">The title for the object.</td>
+<td style="text-align:left">Title of the plugin or theme.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content</code></td>
-<td style="text-align:left">The content for the object.</td>
+<td style="text-align:left">Description of the plugin or theme.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>author</code></td>
-<td style="text-align:left">The ID for the author of the object.</td>
+<td style="text-align:left"><code>slug</code></td>
+<td style="text-align:left">The slug of the plugin or theme.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>excerpt</code></td>
-<td style="text-align:left">The excerpt for the object.</td>
+<td style="text-align:left"><code>project_type</code></td>
+<td style="text-align:left">The type of project to audit. Must be one of: <code>theme</code>, <code>plugin</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>meta</code></td>
-<td style="text-align:left">Meta fields.</td>
+<td style="text-align:left"><code>source_url</code></td>
+<td style="text-align:left">The source to the <code>zip</code> file. <em>In the future we will support <code>git</code> repositories.</em></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>template</code></td>
-<td style="text-align:left">The theme file to use to display the object.</td>
+<td style="text-align:left"><code>source_type</code></td>
+<td style="text-align:left">This must be <code>zip</code>. <em>In the future we will support <code>git</code> repositories.</em></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>audit_project</code></td>
-<td style="text-align:left">The terms assigned to the object in the audit_project taxonomy.</td>
+<td style="text-align:left"><code>request_client</code></td>
+<td style="text-align:left">The Tide API user login name.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>force</code></td>
+<td style="text-align:left">Force a re-audit for existing audit reports. Must be one of: <code>true</code>, <code>false</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>visibility</code></td>
+<td style="text-align:left">Sets the visibility of an audit. Must be one of: <code>public</code> or <code>private</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>standards</code></td>
+<td style="text-align:left">An array of available report standards. Must be one of: <code>phpcs_wordpress</code>, <code>phpcs_phpcompatibility</code>, <code>lighthouse</code>.</td>
 </tr>
 </tbody>
 </table>
+<h4 id="usage">Usage</h4>
+<p>Create an audit by making a <code>POST</code> request:</p>
+<pre><code>curl -X POST \
+    http://tide.local/api/tide/v1/audit \
+    -H &apos;Authorization: Bearer &lt;token&gt;&apos; \
+    -F &apos;title=Twenty Seventeen&apos; \
+    -F &apos;content=Twenty Seventeen brings your site to life with header video and immersive featured images.&apos; \
+    -F &apos;slug=twentyseventeen&apos; \
+    -F &apos;project_type=theme&apos; \
+    -F &apos;source_url=https://downloads.wordpress.org/theme/twentyseventeen.2.1.zip&apos; \
+    -F &apos;source_type=zip&apos; \
+    -F &apos;request_client=wporg&apos; \
+    -F &apos;force=false&apos; \
+    -F &apos;visibility=public&apos; \
+    -F &apos;standards[]=phpcs_wordpress&apos; \
+    -F &apos;standards[]=phpcs_phpcompatibility&apos;
+</code></pre>
+<hr>
 <h3 id="apitidev1auditid"><code>/api/tide/v1/audit/{id}</code></h3>
-<h4 id="get">GET</h4>
-<p>Get an audit by id.</p>
+<p>Similar to the previous endpoint but strictly used to make requests to existing audits.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get an audit by <code>id</code>.</p>
 <table>
 <thead>
 <tr>
@@ -457,19 +474,11 @@
 <tr>
 <td style="text-align:left"><code>id</code></td>
 <td style="text-align:left">Unique identifier for the object.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>context</code></td>
-<td style="text-align:left">Scope under which the request is made; determines fields present in response.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>password</code></td>
-<td style="text-align:left">The password for the post if it is password protected.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="post-put-patch">POST, PUT, PATCH</h4>
-<p>Update an audit.</p>
+<h4 id="post"><code>POST</code></h4>
+<p>Update an audit by <code>id</code>.</p>
 <table>
 <thead>
 <tr>
@@ -483,57 +492,49 @@
 <td style="text-align:left">Unique identifier for the object.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>date</code></td>
-<td style="text-align:left">The date the object was published, in the site&apos;s timezone.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>date_gmt</code></td>
-<td style="text-align:left">The date the object was published, as GMT.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>slug</code></td>
-<td style="text-align:left">An alphanumeric identifier for the object unique to its type.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>status</code></td>
-<td style="text-align:left">A named status for the object.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>password</code></td>
-<td style="text-align:left">A password to protect access to the content and excerpt.</td>
-</tr>
-<tr>
 <td style="text-align:left"><code>title</code></td>
-<td style="text-align:left">The title for the object.</td>
+<td style="text-align:left">Title of the plugin or theme.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content</code></td>
-<td style="text-align:left">The content for the object.</td>
+<td style="text-align:left">Description of the plugin or theme.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>author</code></td>
-<td style="text-align:left">The ID for the author of the object.</td>
+<td style="text-align:left"><code>slug</code></td>
+<td style="text-align:left">The slug of the plugin or theme.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>excerpt</code></td>
-<td style="text-align:left">The excerpt for the object.</td>
+<td style="text-align:left"><code>project_type</code></td>
+<td style="text-align:left">The type of project to audit. Must be one of: <code>theme</code>, <code>plugin</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>meta</code></td>
-<td style="text-align:left">Meta fields.</td>
+<td style="text-align:left"><code>source_url</code></td>
+<td style="text-align:left">The source to the <code>zip</code> file. <em>In the future we will support <code>git</code> repositories.</em></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>template</code></td>
-<td style="text-align:left">The theme file to use to display the object.</td>
+<td style="text-align:left"><code>source_type</code></td>
+<td style="text-align:left">This must be <code>zip</code>. <em>In the future we will support <code>git</code> repositories.</em></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>audit_project</code></td>
-<td style="text-align:left">The terms assigned to the object in the audit_project taxonomy.</td>
+<td style="text-align:left"><code>request_client</code></td>
+<td style="text-align:left">The Tide API user login name.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>force</code></td>
+<td style="text-align:left">Force a re-audit for existing audit reports. Must be one of: <code>true</code>, <code>false</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>visibility</code></td>
+<td style="text-align:left">Sets the visibility of an audit. Must be one of: <code>public</code> or <code>private</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>standards</code></td>
+<td style="text-align:left">An array of available report standards. Must be one of: <code>phpcs_wordpress</code>, <code>phpcs_phpcompatibility</code>, <code>lighthouse</code>.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="delete">DELETE</h4>
-<p>Delete an audit.</p>
+<p>Delete an audit by <code>id</code>.</p>
 <table>
 <thead>
 <tr>
@@ -548,13 +549,41 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>force</code></td>
-<td style="text-align:left">Whether to bypass trash and force deletion.</td>
+<td style="text-align:left">Whether to bypass trash and force deletion. Must be one of: <code>true</code>, <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="apitidev1auditchecksum"><code>/api/tide/v1/audit/{checksum}</code></h3>
-<h4 id="get">GET</h4>
-<p>Get an audit by checksum.</p>
+<h4 id="usage">Usage</h4>
+<p>Retrieve the audit with a <code>GET</code> request:</p>
+<pre><code>curl -X GET http://tide.local/api/tide/v1/audit&lt;id&gt;
+</code></pre>
+<p>Update the title by making a <code>POST</code> request:</p>
+<pre><code>curl -X POST \
+    http://tide.local/api/tide/v1/audit/&lt;id&gt; \
+    -H &apos;Authorization: Bearer &lt;token&gt;&apos; \
+    -F &apos;title=Something New!&apos;
+</code></pre>
+<p>Force all the report standards to be re-audited by making a <code>POST</code> request:</p>
+<pre><code>curl -X POST \
+    http://tide.local/api/tide/v1/audit/&lt;id&gt; \
+    -H &apos;Authorization: Bearer &lt;token&gt;&apos; \
+    -F &apos;force=true&apos; \
+    -F &apos;standards[]=phpcs_wordpress&apos; \
+    -F &apos;standards[]=phpcs_phpcompatibility&apos; \
+    -F &apos;standards[]=lighthouse&apos;
+</code></pre>
+<p><em>And adds the Lighthouse report that was missing in the <code>/api/tide/v1/audit</code> example above.</em></p>
+<p>Remove the audit with a <code>DELETE</code> request and bypass the trash:</p>
+<pre><code>curl -X DELETE \
+    http://tide.local/api/tide/v1/audit/&lt;id&gt; \
+    -H &apos;Authorization: Bearer &lt;token&gt;&apos; \
+    -F &apos;force=true&apos;
+</code></pre>
+<hr>
+<h3 id="apitidev1auditaltid"><code>/api/tide/v1/audit/{altid}</code></h3>
+<p>This endpoint is nearly identical to the previous one, except you are using the audit&apos;s altid (e.g. checksum) to make your requests. A checksum is an MD5 hash string from the contents of a directory.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get an audit by <code>altid</code>.</p>
 <table>
 <thead>
 <tr>
@@ -567,18 +596,10 @@
 <td style="text-align:left"><code>altid</code></td>
 <td style="text-align:left">An alternate unique id to query on (e.g. checksum).</td>
 </tr>
-<tr>
-<td style="text-align:left"><code>context</code></td>
-<td style="text-align:left">Scope under which the request is made; determines fields present in response.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>password</code></td>
-<td style="text-align:left">The password for the post if it is password protected.</td>
-</tr>
 </tbody>
 </table>
-<h4 id="post-put-patch">POST, PUT, PATCH</h4>
-<p>Update an audit.</p>
+<h4 id="post"><code>POST</code></h4>
+<p>Update an audit by <code>altid</code>.</p>
 <table>
 <thead>
 <tr>
@@ -590,59 +611,51 @@
 <tr>
 <td style="text-align:left"><code>altid</code></td>
 <td style="text-align:left">An alternate unique id to query on (e.g. checksum).</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>date</code></td>
-<td style="text-align:left">The date the object was published, in the site&apos;s timezone.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>date_gmt</code></td>
-<td style="text-align:left">The date the object was published, as GMT.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>slug</code></td>
-<td style="text-align:left">An alphanumeric identifier for the object unique to its type.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>status</code></td>
-<td style="text-align:left">A named status for the object.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>password</code></td>
-<td style="text-align:left">A password to protect access to the content and excerpt.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>title</code></td>
-<td style="text-align:left">The title for the object.</td>
+<td style="text-align:left">Title of the plugin or theme.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>content</code></td>
-<td style="text-align:left">The content for the object.</td>
+<td style="text-align:left">Description of the plugin or theme.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>author</code></td>
-<td style="text-align:left">The ID for the author of the object.</td>
+<td style="text-align:left"><code>slug</code></td>
+<td style="text-align:left">The slug of the plugin or theme.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>excerpt</code></td>
-<td style="text-align:left">The excerpt for the object.</td>
+<td style="text-align:left"><code>project_type</code></td>
+<td style="text-align:left">The type of project to audit. Must be one of: <code>theme</code>, <code>plugin</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>meta</code></td>
-<td style="text-align:left">Meta fields.</td>
+<td style="text-align:left"><code>source_url</code></td>
+<td style="text-align:left">The source to the <code>zip</code> file. <em>In the future we will support <code>git</code> repositories.</em></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>template</code></td>
-<td style="text-align:left">The theme file to use to display the object.</td>
+<td style="text-align:left"><code>source_type</code></td>
+<td style="text-align:left">This must be <code>zip</code>. <em>In the future we will support <code>git</code> repositories.</em></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>audit_project</code></td>
-<td style="text-align:left">The terms assigned to the object in the audit_project taxonomy.</td>
+<td style="text-align:left"><code>request_client</code></td>
+<td style="text-align:left">The Tide API user login name.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>force</code></td>
+<td style="text-align:left">Force a re-audit for existing audit reports. Must be one of: <code>true</code>, <code>false</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>visibility</code></td>
+<td style="text-align:left">Sets the visibility of an audit. Must be one of: <code>public</code> or <code>private</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>standards</code></td>
+<td style="text-align:left">An array of available report standards. Must be one of: <code>phpcs_wordpress</code>, <code>phpcs_phpcompatibility</code>, <code>lighthouse</code>.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="delete">DELETE</h4>
-<p>Delete an audit.</p>
+<h4 id="delete"><code>DELETE</code></h4>
+<p>Delete an audit by <code>altid</code>.</p>
 <table>
 <thead>
 <tr>
@@ -661,9 +674,10 @@
 </tr>
 </tbody>
 </table>
+<hr>
 <h3 id="apitidev1auditproject_client"><code>/api/tide/v1/audit/{project_client}</code></h3>
-<h4 id="get">GET</h4>
-<p>Get collection of audits for a project client.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get an audit collection for a project client.</p>
 <table>
 <thead>
 <tr>
@@ -674,13 +688,14 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>project_client</code></td>
-<td style="text-align:left">User login name representing a project client.</td>
+<td style="text-align:left">The Tide API user login name representing a project client.</td>
 </tr>
 </tbody>
 </table>
+<hr>
 <h3 id="apitidev1auditproject_clientproject_type"><code>/api/tide/v1/audit/{project_client}/{project_type}</code></h3>
-<h4 id="get">GET</h4>
-<p>Get collection of audits for a project client of certain type: theme or plugin.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get a theme or plugin audit collection for a project client.</p>
 <table>
 <thead>
 <tr>
@@ -691,17 +706,18 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>project_client</code></td>
-<td style="text-align:left">User login name representing a project client.</td>
+<td style="text-align:left">The Tide API user login name representing a project client.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>project_type</code></td>
-<td style="text-align:left">The project type: theme or plugin.</td>
+<td style="text-align:left">The project type. Must be one of: <code>theme</code>, <code>plugin</code>.</td>
 </tr>
 </tbody>
 </table>
+<hr>
 <h3 id="apitidev1auditproject_clientproject_typeproject_slug"><code>/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}</code></h3>
-<h4 id="get">GET</h4>
-<p>Get an audit for a theme or plugin defined by a project slug.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get an audit for a theme or plugin defined by a project client and slug.</p>
 <table>
 <thead>
 <tr>
@@ -712,21 +728,23 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>project_client</code></td>
-<td style="text-align:left">User login name representing a project client.</td>
+<td style="text-align:left">The Tide API user login name representing a project client.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>project_type</code></td>
-<td style="text-align:left">The project type: theme or plugin.</td>
+<td style="text-align:left">The project type. Must be one of: <code>theme</code>, <code>plugin</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>project_slug</code></td>
-<td style="text-align:left">The taxonomy term representing the project.</td>
+<td style="text-align:left">The taxonomy term representing the project slug.</td>
 </tr>
 </tbody>
 </table>
+<hr>
 <h3 id="apitidev1auditproject_clientproject_typeproject_slugversion"><code>/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}</code></h3>
-<h4 id="get">GET</h4>
-<p>Get an audit for a theme or plugin defined by a project slug and version.</p>
+<p>This endpoint can be used to make unauthenticated audit requests on behalf of the <code>wporg</code> user if the audit doesn&apos;t already exist. With the <code>wporg</code> user token I could also send an authenticated request to this endpoint and force a re-audit if the audit does exist.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get an audit for a theme or plugin defined by a project client, slug and version.</p>
 <table>
 <thead>
 <tr>
@@ -737,19 +755,73 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>project_client</code></td>
-<td style="text-align:left">User login name representing a project client.</td>
+<td style="text-align:left">The Tide API user login name representing a project client.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>project_type</code></td>
-<td style="text-align:left">The project type: theme or plugin.</td>
+<td style="text-align:left">The project type. Must be one of: <code>theme</code>, <code>plugin</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>project_slug</code></td>
-<td style="text-align:left">The taxonomy term representing the project.</td>
+<td style="text-align:left">The taxonomy term representing the project slug.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>version</code></td>
-<td style="text-align:left">The version representing the project.</td>
+<td style="text-align:left">The project version number.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="apitidev1reportidtypestandard"><code>/api/tide/v1/report/{id}/{type}/{standard}</code></h3>
+<p>This endpoint is authenticated and requires a Bearer token. As well, you can only view reports associated with your account. The response is a temporary download link for the report &#x2014; keeping sensitive data safe and secure is important to us.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get a specific <code>type</code> of report by <code>id</code> and <code>standard</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">Unique identifier for the audit object.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>type</code></td>
+<td style="text-align:left">The report type. Must be one of: <code>raw</code>, <code>parsed</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>standard</code></td>
+<td style="text-align:left">The report standard. Must be one of: <code>phpcs_wordpress</code>, <code>phpcs_phpcompatibility</code>, <code>lighthouse</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="apitidev1reportaltidtypestandard"><code>/api/tide/v1/report/{altid}/{type}/{standard}</code></h3>
+<p>This endpoint has the same restrictions as above.</p>
+<h4 id="get"><code>GET</code></h4>
+<p>Get a specific <code>type</code> of report by <code>altid</code> and <code>standard</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>altid</code></td>
+<td style="text-align:left">An alternate unique id to query on (e.g. checksum).</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>type</code></td>
+<td style="text-align:left">The report type. Must be one of: <code>raw</code>, <code>parsed</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>standard</code></td>
+<td style="text-align:left">The report standard. Must be one of: <code>phpcs_wordpress</code>, <code>phpcs_phpcompatibility</code>, <code>lighthouse</code>.</td>
 </tr>
 </tbody>
 </table>

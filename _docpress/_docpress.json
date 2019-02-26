@@ -200,37 +200,12 @@
                 "id": "endpoints",
                 "headings": [
                   {
-                    "title": "`/api/tide/v1/`",
-                    "depth": 3,
-                    "id": "apitidev1"
-                  },
-                  {
-                    "title": "`/api/tide/v1/report`",
-                    "depth": 3,
-                    "id": "apitidev1report"
-                  },
-                  {
-                    "title": "`/api/tide/v1/report/{checksum}/{type}/{standard}/`",
-                    "depth": 3,
-                    "id": "apitidev1reportchecksumtypestandard"
-                  },
-                  {
-                    "title": "`/api/tide/v1/report/{post_id}/{type}/{standard}/`",
-                    "depth": 3,
-                    "id": "apitidev1reportpost_idtypestandard"
-                  },
-                  {
                     "title": "`/api/tide/v1/auth`",
                     "depth": 3,
                     "id": "apitidev1auth"
                   },
                   {
-                    "title": "`/api/tide/v1/keypair/{id}`",
-                    "depth": 3,
-                    "id": "apitidev1keypairid"
-                  },
-                  {
-                    "title": "`/api/tide/v1/audit/`",
+                    "title": "`/api/tide/v1/audit`",
                     "depth": 3,
                     "id": "apitidev1audit"
                   },
@@ -240,9 +215,9 @@
                     "id": "apitidev1auditid"
                   },
                   {
-                    "title": "`/api/tide/v1/audit/{checksum}`",
+                    "title": "`/api/tide/v1/audit/{altid}`",
                     "depth": 3,
-                    "id": "apitidev1auditchecksum"
+                    "id": "apitidev1auditaltid"
                   },
                   {
                     "title": "`/api/tide/v1/audit/{project_client}`",
@@ -263,6 +238,16 @@
                     "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
                     "depth": 3,
                     "id": "apitidev1auditproject_clientproject_typeproject_slugversion"
+                  },
+                  {
+                    "title": "`/api/tide/v1/report/{id}/{type}/{standard}`",
+                    "depth": 3,
+                    "id": "apitidev1reportidtypestandard"
+                  },
+                  {
+                    "title": "`/api/tide/v1/report/{altid}/{type}/{standard}`",
+                    "depth": 3,
+                    "id": "apitidev1reportaltidtypestandard"
                   }
                 ]
               }
@@ -801,37 +786,12 @@
           "id": "endpoints",
           "headings": [
             {
-              "title": "`/api/tide/v1/`",
-              "depth": 3,
-              "id": "apitidev1"
-            },
-            {
-              "title": "`/api/tide/v1/report`",
-              "depth": 3,
-              "id": "apitidev1report"
-            },
-            {
-              "title": "`/api/tide/v1/report/{checksum}/{type}/{standard}/`",
-              "depth": 3,
-              "id": "apitidev1reportchecksumtypestandard"
-            },
-            {
-              "title": "`/api/tide/v1/report/{post_id}/{type}/{standard}/`",
-              "depth": 3,
-              "id": "apitidev1reportpost_idtypestandard"
-            },
-            {
               "title": "`/api/tide/v1/auth`",
               "depth": 3,
               "id": "apitidev1auth"
             },
             {
-              "title": "`/api/tide/v1/keypair/{id}`",
-              "depth": 3,
-              "id": "apitidev1keypairid"
-            },
-            {
-              "title": "`/api/tide/v1/audit/`",
+              "title": "`/api/tide/v1/audit`",
               "depth": 3,
               "id": "apitidev1audit"
             },
@@ -841,9 +801,9 @@
               "id": "apitidev1auditid"
             },
             {
-              "title": "`/api/tide/v1/audit/{checksum}`",
+              "title": "`/api/tide/v1/audit/{altid}`",
               "depth": 3,
-              "id": "apitidev1auditchecksum"
+              "id": "apitidev1auditaltid"
             },
             {
               "title": "`/api/tide/v1/audit/{project_client}`",
@@ -864,6 +824,16 @@
               "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
               "depth": 3,
               "id": "apitidev1auditproject_clientproject_typeproject_slugversion"
+            },
+            {
+              "title": "`/api/tide/v1/report/{id}/{type}/{standard}`",
+              "depth": 3,
+              "id": "apitidev1reportidtypestandard"
+            },
+            {
+              "title": "`/api/tide/v1/report/{altid}/{type}/{standard}`",
+              "depth": 3,
+              "id": "apitidev1reportaltidtypestandard"
             }
           ]
         }

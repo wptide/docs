@@ -54,48 +54,39 @@ _The API Docker containers must be up and running before you start any of the ot
 
 ## Endpoints
 
-### `/api/tide/v1/`
-
-#### GET
-
-API Root
-
-### `/api/tide/v1/report`
-
-#### GET
-
-Get a report.
-
-### `/api/tide/v1/report/{checksum}/{type}/{standard}/`
-
-#### GET
-
-Get a report by checksum.
-
-### `/api/tide/v1/report/{post_id}/{type}/{standard}/`
-
-Get a report by id.
+The Tide API has several endpoints. I'll try and cover them in as much detail as possible. One important workflow to note when working with the API is that you must authenticate with the API and generate a token that you then use to make authenticated requests.
 
 ### `/api/tide/v1/auth`
 
-#### POST
+Generates a user specific JSON Web Token (JWT) by making a basic authentication `POST` request with an API key and secret — which can be found on your user profile page.
 
-Authenticate user.
+#### `POST`
 
-### `/api/tide/v1/keypair/{id}`
+| Parameter | Description |
+| :--- | :--- |
+| `api_key` | Tide user's API key. |
+| `api_secret` | Tide user's API secret. |
 
-#### POST
+#### Usage
 
-[Description]
+Request a JWT with your API key and secret:
 
-#### GET
+```
+curl -X POST \
+    http://tide.local/api/tide/v1/auth \
+    -F 'api_key=<api_key>' \
+    -F 'api_secret=<api_secret>'
+```
 
-[Description]
+---
 
-### `/api/tide/v1/audit/`
+### `/api/tide/v1/audit`
 
-#### GET
-Get collection of audits.
+This endpoint is used to get audit results and generate audits. There are several ways to generate an audit and reports. One of them is to make a `POST` request to the audit endpoint in the Tide API. An unauthenticated `GET` request option is describe lower on this page and is specifically for the `wporg` user. Another possibility would be to create a message in the queue, but that requires more access than a simple Bearer token.
+
+#### `GET`
+
+Request a collection of audits.
 
 | Parameter | Description |
 | :--- | :--- |
@@ -117,148 +108,250 @@ Get collection of audits.
 | `audit_project` | Limit result set to all items that have the specified term assigned in the audit_project taxonomy. |
 | `audit_project_exclude` | Limit result set to all items except those that have the specified term assigned in the audit_project taxonomy. |
 
-#### POST
-Create an audit.
+#### `POST`
+
+Create an audit that generates various report standards for WordPress themes and plugins.
 
 | Parameter | Description |
-| :--- | :--- |
-| `date` | The date the object was published, in the site's timezone. |
-| `date_gmt` | The date the object was published, as GMT. |
-| `slug` | An alphanumeric identifier for the object unique to its type. |
-| `status` | A named status for the object. |
-| `password` | A password to protect access to the content and excerpt. |
-| `title` | The title for the object. |
-| `content` | The content for the object. |
-| `author` | The ID for the author of the object. |
-| `excerpt` | The excerpt for the object. |
-| `meta` | Meta fields. |
-| `template` | The theme file to use to display the object. |
-| `audit_project` | The terms assigned to the object in the audit_project taxonomy. |
+|:--- |:--- |
+| `title` | Title of the plugin or theme. |
+| `content` | Description of the plugin or theme. |
+| `slug` | The slug of the plugin or theme. |
+| `project_type` | The type of project to audit. Must be one of: `theme`, `plugin`. |
+| `source_url` | The source to the `zip` file. _In the future we will support `git` repositories._ |
+| `source_type` | This must be `zip`. _In the future we will support `git` repositories._ |
+| `request_client` | The Tide API user login name. |
+| `force` | Force a re-audit for existing audit reports. Must be one of: `true`, `false`. |
+| `visibility` | Sets the visibility of an audit. Must be one of: `public` or `private`. |
+| `standards` | An array of available report standards. Must be one of: `phpcs_wordpress`, `phpcs_phpcompatibility`, `lighthouse`. |
+
+#### Usage
+
+Create an audit by making a `POST` request:
+
+```
+curl -X POST \
+    http://tide.local/api/tide/v1/audit \
+    -H 'Authorization: Bearer <token>' \
+    -F 'title=Twenty Seventeen' \
+    -F 'content=Twenty Seventeen brings your site to life with header video and immersive featured images.' \
+    -F 'slug=twentyseventeen' \
+    -F 'project_type=theme' \
+    -F 'source_url=https://downloads.wordpress.org/theme/twentyseventeen.2.1.zip' \
+    -F 'source_type=zip' \
+    -F 'request_client=wporg' \
+    -F 'force=false' \
+    -F 'visibility=public' \
+    -F 'standards[]=phpcs_wordpress' \
+    -F 'standards[]=phpcs_phpcompatibility'
+```
+
+---
 
 ### `/api/tide/v1/audit/{id}`
 
-#### GET
+Similar to the previous endpoint but strictly used to make requests to existing audits.
 
-Get an audit by id.
+#### `GET`
 
-| Parameter | Description |
-| :--- | :--- |
-| `id` | Unique identifier for the object. |
-| `context` | Scope under which the request is made; determines fields present in response. |
-| `password` | The password for the post if it is password protected. |
-
-#### POST, PUT, PATCH
-
-Update an audit.
+Get an audit by `id`.
 
 | Parameter | Description |
 | :--- | :--- |
 | `id` | Unique identifier for the object. |
-| `date` | The date the object was published, in the site's timezone. |
-| `date_gmt` | The date the object was published, as GMT. |
-| `slug` | An alphanumeric identifier for the object unique to its type. |
-| `status` | A named status for the object. |
-| `password` | A password to protect access to the content and excerpt. |
-| `title` | The title for the object. |
-| `content` | The content for the object. |
-| `author` | The ID for the author of the object. |
-| `excerpt` | The excerpt for the object. |
-| `meta` | Meta fields. |
-| `template` | The theme file to use to display the object. |
-| `audit_project` | The terms assigned to the object in the audit_project taxonomy. |
+
+#### `POST`
+
+Update an audit by `id`.
+
+| Parameter | Description |
+|:--- |:--- |
+| `id` | Unique identifier for the object. |
+| `title` | Title of the plugin or theme. |
+| `content` | Description of the plugin or theme. |
+| `slug` | The slug of the plugin or theme. |
+| `project_type` | The type of project to audit. Must be one of: `theme`, `plugin`. |
+| `source_url` | The source to the `zip` file. _In the future we will support `git` repositories._ |
+| `source_type` | This must be `zip`. _In the future we will support `git` repositories._ |
+| `request_client` | The Tide API user login name. |
+| `force` | Force a re-audit for existing audit reports. Must be one of: `true`, `false`. |
+| `visibility` | Sets the visibility of an audit. Must be one of: `public` or `private`. |
+| `standards` | An array of available report standards. Must be one of: `phpcs_wordpress`, `phpcs_phpcompatibility`, `lighthouse`. |
 
 #### DELETE
 
-Delete an audit.
+Delete an audit by `id`.
 
 | Parameter | Description |
 | :--- | :--- |
 | `id` | Unique identifier for the object. |
+| `force` | Whether to bypass trash and force deletion. Must be one of: `true`, `false`. |
+
+#### Usage
+
+Retrieve the audit with a `GET` request:
+
+```
+curl -X GET http://tide.local/api/tide/v1/audit<id>
+```
+
+Update the title by making a `POST` request:
+
+```
+curl -X POST \
+    http://tide.local/api/tide/v1/audit/<id> \
+    -H 'Authorization: Bearer <token>' \
+    -F 'title=Something New!'
+```
+
+Force all the report standards to be re-audited by making a `POST` request:
+
+```
+curl -X POST \
+    http://tide.local/api/tide/v1/audit/<id> \
+    -H 'Authorization: Bearer <token>' \
+    -F 'force=true' \
+    -F 'standards[]=phpcs_wordpress' \
+    -F 'standards[]=phpcs_phpcompatibility' \
+    -F 'standards[]=lighthouse'
+```
+
+_And adds the Lighthouse report that was missing in the `/api/tide/v1/audit` example above._
+
+Remove the audit with a `DELETE` request and bypass the trash:
+
+```
+curl -X DELETE \
+    http://tide.local/api/tide/v1/audit/<id> \
+    -H 'Authorization: Bearer <token>' \
+    -F 'force=true'
+```
+
+---
+
+### `/api/tide/v1/audit/{altid}`
+
+This endpoint is nearly identical to the previous one, except you are using the audit's altid (e.g. checksum) to make your requests. A checksum is an MD5 hash string from the contents of a directory.
+
+#### `GET`
+
+Get an audit by `altid`.
+
+| Parameter | Description |
+| :--- | :--- |
+| `altid` | An alternate unique id to query on (e.g. checksum). |
+
+#### `POST`
+
+Update an audit by `altid`.
+
+| Parameter | Description |
+| :--- | :--- |
+| `altid` | An alternate unique id to query on (e.g. checksum). |
+| `title` | Title of the plugin or theme. |
+| `content` | Description of the plugin or theme. |
+| `slug` | The slug of the plugin or theme. |
+| `project_type` | The type of project to audit. Must be one of: `theme`, `plugin`. |
+| `source_url` | The source to the `zip` file. _In the future we will support `git` repositories._ |
+| `source_type` | This must be `zip`. _In the future we will support `git` repositories._ |
+| `request_client` | The Tide API user login name. |
+| `force` | Force a re-audit for existing audit reports. Must be one of: `true`, `false`. |
+| `visibility` | Sets the visibility of an audit. Must be one of: `public` or `private`. |
+| `standards` | An array of available report standards. Must be one of: `phpcs_wordpress`, `phpcs_phpcompatibility`, `lighthouse`. |
+
+#### `DELETE`
+
+Delete an audit by `altid`.
+
+| Parameter | Description |
+| :--- | :--- |
+| `altid` | An alternate unique id to query on (e.g. checksum). |
 | `force` | Whether to bypass trash and force deletion. |
 
-### `/api/tide/v1/audit/{checksum}`
-
-#### GET
-
-Get an audit by checksum.
-
-| Parameter | Description |
-| :--- | :--- |
-| `altid` | An alternate unique id to query on (e.g. checksum). |
-| `context` | Scope under which the request is made; determines fields present in response. |
-| `password` | The password for the post if it is password protected. |
-
-#### POST, PUT, PATCH
-
-Update an audit.
-
-| Parameter | Description |
-| :--- | :--- |
-| `altid` | An alternate unique id to query on (e.g. checksum). |
-| `date` | The date the object was published, in the site's timezone. |
-| `date_gmt` | The date the object was published, as GMT. |
-| `slug` | An alphanumeric identifier for the object unique to its type. |
-| `status` | A named status for the object. |
-| `password` | A password to protect access to the content and excerpt. |
-| `title` | The title for the object. |
-| `content` | The content for the object. |
-| `author` | The ID for the author of the object. |
-| `excerpt` | The excerpt for the object. |
-| `meta` | Meta fields. |
-| `template` | The theme file to use to display the object. |
-| `audit_project` | The terms assigned to the object in the audit_project taxonomy. |
-
-#### DELETE
-
-Delete an audit.
-
-| Parameter | Description |
-| :--- | :--- |
-| `altid` | An alternate unique id to query on (e.g. checksum). |
-| `force` | Whether to bypass trash and force deletion. |
+---
 
 ### `/api/tide/v1/audit/{project_client}`
 
-#### GET
+#### `GET`
 
-Get collection of audits for a project client.
+Get an audit collection for a project client.
 
 | Parameter | Description |
 | :--- | :--- |
-| `project_client` | User login name representing a project client. |
+| `project_client` | The Tide API user login name representing a project client. |
+
+---
 
 ### `/api/tide/v1/audit/{project_client}/{project_type}`
 
-#### GET
+#### `GET`
 
-Get collection of audits for a project client of certain type: theme or plugin.
+Get a theme or plugin audit collection for a project client.
 
 | Parameter | Description |
 | :--- | :--- |
-| `project_client` | User login name representing a project client. |
-| `project_type` | The project type: theme or plugin. |
+| `project_client` | The Tide API user login name representing a project client. |
+| `project_type` | The project type. Must be one of: `theme`, `plugin`. |
+
+---
 
 ### `/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}`
 
-#### GET
+#### `GET`
 
-Get an audit for a theme or plugin defined by a project slug.
+Get an audit for a theme or plugin defined by a project client and slug.
 
 | Parameter | Description |
 | :--- | :--- |
-| `project_client` | User login name representing a project client. |
-| `project_type` | The project type: theme or plugin. |
-| `project_slug` | The taxonomy term representing the project. |
+| `project_client` | The Tide API user login name representing a project client. |
+| `project_type` | The project type. Must be one of: `theme`, `plugin`. |
+| `project_slug` | The taxonomy term representing the project slug. |
+
+---
 
 ### `/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`
 
-#### GET
+This endpoint can be used to make unauthenticated audit requests on behalf of the `wporg` user if the audit doesn't already exist. With the `wporg` user token I could also send an authenticated request to this endpoint and force a re-audit if the audit does exist.
 
-Get an audit for a theme or plugin defined by a project slug and version.
+#### `GET`
+
+Get an audit for a theme or plugin defined by a project client, slug and version.
 
 | Parameter | Description |
 | :--- | :--- |
-| `project_client` | User login name representing a project client. |
-| `project_type` | The project type: theme or plugin. |
-| `project_slug` | The taxonomy term representing the project. |
-| `version` | The version representing the project. |
+| `project_client` | The Tide API user login name representing a project client. |
+| `project_type` | The project type. Must be one of: `theme`, `plugin`. |
+| `project_slug` | The taxonomy term representing the project slug. |
+| `version` | The project version number. |
+
+---
+
+### `/api/tide/v1/report/{id}/{type}/{standard}`
+
+This endpoint is authenticated and requires a Bearer token. As well, you can only view reports associated with your account. The response is a temporary download link for the report — keeping sensitive data safe and secure is important to us.
+
+#### `GET`
+
+Get a specific `type` of report by `id` and `standard`.
+
+| Parameter | Description |
+| :--- | :--- |
+| `id` | Unique identifier for the audit object. |
+| `type` | The report type. Must be one of: `raw`, `parsed`. |
+| `standard` | The report standard. Must be one of: `phpcs_wordpress`, `phpcs_phpcompatibility`, `lighthouse`. |
+
+---
+
+### `/api/tide/v1/report/{altid}/{type}/{standard}`
+
+This endpoint has the same restrictions as above.
+
+#### `GET`
+
+Get a specific `type` of report by `altid` and `standard`.
+
+| Parameter | Description |
+| :--- | :--- |
+| `altid` | An alternate unique id to query on (e.g. checksum). |
+| `type` | The report type. Must be one of: `raw`, `parsed`. |
+| `standard` | The report standard. Must be one of: `phpcs_wordpress`, `phpcs_phpcompatibility`, `lighthouse`. |
