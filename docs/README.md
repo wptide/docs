@@ -19,6 +19,7 @@
   * [Google Kubernetes Engine](gcp/google-kubernetes-engine.md)
 * [Amazon Web Services](aws/index.md)
 * Important Links
+  * [Local Development](local-development.md)
   * [Help](help.md)
   * [Contributing](contributing.md)
   * [Code of Conduct](code-of-conduct.md)

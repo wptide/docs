@@ -481,6 +481,29 @@
         "title": "Important Links",
         "sections": [
           {
+            "title": "Local Development",
+            "source": "docs/local-development.md",
+            "url": "local-development.html",
+            "slug": "local-development",
+            "headings": [
+              {
+                "title": "Composer",
+                "depth": 2,
+                "id": "composer"
+              },
+              {
+                "title": "PHPCS Ruleset",
+                "depth": 2,
+                "id": "phpcs-ruleset"
+              },
+              {
+                "title": "Usage",
+                "depth": 2,
+                "id": "usage"
+              }
+            ]
+          },
+          {
             "title": "Help",
             "source": "docs/help.md",
             "url": "help.html",
@@ -1052,6 +1075,29 @@
         }
       ]
     },
+    "local-development.html": {
+      "source": "docs/local-development.md",
+      "title": "Local Development - Tide",
+      "pageTitle": "Local Development",
+      "slug": "local-development",
+      "headings": [
+        {
+          "title": "Composer",
+          "depth": 2,
+          "id": "composer"
+        },
+        {
+          "title": "PHPCS Ruleset",
+          "depth": 2,
+          "id": "phpcs-ruleset"
+        },
+        {
+          "title": "Usage",
+          "depth": 2,
+          "id": "usage"
+        }
+      ]
+    },
     "help.html": {
       "source": "docs/help.md",
       "title": "Help - Tide",
@@ -1169,6 +1215,7 @@
     "docs/gcp/google-app-engine.md": "gcp/google-app-engine.html",
     "docs/gcp/google-kubernetes-engine.md": "gcp/google-kubernetes-engine.html",
     "docs/aws/index.md": "aws/index.html",
+    "docs/local-development.md": "local-development.html",
     "docs/help.md": "help.html",
     "docs/contributing.md": "contributing.html",
     "docs/code-of-conduct.md": "code-of-conduct.html",
