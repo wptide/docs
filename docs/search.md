@@ -1,8 +1,6 @@
-# API Search
+# Search Plugins &amp; Themes
 
-The search form makes a `GET` request to the Tide API and allows you to preview the returned JSON object of an audit by searching the Tide API for a specific slug of any plugin or theme from the wordpress.org repository. For example, you can search for the theme `twentyseventeen` or plugin `jetpack`.
-
-## Search Plugins & Themes
+The search form makes a `GET` request to the Tide API and responds with a JSON object of an audit by searching for a plugin or theme slug from the wordpress.org repository. For example, you can search for the theme `twentyseventeen` or plugin `jetpack`.
 
 <div class="api-check" data-api-check>
 	<div class="api-check__form" data-api-check-form>

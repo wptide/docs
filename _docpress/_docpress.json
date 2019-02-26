@@ -564,19 +564,12 @@
             "source": "docs/license.md",
             "url": "license.html",
             "slug": "license"
-          }
-        ]
-      },
-      {
-        "title": "API Search",
-        "source": "docs/search.md",
-        "url": "search.html",
-        "slug": "search",
-        "headings": [
+          },
           {
             "title": "Search Plugins & Themes",
-            "depth": 2,
-            "id": "search-plugins-and-themes"
+            "source": "docs/search.md",
+            "url": "search.html",
+            "slug": "search"
           }
         ]
       },
@@ -1146,16 +1139,9 @@
     },
     "search.html": {
       "source": "docs/search.md",
-      "title": "API Search - Tide",
-      "pageTitle": "API Search",
-      "slug": "search",
-      "headings": [
-        {
-          "title": "Search Plugins & Themes",
-          "depth": 2,
-          "id": "search-plugins-and-themes"
-        }
-      ]
+      "title": "Search Plugins & Themes - Tide",
+      "pageTitle": "Search Plugins & Themes",
+      "slug": "search"
     },
     "404.html": {
       "source": "docs/404.md",

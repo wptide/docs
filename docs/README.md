@@ -23,5 +23,5 @@
   * [Contributing](contributing.md)
   * [Code of Conduct](code-of-conduct.md)
   * [License](license.md)
-* [API Search](search.md)
+  * [Search Plugins & Themes](search.md)
 * [404](404.md)
