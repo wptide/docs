@@ -566,7 +566,7 @@
             "slug": "license"
           },
           {
-            "title": "Search Plugins & Themes",
+            "title": "API Search",
             "source": "docs/search.md",
             "url": "search.html",
             "slug": "search"
@@ -1139,8 +1139,8 @@
     },
     "search.html": {
       "source": "docs/search.md",
-      "title": "Search Plugins & Themes - Tide",
-      "pageTitle": "Search Plugins & Themes",
+      "title": "API Search - Tide",
+      "pageTitle": "API Search",
       "slug": "search"
     },
     "404.html": {
