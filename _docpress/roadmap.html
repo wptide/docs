@@ -10,7 +10,7 @@
           <ul class="submenu">
             <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="installation/prerequisites.html">Prerequisites</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title -active link-installationcloning" href="installation/cloning.html">Cloning</a>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="installation/cloning.html">Cloning</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="installation/setup.html">Setup</a>
             </li>
@@ -56,7 +56,11 @@
             </li>
             <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-roadmap" href="roadmap.html">Roadmap</a>
+            <li class="menu-item -level-2"><a class="link title -active link-roadmap" href="roadmap.html">Roadmap</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-tide-version-1.0.0" href="#tide-version-1.0.0">Tide version 1.0.0</a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
             </li>
@@ -69,32 +73,25 @@
       </ul>
     </li>
   </ul>
-  <div class="body page-installationcloning">
+  <div class="body page-roadmap">
     <div class="header-nav">
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
-    <div class="markdown-body"><h1 id="cloning">Cloning</h1>
-<p>Tide needs to be cloned to a directory inside your Go workspace specified by the <a href="https://golang.org/doc/code#GOPATH"><code>$GOPATH</code></a> environment variable. Your <code>$GOPATH</code> defaults to a directory named <code>go</code> inside your home directory, so <code>$HOME/go</code> on Mac/Unix and <code>%USERPROFILE%\go</code> (usually <code>C:\Users\YourName\go</code>) on Windows.</p>
-<p>Create the following directory inside your Go workspace:</p>
-<pre><code>src/github.com/wptide
-</code></pre>
-<p>Open a shell and change into the directory:</p>
-<pre><code>cd $GOPATH/src/github.com/wptide
-</code></pre>
-<p>Clone Tide:</p>
-<pre><code>git clone -b develop --recursive https://github.com/wptide/wptide.git
-</code></pre>
-<p>Change to Tide working directory:</p>
-<pre><code>cd wptide
-</code></pre>
-<p>Update submodules:</p>
-<pre><code>git submodule update --init --recursive
-</code></pre>
+    <div class="markdown-body"><h1 id="roadmap">Roadmap</h1>
+<p>We&apos;re using <a href="https://www.zenhub.com/">ZenHub</a> to manage Tide and you will need to install the <a href="https://www.zenhub.com/extension">ZenHub Browser Extension</a> to see our agile board. Feel free to view our backlog on <a href="https://github.com/wptide/wptide#boards?releases=5b7c70fee4dbc16531a27c3c&amp;activeFilters=releases&amp;repos=107737502">GitHub</a>. The following items are not an exhaustive list but are currently planned as part of the upcoming Tide roadmap. This page is evolving and expect to see more changes soon.</p>
+<h2 id="tide-version-1.0.0">Tide version 1.0.0</h2>
+<p>Agile Board: ( <a href="https://github.com/wptide/wptide#boards?releases=5b030c381a00905b6c50f1df&amp;repos=107737502">v1.0.0</a> )</p>
+<ul>
+<li>Goal: Provides better SDKs for open source contributors to utilize in coding further Go solutions for Tide on GCP</li>
+<li>Goal: Provides easier integration point (via Webhook/HTTP Listener) for .ORG</li>
+<li>Goal: Provides documentation and working examples of Tide to help developers and contributors better utilize and improve Tide via demonstration website.</li>
+<li>Goal: Begins integration on .ORG (via PHP Compatability results) and first step in actually improving the quality of code on 30% of the web.</li>
+</ul>
 
     </div>
     <div class="footer-nav">
-      <div class="left"><a href="../installation/prerequisites.html"><span class="title">Prerequisites</span></a></div>
-      <div class="right"><a href="../installation/setup.html"><span class="label">Next: </span><span class="title">Setup</span></a></div>
+      <div class="left"><a href="code-of-conduct.html"><span class="title">Code of Conduct</span></a></div>
+      <div class="right"><a href="license.html"><span class="label">Next: </span><span class="title">License</span></a></div>
     </div>
   </div>
 </div>

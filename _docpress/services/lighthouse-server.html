@@ -30,6 +30,16 @@
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
                 </li>
+                <li class="heading-item -depth-2"><a class="hlink link-running-audits" href="#running-audits">Running audits</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-components" href="#components">Components</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-process" href="#process">Process</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-reports" href="#reports">Reports</a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </li>
           </ul>
@@ -54,13 +64,15 @@
         </li>
         <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
           <ul class="submenu">
-            <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
-            </li>
             <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-roadmap" href="roadmap.html">Roadmap</a>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
             </li>
@@ -182,6 +194,84 @@
 </tr>
 </tbody>
 </table>
+<h2 id="running-audits">Running audits</h2>
+<p>This section described the components included in the Lighthouse integration with Tide, demonstrates the Lighthouse audit process, and provides example Tide API audit results.</p>
+<h3 id="components">Components</h3>
+<p>The following outlines the components needed to integrate Lighthouse auditing of WordPress themes into the Tide API.</p>
+<ol>
+<li>Docker Container <code>lighthouse-server</code>
+<ul>
+<li>Chromium</li>
+<li>Lighthouse CLI</li>
+<li>Lighthouse Server Go binary</li>
+</ul>
+</li>
+<li>Lighthouse Server Source Code
+<ul>
+<li><code>bin/lighthouse-server</code> built Lighthouse Server Go binary.</li>
+<li><code>cmd/lighthouse-server</code> Lighthouse Server Go source code.</li>
+<li><code>service/lighthouse-server</code> <code>make</code> , Docker, and Kubernetes configurations.</li>
+<li><code>vendor</code> imported Go dependencies.</li>
+</ul>
+</li>
+</ol>
+<h3 id="process">Process</h3>
+<p>The following demonstrates how a WordPress theme is run through a Lighthouse audit and has its results stored and returned via the Tide API.</p>
+<ol>
+<li>The Tide API starts and listens for requests.</li>
+</ol>
+<p><img src="images/api-php-start.png" alt></p>
+<ol>
+<li>The Lighthouse Server starts and attempts to authenticate with the Tide API.</li>
+</ol>
+<p><img src="images/lighthouse-server-auth.png" alt></p>
+<ol>
+<li>The Tide API receives an authentication request from the Lighthouse Server.</li>
+</ol>
+<p><img src="images/api-php-auth.png" alt></p>
+<ol>
+<li>The Lighthouse Server is authenticated and starts polling the message queue.</li>
+</ol>
+<p><img src="images/lighthouse-server-poll.png" alt></p>
+<ol>
+<li>The theme is downloaded and a checksum is calculated.</li>
+</ol>
+<p><img src="images/lighthouse-server-checksum.png" alt></p>
+<ol>
+<li>The source code is ran through <code>gocloc</code> to get code information.</li>
+</ol>
+<p><img src="images/lighthouse-server-code-info.png" alt></p>
+<ol>
+<li>The source is scanned for the Theme header information.</li>
+</ol>
+<p><img src="images/lighthouse-server-header.png" alt></p>
+<ol>
+<li>Runs the theme preview URL (<code>https://wp-themes.com/&lt;theme-slug&gt;</code>) through a <code>lighthouse</code> audit and keeps polling for the next job.</li>
+</ol>
+<p><img src="images/lighthouse-server-audit.png" alt></p>
+<ol>
+<li>Uploads the raw report to a storage provider (GCS, S3, or local) and generates a summary report.</li>
+</ol>
+<p><img src="images/lighthouse-server-audit-complete.png" alt></p>
+<ol>
+<li>The Lighthouse Server bundles the summary report and reference to the raw report as a message payload and sends the payload to the Tide API.</li>
+</ol>
+<p><img src="images/lighthouse-server-payload.png" alt></p>
+<ol>
+<li>The Tide API updates the audit endpoint after receiving the <code>POST</code> request from the Lighthouse Server.</li>
+</ol>
+<p><img src="images/api-php-payload.png" alt></p>
+<ol>
+<li>Finally the message is removed from the queue.</li>
+</ol>
+<p><img src="images/lighthouse-server-queue.png" alt></p>
+<h3 id="reports">Reports</h3>
+<p>The following is a Tide API audit object showing a Lighthouse summary report.</p>
+<h4 id="http:tide.localapitidev1auditwporgthemetwentyseventeen2.1"><code>http://tide.local/api/tide/v1/audit/wporg/theme/twentyseventeen/2.1</code></h4>
+<p><img src="images/lighthouse-server-summary-report.png" alt="Lighthouse Summary Report"></p>
+<p>The following is a Tide API report object showing a download link to the original Lighthouse report. This demonstrates the local disk storage, a cloud provider will look a bit different and the URL will expire.</p>
+<h4 id="http:tide.localapitidev1report236rawlighthouse"><code>http://tide.local/api/tide/v1/report/236/raw/lighthouse</code></h4>
+<p><img src="images/lighthouse-server-raw-report.png" alt="Lighthouse Summary Report"></p>
 
     </div>
     <div class="footer-nav">
