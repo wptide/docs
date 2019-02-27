@@ -208,8 +208,8 @@ Force all the report standards to be re-audited by making a `POST` request:
 
 ```
 curl -X POST \
-    http://tide.local/api/tide/v1/audit/<id> \
-    -H 'Authorization: Bearer <token>' \
+    http://tide.local/api/tide/v1/audit/233 \
+    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTEyNDA4MTMsImlzcyI6Imh0dHA6XC9cL3RpZGUubG9jYWwiLCJleHAiOjE1NTM4MzI4MTMsImRhdGEiOnsiY2xpZW50Ijp7ImlkIjoyLCJ0eXBlIjoid3BfdXNlciJ9fX0.dmVMm9udpZBV4PXPpXrTOTAf-F3sC3R-iE9zHElu1yo' \
     -F 'force=true' \
     -F 'standards[]=phpcs_wordpress' \
     -F 'standards[]=phpcs_phpcompatibility' \
