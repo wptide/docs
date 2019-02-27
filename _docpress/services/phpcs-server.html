@@ -1,0 +1,191 @@
+
+<div class="doc-layout">
+  <div class="toggle menu-toggle js-menu-toggle"></div>
+  <ul class="menu toc-menu">
+    <li class="menu-item -level-0 -parent">
+      <ul class="submenu">
+        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Tide</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="installation/index.html">Installation</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="installation/prerequisites.html">Prerequisites</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="installation/cloning.html">Cloning</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="installation/setup.html">Setup</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-services" href="services/index.html">Services</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync-server" href="services/sync-server.html">Sync Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title -active link-servicesphpcs-server" href="services/phpcs-server.html">PHPCS Server</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-commands" href="#commands">Commands</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse-server" href="services/lighthouse-server.html">Lighthouse Server</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-storage" href="gcp/google-cloud-storage.html">Google Cloud Storage</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-firestore" href="gcp/google-cloud-firestore.html">Google Cloud Firestore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-memorystore" href="gcp/google-cloud-memorystore.html">Google Cloud Memorystore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-app-engine" href="gcp/google-app-engine.html">Google App Engine</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-kubernetes-engine" href="gcp/google-kubernetes-engine.html">Google Kubernetes Engine</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-aws" href="aws/index.html">Amazon Web Services</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-search" href="search.html">API Search</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-404" href="404.html">404</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="body page-servicesphpcs-server">
+    <div class="header-nav">
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+    </div>
+    <div class="markdown-body"><h1 id="phpcs-server">PHPCS Server</h1>
+<p>The PHPCS Server is a Go binary installed on an Alpine Linux Docker image that reads messages from a queue and runs PHPCS reports against both plugins and themes, then sends the results back to the Tide API. It is important to note that the PHPCS Server only does static analysis of PHP compatibility and WordPress coding standards and does not execute code or install themes and plugins into WordPress to run the audit.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>PHPCS_CONCURRENT_AUDITS</code></td>
+<td style="text-align:left">Sets the number of goroutines the server will perform concurrently. Default is <code>5</code>. <em>This is currently deactivated and will have no impact during runtime.</em></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PHPCS_MESSAGE_PROVIDER</code></td>
+<td style="text-align:left">Queue audit messages using the local MongoDB, Google Cloud Firestore, or AWS SQS. Must be one of: <code>local</code>, <code>firestore</code>, <code>sqs</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PHPCS_STORAGE_PROVIDER</code></td>
+<td style="text-align:left">Upload reports to the local file system, Google Cloud Storage, or AWS S3. Must be one of: <code>local</code>, <code>gcs</code>, <code>s3</code>. Default is <code>local</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PHPCS_TEMP_FOLDER</code></td>
+<td style="text-align:left">Sets the temporary folder inside the container used to store downloaded files. Default is <code>/tmp</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="commands">Commands</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Command</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>make phpcs.build.bin</code></td>
+<td style="text-align:left">Build the PHPCS Server Go binary.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.clean.bin</code></td>
+<td style="text-align:left">Clean the PHPCS Server Go binary.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.build.image</code></td>
+<td style="text-align:left">Build the PHPCS Server Docker image.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.build.up</code></td>
+<td style="text-align:left">Rebuild the PHPCS Server Docker image and run the container in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.up</code></td>
+<td style="text-align:left">Run the PHPCS Server Docker container in isolation with docker-compose up.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.down</code></td>
+<td style="text-align:left">Take the isolated PHPCS Server Docker container down.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.stop</code></td>
+<td style="text-align:left">Stop the isolated PHPCS Server Docker container with docker-compose stop.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.rm</code></td>
+<td style="text-align:left">Remove the stopped PHPCS Server Docker container with docker-compose rm.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.push.image</code></td>
+<td style="text-align:left">Push the PHPCS Server Docker image to GCR.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.clean.image</code></td>
+<td style="text-align:left">Clean the PHPCS Server Docker image from the host machine.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.build.cluster</code></td>
+<td style="text-align:left">Build the PHPCS Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.creds</code></td>
+<td style="text-align:left">Get the PHPCS Server GKE cluster credentials.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.tpl</code></td>
+<td style="text-align:left">Generate the PHPCS Server GKE YAML template.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.deploy.cluster</code></td>
+<td style="text-align:left">Deploy the PHPCS Server GKE cluster.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.get.cluster</code></td>
+<td style="text-align:left">Get the PHPCS Server GKE cluster status.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>make phpcs.clean.cluster</code></td>
+<td style="text-align:left">Clean the PHPCS Server GKE cluster.</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <div class="footer-nav">
+      <div class="left"><a href="../services/sync-server.html"><span class="title">Sync Server</span></a></div>
+      <div class="right"><a href="../services/lighthouse-server.html"><span class="label">Next: </span><span class="title">Lighthouse Server</span></a></div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,10 @@
 
 <div class="doc-layout">
   <div class="toggle menu-toggle js-menu-toggle"></div>
-  <div class="menu toc-menu">
+  <ul class="menu toc-menu">
     <li class="menu-item -level-0 -parent">
       <ul class="submenu">
-        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html"></a>
-        </li>
-        <li class="menu-item -level-1"><a class="link title  link-search" href="search.html">Search plugins &amp; themes</a>
+        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Tide</a>
         </li>
         <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="installation/index.html">Installation</a>
           <ul class="submenu">
@@ -22,47 +20,70 @@
           <ul class="submenu">
             <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-servicessync" href="services/sync.html">Sync Server</a>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync-server" href="services/sync-server.html">Sync Server</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs-server" href="services/phpcs-server.html">PHPCS Server</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
-            </li>
-            <li class="menu-item -level-2"><a class="link title  link-servicesmongodb" href="services/mongodb.html">MongoDB</a>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse-server" href="services/lighthouse-server.html">Lighthouse Server</a>
             </li>
           </ul>
         </li>
         <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
           <ul class="submenu">
-            <li class="menu-item -level-2"><a class="link title  link-gcpsetup" href="gcp/setup.html">Setup</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-storage" href="gcp/google-cloud-storage.html">Google Cloud Storage</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-gcpdeployments" href="gcp/deployments.html">Deployments</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-firestore" href="gcp/google-cloud-firestore.html">Google Cloud Firestore</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-gcpgcs" href="gcp/gcs.html">Google Cloud Storage</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-gcpgcf" href="gcp/gcf.html">Google Cloud Firestore</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-memorystore" href="gcp/google-cloud-memorystore.html">Google Cloud Memorystore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-app-engine" href="gcp/google-app-engine.html">Google App Engine</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-kubernetes-engine" href="gcp/google-kubernetes-engine.html">Google Kubernetes Engine</a>
             </li>
           </ul>
         </li>
         <li class="menu-item -level-1"><a class="link title  link-aws" href="aws/index.html">Amazon Web Services</a>
         </li>
+        <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-search" href="search.html">API Search</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-404" href="404.html">404</a>
+        </li>
       </ul>
     </li>
-  </div>
+  </ul>
   <div class="body page-installationcloning">
     <div class="header-nav">
-      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
     <div class="markdown-body"><h1 id="cloning">Cloning</h1>
-<p>Tide needs to be cloned to a directory inside Go workspace specified by <a href="https://golang.org/doc/code#GOPATH">GOPATH</a> environment variable. It defaults to a directory named <code>go</code> inside your home directory, so <code>$HOME/go</code> on Mac/Unix and <code>%USERPROFILE%\go</code> (usually <code>C:\Users\YourName\go</code>) on Windows.</p>
-<p>Create the following directory <code>src/github.com/xwp</code> inside your Go workspace and change to that directory:</p>
-<pre><code>cd src/github.com/xwp
+<p>Tide needs to be cloned to a directory inside your Go workspace specified by the <a href="https://golang.org/doc/code#GOPATH"><code>$GOPATH</code></a> environment variable. Your <code>$GOPATH</code> defaults to a directory named <code>go</code> inside your home directory, so <code>$HOME/go</code> on Mac/Unix and <code>%USERPROFILE%\go</code> (usually <code>C:\Users\YourName\go</code>) on Windows.</p>
+<p>Create the following directory inside your Go workspace:</p>
+<pre><code>src/github.com/wptide
 </code></pre>
-<p>Now clone Tide:</p>
-<pre><code>git clone -b develop --recursive https://github.com/xwp/go-tide.git
+<p>Open a shell and change into the directory:</p>
+<pre><code>cd $GOPATH/src/github.com/wptide
+</code></pre>
+<p>Clone Tide:</p>
+<pre><code>git clone -b develop --recursive https://github.com/wptide/wptide.git
 </code></pre>
 <p>Change to Tide working directory:</p>
-<pre><code>cd go-tide
+<pre><code>cd wptide
 </code></pre>
 <p>Update submodules:</p>
 <pre><code>git submodule update --init --recursive
@@ -71,7 +92,7 @@
     </div>
     <div class="footer-nav">
       <div class="left"><a href="../installation/prerequisites.html"><span class="title">Prerequisites</span></a></div>
-      <div class="right"><a href="../installation/setup.html"><span class="title">Setup</span></a></div>
+      <div class="right"><a href="../installation/setup.html"><span class="label">Next: </span><span class="title">Setup</span></a></div>
     </div>
   </div>
 </div>

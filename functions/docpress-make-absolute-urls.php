@@ -22,7 +22,7 @@ function docpress_make_absolute_urls ($file_contents) {
 	$content = preg_replace('#href="((\.\.\/)+)(.+)"#im', 'href="$3"', $file_contents); // replace ../
 	$content = str_replace($href_match, $href_replace, $content); // replace all regular matches
 	$content = preg_replace('#href="([^\/\#]+)(\#.+)*"#im', 'href="'. get_current_url() .'/$1"', $content); // replace sibling links
-	$content = preg_replace('#src="(.+)"#im', 'src="'. DOCS_URI .'/$1"', $content); 
+    $content = preg_replace('#src="(?!https?:\/\/)(?!data:)(.+)"#im', 'src="'. DOCS_URI .'/$1"', $content);
 
 	return $content;
 }

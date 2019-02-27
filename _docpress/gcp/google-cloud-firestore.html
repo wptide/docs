@@ -1,0 +1,138 @@
+
+<div class="doc-layout">
+  <div class="toggle menu-toggle js-menu-toggle"></div>
+  <ul class="menu toc-menu">
+    <li class="menu-item -level-0 -parent">
+      <ul class="submenu">
+        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Tide</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="installation/index.html">Installation</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="installation/prerequisites.html">Prerequisites</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="installation/cloning.html">Cloning</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="installation/setup.html">Setup</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-services" href="services/index.html">Services</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync-server" href="services/sync-server.html">Sync Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs-server" href="services/phpcs-server.html">PHPCS Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse-server" href="services/lighthouse-server.html">Lighthouse Server</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-storage" href="gcp/google-cloud-storage.html">Google Cloud Storage</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title -active link-gcpgoogle-cloud-firestore" href="gcp/google-cloud-firestore.html">Google Cloud Firestore</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-setup" href="#setup">Setup</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-memorystore" href="gcp/google-cloud-memorystore.html">Google Cloud Memorystore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-app-engine" href="gcp/google-app-engine.html">Google App Engine</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-kubernetes-engine" href="gcp/google-kubernetes-engine.html">Google Kubernetes Engine</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-aws" href="aws/index.html">Amazon Web Services</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-search" href="search.html">API Search</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-404" href="404.html">404</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="body page-gcpgoogle-cloud-firestore">
+    <div class="header-nav">
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+    </div>
+    <div class="markdown-body"><h1 id="google-cloud-firestore">Google Cloud Firestore</h1>
+<p>If you want to use Cloud Firestore as the database provider for the Sync Server or as the message provider for the Lighthouse/PHPCS Server you&apos;ll need to setup Cloud Firestore for your project.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>GCF_QUEUE_LH</code></td>
+<td style="text-align:left">Specifies which collection in Cloud Firestore to use for the Lighthouse message queue. This is a Firestore collection <strong>path</strong>. Default is <code>queue-lighthouse</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GCF_QUEUE_PHPCS</code></td>
+<td style="text-align:left">Specifies which collection in CLoud Firestore to use for the PHPCS message queue. This is a Firestore collection <strong>path</strong>. Default is <code>queue-phpcs</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>
+<p>If you don&apos;t already have a Firebase project, add one in the <a href="https://console.firebase.google.com/u/0/project/_/database/firestore/data">Firebase console</a>. The <strong>Add project</strong> dialog also gives you the option to add Firebase to an existing Google Cloud Platform project.</p>
+</li>
+<li>
+<p>Allow read/write access on all documents to any user signed in to the application by replacing the previous <a href="https://console.firebase.google.com/u/0/project/_/database/firestore/rules">security rules</a> with the following in the Cloud Firestore console.</p>
+<pre><code>service cloud.firestore {
+    match /databases/{database}/documents {
+        match /{document=**} {
+            allow read, write: if request.auth.uid != null;
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>In order for the message queue to be queryable by the Go servers you will need to add composite indexes for both the <code>GCF_QUEUE_LH</code> and <code>GCF_QUEUE_PHPCS</code> message queues. The following directions are going to be for <code>GCF_QUEUE_PHPCS</code>, but must be repeated for the <code>GCF_QUEUE_LH</code> queue. It&apos;s assumed you are using the default <code>queue-phpcs</code> value for <code>GCF_QUEUE_PHPCS</code>.</p>
+<ol>
+<li>Open the <a href="https://console.firebase.google.com/u/0/project/_/database/firestore/indexes">composite indexes</a> tab in the Firebase console.</li>
+<li>Click <code>Add index manually</code> or the <code>Add Index</code> button if you already have created a composite index.</li>
+<li>Add <code>queue-phpcs</code> as the collection name.</li>
+<li>Add a new field named <code>retry_available</code> and set sort to ascending.</li>
+<li>Add a new field named <code>lock</code> and set sort to ascending.</li>
+<li>Add a new field named <code>created</code> and set sort to ascending.</li>
+<li>Click <code>Create Index</code> and repeat for <code>queue-lighthouse</code>.</li>
+</ol>
+</li>
+</ol>
+<p><em>Note: If you change the values in your <code>.env</code> then the collection names in the third step should be the same as those values.</em></p>
+
+    </div>
+    <div class="footer-nav">
+      <div class="left"><a href="../gcp/google-cloud-storage.html"><span class="title">Google Cloud Storage</span></a></div>
+      <div class="right"><a href="../gcp/google-cloud-sql.html"><span class="label">Next: </span><span class="title">Google Cloud SQL</span></a></div>
+    </div>
+  </div>
+</div>

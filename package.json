@@ -1,11 +1,12 @@
 {
-  "name": "xwp-tide-docs",
+  "name": "wptide-docs",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "node docpress/docpress/bin/docpress",
-    "build": "node docpress/docpress/bin/docpress b"
+    "build": "node docpress/docpress/bin/docpress b",
+    "link": "bin/link"
   },
   "repository": {
     "type": "git",

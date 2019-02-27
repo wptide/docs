@@ -1,12 +1,10 @@
 
 <div class="doc-layout">
   <div class="toggle menu-toggle js-menu-toggle"></div>
-  <div class="menu toc-menu">
+  <ul class="menu toc-menu">
     <li class="menu-item -level-0 -parent">
       <ul class="submenu">
-        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html"></a>
-        </li>
-        <li class="menu-item -level-1"><a class="link title  link-search" href="search.html">Search plugins &amp; themes</a>
+        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Tide</a>
         </li>
         <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="installation/index.html">Installation</a>
           <ul class="submenu">
@@ -16,10 +14,34 @@
             </li>
             <li class="menu-item -level-2"><a class="link title -active link-installationsetup" href="installation/setup.html">Setup</a>
               <ul class="headings heading-list">
-                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-api" href="#api">API</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-build-images" href="#build-images">Build images</a></li>
-                <li class="heading-item -depth-2"><a class="hlink link-start-servers" href="#start-servers">Start servers</a></li>
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-mongodb" href="#mongodb">MongoDB</a>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-api" href="#api">API</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-initialize-wordpress" href="#initialize-wordpress">Initialize WordPress</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-database" href="#database">Database</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-hosts-file" href="#hosts-file">Hosts File</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-build-images" href="#build-images">Build Images</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-isolated-build" href="#isolated-build">Isolated Build</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-start-servers" href="#start-servers">Start Servers</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-isolated-start" href="#isolated-start">Isolated Start</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-run-audits" href="#run-audits">Run Audits</a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -28,52 +50,101 @@
           <ul class="submenu">
             <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-servicessync" href="services/sync.html">Sync Server</a>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync-server" href="services/sync-server.html">Sync Server</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs" href="services/phpcs.html">PHPCS Server</a>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs-server" href="services/phpcs-server.html">PHPCS Server</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse" href="services/lighthouse.html">Lighthouse Server</a>
-            </li>
-            <li class="menu-item -level-2"><a class="link title  link-servicesmongodb" href="services/mongodb.html">MongoDB</a>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse-server" href="services/lighthouse-server.html">Lighthouse Server</a>
             </li>
           </ul>
         </li>
         <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
           <ul class="submenu">
-            <li class="menu-item -level-2"><a class="link title  link-gcpsetup" href="gcp/setup.html">Setup</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-storage" href="gcp/google-cloud-storage.html">Google Cloud Storage</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-gcpdeployments" href="gcp/deployments.html">Deployments</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-firestore" href="gcp/google-cloud-firestore.html">Google Cloud Firestore</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-gcpgcs" href="gcp/gcs.html">Google Cloud Storage</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
             </li>
-            <li class="menu-item -level-2"><a class="link title  link-gcpgcf" href="gcp/gcf.html">Google Cloud Firestore</a>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-memorystore" href="gcp/google-cloud-memorystore.html">Google Cloud Memorystore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-app-engine" href="gcp/google-app-engine.html">Google App Engine</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-kubernetes-engine" href="gcp/google-kubernetes-engine.html">Google Kubernetes Engine</a>
             </li>
           </ul>
         </li>
         <li class="menu-item -level-1"><a class="link title  link-aws" href="aws/index.html">Amazon Web Services</a>
         </li>
+        <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-search" href="search.html">API Search</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-404" href="404.html">404</a>
+        </li>
       </ul>
     </li>
-  </div>
+  </ul>
   <div class="body page-installationsetup">
     <div class="header-nav">
-      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
     <div class="markdown-body"><h1 id="setup">Setup</h1>
 <h2 id="environment-variables">Environment Variables</h2>
 <p>Copy the <code>.env.dist</code> file to <code>.env</code>.</p>
 <pre><code>$ cp .env.dist .env
 </code></pre>
-<p><code>.env</code> file is used to store custom values of environment variables for various services. Before setting up any of the services, update values according instructions for each service. The variables and their descriptions can be found at the end of each relevant section.</p>
-<p>The <code>.tpl</code> files are template files that through variable interpolation are
-converted and used to deploy your project to GCP and even setup the local API. So
-these files play a critical role in getting Tide setup. If these files are not
-generating the correct output, please <a href="#contact-us">contact us</a> to troubleshoot and
-figure out a solution for your OS.</p>
-<p>So far we&apos;ve only tested on OS X with and without the <code>envsubst</code> command available.
-Other systems may not work correctly and we want to resolve that quickly.</p>
+<p><em>If you are running Tide locally, you do not need to change any of these <code>.env</code> values. If you are deploying this into the cloud, make sure to read all the documentation for which variables you should update and their values.</em></p>
+<p>Create an empty <code>.env.gcp</code> file.</p>
+<pre><code>touch .env.gcp
+</code></pre>
+<p>The <code>.env.gcp</code> file overwrites the <code>.env</code> file values and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.</p>
+<h2 id="mongodb">MongoDB</h2>
+<p>By default MongoDB is used as the local message provider for the Lighthouse &amp; PHPCS Servers. You do not need to change any of the default settings in your <code>.env</code> file, but you could before starting the API if you wanted.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>MONGO_DATABASE_NAME</code></td>
+<td style="text-align:left">The name of the database. Default is <code>queue</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_DATABASE_PASSWORD</code></td>
+<td style="text-align:left">The database root password. Default is <code>root</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_DATABASE_USERNAME</code></td>
+<td style="text-align:left">The database root username. Default is <code>root</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_QUEUE_LH</code></td>
+<td style="text-align:left">Specifies which collection in MongoDB to use for the Lighthouse message queue. Default is <code>lighthouse</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MONGO_QUEUE_PHPCS</code></td>
+<td style="text-align:left">Specifies which collection in MongoDB to use for the PHPCS message queue. Default is <code>phpcs</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="api">API</h2>
-<p>Update the following environment variables in <code>.env</code> file:</p>
+<p>We typically update at minimum the following environment variables in the <code>.env</code> file:</p>
 <table>
 <thead>
 <tr>
@@ -84,61 +155,92 @@ Other systems may not work correctly and we want to resolve that quickly.</p>
 <tbody>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_EMAIL</code></td>
-<td style="text-align:left">The email associated with the local admin account</td>
+<td style="text-align:left">The email associated with the local admin account. Default is <code>admin@tide.local</code>. <em>Note: unless you setup the Gmail SMTP plugin, any generated emails will not get sent by WordPress.</em></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_PASSWORD</code></td>
-<td style="text-align:left">The password associated with the local admin account</td>
+<td style="text-align:left">The password associated with the local admin account. Default is <code>wordpress</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_ADMIN_USER</code></td>
-<td style="text-align:left">The username associated with the local admin account</td>
+<td style="text-align:left">The username associated with the local admin account. Default is <code>admin</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_KEY</code></td>
-<td style="text-align:left">The API key used locally to authenticate the <code>audit-server</code> user.</td>
+<td style="text-align:left">The API key used both locally and on GCP to authenticate the <code>audit-server</code> user. Default is <code>uRhZgeYt$v5u0vR5fpcDSWcZU</code>.</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>API_SECRET</code></td>
-<td style="text-align:left">The API secret used locally to authenticate the <code>audit-server</code> user.</td>
+<td style="text-align:left">The API secret used both locally and on GCP to authenticate the <code>audit-server</code> user. Default is <code>rVvUWQlPQr8trSEd2qdwmE4Eiua$MjLX</code>.</td>
 </tr>
 </tbody>
 </table>
-<p>For local development you have to manually set the <code>API_KEY</code> and <code>API_SECRET</code> for the
-<code>audit-server</code> user, which will automatically update the user meta values when
-<code>make api.setup</code> is ran. If you are
-running Tide in production, then you can access the auto generated key and secret
-from the <code>audit-server</code> user profile.</p>
-<p>Now install the dependencies as follows:</p>
-<pre><code>$ make api.composer
+<p>To make local development simple we have added default values for the <code>API_KEY</code> and <code>API_SECRET</code> associated with the <code>audit-server</code> user, which will automatically update the user meta values when <code>make api.setup</code> is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud &#x2014; in that case you should overwrite these values in the <code>.env.gcp</code> file.</p>
+<p>If you are running Tide in production, then you can access the auto generated key and secret from the <code>audit-server</code> user&apos;s profile after you setup the API and before you deploy the Kubernetes clusters.</p>
+<h3 id="initialize-wordpress">Initialize WordPress</h3>
+<p>From the project root directory run the following <code>make</code> commands to initialize and setup WordPress.</p>
+<p>Install the dependencies:</p>
+<pre><code>make api.composer
 </code></pre>
 <p>Then start the API Docker images in isolation:</p>
-<pre><code>$ make api.up
+<pre><code>make api.up
 </code></pre>
-<p>Last run the setup script:</p>
-<pre><code>$ make api.setup
+<p>Open a new shell and run the setup script:</p>
+<pre><code>make api.setup
 </code></pre>
-<p>Run the setup script to initialize WordPress for the first time or if you would
-like a convenient way to update the default values when you change relevant
-environment variables.</p>
-<p>If you see an error like this on OS X when bringing up the API you need to add the
-directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app.</p>
-<pre><code>ERROR: for gotide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
+<p><em>You can run the setup script to initialize WordPress for the first time or if you would like a convenient way to update the default values when you change relevant environment variables.</em></p>
+<h3 id="database">Database</h3>
+<p>The local database is stored in the <code>data/api/mysql</code> directory. If you ever need to start from scratch delete that directory and run <code>make api.setup</code> again. Be sure to stop the API with <code>make api.down</code> or <code>make down</code> and then start it again with <code>make api.up</code>.</p>
+<p><em>Running <code>make down</code> will stop all Docker services.</em></p>
+<h3 id="hosts-file">Hosts File</h3>
+<p>Add the following entry to your hosts file to make sure <code>tide.local</code> is pointed at your local Tide instance:</p>
+<pre><code>127.0.0.1 tide.local
 </code></pre>
-<p>Add <code>127.0.0.1 tide.local</code> to your <code>hosts</code> file. You should be now able to run API at <a href="http://tide.local">tide.local</a></p>
-<h2 id="build-images">Build images</h2>
-<p>Install Glide dependencies and build images:</p>
-<pre><code>$ make build.images
+<p><em>You can change the <code>tide.local</code> URL to some other value by modifying the <code>API_AUTH_URL</code> and <code>API_HTTP_HOST</code> variables inside the <code>.env</code> file.</em></p>
+<h2 id="build-images">Build Images</h2>
+<p>Installs the Glide dependencies, creates the Go binaries, and builds all the Docker images:</p>
+<pre><code>make build.images
 </code></pre>
-<h2 id="start-servers">Start servers</h2>
-<p>Start the servers (Lighthouse Server, PHPCS Server, Sync Server):</p>
-<pre><code>$ make up
+<h3 id="isolated-build">Isolated Build</h3>
+<p>Lighthouse Image:</p>
+<pre><code>make lighthouse.build.image
 </code></pre>
+<p>PHPCS Image:</p>
+<pre><code>make phpcs.build.image
+</code></pre>
+<p>Sync Image:</p>
+<pre><code>make sync.build.image
+</code></pre>
+<h2 id="start-servers">Start Servers</h2>
+<p>It is recommended that you run these Docker containers separately and start the servers in new shells in order to isolate the output. However, you can start all services (API, Lighthouse Server, PHPCS Server, Sync Server) with the following command:</p>
+<pre><code>make up
+</code></pre>
+<h3 id="isolated-start">Isolated Start</h3>
+<p>Lighthouse Server:</p>
+<pre><code>make lighthouse.up
+</code></pre>
+<p>PHPCS Server:</p>
+<pre><code>make phpcs.up
+</code></pre>
+<p>Sync Server:</p>
+<pre><code>make sync.up
+</code></pre>
+<h2 id="run-audits">Run Audits</h2>
+<p>Now that all the Tide services are up and running, you can run audits on themes and plugins by doing a <code>GET</code> request to a special endpoint either in your browser or with an app like Postman. This endpoint only initiates an audit for the <code>wporg</code> Tide user and for <a href="http://WordPress.org">WordPress.org</a> hosted themes and plugins.</p>
+<p>If we want to run an audit against the <code>twentyseventeen</code> theme version <code>2.1</code> for example, we would use this endpoint:</p>
+<pre><code>http://tide.local/api/tide/v1/audit/wporg/theme/twentyseventeen/2.1
+</code></pre>
+<p>Or for the <code>akismet</code> plugin version <code>4.1.1</code>:</p>
+<pre><code>http://tide.local/api/tide/v1/audit/wporg/plugin/akismet/4.1.1
+</code></pre>
+<p>When you request an audit you will receive a JSON object back that indicates the audit is pending. If the audit has previously been requested and is complete then you will receive a JSON object with information about the theme/plugin and summary reports with links to the full report.</p>
+<p>If the audit is pending, your shell should have some output to indicate that the audit is running. Once this output stops and all your services go back to the <code>polling</code> status, you can refresh the API request in the browser and you should see the updated JSON object with completed Tide reports.</p>
+<p>For a full list of API Endpoints that can be used with Tide, see the <a href="/services/api#endpoints">API Endpoints</a> section.</p>
 
     </div>
     <div class="footer-nav">
       <div class="left"><a href="../installation/cloning.html"><span class="title">Cloning</span></a></div>
-      <div class="right"><a href="../services/index.html"><span class="title">Services</span></a></div>
+      <div class="right"><a href="../services/index.html"><span class="label">Next: </span><span class="title">Services</span></a></div>
     </div>
   </div>
 </div>

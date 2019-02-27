@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Link docpress ..."
+cd docpress/docpress && npm link
+
+echo "Link docpress-base ..."
+cd ../docpress-base && npm link
+
+echo "Link docpress-core ..."
+cd ../docpress-core && npm link
+
+echo "Install docpress ..."
+cd ../docpress && npm install && npm link docpress-base && npm link docpress-core
+
+echo "Install docpress-base ..."
+cd ../docpress-base && npm install && npm link npm link docpress-core

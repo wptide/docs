@@ -2,8 +2,8 @@
   "toc": {
     "sections": [
       {
-        "title": "",
-        "source": "docs/hello.md",
+        "title": "Tide",
+        "source": "docs/index.md",
         "url": "index.html",
         "slug": "index",
         "headings": [
@@ -36,14 +36,18 @@
             "title": "Contact Us",
             "depth": 2,
             "id": "contact-us"
+          },
+          {
+            "title": "Maintainers",
+            "depth": 2,
+            "id": "maintainers"
+          },
+          {
+            "title": "Credits",
+            "depth": 2,
+            "id": "credits"
           }
         ]
-      },
-      {
-        "title": "Search plugins & themes",
-        "source": "docs/search.md",
-        "url": "search.html",
-        "slug": "search"
       },
       {
         "title": "Installation",
@@ -102,19 +106,60 @@
                 "id": "environment-variables"
               },
               {
+                "title": "MongoDB",
+                "depth": 2,
+                "id": "mongodb"
+              },
+              {
                 "title": "API",
                 "depth": 2,
-                "id": "api"
+                "id": "api",
+                "headings": [
+                  {
+                    "title": "Initialize WordPress",
+                    "depth": 3,
+                    "id": "initialize-wordpress"
+                  },
+                  {
+                    "title": "Database",
+                    "depth": 3,
+                    "id": "database"
+                  },
+                  {
+                    "title": "Hosts File",
+                    "depth": 3,
+                    "id": "hosts-file"
+                  }
+                ]
               },
               {
-                "title": "Build images",
+                "title": "Build Images",
                 "depth": 2,
-                "id": "build-images"
+                "id": "build-images",
+                "headings": [
+                  {
+                    "title": "Isolated Build",
+                    "depth": 3,
+                    "id": "isolated-build"
+                  }
+                ]
               },
               {
-                "title": "Start servers",
+                "title": "Start Servers",
                 "depth": 2,
-                "id": "start-servers"
+                "id": "start-servers",
+                "headings": [
+                  {
+                    "title": "Isolated Start",
+                    "depth": 3,
+                    "id": "isolated-start"
+                  }
+                ]
+              },
+              {
+                "title": "Run Audits",
+                "depth": 2,
+                "id": "run-audits"
               }
             ]
           }
@@ -125,6 +170,13 @@
         "source": "docs/services/index.md",
         "url": "services/index.html",
         "slug": "services",
+        "headings": [
+          {
+            "title": "Commands",
+            "depth": 2,
+            "id": "commands"
+          }
+        ],
         "sections": [
           {
             "title": "API",
@@ -133,14 +185,14 @@
             "slug": "servicesapi",
             "headings": [
               {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
               },
               {
                 "title": "Endpoints",
@@ -148,69 +200,54 @@
                 "id": "endpoints",
                 "headings": [
                   {
-                    "title": "`/tide/v1/`",
+                    "title": "`/api/tide/v1/auth`",
                     "depth": 3,
-                    "id": "tidev1"
+                    "id": "apitidev1auth"
                   },
                   {
-                    "title": "`/tide/v1/report`",
+                    "title": "`/api/tide/v1/audit`",
                     "depth": 3,
-                    "id": "tidev1report"
+                    "id": "apitidev1audit"
                   },
                   {
-                    "title": "`/tide/v1/report/{checksum}/{type}/{standard}/`",
+                    "title": "`/api/tide/v1/audit/{id}`",
                     "depth": 3,
-                    "id": "tidev1reportchecksumtypestandard"
+                    "id": "apitidev1auditid"
                   },
                   {
-                    "title": "`/tide/v1/report/{post_id}/{type}/{standard}/`",
+                    "title": "`/api/tide/v1/audit/{altid}`",
                     "depth": 3,
-                    "id": "tidev1reportpost_idtypestandard"
+                    "id": "apitidev1auditaltid"
                   },
                   {
-                    "title": "`/tide/v1/auth`",
+                    "title": "`/api/tide/v1/audit/{project_client}`",
                     "depth": 3,
-                    "id": "tidev1auth"
+                    "id": "apitidev1auditproject_client"
                   },
                   {
-                    "title": "`/tide/v1/keypair/{id}`",
+                    "title": "`/api/tide/v1/audit/{project_client}/{project_type}`",
                     "depth": 3,
-                    "id": "tidev1keypairid"
+                    "id": "apitidev1auditproject_clientproject_type"
                   },
                   {
-                    "title": "`/tide/v1/audit/`",
+                    "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
                     "depth": 3,
-                    "id": "tidev1audit"
+                    "id": "apitidev1auditproject_clientproject_typeproject_slug"
                   },
                   {
-                    "title": "`/tide/v1/audit/{id}`",
+                    "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
                     "depth": 3,
-                    "id": "tidev1auditid"
+                    "id": "apitidev1auditproject_clientproject_typeproject_slugversion"
                   },
                   {
-                    "title": "`/tide/v1/audit/{checksum}`",
+                    "title": "`/api/tide/v1/report/{id}/{type}/{standard}`",
                     "depth": 3,
-                    "id": "tidev1auditchecksum"
+                    "id": "apitidev1reportidtypestandard"
                   },
                   {
-                    "title": "`/tide/v1/audit/{project_client}`",
+                    "title": "`/api/tide/v1/report/{altid}/{type}/{standard}`",
                     "depth": 3,
-                    "id": "tidev1auditproject_client"
-                  },
-                  {
-                    "title": "`/tide/v1/audit/{project_client}/{project_type}`",
-                    "depth": 3,
-                    "id": "tidev1auditproject_clientproject_type"
-                  },
-                  {
-                    "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
-                    "depth": 3,
-                    "id": "tidev1auditproject_clientproject_typeproject_slug"
-                  },
-                  {
-                    "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
-                    "depth": 3,
-                    "id": "tidev1auditproject_clientproject_typeproject_slugversion"
+                    "id": "apitidev1reportaltidtypestandard"
                   }
                 ]
               }
@@ -218,68 +255,57 @@
           },
           {
             "title": "Sync Server",
-            "source": "docs/services/sync.md",
-            "url": "services/sync.html",
-            "slug": "servicessync",
+            "source": "docs/services/sync-server.md",
+            "url": "services/sync-server.html",
+            "slug": "servicessync-server",
             "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
               {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
               }
             ]
           },
           {
             "title": "PHPCS Server",
-            "source": "docs/services/phpcs.md",
-            "url": "services/phpcs.html",
-            "slug": "servicesphpcs",
+            "source": "docs/services/phpcs-server.md",
+            "url": "services/phpcs-server.html",
+            "slug": "servicesphpcs-server",
             "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
               {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
               }
             ]
           },
           {
             "title": "Lighthouse Server",
-            "source": "docs/services/lighthouse.md",
-            "url": "services/lighthouse.html",
-            "slug": "serviceslighthouse",
+            "source": "docs/services/lighthouse-server.md",
+            "url": "services/lighthouse-server.html",
+            "slug": "serviceslighthouse-server",
             "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
               {
                 "title": "Commands",
                 "depth": 2,
                 "id": "commands"
-              },
-              {
-                "title": "Settings",
-                "depth": 2,
-                "id": "settings"
-              },
-              {
-                "title": "Running audits",
-                "depth": 2,
-                "id": "running-audits"
               }
             ]
-          },
-          {
-            "title": "MongoDB",
-            "source": "docs/services/mongodb.md",
-            "url": "services/mongodb.html",
-            "slug": "servicesmongodb"
           }
         ]
       },
@@ -288,141 +314,151 @@
         "source": "docs/gcp/index.md",
         "url": "gcp/index.html",
         "slug": "gcp",
+        "headings": [
+          {
+            "title": "Prerequisites",
+            "depth": 2,
+            "id": "prerequisites"
+          },
+          {
+            "title": "Service Account",
+            "depth": 2,
+            "id": "service-account"
+          },
+          {
+            "title": "Environment Variables",
+            "depth": 2,
+            "id": "environment-variables"
+          }
+        ],
         "sections": [
           {
-            "title": "Setup",
-            "source": "docs/gcp/setup.md",
-            "url": "gcp/setup.html",
-            "slug": "gcpsetup",
-            "headings": [
-              {
-                "title": "Prerequisites",
-                "depth": 2,
-                "id": "prerequisites"
-              },
-              {
-                "title": "Setup",
-                "depth": 2,
-                "id": "setup",
-                "headings": [
-                  {
-                    "title": "Environment variables",
-                    "depth": 3,
-                    "id": "environment-variables"
-                  },
-                  {
-                    "title": "Google App Engine",
-                    "depth": 3,
-                    "id": "google-app-engine"
-                  },
-                  {
-                    "title": "Google Cloud Storage for App Engine",
-                    "depth": 3,
-                    "id": "google-cloud-storage-for-app-engine"
-                  },
-                  {
-                    "title": "Service Account",
-                    "depth": 3,
-                    "id": "service-account"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Deployments",
-            "source": "docs/gcp/deployments.md",
-            "url": "gcp/deployments.html",
-            "slug": "gcpdeployments",
-            "headings": [
-              {
-                "title": "GCP Settings",
-                "depth": 2,
-                "id": "gcp-settings"
-              },
-              {
-                "title": "Google Cloud SQL (GCSQL)",
-                "depth": 2,
-                "id": "google-cloud-sql-(gcsql)",
-                "headings": [
-                  {
-                    "title": "GCSQL API Settings",
-                    "depth": 3,
-                    "id": "gcsql-api-settings"
-                  }
-                ]
-              },
-              {
-                "title": "Google Cloud Memorystore (GCM)",
-                "depth": 2,
-                "id": "google-cloud-memorystore-(gcm)",
-                "headings": [
-                  {
-                    "title": "GCM API Settings",
-                    "depth": 3,
-                    "id": "gcm-api-settings"
-                  }
-                ]
-              },
-              {
-                "title": "Google App Engine (GAE)",
-                "depth": 2,
-                "id": "google-app-engine-(gae)",
-                "headings": [
-                  {
-                    "title": "GAE API Settings",
-                    "depth": 3,
-                    "id": "gae-api-settings"
-                  }
-                ]
-              },
-              {
-                "title": "Google Kubernetes Engine (GKE)",
-                "depth": 2,
-                "id": "google-kubernetes-engine-(gke)",
-                "headings": [
-                  {
-                    "title": "GKE Lighthouse Server Settings",
-                    "depth": 3,
-                    "id": "gke-lighthouse-server-settings"
-                  },
-                  {
-                    "title": "GKE PHPCS Server Settings",
-                    "depth": 3,
-                    "id": "gke-phpcs-server-settings"
-                  },
-                  {
-                    "title": "GKE Sync Server Settings",
-                    "depth": 3,
-                    "id": "gke-sync-server-settings"
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "title": "Google Cloud Storage",
-            "source": "docs/gcp/gcs.md",
-            "url": "gcp/gcs.html",
-            "slug": "gcpgcs",
+            "source": "docs/gcp/google-cloud-storage.md",
+            "url": "gcp/google-cloud-storage.html",
+            "slug": "gcpgoogle-cloud-storage",
             "headings": [
               {
-                "title": "Settings",
+                "title": "Environment Variables",
                 "depth": 2,
-                "id": "settings"
+                "id": "environment-variables"
+              },
+              {
+                "title": "Media Uploads",
+                "depth": 2,
+                "id": "media-uploads"
               }
             ]
           },
           {
             "title": "Google Cloud Firestore",
-            "source": "docs/gcp/gcf.md",
-            "url": "gcp/gcf.html",
-            "slug": "gcpgcf",
+            "source": "docs/gcp/google-cloud-firestore.md",
+            "url": "gcp/google-cloud-firestore.html",
+            "slug": "gcpgoogle-cloud-firestore",
             "headings": [
               {
-                "title": "Settings",
+                "title": "Environment Variables",
                 "depth": 2,
-                "id": "settings"
+                "id": "environment-variables"
+              },
+              {
+                "title": "Setup",
+                "depth": 2,
+                "id": "setup"
+              }
+            ]
+          },
+          {
+            "title": "Google Cloud SQL",
+            "source": "docs/gcp/google-cloud-sql.md",
+            "url": "gcp/google-cloud-sql.html",
+            "slug": "gcpgoogle-cloud-sql",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
+              }
+            ]
+          },
+          {
+            "title": "Google Cloud Memorystore",
+            "source": "docs/gcp/google-cloud-memorystore.md",
+            "url": "gcp/google-cloud-memorystore.html",
+            "slug": "gcpgoogle-cloud-memorystore",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
+              }
+            ]
+          },
+          {
+            "title": "Google App Engine",
+            "source": "docs/gcp/google-app-engine.md",
+            "url": "gcp/google-app-engine.html",
+            "slug": "gcpgoogle-app-engine",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables"
+              },
+              {
+                "title": "Setup",
+                "depth": 2,
+                "id": "setup"
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
+              }
+            ]
+          },
+          {
+            "title": "Google Kubernetes Engine",
+            "source": "docs/gcp/google-kubernetes-engine.md",
+            "url": "gcp/google-kubernetes-engine.html",
+            "slug": "gcpgoogle-kubernetes-engine",
+            "headings": [
+              {
+                "title": "Environment Variables",
+                "depth": 2,
+                "id": "environment-variables",
+                "headings": [
+                  {
+                    "title": "Lighthouse Server",
+                    "depth": 3,
+                    "id": "lighthouse-server"
+                  },
+                  {
+                    "title": "PHPCS Server",
+                    "depth": 3,
+                    "id": "phpcs-server"
+                  },
+                  {
+                    "title": "Sync Server",
+                    "depth": 3,
+                    "id": "sync-server"
+                  }
+                ]
+              },
+              {
+                "title": "Deploy",
+                "depth": 2,
+                "id": "deploy"
               }
             ]
           }
@@ -435,19 +471,144 @@
         "slug": "aws",
         "headings": [
           {
-            "title": "Settings",
+            "title": "Environment Variables",
             "depth": 2,
-            "id": "settings"
+            "id": "environment-variables"
           }
         ]
+      },
+      {
+        "title": "Important Links",
+        "sections": [
+          {
+            "title": "Local Development",
+            "source": "docs/local-development.md",
+            "url": "local-development.html",
+            "slug": "local-development",
+            "headings": [
+              {
+                "title": "Composer",
+                "depth": 2,
+                "id": "composer"
+              },
+              {
+                "title": "PHPCS Ruleset",
+                "depth": 2,
+                "id": "phpcs-ruleset"
+              },
+              {
+                "title": "Usage",
+                "depth": 2,
+                "id": "usage"
+              }
+            ]
+          },
+          {
+            "title": "Help",
+            "source": "docs/help.md",
+            "url": "help.html",
+            "slug": "help",
+            "headings": [
+              {
+                "title": "Failed Audit Request",
+                "depth": 2,
+                "id": "failed-audit-request"
+              },
+              {
+                "title": "Mounts Denied",
+                "depth": 2,
+                "id": "mounts-denied"
+              }
+            ]
+          },
+          {
+            "title": "Contributing",
+            "source": "docs/contributing.md",
+            "url": "contributing.html",
+            "slug": "contributing",
+            "headings": [
+              {
+                "title": "Code of Conduct",
+                "depth": 2,
+                "id": "code-of-conduct"
+              },
+              {
+                "title": "Issue Reporting Guidelines",
+                "depth": 2,
+                "id": "issue-reporting-guidelines"
+              },
+              {
+                "title": "Pull Request Guidelines",
+                "depth": 2,
+                "id": "pull-request-guidelines"
+              }
+            ]
+          },
+          {
+            "title": "Code of Conduct",
+            "source": "docs/code-of-conduct.md",
+            "url": "code-of-conduct.html",
+            "slug": "code-of-conduct",
+            "headings": [
+              {
+                "title": "Our Pledge",
+                "depth": 2,
+                "id": "our-pledge"
+              },
+              {
+                "title": "Our Standards",
+                "depth": 2,
+                "id": "our-standards"
+              },
+              {
+                "title": "Our Responsibilities",
+                "depth": 2,
+                "id": "our-responsibilities"
+              },
+              {
+                "title": "Scope",
+                "depth": 2,
+                "id": "scope"
+              },
+              {
+                "title": "Enforcement",
+                "depth": 2,
+                "id": "enforcement"
+              },
+              {
+                "title": "Attribution",
+                "depth": 2,
+                "id": "attribution"
+              }
+            ]
+          },
+          {
+            "title": "License",
+            "source": "docs/license.md",
+            "url": "license.html",
+            "slug": "license"
+          },
+          {
+            "title": "API Search",
+            "source": "docs/search.md",
+            "url": "search.html",
+            "slug": "search"
+          }
+        ]
+      },
+      {
+        "title": "404",
+        "source": "docs/404.md",
+        "url": "404.html",
+        "slug": "404"
       }
     ]
   },
   "index": {
     "index.html": {
-      "source": "docs/hello.md",
-      "title": "",
-      "pageTitle": "",
+      "source": "docs/index.md",
+      "title": "Tide",
+      "pageTitle": "Tide",
       "slug": "index",
       "headings": [
         {
@@ -479,24 +640,28 @@
           "title": "Contact Us",
           "depth": 2,
           "id": "contact-us"
+        },
+        {
+          "title": "Maintainers",
+          "depth": 2,
+          "id": "maintainers"
+        },
+        {
+          "title": "Credits",
+          "depth": 2,
+          "id": "credits"
         }
       ]
     },
-    "search.html": {
-      "source": "docs/search.md",
-      "title": "Search plugins & themes - ",
-      "pageTitle": "Search plugins & themes",
-      "slug": "search"
-    },
     "installation/index.html": {
       "source": "docs/installation/index.md",
-      "title": "Installation - ",
+      "title": "Installation - Tide",
       "pageTitle": "Installation",
       "slug": "installation"
     },
     "installation/prerequisites.html": {
       "source": "docs/installation/prerequisites.md",
-      "title": "Prerequisites - ",
+      "title": "Prerequisites - Tide",
       "pageTitle": "Prerequisites",
       "slug": "installationprerequisites",
       "headings": [
@@ -529,13 +694,13 @@
     },
     "installation/cloning.html": {
       "source": "docs/installation/cloning.md",
-      "title": "Cloning - ",
+      "title": "Cloning - Tide",
       "pageTitle": "Cloning",
       "slug": "installationcloning"
     },
     "installation/setup.html": {
       "source": "docs/installation/setup.md",
-      "title": "Setup - ",
+      "title": "Setup - Tide",
       "pageTitle": "Setup",
       "slug": "installationsetup",
       "headings": [
@@ -545,43 +710,91 @@
           "id": "environment-variables"
         },
         {
+          "title": "MongoDB",
+          "depth": 2,
+          "id": "mongodb"
+        },
+        {
           "title": "API",
           "depth": 2,
-          "id": "api"
+          "id": "api",
+          "headings": [
+            {
+              "title": "Initialize WordPress",
+              "depth": 3,
+              "id": "initialize-wordpress"
+            },
+            {
+              "title": "Database",
+              "depth": 3,
+              "id": "database"
+            },
+            {
+              "title": "Hosts File",
+              "depth": 3,
+              "id": "hosts-file"
+            }
+          ]
         },
         {
-          "title": "Build images",
+          "title": "Build Images",
           "depth": 2,
-          "id": "build-images"
+          "id": "build-images",
+          "headings": [
+            {
+              "title": "Isolated Build",
+              "depth": 3,
+              "id": "isolated-build"
+            }
+          ]
         },
         {
-          "title": "Start servers",
+          "title": "Start Servers",
           "depth": 2,
-          "id": "start-servers"
+          "id": "start-servers",
+          "headings": [
+            {
+              "title": "Isolated Start",
+              "depth": 3,
+              "id": "isolated-start"
+            }
+          ]
+        },
+        {
+          "title": "Run Audits",
+          "depth": 2,
+          "id": "run-audits"
         }
       ]
     },
     "services/index.html": {
       "source": "docs/services/index.md",
-      "title": "Services - ",
+      "title": "Services - Tide",
       "pageTitle": "Services",
-      "slug": "services"
-    },
-    "services/api.html": {
-      "source": "docs/services/api.md",
-      "title": "API - ",
-      "pageTitle": "API",
-      "slug": "servicesapi",
+      "slug": "services",
       "headings": [
         {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
+        }
+      ]
+    },
+    "services/api.html": {
+      "source": "docs/services/api.md",
+      "title": "API - Tide",
+      "pageTitle": "API",
+      "slug": "servicesapi",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
         },
         {
-          "title": "Settings",
+          "title": "Commands",
           "depth": 2,
-          "id": "settings"
+          "id": "commands"
         },
         {
           "title": "Endpoints",
@@ -589,150 +802,118 @@
           "id": "endpoints",
           "headings": [
             {
-              "title": "`/tide/v1/`",
+              "title": "`/api/tide/v1/auth`",
               "depth": 3,
-              "id": "tidev1"
+              "id": "apitidev1auth"
             },
             {
-              "title": "`/tide/v1/report`",
+              "title": "`/api/tide/v1/audit`",
               "depth": 3,
-              "id": "tidev1report"
+              "id": "apitidev1audit"
             },
             {
-              "title": "`/tide/v1/report/{checksum}/{type}/{standard}/`",
+              "title": "`/api/tide/v1/audit/{id}`",
               "depth": 3,
-              "id": "tidev1reportchecksumtypestandard"
+              "id": "apitidev1auditid"
             },
             {
-              "title": "`/tide/v1/report/{post_id}/{type}/{standard}/`",
+              "title": "`/api/tide/v1/audit/{altid}`",
               "depth": 3,
-              "id": "tidev1reportpost_idtypestandard"
+              "id": "apitidev1auditaltid"
             },
             {
-              "title": "`/tide/v1/auth`",
+              "title": "`/api/tide/v1/audit/{project_client}`",
               "depth": 3,
-              "id": "tidev1auth"
+              "id": "apitidev1auditproject_client"
             },
             {
-              "title": "`/tide/v1/keypair/{id}`",
+              "title": "`/api/tide/v1/audit/{project_client}/{project_type}`",
               "depth": 3,
-              "id": "tidev1keypairid"
+              "id": "apitidev1auditproject_clientproject_type"
             },
             {
-              "title": "`/tide/v1/audit/`",
+              "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
               "depth": 3,
-              "id": "tidev1audit"
+              "id": "apitidev1auditproject_clientproject_typeproject_slug"
             },
             {
-              "title": "`/tide/v1/audit/{id}`",
+              "title": "`/api/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
               "depth": 3,
-              "id": "tidev1auditid"
+              "id": "apitidev1auditproject_clientproject_typeproject_slugversion"
             },
             {
-              "title": "`/tide/v1/audit/{checksum}`",
+              "title": "`/api/tide/v1/report/{id}/{type}/{standard}`",
               "depth": 3,
-              "id": "tidev1auditchecksum"
+              "id": "apitidev1reportidtypestandard"
             },
             {
-              "title": "`/tide/v1/audit/{project_client}`",
+              "title": "`/api/tide/v1/report/{altid}/{type}/{standard}`",
               "depth": 3,
-              "id": "tidev1auditproject_client"
-            },
-            {
-              "title": "`/tide/v1/audit/{project_client}/{project_type}`",
-              "depth": 3,
-              "id": "tidev1auditproject_clientproject_type"
-            },
-            {
-              "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}`",
-              "depth": 3,
-              "id": "tidev1auditproject_clientproject_typeproject_slug"
-            },
-            {
-              "title": "`/tide/v1/audit/{project_client}/{project_type}/{project_slug}/{version}`",
-              "depth": 3,
-              "id": "tidev1auditproject_clientproject_typeproject_slugversion"
+              "id": "apitidev1reportaltidtypestandard"
             }
           ]
         }
       ]
     },
-    "services/sync.html": {
-      "source": "docs/services/sync.md",
-      "title": "Sync Server - ",
+    "services/sync-server.html": {
+      "source": "docs/services/sync-server.md",
+      "title": "Sync Server - Tide",
       "pageTitle": "Sync Server",
-      "slug": "servicessync",
+      "slug": "servicessync-server",
       "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
         {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
-        },
-        {
-          "title": "Settings",
-          "depth": 2,
-          "id": "settings"
         }
       ]
     },
-    "services/phpcs.html": {
-      "source": "docs/services/phpcs.md",
-      "title": "PHPCS Server - ",
+    "services/phpcs-server.html": {
+      "source": "docs/services/phpcs-server.md",
+      "title": "PHPCS Server - Tide",
       "pageTitle": "PHPCS Server",
-      "slug": "servicesphpcs",
+      "slug": "servicesphpcs-server",
       "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
         {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
-        },
-        {
-          "title": "Settings",
-          "depth": 2,
-          "id": "settings"
         }
       ]
     },
-    "services/lighthouse.html": {
-      "source": "docs/services/lighthouse.md",
-      "title": "Lighthouse Server - ",
+    "services/lighthouse-server.html": {
+      "source": "docs/services/lighthouse-server.md",
+      "title": "Lighthouse Server - Tide",
       "pageTitle": "Lighthouse Server",
-      "slug": "serviceslighthouse",
+      "slug": "serviceslighthouse-server",
       "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
         {
           "title": "Commands",
           "depth": 2,
           "id": "commands"
-        },
-        {
-          "title": "Settings",
-          "depth": 2,
-          "id": "settings"
-        },
-        {
-          "title": "Running audits",
-          "depth": 2,
-          "id": "running-audits"
         }
       ]
-    },
-    "services/mongodb.html": {
-      "source": "docs/services/mongodb.md",
-      "title": "MongoDB - ",
-      "pageTitle": "MongoDB",
-      "slug": "servicesmongodb"
     },
     "gcp/index.html": {
       "source": "docs/gcp/index.md",
-      "title": "Google Cloud Platform - ",
+      "title": "Google Cloud Platform - Tide",
       "pageTitle": "Google Cloud Platform",
-      "slug": "gcp"
-    },
-    "gcp/setup.html": {
-      "source": "docs/gcp/setup.md",
-      "title": "Setup - ",
-      "pageTitle": "Setup",
-      "slug": "gcpsetup",
+      "slug": "gcp",
       "headings": [
         {
           "title": "Prerequisites",
@@ -740,164 +921,307 @@
           "id": "prerequisites"
         },
         {
+          "title": "Service Account",
+          "depth": 2,
+          "id": "service-account"
+        },
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        }
+      ]
+    },
+    "gcp/google-cloud-storage.html": {
+      "source": "docs/gcp/google-cloud-storage.md",
+      "title": "Google Cloud Storage - Tide",
+      "pageTitle": "Google Cloud Storage",
+      "slug": "gcpgoogle-cloud-storage",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
+          "title": "Media Uploads",
+          "depth": 2,
+          "id": "media-uploads"
+        }
+      ]
+    },
+    "gcp/google-cloud-firestore.html": {
+      "source": "docs/gcp/google-cloud-firestore.md",
+      "title": "Google Cloud Firestore - Tide",
+      "pageTitle": "Google Cloud Firestore",
+      "slug": "gcpgoogle-cloud-firestore",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables"
+        },
+        {
           "title": "Setup",
           "depth": 2,
-          "id": "setup",
-          "headings": [
-            {
-              "title": "Environment variables",
-              "depth": 3,
-              "id": "environment-variables"
-            },
-            {
-              "title": "Google App Engine",
-              "depth": 3,
-              "id": "google-app-engine"
-            },
-            {
-              "title": "Google Cloud Storage for App Engine",
-              "depth": 3,
-              "id": "google-cloud-storage-for-app-engine"
-            },
-            {
-              "title": "Service Account",
-              "depth": 3,
-              "id": "service-account"
-            }
-          ]
+          "id": "setup"
         }
       ]
     },
-    "gcp/deployments.html": {
-      "source": "docs/gcp/deployments.md",
-      "title": "Deployments - ",
-      "pageTitle": "Deployments",
-      "slug": "gcpdeployments",
+    "gcp/google-cloud-sql.html": {
+      "source": "docs/gcp/google-cloud-sql.md",
+      "title": "Google Cloud SQL - Tide",
+      "pageTitle": "Google Cloud SQL",
+      "slug": "gcpgoogle-cloud-sql",
       "headings": [
         {
-          "title": "GCP Settings",
+          "title": "Environment Variables",
           "depth": 2,
-          "id": "gcp-settings"
+          "id": "environment-variables"
         },
         {
-          "title": "Google Cloud SQL (GCSQL)",
+          "title": "Deploy",
           "depth": 2,
-          "id": "google-cloud-sql-(gcsql)",
-          "headings": [
-            {
-              "title": "GCSQL API Settings",
-              "depth": 3,
-              "id": "gcsql-api-settings"
-            }
-          ]
-        },
-        {
-          "title": "Google Cloud Memorystore (GCM)",
-          "depth": 2,
-          "id": "google-cloud-memorystore-(gcm)",
-          "headings": [
-            {
-              "title": "GCM API Settings",
-              "depth": 3,
-              "id": "gcm-api-settings"
-            }
-          ]
-        },
-        {
-          "title": "Google App Engine (GAE)",
-          "depth": 2,
-          "id": "google-app-engine-(gae)",
-          "headings": [
-            {
-              "title": "GAE API Settings",
-              "depth": 3,
-              "id": "gae-api-settings"
-            }
-          ]
-        },
-        {
-          "title": "Google Kubernetes Engine (GKE)",
-          "depth": 2,
-          "id": "google-kubernetes-engine-(gke)",
-          "headings": [
-            {
-              "title": "GKE Lighthouse Server Settings",
-              "depth": 3,
-              "id": "gke-lighthouse-server-settings"
-            },
-            {
-              "title": "GKE PHPCS Server Settings",
-              "depth": 3,
-              "id": "gke-phpcs-server-settings"
-            },
-            {
-              "title": "GKE Sync Server Settings",
-              "depth": 3,
-              "id": "gke-sync-server-settings"
-            }
-          ]
+          "id": "deploy"
         }
       ]
     },
-    "gcp/gcs.html": {
-      "source": "docs/gcp/gcs.md",
-      "title": "Google Cloud Storage - ",
-      "pageTitle": "Google Cloud Storage",
-      "slug": "gcpgcs",
+    "gcp/google-cloud-memorystore.html": {
+      "source": "docs/gcp/google-cloud-memorystore.md",
+      "title": "Google Cloud Memorystore - Tide",
+      "pageTitle": "Google Cloud Memorystore",
+      "slug": "gcpgoogle-cloud-memorystore",
       "headings": [
         {
-          "title": "Settings",
+          "title": "Environment Variables",
           "depth": 2,
-          "id": "settings"
+          "id": "environment-variables"
+        },
+        {
+          "title": "Deploy",
+          "depth": 2,
+          "id": "deploy"
         }
       ]
     },
-    "gcp/gcf.html": {
-      "source": "docs/gcp/gcf.md",
-      "title": "Google Cloud Firestore - ",
-      "pageTitle": "Google Cloud Firestore",
-      "slug": "gcpgcf",
+    "gcp/google-app-engine.html": {
+      "source": "docs/gcp/google-app-engine.md",
+      "title": "Google App Engine - Tide",
+      "pageTitle": "Google App Engine",
+      "slug": "gcpgoogle-app-engine",
       "headings": [
         {
-          "title": "Settings",
+          "title": "Environment Variables",
           "depth": 2,
-          "id": "settings"
+          "id": "environment-variables"
+        },
+        {
+          "title": "Setup",
+          "depth": 2,
+          "id": "setup"
+        },
+        {
+          "title": "Deploy",
+          "depth": 2,
+          "id": "deploy"
+        }
+      ]
+    },
+    "gcp/google-kubernetes-engine.html": {
+      "source": "docs/gcp/google-kubernetes-engine.md",
+      "title": "Google Kubernetes Engine - Tide",
+      "pageTitle": "Google Kubernetes Engine",
+      "slug": "gcpgoogle-kubernetes-engine",
+      "headings": [
+        {
+          "title": "Environment Variables",
+          "depth": 2,
+          "id": "environment-variables",
+          "headings": [
+            {
+              "title": "Lighthouse Server",
+              "depth": 3,
+              "id": "lighthouse-server"
+            },
+            {
+              "title": "PHPCS Server",
+              "depth": 3,
+              "id": "phpcs-server"
+            },
+            {
+              "title": "Sync Server",
+              "depth": 3,
+              "id": "sync-server"
+            }
+          ]
+        },
+        {
+          "title": "Deploy",
+          "depth": 2,
+          "id": "deploy"
         }
       ]
     },
     "aws/index.html": {
       "source": "docs/aws/index.md",
-      "title": "Amazon Web Services - ",
+      "title": "Amazon Web Services - Tide",
       "pageTitle": "Amazon Web Services",
       "slug": "aws",
       "headings": [
         {
-          "title": "Settings",
+          "title": "Environment Variables",
           "depth": 2,
-          "id": "settings"
+          "id": "environment-variables"
         }
       ]
+    },
+    "local-development.html": {
+      "source": "docs/local-development.md",
+      "title": "Local Development - Tide",
+      "pageTitle": "Local Development",
+      "slug": "local-development",
+      "headings": [
+        {
+          "title": "Composer",
+          "depth": 2,
+          "id": "composer"
+        },
+        {
+          "title": "PHPCS Ruleset",
+          "depth": 2,
+          "id": "phpcs-ruleset"
+        },
+        {
+          "title": "Usage",
+          "depth": 2,
+          "id": "usage"
+        }
+      ]
+    },
+    "help.html": {
+      "source": "docs/help.md",
+      "title": "Help - Tide",
+      "pageTitle": "Help",
+      "slug": "help",
+      "headings": [
+        {
+          "title": "Failed Audit Request",
+          "depth": 2,
+          "id": "failed-audit-request"
+        },
+        {
+          "title": "Mounts Denied",
+          "depth": 2,
+          "id": "mounts-denied"
+        }
+      ]
+    },
+    "contributing.html": {
+      "source": "docs/contributing.md",
+      "title": "Contributing - Tide",
+      "pageTitle": "Contributing",
+      "slug": "contributing",
+      "headings": [
+        {
+          "title": "Code of Conduct",
+          "depth": 2,
+          "id": "code-of-conduct"
+        },
+        {
+          "title": "Issue Reporting Guidelines",
+          "depth": 2,
+          "id": "issue-reporting-guidelines"
+        },
+        {
+          "title": "Pull Request Guidelines",
+          "depth": 2,
+          "id": "pull-request-guidelines"
+        }
+      ]
+    },
+    "code-of-conduct.html": {
+      "source": "docs/code-of-conduct.md",
+      "title": "Code of Conduct - Tide",
+      "pageTitle": "Code of Conduct",
+      "slug": "code-of-conduct",
+      "headings": [
+        {
+          "title": "Our Pledge",
+          "depth": 2,
+          "id": "our-pledge"
+        },
+        {
+          "title": "Our Standards",
+          "depth": 2,
+          "id": "our-standards"
+        },
+        {
+          "title": "Our Responsibilities",
+          "depth": 2,
+          "id": "our-responsibilities"
+        },
+        {
+          "title": "Scope",
+          "depth": 2,
+          "id": "scope"
+        },
+        {
+          "title": "Enforcement",
+          "depth": 2,
+          "id": "enforcement"
+        },
+        {
+          "title": "Attribution",
+          "depth": 2,
+          "id": "attribution"
+        }
+      ]
+    },
+    "license.html": {
+      "source": "docs/license.md",
+      "title": "License - Tide",
+      "pageTitle": "License",
+      "slug": "license"
+    },
+    "search.html": {
+      "source": "docs/search.md",
+      "title": "API Search - Tide",
+      "pageTitle": "API Search",
+      "slug": "search"
+    },
+    "404.html": {
+      "source": "docs/404.md",
+      "title": "404 - Tide",
+      "pageTitle": "404",
+      "slug": "404"
     }
   },
   "sources": {
-    "docs/hello.md": "index.html",
-    "docs/search.md": "search.html",
+    "docs/index.md": "index.html",
     "docs/installation/index.md": "installation/index.html",
     "docs/installation/prerequisites.md": "installation/prerequisites.html",
     "docs/installation/cloning.md": "installation/cloning.html",
     "docs/installation/setup.md": "installation/setup.html",
     "docs/services/index.md": "services/index.html",
     "docs/services/api.md": "services/api.html",
-    "docs/services/sync.md": "services/sync.html",
-    "docs/services/phpcs.md": "services/phpcs.html",
-    "docs/services/lighthouse.md": "services/lighthouse.html",
-    "docs/services/mongodb.md": "services/mongodb.html",
+    "docs/services/sync-server.md": "services/sync-server.html",
+    "docs/services/phpcs-server.md": "services/phpcs-server.html",
+    "docs/services/lighthouse-server.md": "services/lighthouse-server.html",
     "docs/gcp/index.md": "gcp/index.html",
-    "docs/gcp/setup.md": "gcp/setup.html",
-    "docs/gcp/deployments.md": "gcp/deployments.html",
-    "docs/gcp/gcs.md": "gcp/gcs.html",
-    "docs/gcp/gcf.md": "gcp/gcf.html",
+    "docs/gcp/google-cloud-storage.md": "gcp/google-cloud-storage.html",
+    "docs/gcp/google-cloud-firestore.md": "gcp/google-cloud-firestore.html",
+    "docs/gcp/google-cloud-sql.md": "gcp/google-cloud-sql.html",
+    "docs/gcp/google-cloud-memorystore.md": "gcp/google-cloud-memorystore.html",
+    "docs/gcp/google-app-engine.md": "gcp/google-app-engine.html",
+    "docs/gcp/google-kubernetes-engine.md": "gcp/google-kubernetes-engine.html",
     "docs/aws/index.md": "aws/index.html",
+    "docs/local-development.md": "local-development.html",
+    "docs/help.md": "help.html",
+    "docs/contributing.md": "contributing.html",
+    "docs/code-of-conduct.md": "code-of-conduct.html",
+    "docs/license.md": "license.html",
+    "docs/search.md": "search.html",
+    "docs/404.md": "404.html",
     "docs/architecture-diagram.png": "architecture-diagram.png"
   }
 }

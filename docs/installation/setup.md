@@ -8,77 +8,157 @@ Copy the `.env.dist` file to `.env`.
 $ cp .env.dist .env
 ```
 
-`.env` file is used to store custom values of environment variables for various services. Before setting up any of the services, update values according instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
+_If you are running Tide locally, you do not need to change any of these `.env` values. If you are deploying this into the cloud, make sure to read all the documentation for which variables you should update and their values._
 
-The `.tpl` files are template files that through variable interpolation are 
-converted and used to deploy your project to GCP and even setup the local API. So 
-these files play a critical role in getting Tide setup. If these files are not 
-generating the correct output, please [contact us](#contact-us) to troubleshoot and 
-figure out a solution for your OS.
+Create an empty `.env.gcp` file.
 
-So far we've only tested on OS X with and without the `envsubst` command available. 
-Other systems may not work correctly and we want to resolve that quickly.
+```
+touch .env.gcp
+```
 
-## API
+The `.env.gcp` file overwrites the `.env` file values and can be left blank if you are running Tide locally. These files are used to store custom values of environment variables for various services. Before setting up any of the services, update the values according to the instructions for each service. The variables and their descriptions can be found at the end of each relevant section.
 
-Update the following environment variables in `.env` file:
+## MongoDB
+
+By default MongoDB is used as the local message provider for the Lighthouse & PHPCS Servers. You do not need to change any of the default settings in your `.env` file, but you could before starting the API if you wanted.
 
 | Variable | Description |
 | :--- | :--- |
-| `API_ADMIN_EMAIL` | The email associated with the local admin account |
-| `API_ADMIN_PASSWORD` | The password associated with the local admin account |
-| `API_ADMIN_USER` | The username associated with the local admin account |
-| `API_KEY` | The API key used locally to authenticate the `audit-server` user. |
-| `API_SECRET` | The API secret used locally to authenticate the `audit-server` user. |
+| `MONGO_DATABASE_NAME` | The name of the database. Default is `queue`. |
+| `MONGO_DATABASE_PASSWORD` | The database root password. Default is `root`. |
+| `MONGO_DATABASE_USERNAME` | The database root username. Default is `root`. |
+| `MONGO_QUEUE_LH` | Specifies which collection in MongoDB to use for the Lighthouse message queue. Default is `lighthouse`. |
+| `MONGO_QUEUE_PHPCS` | Specifies which collection in MongoDB to use for the PHPCS message queue. Default is `phpcs`. |
 
-For local development you have to manually set the `API_KEY` and `API_SECRET` for the 
-`audit-server` user, which will automatically update the user meta values when 
-`make api.setup` is ran. If you are 
-running Tide in production, then you can access the auto generated key and secret 
-from the `audit-server` user profile. 
+## API
 
-Now install the dependencies as follows:
+We typically update at minimum the following environment variables in the `.env` file:
+
+| Variable | Description |
+| :--- | :--- |
+| `API_ADMIN_EMAIL` | The email associated with the local admin account. Default is `admin@tide.local`. _Note: unless you setup the Gmail SMTP plugin, any generated emails will not get sent by WordPress._ |
+| `API_ADMIN_PASSWORD` | The password associated with the local admin account. Default is `wordpress`. |
+| `API_ADMIN_USER` | The username associated with the local admin account. Default is `admin`. |
+| `API_KEY` | The API key used both locally and on GCP to authenticate the `audit-server` user. Default is `uRhZgeYt$v5u0vR5fpcDSWcZU`. |
+| `API_SECRET` | The API secret used both locally and on GCP to authenticate the `audit-server` user. Default is `rVvUWQlPQr8trSEd2qdwmE4Eiua$MjLX`. |
+
+To make local development simple we have added default values for the `API_KEY` and `API_SECRET` associated with the `audit-server` user, which will automatically update the user meta values when `make api.setup` is ran. However, you are free to change these values and we encourage you to, especially if you plan on deploying to the cloud — in that case you should overwrite these values in the `.env.gcp` file.
+
+If you are running Tide in production, then you can access the auto generated key and secret from the `audit-server` user's profile after you setup the API and before you deploy the Kubernetes clusters.
+
+### Initialize WordPress
+
+From the project root directory run the following `make` commands to initialize and setup WordPress.
+
+Install the dependencies:
 
 ```
-$ make api.composer
+make api.composer
 ```
 
 Then start the API Docker images in isolation:
 
 ```
-$ make api.up
+make api.up
 ```
 
-Last run the setup script:
+Open a new shell and run the setup script:
 
 ```
-$ make api.setup
+make api.setup
 ```
 
-Run the setup script to initialize WordPress for the first time or if you would 
-like a convenient way to update the default values when you change relevant 
-environment variables.
+_You can run the setup script to initialize WordPress for the first time or if you would like a convenient way to update the default values when you change relevant environment variables._
 
-If you see an error like this on OS X when bringing up the API you need to add the 
-directory to the `Preferences -> File Sharing` section of the Docker for Mac app.
+### Database
 
-```
-ERROR: for gotide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: ...'
-```
+The local database is stored in the `data/api/mysql` directory. If you ever need to start from scratch delete that directory and run `make api.setup` again. Be sure to stop the API with `make api.down` or `make down` and then start it again with `make api.up`.
 
-Add `127.0.0.1 tide.local` to your `hosts` file. You should be now able to run API at [tide.local](http://tide.local)
+_Running `make down` will stop all Docker services._
 
-## Build images
-Install Glide dependencies and build images:
+### Hosts File
+
+Add the following entry to your hosts file to make sure `tide.local` is pointed at your local Tide instance:
 
 ```
-$ make build.images
+127.0.0.1 tide.local
+```
+_You can change the `tide.local` URL to some other value by modifying the `API_AUTH_URL` and `API_HTTP_HOST` variables inside the `.env` file._
+
+## Build Images
+
+Installs the Glide dependencies, creates the Go binaries, and builds all the Docker images:
+
+```
+make build.images
 ```
 
-## Start servers
+### Isolated Build
 
-Start the servers (Lighthouse Server, PHPCS Server, Sync Server):
+Lighthouse Image:
 
 ```
-$ make up
+make lighthouse.build.image
 ```
+
+PHPCS Image:
+
+```
+make phpcs.build.image
+```
+
+Sync Image:
+
+```
+make sync.build.image
+```
+
+## Start Servers
+
+It is recommended that you run these Docker containers separately and start the servers in new shells in order to isolate the output. However, you can start all services (API, Lighthouse Server, PHPCS Server, Sync Server) with the following command:
+
+```
+make up
+```
+
+### Isolated Start
+
+Lighthouse Server:
+
+```
+make lighthouse.up
+```
+
+PHPCS Server:
+
+```
+make phpcs.up
+```
+
+Sync Server:
+
+```
+make sync.up
+```
+
+## Run Audits
+
+Now that all the Tide services are up and running, you can run audits on themes and plugins by doing a `GET` request to a special endpoint either in your browser or with an app like Postman. This endpoint only initiates an audit for the `wporg` Tide user and for WordPress.org hosted themes and plugins.
+
+If we want to run an audit against the `twentyseventeen` theme version `2.1` for example, we would use this endpoint:
+
+```
+http://tide.local/api/tide/v1/audit/wporg/theme/twentyseventeen/2.1
+```
+
+Or for the `akismet` plugin version `4.1.1`:
+
+```
+http://tide.local/api/tide/v1/audit/wporg/plugin/akismet/4.1.1
+```
+
+When you request an audit you will receive a JSON object back that indicates the audit is pending. If the audit has previously been requested and is complete then you will receive a JSON object with information about the theme/plugin and summary reports with links to the full report.
+
+If the audit is pending, your shell should have some output to indicate that the audit is running. Once this output stops and all your services go back to the `polling` status, you can refresh the API request in the browser and you should see the updated JSON object with completed Tide reports.
+
+For a full list of API Endpoints that can be used with Tide, see the [API Endpoints](/services/api#endpoints) section.

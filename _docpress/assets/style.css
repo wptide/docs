@@ -495,9 +495,25 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+.page-404 .markdown-body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  font-weight: bold;
+  font-size: 100px;
+  padding-top: 200px !important;
+}
+.is-search .footer-nav .right,
+.error404 .footer-nav {
+  display: none;
+}
 .api-check {
   width: 100%;
   margin-bottom: 100px;
+  margin-top: 32px;
 }
 .api-check__title {
   margin-bottom: 20px;
@@ -670,8 +686,7 @@ body {
   line-height: 24px;
 }
 .footer-nav a {
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   -ms-flex-align: center;
       align-items: center;
   white-space: nowrap;
@@ -816,6 +831,9 @@ body {
   width: 22px;
   height: 22px;
 }
+.header-nav .iconlink .label {
+  display: none;
+}
 .header-nav .iconlink:hover {
   color: #4078c0;
 }
@@ -945,6 +963,7 @@ ul.heading-list .hlink:before {
   background-position: 24px 2px;
   background-repeat: no-repeat;
   background-size: 70px 30px;
+  text-indent: 30px;
 }
 @font-face {
   font-family: octicons-link;
@@ -1679,16 +1698,31 @@ ul.heading-list .hlink:before {
   }
   .markdown-body h3 {
     font-size: 1.5em;
+    overflow: scroll;
+    white-space: nowrap;
+  }
+  .markdown-body h3::-webkit-scrollbar {
+    display: none;
   }
   .markdown-body h4 {
     font-size: 1.25em;
   }
   .markdown-body h5 {
-    font-size: 0.875em;
+    font-size: 1.1em;
   }
   .markdown-body h6 {
-    font-size: 0.85em;
+    font-size: 0.875em;
   }
+}
+.markdown-body blockquote {
+  color: #555;
+}
+.markdown-body table {
+  display: table;
+  margin-top: 1.5em;
+}
+.markdown-body table tr > td:first-child {
+  white-space: nowrap;
 }
 .menu-toggle {
   display: none;
@@ -1804,17 +1838,6 @@ ul.heading-list .hlink:before {
   border-top-color: #4078c0;
   border-left-color: #4078c0;
 }
-.page-404 {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  font-weight: bold;
-  font-size: 100px;
-  padding-top: 200px !important;
-}
 .toc-menu::-webkit-scrollbar {
   width: 4px;
 }
@@ -1853,11 +1876,14 @@ ul.heading-list .hlink:before {
 .toc-menu .-level-1.-parent {
   margin-bottom: 16px;
 }
-.toc-menu .-level-1.-parent > .title {
+.toc-menu li.-level-1 > .title {
   margin-top: 16px;
   font-weight: bold;
   color: #111;
   font-size: 1.1em;
+}
+.toc-menu .-depth-3 {
+  display: none;
 }
 .toc-menu .link,
 .toc-menu .link:visited {
@@ -1906,6 +1932,13 @@ ul.heading-list .hlink:before {
 }
 .toc-menu .-level-4 .title {
   padding-left: 40px;
+}
+.toc-menu .link-index {
+  text-transform: lowercase;
+}
+.toc-menu .submenu:first-child > li:last-child {
+  display: none;
+  visibility: hidden;
 }
 .toc-menu.-faded .title:not(.-active) {
   opacity: 0.2;

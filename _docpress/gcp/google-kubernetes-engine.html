@@ -1,0 +1,281 @@
+
+<div class="doc-layout">
+  <div class="toggle menu-toggle js-menu-toggle"></div>
+  <ul class="menu toc-menu">
+    <li class="menu-item -level-0 -parent">
+      <ul class="submenu">
+        <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Tide</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-installation" href="installation/index.html">Installation</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-installationprerequisites" href="installation/prerequisites.html">Prerequisites</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationcloning" href="installation/cloning.html">Cloning</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-installationsetup" href="installation/setup.html">Setup</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-services" href="services/index.html">Services</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-servicesapi" href="services/api.html">API</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicessync-server" href="services/sync-server.html">Sync Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-servicesphpcs-server" href="services/phpcs-server.html">PHPCS Server</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-serviceslighthouse-server" href="services/lighthouse-server.html">Lighthouse Server</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1 -parent"><a class="link title  link-gcp" href="gcp/index.html">Google Cloud Platform</a>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-storage" href="gcp/google-cloud-storage.html">Google Cloud Storage</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-firestore" href="gcp/google-cloud-firestore.html">Google Cloud Firestore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-sql" href="gcp/google-cloud-sql.html">Google Cloud SQL</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-cloud-memorystore" href="gcp/google-cloud-memorystore.html">Google Cloud Memorystore</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-gcpgoogle-app-engine" href="gcp/google-app-engine.html">Google App Engine</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title -active link-gcpgoogle-kubernetes-engine" href="gcp/google-kubernetes-engine.html">Google Kubernetes Engine</a>
+              <ul class="headings heading-list">
+                <li class="heading-item -depth-2"><a class="hlink link-environment-variables" href="#environment-variables">Environment Variables</a>
+                  <ul class="heading-list -depth-2">
+                    <li class="heading-item -depth-3"><a class="hlink link-lighthouse-server" href="#lighthouse-server">Lighthouse Server</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-phpcs-server" href="#phpcs-server">PHPCS Server</a>
+                    </li>
+                    <li class="heading-item -depth-3"><a class="hlink link-sync-server" href="#sync-server">Sync Server</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="heading-item -depth-2"><a class="hlink link-deploy" href="#deploy">Deploy</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-aws" href="aws/index.html">Amazon Web Services</a>
+        </li>
+        <li class="menu-item -level-1 -parent"><span class="title">Important Links</span>
+          <ul class="submenu">
+            <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-help" href="help.html">Help</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-contributing" href="contributing.html">Contributing</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-code-of-conduct" href="code-of-conduct.html">Code of Conduct</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-license" href="license.html">License</a>
+            </li>
+            <li class="menu-item -level-2"><a class="link title  link-search" href="search.html">API Search</a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-item -level-1"><a class="link title  link-404" href="404.html">404</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="body page-gcpgoogle-kubernetes-engine">
+    <div class="header-nav">
+      <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
+    </div>
+    <div class="markdown-body"><h1 id="google-kubernetes-engine">Google Kubernetes Engine</h1>
+<p>All the goroutines are deployed to a Kubernetes cluster with the same basic steps, but first a bit of configuration to the environment variables for each server is required.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<h3 id="lighthouse-server">Lighthouse Server</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>GKE_LH_CLUSTER</code></td>
+<td style="text-align:left">The name of the cluster. Default is<code>lighthouse-server</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_CLUSTER_VERSION</code></td>
+<td style="text-align:left">The Kubernetes version to use for the master and nodes. You can check which Kubernetes versions are default and available in a given zone by running the following command:</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>gcloud container get-server-config --zone [COMPUTE-ZONE]</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_CPU_PERCENT</code></td>
+<td style="text-align:left">The average percent CPU utilization across all pods. Must be a range of <code>1-100</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_DISK_SIZE</code></td>
+<td style="text-align:left">Size in GB for node VM boot disks. An example value is <code>100</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_IMAGE</code></td>
+<td style="text-align:left">The name of the Docker image. Default is<code>lighthouse-server</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_MACHINE_TYPE</code></td>
+<td style="text-align:left">The type of machine to use for nodes. An example value is <code>n1-standard-1</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_MAX_NODES</code></td>
+<td style="text-align:left">Maximum number of nodes to which the node pool can scale.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_MAX_PODS</code></td>
+<td style="text-align:left">Maximum number of Pods you want to run based on the CPU utilization of your existing Pods.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_MIN_NODES</code></td>
+<td style="text-align:left">Minimum number of nodes to which the node pool can scale.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_MIN_PODS</code></td>
+<td style="text-align:left">Minimum number of Pods you want to run based on the CPU utilization of your existing Pods.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_NUM_NODES</code></td>
+<td style="text-align:left">The number of nodes to be created in each of the cluster&apos;s zones.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_LH_REPLICAS</code></td>
+<td style="text-align:left">The number of desired Pods in the initial deployment.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phpcs-server">PHPCS Server</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_CLUSTER</code></td>
+<td style="text-align:left">The name of the cluster. Default is <code>phpcs-server</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_CLUSTER_VERSION</code></td>
+<td style="text-align:left">The Kubernetes version to use for the master and nodes. You can check which Kubernetes versions are default and available in a given zone by running the following command:</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>gcloud container get-server-config --zone [COMPUTE-ZONE]</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_CPU_PERCENT</code></td>
+<td style="text-align:left">The average percent CPU utilization across all pods. Must be a range of <code>1-100</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_DISK_SIZE</code></td>
+<td style="text-align:left">Size in GB for node VM boot disks. An example value is <code>100</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_IMAGE</code></td>
+<td style="text-align:left">The name of the Docker image. Default is <code>phpcs-server</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_MACHINE_TYPE</code></td>
+<td style="text-align:left">The type of machine to use for nodes. An example value is <code>n1-standard-1</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_MAX_NODES</code></td>
+<td style="text-align:left">Maximum number of nodes to which the node pool can scale.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_MAX_PODS</code></td>
+<td style="text-align:left">Maximum number of Pods you want to run based on the CPU utilization of your existing Pods.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_MIN_NODES</code></td>
+<td style="text-align:left">Minimum number of nodes to which the node pool can scale.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_MIN_PODS</code></td>
+<td style="text-align:left">Minimum number of Pods you want to run based on the CPU utilization of your existing Pods.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_NUM_NODES</code></td>
+<td style="text-align:left">The number of nodes to be created in each of the cluster&apos;s zones.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_PHPCS_REPLICAS</code></td>
+<td style="text-align:left">The number of desired Pods in the initial deployment.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sync-server">Sync Server</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>GKE_SYNC_CLUSTER</code></td>
+<td style="text-align:left">The name of the cluster. Default is <code>sync-server</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_SYNC_CLUSTER_VERSION</code></td>
+<td style="text-align:left">The Kubernetes version to use for the master and nodes. You can check which Kubernetes versions are default and available in a given zone by running the following command:</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>gcloud container get-server-config --zone [COMPUTE-ZONE]</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_SYNC_DISK_SIZE</code></td>
+<td style="text-align:left">Size in GB for node VM boot disks. An example value is <code>100</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_SYNC_IMAGE</code></td>
+<td style="text-align:left">The name of the Docker image. Default is <code>sync-server</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_SYNC_MACHINE_TYPE</code></td>
+<td style="text-align:left">The type of machine to use for nodes. An example value is <code>n1-standard-1</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_SYNC_PERSISTENT_DISK_TYPE</code></td>
+<td style="text-align:left">Type of persistent disk. Must be one of: <code>pd-standard</code>, <code>pd-ssd</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GKE_SYNC_PERSISTENT_DISK_SIZE</code></td>
+<td style="text-align:left">Size in GB for the persistent disk. An example value is <code>100GB</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deploy">Deploy</h2>
+<p>Once you&apos;ve got the variables setup it&apos;s basically push the image to Google Container Registry (GCR), create the Kubernetes cluster, and then create a Kubernetes deployment. I&apos;ll demonstrate with the PHPCS Server. Other than specific <code>make</code> commands for each service, these step are all the same.</p>
+<p>Push the image to GCR:</p>
+<pre><code>make phpcs.push.image
+</code></pre>
+<p>Create the GKE cluster:</p>
+<pre><code>make phpcs.build.cluster
+</code></pre>
+<p>Deploy the GKE cluster:</p>
+<pre><code>make phpcs.deploy.cluster
+</code></pre>
+<p>Delete the GKE cluster:</p>
+<pre><code>make phpcs.clean.cluster
+</code></pre>
+
+    </div>
+    <div class="footer-nav">
+      <div class="left"><a href="../gcp/google-app-engine.html"><span class="title">Google App Engine</span></a></div>
+      <div class="right"><a href="../aws/index.html"><span class="label">Next: </span><span class="title">Amazon Web Services</span></a></div>
+    </div>
+  </div>
+</div>

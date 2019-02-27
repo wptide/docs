@@ -56,12 +56,27 @@
 
     h3
       font-size: 1.5em
+      overflow: scroll
+      white-space: nowrap
+
+    h3::-webkit-scrollbar
+      display: none
 
     h4
       font-size: 1.25em
 
     h5
-      font-size: .875em
+      font-size: 1.1em
 
     h6
-      font-size: .85em
+      font-size: .875em
+
+  blockquote
+    color: #555
+
+  table
+    display: table
+    margin-top: 1.5em
+
+    tr > td:first-child
+        white-space: nowrap
