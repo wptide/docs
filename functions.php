@@ -18,11 +18,21 @@ require_once( 'functions/docpress-make-absolute-urls.php' );
 
 define( 'DOCS_FILE_PATH', docpress_get_file_path() );
 
+// Remove unused scripts & styles.
+add_action('init', function() {
+	if ( ! is_admin() ) {
+		wp_deregister_script( 'wp-embed' );
+		wp_deregister_script( 'jquery' );
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	}
+} );
+
 // Block 301 redirect.
 add_filter( 'redirect_canonical', function( $redirect_url, $requested_url ) {
-    if ( strpos( $requested_url, 'api/tide/v1' ) === false ) {
-        return '';
-    }
+	if ( strpos( $requested_url, 'api/tide/v1' ) === false ) {
+		return '';
+	}
 }, 10, 2 );
 
 /**
@@ -78,8 +88,8 @@ add_filter( 'body_class', function( $classes ) {
 	}
 
 	if ( strpos( DOCS_FILE_PATH, 'search.html' ) !== false && file_exists( DOCS_FILE_PATH ) ) {
-    	$classes[] = 'is-search';
-    }
+		$classes[] = 'is-search';
+	}
 
 	return $classes;
 } );

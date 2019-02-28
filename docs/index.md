@@ -1,6 +1,6 @@
 <div class="hero">
 	<span class="hero__title">Official Documentation</span>
-	<svg class="hero__logo" viewBox="0 0 700 233" version="1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<svg class="hero__logo" viewBox="0 0 700 233" xmlns="http://www.w3.org/2000/svg">
 		<defs>
 			<path id="path0_fill" fill-rule="evenodd" d="M0 0h233v70c-49 9-84 27-116 46v49l13-8c31-18 61-34 103-43v119H0v-71c50-9 84-28 117-46V67l-11 7C74 92 44 109 0 117V0z"/>
 			<path id="path1_fill" d="M45 0H19v36H0v20h19v82c0 21 10 36 38 36h22v-22H62c-13 0-17-6-17-18V56h35V36H45V0z"/>
