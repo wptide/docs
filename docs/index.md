@@ -55,16 +55,12 @@ In the future you will be able to use Tide as a service to test your plugins or 
 
 Please read our [Contributing](contributing.md) guide for details on the process of creating a ticket or submitting a pull request to Tide, and our [Code of Conduct](code-of-conduct.md).
 
-## Contact Us
-
-Have questions? Don't open an Issue, come join us in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/). Even though Slack is a chat service, sometimes it takes several hours for community members to respond — please be patient.
-
 ## Maintainers
 
 [Derek Herman (@valendesigns)](https://github.com/valendesigns), and
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul)
 
-## Credits
+## Contributors
 
 Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Brendan Woods (@brendanwoods-xwp)](https://github.com/brendanwoods-xwp),
@@ -73,6 +69,8 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [David Lonjon (@davidlonjon)](https://github.com/davidlonjon),
 [Derek Herman (@valendesigns)](https://github.com/valendesigns),
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
+[Jonathan Wold (@sirjonathan)](https://github.com/sirjonathan),
+[Joshua Wold (@jwold)](https://github.com/jwold),
 [Justin Kopepasah (@kopepasah)](https://github.com/kopepasah),
 [Keanan Koppenhaver (@kkoppenhaver)](https://github.com/kkoppenhaver),
 [Leo Postovoit (@postphotos)](https://github.com/postphotos),
@@ -84,3 +82,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Rob Stinson (@robstino)](https://github.com/robstino),
 [Sayed Taqui (@sayedtaqui)](https://github.com/sayedtaqui),
 [Utkarsh Patel (@PatelUtkarsh)](https://github.com/PatelUtkarsh)
+
+## Contact Us
+
+Have questions? Don't open an Issue, come join us in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/). Even though Slack is a chat service, sometimes it takes several hours for community members to respond — please be patient.
