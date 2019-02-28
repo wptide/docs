@@ -35,6 +35,30 @@ add_filter( 'template_redirect', function() {
 	global $wp_query;
 
 	if ( file_exists( DOCS_FILE_PATH ) ) {
+		add_filter( 'wp_title', function( $title ) {
+			$title     = 'Tide Docs';
+			$fileparts = explode( '/', get_current_url() );
+			$page      = end( $fileparts );
+			$new_title = ucwords( str_replace( '-', ' ', $page ) );
+
+			if ( $new_title ) {
+				if ( 'Gcp' === $new_title ) {
+					$new_title = 'Google Cloud Platform';
+				} else if ( 'Aws' === $new_title ) {
+					$new_title = 'Amazon Web Services';
+				} else if ( 'Search' === $new_title ) {
+					$new_title = 'API Search';
+				} else if ( 'Api' === $new_title ) {
+					$new_title = 'API';
+				} else if ( 'Phpcs Server' === $new_title ) {
+					$new_title = 'PHPCS Server';
+				}
+
+				$title =  "$title — $new_title";
+			}
+
+			return $title;
+		}, 10 );
 		status_header( 200 );
 		$wp_query->is_404 = false;
 	}
@@ -64,7 +88,7 @@ add_filter( 'body_class', function( $classes ) {
  * Add GA tracking code to the HEAD.
  */
 add_action( 'wp_head', function() {
-	if ( strpos( get_home_url(), 'wptide.org') !== false ) { ?>
+	if ( strpos( get_home_url(), 'wptide.org' ) !== false ) { ?>
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135375588-1"></script>
