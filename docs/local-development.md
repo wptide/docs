@@ -32,12 +32,12 @@ composer install
 
 ## PHPCS Ruleset
 
-Create a `.phpcs.ruleset.xml` file in the project root, add this code, and update the `PLUGIN_NAME` and `PLUGIN_SLUG`.
+Create a `.phpcs.ruleset.xml` file in the project root, add this code, and replace the `{{NAME}}` and `{{SLUG}}` with your plugin or themes name and slug.
 
 ```xml
 <?xml version="1.0"?>
-<ruleset name="{{PLUGIN_NAME}}">
-    <description>Custom ruleset for the {{PLUGIN_NAME}} plugin.</description>
+<ruleset name="{{NAME}}">
+    <description>Custom ruleset for the {{NAME}} plugin.</description>
 
     <!-- For help in understanding this file: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
     <!-- For help in using PHPCS: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
@@ -76,7 +76,7 @@ Create a `.phpcs.ruleset.xml` file in the project root, add this code, and updat
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
-                <element value="{{PLUGIN_SLUG}}"/>
+                <element value="{{SLUG}}"/>
                 <element value="default"/>
             </property>
         </properties>
@@ -110,4 +110,4 @@ Run PHP Code Beautifier on a single file:
 composer phpcbf filename.php
 ```
 
-_If you get an error when running these commands see the [Help](/help#bad-substitution) page._
+_If you get an error when running these commands see the [Help](/help#local-development) page._

@@ -519,9 +519,21 @@
                 "id": "mounts-denied"
               },
               {
-                "title": "Bad Substitution",
+                "title": "Local Development",
                 "depth": 2,
-                "id": "bad-substitution"
+                "id": "local-development",
+                "headings": [
+                  {
+                    "title": "Bad Substitution",
+                    "depth": 3,
+                    "id": "bad-substitution"
+                  },
+                  {
+                    "title": "Error Code",
+                    "depth": 3,
+                    "id": "error-code"
+                  }
+                ]
               }
             ]
           },
@@ -1154,9 +1166,21 @@
           "id": "mounts-denied"
         },
         {
-          "title": "Bad Substitution",
+          "title": "Local Development",
           "depth": 2,
-          "id": "bad-substitution"
+          "id": "local-development",
+          "headings": [
+            {
+              "title": "Bad Substitution",
+              "depth": 3,
+              "id": "bad-substitution"
+            },
+            {
+              "title": "Error Code",
+              "depth": 3,
+              "id": "error-code"
+            }
+          ]
         }
       ]
     },
@@ -1304,8 +1328,8 @@
     "docs/search.md": "search.html",
     "docs/404.md": "404.html",
     "docs/architecture-diagram.png": "architecture-diagram.png",
-    "docs/images/api-php-payload.png": "images/api-php-payload.png",
     "docs/images/api-php-auth.png": "images/api-php-auth.png",
+    "docs/images/api-php-payload.png": "images/api-php-payload.png",
     "docs/images/api-php-start.png": "images/api-php-start.png",
     "docs/images/lighthouse-server-audit-complete.png": "images/lighthouse-server-audit-complete.png",
     "docs/images/lighthouse-server-audit.png": "images/lighthouse-server-audit.png",

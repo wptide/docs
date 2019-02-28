@@ -105,10 +105,10 @@
 <pre><code>composer install
 </code></pre>
 <h2 id="phpcs-ruleset">PHPCS Ruleset</h2>
-<p>Create a <code>.phpcs.ruleset.xml</code> file in the project root, add this code, and update the <code>PLUGIN_NAME</code> and <code>PLUGIN_SLUG</code>.</p>
+<p>Create a <code>.phpcs.ruleset.xml</code> file in the project root, add this code, and replace the <code>{{NAME}}</code> and <code>{{SLUG}}</code> with your plugin or themes name and slug.</p>
 <pre><code class="lang-xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ruleset</span> <span class="hljs-attr">name</span>=<span class="pl-s">&quot;{{PLUGIN_NAME}}&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>Custom ruleset for the {{PLUGIN_NAME}} plugin.<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ruleset</span> <span class="hljs-attr">name</span>=<span class="pl-s">&quot;{{NAME}}&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>Custom ruleset for the {{NAME}} plugin.<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
 
     <span class="pl-c">&lt;!-- For help in understanding this file: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml --&gt;</span>
     <span class="pl-c">&lt;!-- For help in using PHPCS: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage --&gt;</span>
@@ -147,7 +147,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">rule</span> <span class="hljs-attr">ref</span>=<span class="pl-s">&quot;WordPress.WP.I18n&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="pl-s">&quot;text_domain&quot;</span> <span class="hljs-attr">type</span>=<span class="pl-s">&quot;array&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">value</span>=<span class="pl-s">&quot;{{PLUGIN_SLUG}}&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">value</span>=<span class="pl-s">&quot;{{SLUG}}&quot;</span>/&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">value</span>=<span class="pl-s">&quot;default&quot;</span>/&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
@@ -167,7 +167,7 @@
 <p>Run PHP Code Beautifier on a single file:</p>
 <pre><code>composer phpcbf filename.php
 </code></pre>
-<p><em>If you get an error when running these commands see the <a href="/help#bad-substitution">Help</a> page.</em></p>
+<p><em>If you get an error when running these commands see the <a href="/help#local-development">Help</a> page.</em></p>
 
     </div>
     <div class="footer-nav">
