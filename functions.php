@@ -59,3 +59,21 @@ add_filter( 'body_class', function( $classes ) {
 
 	return $classes;
 } );
+
+/**
+ * Add GA tracking code to the HEAD.
+ */
+add_action( 'wp_head', function() {
+	if ( strpos( get_home_url(), 'wptide.org') !== false ) { ?>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135375588-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-135375588-1');
+</script>
+
+	<?php }
+}, 0 );
