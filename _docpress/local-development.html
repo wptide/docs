@@ -82,7 +82,7 @@
       <div class="right"><a class="iconlink" href="https://github.com/wptide/docs" data-title="wptide/docs" title="GitHub"><span class="icon -github"></span></a><a class="iconlink" href="https://make.wordpress.org/tide/" data-title="make.wordpress.org/tide" title="WordPress"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M10 500a490 490 0 1 0 980 0 490 490 0 0 0-980 0zm38 0c0-66 14-128 39-184l216 591A452 452 0 0 1 48 500zm452 452c-44 0-87-6-128-18l136-394 139 380 3 7c-47 16-97 25-150 25zm366-460a427 427 0 0 0 31-209 450 450 0 0 1-170 608l139-399zm-98-140c17 30 37 69 37 125 0 39-11 87-34 146l-45 151-164-486c28-1 52-4 52-4 24-3 22-39-3-38 0 0-73 6-120 6-45 0-119-6-119-6-25-1-28 36-3 38l47 4 71 193-99 297-165-490c27-1 52-4 52-4 24-3 21-39-3-38 0 0-73 6-121 6h-29a452 452 0 0 1 683-85l-5-1c-45 0-76 39-76 80 0 38 21 69 44 106z"/></svg></a></div>
     </div>
     <div class="markdown-body"><h1 id="local-development">Local Development</h1>
-<p>If you have come looking for a way to set up your local development environment and use Tide to audit your plugins and themes, that is not a good use case for the platform. A better option would be to install a few Composer packages and run the same code sniffers Tide does. Here&apos;s the easiest way I know how.</p>
+<p>If you have come looking for a way to set up your local development environment and use Tide to audit your plugins and themes, that is not a good use case for the platform. A better option would be to install a few Composer packages and run the same code sniffers Tide does. The easiest way would be to add these two files to the root directory inside your plugin or theme.</p>
 <h2 id="composer">Composer</h2>
 <p>Create a <code>composer.json</code> file in the project root, and add this code.</p>
 <pre><code class="lang-json">{
@@ -167,6 +167,7 @@
 <p>Run PHP Code Beautifier on a single file:</p>
 <pre><code>composer phpcbf filename.php
 </code></pre>
+<p><em>If you get an error when running these commands see the <a href="/help#bad-substitution">Help</a> page.</em></p>
 
     </div>
     <div class="footer-nav">

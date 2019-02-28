@@ -54,6 +54,8 @@
                 </li>
                 <li class="heading-item -depth-2"><a class="hlink link-mounts-denied" href="#mounts-denied">Mounts Denied</a>
                 </li>
+                <li class="heading-item -depth-2"><a class="hlink link-bad-substitution" href="#bad-substitution">Bad Substitution</a>
+                </li>
               </ul>
             </li>
             <li class="menu-item -level-2"><a class="link title  link-local-development" href="local-development.html">Local Development</a>
@@ -101,6 +103,12 @@
 <p>If you see the following error in your OS X terminal when bringing up the API you need to add the <code>/Users</code> directory to the <code>Preferences -&gt; File Sharing</code> section of the Docker for Mac app, or whatever the root directory is for you <code>$GOPATH</code>.</p>
 <pre><code>ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b&apos;Mounts denied: ...&apos;
 </code></pre>
+<h2 id="bad-substitution">Bad Substitution</h2>
+<p>If you run any of the <code>phpcs</code> commands on the <a href="local-development">Local Development</a> page and get this error:</p>
+<pre><code>./vendor/bin/phpcs ${1:.} --standard=.phpcs.ruleset.xml
+sh: 1: Bad substitution
+</code></pre>
+<p>You need to replace both instances of the <code>${1:.}</code> string inside the <code>composer.json</code> file with either a <code>.</code> or <code>$1</code>. The <code>.</code> will mean that the <code>composer phpcs filename.php</code> and <code>composer phpcbf filename.php</code> commands will no longer function and you must process every file. However, if you change it to <code>$1</code> and it works that means you must always supply a path like <code>composer phpcs .</code> or <code>composer phpcs filname.php</code> and running the command without a path will fail.</p>
 
     </div>
     <div class="footer-nav">
