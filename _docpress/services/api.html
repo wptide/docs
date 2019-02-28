@@ -569,8 +569,8 @@
 </code></pre>
 <p>Force all the report standards to be re-audited by making a <code>POST</code> request:</p>
 <pre><code>curl -X POST \
-    http://tide.local/api/tide/v1/audit/233 \
-    -H &apos;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTEyNDA4MTMsImlzcyI6Imh0dHA6XC9cL3RpZGUubG9jYWwiLCJleHAiOjE1NTM4MzI4MTMsImRhdGEiOnsiY2xpZW50Ijp7ImlkIjoyLCJ0eXBlIjoid3BfdXNlciJ9fX0.dmVMm9udpZBV4PXPpXrTOTAf-F3sC3R-iE9zHElu1yo&apos; \
+    http://tide.local/api/tide/v1/audit/&lt;id&gt; \
+    -H &apos;Authorization: Bearer &lt;token&gt;&apos; \
     -F &apos;force=true&apos; \
     -F &apos;standards[]=phpcs_wordpress&apos; \
     -F &apos;standards[]=phpcs_phpcompatibility&apos; \
