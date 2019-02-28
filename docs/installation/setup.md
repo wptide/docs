@@ -1,5 +1,7 @@
 # Setup
 
+_If you run into any issues getting Tide setup see the [Help](/help) page for common issues._
+
 ## Environment Variables
 
 Copy the `.env.dist` file to `.env`.

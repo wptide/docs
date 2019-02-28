@@ -38,7 +38,7 @@ ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: 
 
 ## Local Development
 
-If you run any of the `phpcs` commands on the [Local Development](local-development.md) page and get an error, here are a couple hints that might unblock you.
+If you run any of the `phpcs` commands on the [Local Development](/local-development) page and get an error, here are a couple hints that might unblock you.
 
 ### Bad Substitution
 
