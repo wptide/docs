@@ -32,7 +32,7 @@ composer install
 
 ## PHPCS Ruleset
 
-Create a `.phpcs.ruleset.xml` file in the project root, add this code, and replace the `{{NAME}}` and `{{SLUG}}` with your plugin or themes name and slug.
+Create a `.phpcs.ruleset.xml` file in the project root, add this code, and replace the `{{NAME}}` and `{{SLUG}}` with your plugin or theme's name and slug.
 
 ```xml
 <?xml version="1.0"?>
