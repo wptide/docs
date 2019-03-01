@@ -29,4 +29,4 @@ In addition to all the individuals who’ve invested their own time and energy s
     </div>
 </div>
 
-Interested in supporting Tide? There’s a lot of work to get done and the project could use all the support it can get. If you’d like to become a corporate sponsor, contact <a href=“mailto:howdy@jonathanwold.com”>Jonathan Wold</a> to schedule a call.
+Interested in supporting Tide? There's a lot of work to get done and the project could use all the support it can get. If you'd like to become a corporate sponsor, contact <a href="mailto:howdy@jonathanwold.com?subject=Tide Sponsorship">Jonathan Wold</a> to schedule a call.
