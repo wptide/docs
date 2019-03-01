@@ -1838,6 +1838,40 @@ ul.heading-list .hlink:before {
   border-top-color: #4078c0;
   border-left-color: #4078c0;
 }
+.logo-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% 25% 25% 25%;
+      grid-template-columns: 25% 25% 25% 25%;
+  grid-gap: 15px;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 50px 0;
+  position: relative;
+  left: -10px;
+}
+@media (max-width: 768px) {
+  .logo-grid {
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    left: 0px;
+  }
+}
+.logo {
+  padding: 20px;
+}
+.logo.xwp {
+  padding: 40px;
+}
+.logo.wp-engine {
+  padding: 10px;
+}
+.logo.kinsta {
+  padding: 30px;
+}
 .toc-menu::-webkit-scrollbar {
   width: 4px;
 }
