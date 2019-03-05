@@ -299,7 +299,7 @@ Get a theme or plugin audit collection for a project client.
 
 #### `GET`
 
-Get an audit for a theme or plugin defined by a project client and slug.
+Get a theme or plugin audit collection for a project client and slug.
 
 | Parameter | Description |
 | :--- | :--- |
@@ -315,7 +315,7 @@ This endpoint can be used to make unauthenticated audit requests on behalf of th
 
 #### `GET`
 
-Get an audit for a theme or plugin defined by a project client, slug and version.
+Get a theme or plugin audit for a project client, slug and version.
 
 | Parameter | Description |
 | :--- | :--- |
