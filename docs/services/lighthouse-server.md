@@ -58,51 +58,51 @@ The following demonstrates how a WordPress theme is run through a Lighthouse aud
 
 1. The Tide API starts and listens for requests.
 
-![](images/api-php-start.png)
+![](../images/api-php-start.png)
 
 1. The Lighthouse Server starts and attempts to authenticate with the Tide API.
 
-![](images/lighthouse-server-auth.png)
+![](../images/lighthouse-server-auth.png)
 
 1. The Tide API receives an authentication request from the Lighthouse Server.
 
-![](images/api-php-auth.png)
+![](../images/api-php-auth.png)
 
 1. The Lighthouse Server is authenticated and starts polling the message queue.
 
-![](images/lighthouse-server-poll.png)
+![](../images/lighthouse-server-poll.png)
 
 1. The theme is downloaded and a checksum is calculated.
 
-![](images/lighthouse-server-checksum.png)
+![](../images/lighthouse-server-checksum.png)
 
 1. The source code is ran through `gocloc` to get code information.
 
-![](images/lighthouse-server-code-info.png)
+![](../images/lighthouse-server-code-info.png)
 
 1. The source is scanned for the Theme header information.
 
-![](images/lighthouse-server-header.png)
+![](../images/lighthouse-server-header.png)
 
 1. Runs the theme preview URL (`https://wp-themes.com/<theme-slug>`) through a `lighthouse` audit and keeps polling for the next job.
 
-![](images/lighthouse-server-audit.png)
+![](../images/lighthouse-server-audit.png)
 
 1. Uploads the raw report to a storage provider (GCS, S3, or local) and generates a summary report.
 
-![](images/lighthouse-server-audit-complete.png)
+![](../images/lighthouse-server-audit-complete.png)
 
 1. The Lighthouse Server bundles the summary report and reference to the raw report as a message payload and sends the payload to the Tide API.
 
-![](images/lighthouse-server-payload.png)
+![](../images/lighthouse-server-payload.png)
 
 1. The Tide API updates the audit endpoint after receiving the `POST` request from the Lighthouse Server.
 
-![](images/api-php-payload.png)
+![](../images/api-php-payload.png)
 
 1. Finally the message is removed from the queue.
 
-![](images/lighthouse-server-queue.png)
+![](../images/lighthouse-server-queue.png)
 
 ### Reports
 
@@ -110,10 +110,10 @@ The following is a Tide API audit object showing a Lighthouse summary report.
 
 #### `http://tide.local/api/tide/v1/audit/wporg/theme/twentyseventeen/2.1`
 
-![Lighthouse Summary Report](images/lighthouse-server-summary-report.png)
+![Lighthouse Summary Report](../images/lighthouse-server-summary-report.png)
 
 The following is a Tide API report object showing a download link to the original Lighthouse report. This demonstrates the local disk storage, a cloud provider will look a bit different and the URL will expire.
 
 #### `http://tide.local/api/tide/v1/report/236/raw/lighthouse`
 
-![Lighthouse Summary Report](images/lighthouse-server-raw-report.png)
+![Lighthouse Summary Report](../images/lighthouse-server-raw-report.png)

@@ -110,4 +110,4 @@ Run PHP Code Beautifier on a single file:
 composer phpcbf filename.php
 ```
 
-_If you get an error when running these commands see the [Help](/help#local-development) page._
+_If you get an error when running these commands see the [Help](help.md#local-development) page._

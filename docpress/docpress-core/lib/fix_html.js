@@ -47,7 +47,7 @@ function fixReferences ($, fname, sources, files, page) {
     var anchor = ''
 
     // Ignore http://, #anchor, mailto:, and links that don't end with .md.
-    if (origUrl.match(/^[a-z]+:\/\//) ||
+    if (origUrl.match(/^https?:\/\//) ||
       origUrl.match(/^mailto:/) ||
       origUrl.match(/^#/) ||
       origUrl.match(/^((?!(.*\.md)).)*$/)) return

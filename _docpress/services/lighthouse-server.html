@@ -222,58 +222,58 @@
 <ol>
 <li>The Tide API starts and listens for requests.</li>
 </ol>
-<p><img src="images/api-php-start.png" alt></p>
+<p><img src="../images/api-php-start.png" alt></p>
 <ol>
 <li>The Lighthouse Server starts and attempts to authenticate with the Tide API.</li>
 </ol>
-<p><img src="images/lighthouse-server-auth.png" alt></p>
+<p><img src="../images/lighthouse-server-auth.png" alt></p>
 <ol>
 <li>The Tide API receives an authentication request from the Lighthouse Server.</li>
 </ol>
-<p><img src="images/api-php-auth.png" alt></p>
+<p><img src="../images/api-php-auth.png" alt></p>
 <ol>
 <li>The Lighthouse Server is authenticated and starts polling the message queue.</li>
 </ol>
-<p><img src="images/lighthouse-server-poll.png" alt></p>
+<p><img src="../images/lighthouse-server-poll.png" alt></p>
 <ol>
 <li>The theme is downloaded and a checksum is calculated.</li>
 </ol>
-<p><img src="images/lighthouse-server-checksum.png" alt></p>
+<p><img src="../images/lighthouse-server-checksum.png" alt></p>
 <ol>
 <li>The source code is ran through <code>gocloc</code> to get code information.</li>
 </ol>
-<p><img src="images/lighthouse-server-code-info.png" alt></p>
+<p><img src="../images/lighthouse-server-code-info.png" alt></p>
 <ol>
 <li>The source is scanned for the Theme header information.</li>
 </ol>
-<p><img src="images/lighthouse-server-header.png" alt></p>
+<p><img src="../images/lighthouse-server-header.png" alt></p>
 <ol>
 <li>Runs the theme preview URL (<code>https://wp-themes.com/&lt;theme-slug&gt;</code>) through a <code>lighthouse</code> audit and keeps polling for the next job.</li>
 </ol>
-<p><img src="images/lighthouse-server-audit.png" alt></p>
+<p><img src="../images/lighthouse-server-audit.png" alt></p>
 <ol>
 <li>Uploads the raw report to a storage provider (GCS, S3, or local) and generates a summary report.</li>
 </ol>
-<p><img src="images/lighthouse-server-audit-complete.png" alt></p>
+<p><img src="../images/lighthouse-server-audit-complete.png" alt></p>
 <ol>
 <li>The Lighthouse Server bundles the summary report and reference to the raw report as a message payload and sends the payload to the Tide API.</li>
 </ol>
-<p><img src="images/lighthouse-server-payload.png" alt></p>
+<p><img src="../images/lighthouse-server-payload.png" alt></p>
 <ol>
 <li>The Tide API updates the audit endpoint after receiving the <code>POST</code> request from the Lighthouse Server.</li>
 </ol>
-<p><img src="images/api-php-payload.png" alt></p>
+<p><img src="../images/api-php-payload.png" alt></p>
 <ol>
 <li>Finally the message is removed from the queue.</li>
 </ol>
-<p><img src="images/lighthouse-server-queue.png" alt></p>
+<p><img src="../images/lighthouse-server-queue.png" alt></p>
 <h3 id="reports">Reports</h3>
 <p>The following is a Tide API audit object showing a Lighthouse summary report.</p>
 <h4 id="http:tide.localapitidev1auditwporgthemetwentyseventeen2.1"><code>http://tide.local/api/tide/v1/audit/wporg/theme/twentyseventeen/2.1</code></h4>
-<p><img src="images/lighthouse-server-summary-report.png" alt="Lighthouse Summary Report"></p>
+<p><img src="../images/lighthouse-server-summary-report.png" alt="Lighthouse Summary Report"></p>
 <p>The following is a Tide API report object showing a download link to the original Lighthouse report. This demonstrates the local disk storage, a cloud provider will look a bit different and the URL will expire.</p>
 <h4 id="http:tide.localapitidev1report236rawlighthouse"><code>http://tide.local/api/tide/v1/report/236/raw/lighthouse</code></h4>
-<p><img src="images/lighthouse-server-raw-report.png" alt="Lighthouse Summary Report"></p>
+<p><img src="../images/lighthouse-server-raw-report.png" alt="Lighthouse Summary Report"></p>
 
     </div>
     <div class="footer-nav">

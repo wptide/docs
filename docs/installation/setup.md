@@ -1,6 +1,6 @@
 # Setup
 
-If you run into any problems getting Tide setup see the [Help](/help) page for common issues or ask in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/).
+If you run into any problems getting Tide setup see the [Help](../help.md) page for common issues or ask in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/).
 
 ## Environment Variables
 
@@ -163,4 +163,4 @@ When you request an audit you will receive a JSON object back that indicates the
 
 If the audit is pending, your shell should have some output to indicate that the audit is running. Once this output stops and all your services go back to the `polling` status, you can refresh the API request in the browser and you should see the updated JSON object with completed Tide reports.
 
-For a full list of API Endpoints that can be used with Tide, see the [API Endpoints](/services/api#endpoints) section.
+For a full list of API Endpoints that can be used with Tide, see the [API Endpoints](../services/api.md#endpoints) section.

@@ -2,7 +2,7 @@
 
 The Sync Server is a Go binary installed on an Alpine Linux Docker image that polls the wp.org API's for themes and plugins to process and writes them to a queue.
 
-Unless you have good reason to set the `SYNC_ACTIVE` environment variable to `on` you should leave the server set to `off` and not bring up the container by running `make sync.up`. Turning on the Sync Server will put around 50k audits in the queue and will take days to process locally and potentially lock up all your computers resources. A better way to audit wp.org themes and plugins would be to follow the instructions found in the [Run Audits](/installation/setup#run-audits) section of the setup page.
+Unless you have good reason to set the `SYNC_ACTIVE` environment variable to `on` you should leave the server set to `off` and not bring up the container by running `make sync.up`. Turning on the Sync Server will put around 50k audits in the queue and will take days to process locally and potentially lock up all your computers resources. A better way to audit wp.org themes and plugins would be to follow the instructions found in the [Run Audits](../installation/setup.md#run-audits) section of the setup page.
 
 If you do decide that you would like to seed the queue with plugins and themes, or are testing changes you've made to the Go binary, you can run `make sync.up` for a second or two and then in a different shell run `make sync.down` which should add a few hundred items to the queue.
 
