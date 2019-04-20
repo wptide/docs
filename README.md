@@ -17,10 +17,10 @@ To develop locally, run:
 
 ## Development Notes
 
-* `docpress` customized Docpress generator that we bundle with the theme
-* `docs` is the root of the content source
-* `src` contains all styles, scripts and layout
-* `_docpress` is the build folder, never place anything here as it will get overwritten
+* `docpress` customized Docpress generator that we bundle with the theme.
+* `docs` is the root of the content source.
+* `src` contains all styles, scripts and layout.
+* `_docpress` is the build folder, never place anything here as it will get overwritten.
 
 ### Contributing
 
@@ -33,7 +33,7 @@ Have questions? Don't open an Issue, come join us in the [`#tide` channel](https
 ### Maintainers
 
 [Derek Herman (@valendesigns)](https://github.com/valendesigns), and
-[Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul)
+[Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul).
 
 ### Credits
 
@@ -41,7 +41,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Derek Herman (@valendesigns)](https://github.com/valendesigns),
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
 [Keanan Koppenhaver (@kkoppenhaver)](https://github.com/kkoppenhaver),
-[Leo Postovoit (@postphotos)](https://github.com/postphotos)
+[Leo Postovoit (@postphotos)](https://github.com/postphotos).
 
 ### License
 
