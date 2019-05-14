@@ -41,7 +41,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Derek Herman (@valendesigns)](https://github.com/valendesigns),
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
 [Keanan Koppenhaver (@kkoppenhaver)](https://github.com/kkoppenhaver),
-[Leo Postovoit (@postphotos)](https://github.com/postphotos)
+[Leo Postovoit (@postphotos)](https://github.com/postphotos), [Janki Moradiya(@jankimoradiya)](https://github.com/jankimoradiya)
 
 ### License
 
