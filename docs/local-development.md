@@ -11,7 +11,7 @@ Create a `composer.json` file in the project root, and add this code.
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
-    "wp-coding-standards/wpcs": "*",
+    "wp-coding-standards/wpcs": "*"
   },
   "scripts": {
     "phpcs": [
