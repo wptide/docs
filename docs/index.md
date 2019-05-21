@@ -37,7 +37,7 @@ Tide services are responsible for the following:
 
 ## Architecture diagram
 
-The following diagram notes the Google Cloud Platform (GCP) components, Tide services components, and pending link with WordPress.org for the PHP Compatibility integration.
+The following diagram notes which Google Cloud Platform (GCP) components are used to represent the four Tide services, and how the themes and plugins API on WP.org connects to the Sync Server. The basic flow is that a User or an API Client will make a request to the Tide REST API, which sends back a response. The request could create messages in the queue where one or more services process them by running automated scripts and witting the results back to the API. Additionally, the Sync Server will poll the WP.org API's for new themes and plugins to add to the message queue.
 
 ![](images/architecture-diagram.png)
 
@@ -70,6 +70,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [David Lonjon (@davidlonjon)](https://github.com/davidlonjon),
 [Derek Herman (@valendesigns)](https://github.com/valendesigns),
 [Dušan D. Majkić (@dmajkic)](https://github.com/dmajkic),
+[Janki Moradiya (@jankimoradiya)](https://github.com/jankimoradiya),
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
 [Jonathan Wold (@sirjonathan)](https://github.com/sirjonathan),
 [Joshua Wold (@jwold)](https://github.com/jwold),
@@ -78,6 +79,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Leo Postovoit (@postphotos)](https://github.com/postphotos),
 [Lubos Kmetko (@luboskmetko)](https://github.com/luboskmetko),
 [Luke Carbis (@lukecarbis)](https://github.com/lukecarbis),
+[Meet Makadia (@mrmakadia94)](https://github.com/mrmakadia94),
 [Miina Sikk (@miina)](https://github.com/miina),
 [Mike Crantea (@mehigh)](https://github.com/mehigh),
 [Rheinard Korf (@rheinardkorf)](https://github.com/rheinardkorf),

@@ -39,6 +39,7 @@ Have questions? Don't open an Issue, come join us in the [`#tide` channel](https
 
 Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Derek Herman (@valendesigns)](https://github.com/valendesigns),
+[Janki Moradiya (@jankimoradiya)](https://github.com/jankimoradiya),
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
 [Keanan Koppenhaver (@kkoppenhaver)](https://github.com/kkoppenhaver),
 [Leo Postovoit (@postphotos)](https://github.com/postphotos)
