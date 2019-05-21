@@ -126,7 +126,7 @@
 <li>The <a href="services/lighthouse-server">Lighthouse Server</a> reads messages from a queue and runs Google Lighthouse reports against the themes only, then sends the results back to the Tide API.</li>
 </ul>
 <h2 id="architecture-diagram">Architecture diagram</h2>
-<p>The following diagram notes the Google Cloud Platform (GCP) components, Tide services components, and pending link with <a href="http://WordPress.org">WordPress.org</a> for the PHP Compatibility integration.</p>
+<p>The following diagram notes which Google Cloud Platform (GCP) components are used to represent the four Tide services, and how the themes and plugins API on <a href="http://WP.org">WP.org</a> connects to the Sync Server. The basic flow is that a User or an API Client will make a request to the Tide REST API, which sends back a response. The request could create messages in the queue where one or more services process them by running automated scripts and witting the results back to the API. Additionally, the Sync Server will poll the <a href="http://WP.org">WP.org</a> API&apos;s for new themes and plugins to add to the message queue.</p>
 <p><img src="images/architecture-diagram.png" alt></p>
 <h2 id="working-with-tide">Working with Tide</h2>
 <p>Currently you can:</p>
