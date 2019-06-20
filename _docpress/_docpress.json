@@ -13,14 +13,26 @@
             "id": "vision"
           },
           {
-            "title": "Overview",
+            "title": "Current status",
             "depth": 2,
-            "id": "overview"
+            "id": "current-status"
           },
           {
-            "title": "Architecture diagram",
+            "title": "Technical overview",
             "depth": 2,
-            "id": "architecture-diagram"
+            "id": "technical-overview",
+            "headings": [
+              {
+                "title": "Architecture diagram",
+                "depth": 3,
+                "id": "architecture-diagram"
+              },
+              {
+                "title": "WordPress.org components",
+                "depth": 3,
+                "id": "wordpress.org-components"
+              }
+            ]
           },
           {
             "title": "Working with Tide",
@@ -675,14 +687,26 @@
           "id": "vision"
         },
         {
-          "title": "Overview",
+          "title": "Current status",
           "depth": 2,
-          "id": "overview"
+          "id": "current-status"
         },
         {
-          "title": "Architecture diagram",
+          "title": "Technical overview",
           "depth": 2,
-          "id": "architecture-diagram"
+          "id": "technical-overview",
+          "headings": [
+            {
+              "title": "Architecture diagram",
+              "depth": 3,
+              "id": "architecture-diagram"
+            },
+            {
+              "title": "WordPress.org components",
+              "depth": 3,
+              "id": "wordpress.org-components"
+            }
+          ]
         },
         {
           "title": "Working with Tide",
@@ -1341,13 +1365,13 @@
     "docs/search.md": "search.html",
     "docs/404.md": "404.html",
     "docs/images/api-php-auth.png": "images/api-php-auth.png",
-    "docs/images/api-php-start.png": "images/api-php-start.png",
     "docs/images/api-php-payload.png": "images/api-php-payload.png",
+    "docs/images/api-php-start.png": "images/api-php-start.png",
     "docs/images/architecture-diagram.png": "images/architecture-diagram.png",
     "docs/images/kinsta-logo.png": "images/kinsta-logo.png",
+    "docs/images/lighthouse-server-audit-complete.png": "images/lighthouse-server-audit-complete.png",
     "docs/images/lighthouse-server-audit.png": "images/lighthouse-server-audit.png",
     "docs/images/lighthouse-server-auth.png": "images/lighthouse-server-auth.png",
-    "docs/images/lighthouse-server-audit-complete.png": "images/lighthouse-server-audit-complete.png",
     "docs/images/lighthouse-server-checksum.png": "images/lighthouse-server-checksum.png",
     "docs/images/lighthouse-server-code-info.png": "images/lighthouse-server-code-info.png",
     "docs/images/lighthouse-server-header.png": "images/lighthouse-server-header.png",
