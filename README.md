@@ -42,7 +42,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Janki Moradiya (@jankimoradiya)](https://github.com/jankimoradiya),
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
 [Keanan Koppenhaver (@kkoppenhaver)](https://github.com/kkoppenhaver),
-[Leo Postovoit (@postphotos)](https://github.com/postphotos)
+[Leo Postovoit (@postphotos)](https://github.com/postphotos), [Cathi Bosco (@cathibosco)](https://github.com/cathibosco), [Scott Reilly (@coffee2code)](https://github.com/coffee2code)
 
 ### License
 
