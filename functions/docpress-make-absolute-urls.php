@@ -44,5 +44,8 @@ function docpress_make_absolute_urls ($file_contents) {
 	$content = preg_replace('#src="(?!https?:\/\/)(?!data:)(.+)"#im', 'src="'. DOCS_URI .'/$1"', $content); // fix relative images
 	$content = preg_replace('#src="(.+)(?:\.\.\/)(.+)"#im', 'src="$1$2"', $content); // replace ../
 
+	// @todo Find a better way to fix the invalid URL coming from `docpress`.
+	$content = preg_replace('/trunk\/wordpress.org\/public\//', 'trunk/wordpress.org/public_html/', $content );
+
 	return $content;
 }
