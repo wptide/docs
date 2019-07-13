@@ -1399,8 +1399,8 @@
     "docs/search.md": "search.html",
     "docs/404.md": "404.html",
     "docs/images/Tide-Contributor.png": "images/Tide-Contributor.png",
-    "docs/images/api-php-auth.png": "images/api-php-auth.png",
     "docs/images/Tide-Team.png": "images/Tide-Team.png",
+    "docs/images/api-php-auth.png": "images/api-php-auth.png",
     "docs/images/api-php-payload.png": "images/api-php-payload.png",
     "docs/images/api-php-start.png": "images/api-php-start.png",
     "docs/images/architecture-diagram.png": "images/architecture-diagram.png",
@@ -1415,7 +1415,7 @@
     "docs/images/lighthouse-server-poll.png": "images/lighthouse-server-poll.png",
     "docs/images/lighthouse-server-queue.png": "images/lighthouse-server-queue.png",
     "docs/images/lighthouse-server-raw-report.png": "images/lighthouse-server-raw-report.png",
-    "docs/images/lighthouse-server-summary-report.png": "images/lighthouse-server-summary-report.png",
-    "docs/images/tide-wp.png": "images/tide-wp.png"
+    "docs/images/tide-wp.png": "images/tide-wp.png",
+    "docs/images/lighthouse-server-summary-report.png": "images/lighthouse-server-summary-report.png"
   }
 }
