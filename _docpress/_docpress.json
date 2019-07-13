@@ -592,6 +592,23 @@
                 "title": "Pull Request Guidelines",
                 "depth": 2,
                 "id": "pull-request-guidelines"
+              },
+              {
+                "title": "Profile Badges",
+                "depth": 2,
+                "id": "profile-badges",
+                "headings": [
+                  {
+                    "title": "Tide Team",
+                    "depth": 3,
+                    "id": "tide-team"
+                  },
+                  {
+                    "title": "Tide Contributor",
+                    "depth": 3,
+                    "id": "tide-contributor"
+                  }
+                ]
               }
             ]
           },
@@ -1257,6 +1274,23 @@
           "title": "Pull Request Guidelines",
           "depth": 2,
           "id": "pull-request-guidelines"
+        },
+        {
+          "title": "Profile Badges",
+          "depth": 2,
+          "id": "profile-badges",
+          "headings": [
+            {
+              "title": "Tide Team",
+              "depth": 3,
+              "id": "tide-team"
+            },
+            {
+              "title": "Tide Contributor",
+              "depth": 3,
+              "id": "tide-contributor"
+            }
+          ]
         }
       ]
     },
@@ -1364,9 +1398,11 @@
     "docs/license.md": "license.html",
     "docs/search.md": "search.html",
     "docs/404.md": "404.html",
+    "docs/images/Tide-Contributor.png": "images/Tide-Contributor.png",
+    "docs/images/Tide-Team.png": "images/Tide-Team.png",
     "docs/images/api-php-auth.png": "images/api-php-auth.png",
-    "docs/images/api-php-payload.png": "images/api-php-payload.png",
     "docs/images/api-php-start.png": "images/api-php-start.png",
+    "docs/images/api-php-payload.png": "images/api-php-payload.png",
     "docs/images/architecture-diagram.png": "images/architecture-diagram.png",
     "docs/images/kinsta-logo.png": "images/kinsta-logo.png",
     "docs/images/lighthouse-server-audit-complete.png": "images/lighthouse-server-audit-complete.png",
