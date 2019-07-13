@@ -48,4 +48,3 @@ The Tide Team badge will be manually assigned to all active Tide maintainers –
 The Tide Contributor badge will be manually assigned to those who provide valuable contributions to Tide -- i.e. those who are listed as “Contributors” on [this page](https://github.com/wptide/wptide#contributors) (also [here](https://github.com/wptide/docs#credits), [here](https://github.com/wptide/pkg#props), and [here](https://github.com/wptide/wp-tide-api#props)).
 
 *The easiest way to have the Tide Team or Tide Contributor badges assigned to you is for you to request them (the system doesn’t allow us to add the badge to your profile until you submit a request). To make this request please go the [Tide Team](https://profiles.wordpress.org/associations/tide-team/) or [Tide Contributor](https://profiles.wordpress.org/associations/tide-contributor/) pages and request membership for the group.*
-
