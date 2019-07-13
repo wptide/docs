@@ -1,17 +1,14 @@
 # Tide Contributing Guide
 
-There are many ways to contribute to Tide. You can help us champion the adoption of quality testing results in the WordPress project. You can also help by contributing code or documentation to the Tide itself.
+There are many ways to contribute to Tide. You can help us champion the adoption of quality testing results in the WordPress project. You can also help by contributing code or documentation to Tide itself.
 
 Note that you can also contribute to [WordPress meta](https://make.wordpress.org/meta/handbook/documentation/contributing-with-git/) to improve the WordPress plugin directory.
 
-Before submitting your contribution, please make sure to take a moment and read
-through the following guidelines.
+Before submitting your contribution, please make sure to take a moment and read through the following guidelines.
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the
-[Tide Code of Conduct](code-of-conduct.md). By participating, you are expected
-to uphold this code. Please report unacceptable behavior to engage@xwp.co.
+This project and everyone participating in it is governed by the [Tide Code of Conduct](code-of-conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to derek@wptide.org.
 
 ## Issue Reporting Guidelines
 
