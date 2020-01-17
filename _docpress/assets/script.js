@@ -65,7 +65,7 @@ function debounce(func, wait, immediate){
   return debounced;
 };
 
-// Adds compatibility for ES modules
+// Adds compatibility for ES modules.
 debounce.debounce = debounce;
 
 module.exports = debounce;
@@ -275,7 +275,7 @@ function scrollTop () {
     : document.body.scrollTop
 }
 
-// Taken from https://github.com/yields/scrolltop/blob/master/index.js
+// Taken from https://github.com/yields/scrolltop/blob/master/index.js.
 module.exports = scrollTop
 
 },{}],9:[function(require,module,exports){
@@ -447,7 +447,7 @@ void (function (root, factory) {
     obs.observe(document, { subtree: true, childList: true })
     onmount.observer = obs
 
-    // trigger everything before going
+    // Trigger everything before going.
     onmount()
     return true
   }
@@ -509,8 +509,8 @@ void (function (root, factory) {
     this.init = init
     this.exit = exit
     this.selector = onmount.selectify(selector)
-    this.loaded = [] // keep track of dom elements loaded for this behavior
-    this.key = '__onmount:' + bid // leave the state in el['__onmount:12']
+    this.loaded = [] // Keep track of dom elements loaded for this behavior.
+    this.key = '__onmount:' + bid // Leave the state in el['__onmount:12'].
     this.detectMutate = options && options.detectMutate
   }
 
@@ -655,7 +655,7 @@ void (function (root, factory) {
     } else if (_matches) {
       return _matches.call(el, selector)
     } else if (el.parentNode) {
-      // IE8 and below
+      // IE8 and below.
       var nodes = el.parentNode.querySelectorAll(selector)
       for (var i = nodes.length; i--; 0) {
         if (nodes[i] === el) return true
@@ -811,7 +811,7 @@ function ApiCheck (el) {
 
 module.exports = ApiCheck
 },{}],12:[function(require,module,exports){
-// from:https://github.com/jserz/js_piece/blob/master/DOM/ChildNode/remove()/remove().md
+// From:https://github.com/jserz/js_piece/blob/master/DOM/ChildNode/remove()/remove().md.
 
 void (function (arr) {
   arr.forEach(function (item) {
@@ -1209,7 +1209,7 @@ function q (el) {
 module.exports = Scrolltrack
 
 },{"debounce":1,"dom101/document-height":3,"dom101/each":4,"dom101/scroll-top":8,"dom101/toggle-class":9}],16:[function(require,module,exports){
-// Waves for homepage hero section
+// Waves for homepage hero section.
 
 function Waves (canvas) {
   var ctx = canvas.getContext('2d')
@@ -1217,7 +1217,7 @@ function Waves (canvas) {
   var height = canvas.height = parentRect.height
   var width = canvas.width = Math.min(parentRect.width + 300, window.innerWidth - 400)
 
-  // Stage
+  // Stage.
   var fov = 1024
   var zRows = width / 60
   var xRows = width / 50
@@ -1228,7 +1228,7 @@ function Waves (canvas) {
   var tick = 0
   var isStop = false
 
-  // Points
+  // Points.
   var points = []
   
   for (var z = 0; z < zRows; z++) {
