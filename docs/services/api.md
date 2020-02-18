@@ -192,7 +192,7 @@ Delete an audit by `id`.
 Retrieve the audit with a `GET` request:
 
 ```
-curl -X GET http://tide.local/api/tide/v1/audit<id>
+curl -X GET http://tide.local/api/tide/v1/audit/<id>
 ```
 
 Update the title by making a `POST` request:
