@@ -1,6 +1,6 @@
 # Google App Engine
 
-You need to setup App Engine before you can deploy to GCP or use GCP resources for local development.
+You need to setup an App Engine before you can deploy to GCP or use GCP resources for local development.
 
 ## Environment Variables
 
@@ -14,11 +14,11 @@ You need to setup App Engine before you can deploy to GCP or use GCP resources f
 | **Cron Schedule**: |
 | `GAE_API_CRON_SCHEDULE_MINS` | The number of minutes between cron intervals. An example value is `1`. |
 | **Readiness Check**: |
-| `GAE_API_RC_APP_START_TIMEOUT_SEC` | The maximum time, in seconds, an instance has to become ready after the VM and other infrastructure are provisioned. After this period, the deployment fails and is rolled back. You might want to increase this setting if your application requires significant initialization tasks, such as downloading a large file, before it is ready to serve. Must be within range of: `1-3600`. |
-| `GAE_API_RC_CHECK_INTERVAL_SEC` | Time interval between checks, in seconds. Must be within range of: `1-300`. |
-| `GAE_API_RC_FAILURE_THRESHOLD` | An instance is unhealthy after failing this number of consecutive checks. Must be within range of: `1-10`. |
-| `GAE_API_RC_SUCCESS_THRESHOLD` | An unhealthy instance becomes healthy after successfully responding to this number of consecutive checks. Must be within range of: `1-10`. |
-| `GAE_API_RC_TIMEOUT_SEC` | Timeout interval for each request, in seconds. Must be within range of: `1-300`. |
+| `GAE_API_RC_APP_START_TIMEOUT_SEC` | The maximum time, in seconds, an instance has to become ready after the VM and other infrastructure are provisioned. After this period, the deployment fails and is rolled back. You might want to increase this setting if your application requires significant initialization tasks, such as downloading a large file, before it is ready to serve. Must be within the range of: `1-3600`. |
+| `GAE_API_RC_CHECK_INTERVAL_SEC` | Time interval between checks, in seconds. Must be within the range of: `1-300`. |
+| `GAE_API_RC_FAILURE_THRESHOLD` | An instance is unhealthy after failing this number of consecutive checks. Must be within the range of: `1-10`. |
+| `GAE_API_RC_SUCCESS_THRESHOLD` | An unhealthy instance becomes healthy after successfully responding to this number of consecutive checks. Must be within the range of: `1-10`. |
+| `GAE_API_RC_TIMEOUT_SEC` | Timeout interval for each request, in seconds. Must be within the range of: `1-300`. |
 
 ## Setup
 

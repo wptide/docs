@@ -1,6 +1,6 @@
 # Setup
 
-If you run into any problems getting Tide setup see the [Help](../help.md) page for common issues or ask in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/).
+If you run into any problems getting Tide setup, then see the [Help](../help.md) page for common issues or ask in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/).
 
 ## Environment Variables
 

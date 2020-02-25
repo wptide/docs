@@ -30,7 +30,7 @@ Inspired by the proverb _"A rising tide lifts all boats"_, we want to lift the q
 
 The Tide project is an [official component of the WordPress project](https://make.wordpress.org/tide/) and still in the early stages. Today, Tide scans all WordPress plugins and themes and provides scan results as JSON through the Tide API.
 
-The next step is to start using the JSON output in the WordPress plugin and theme repository to show PHP compatibility information. This will help drive the adoption of the newest PHP versions as both plugin/theme authors and WordPress site owners installing those plugins and theme will be more aware of the PHP compatibility of each plugin/theme.
+The next step is to start using the JSON output in the WordPress plugin and theme repository to show PHP compatibility information. This will help drive the adoption of the newest PHP versions as both plugin/theme authors and WordPress site owners installing those plugins and themes will be more aware of the PHP compatibility of each plugin/theme.
 
 Progress can be followed in the WordPress meta issue tracker at https://meta.trac.wordpress.org/ticket/4309.
 
@@ -119,4 +119,4 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 
 ## Contact Us
 
-Have questions? Join us in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/). If you're new to Slack, keep it mind that it sometimes takes several hours for community members to respond — thank you for being patient!
+Have questions? Join us in the [`#tide` channel](https://wordpress.slack.com/messages/C7TK8FBUJ/) in [WordPress Slack](https://make.wordpress.org/chat/). If you're new to Slack, keep in mind that it sometimes takes several hours for community members to respond — thank you for being patient!

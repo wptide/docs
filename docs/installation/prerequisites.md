@@ -21,4 +21,4 @@ Install [Glide](https://glide.readthedocs.io/en/latest/#installing-glide), a pac
 
 Install [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) _(Windows only)_
   - The `make` command is not available on Windows by default and you must install it to be able to use the Tide `make` commands.
-  - Add `C:\zlib\bin` to your `$PATH` once you've install the package.
+  - Add `C:\zlib\bin` to your `$PATH` once you've installed the package.
