@@ -29,19 +29,19 @@ function docpress_make_absolute_urls ($file_contents) {
 		'local-development',
 	);
 
-	// Links.
-	$content = str_replace($href_match, $href_replace, $file_contents); // replace all relative href file matches with absolute urls and remove .html & index.
+	// Links
+	$content = str_replace($href_match, $href_replace, $file_contents); // replace all relative href file matches with absolute urls and remove .html & index
 	if ( in_array( end( $parts ), $files, true ) ) {
-		$content = preg_replace('#href="(?!\/|https?:\/\/|mailto:|\#)(.*)"#im', 'href="'. site_url() .'/$1"', $content); // replace relative links inside root level files to other root level files.
+		$content = preg_replace('#href="(?!\/|https?:\/\/|mailto:|\#)(.*)"#im', 'href="'. site_url() .'/$1"', $content); // replace relative links inside root level files to other root level files
 	}
 	$content = preg_replace('#href="(?:\.\.\/)(.+)"#im', 'href="'. site_url() .'/$1"', $content); // replace ../
-	$content = preg_replace('#href="(.+)(?:(\/.*)\.html)"#im', 'href="$1$2"', $content); // replace .html links.
+	$content = preg_replace('#href="(.+)(?:(\/.*)\.html)"#im', 'href="$1$2"', $content); // replace .html links
 	$content = preg_replace('#href="(.+)(\/index)"#im', 'href="$1"', $content); // replace /index links
-	$content = preg_replace('#href="(?!mailto:)([^\/\#]+)(\#.+)*"#im', 'href="'. get_current_url() .'/$1"', $content); // replace sibling links.
-	$content = preg_replace('#href="' . site_url() . '(?:\/\/)([^"]*)"#im', 'href="' . site_url() . '/$1"', $content); // replace path//file links.
+	$content = preg_replace('#href="(?!mailto:)([^\/\#]+)(\#.+)*"#im', 'href="'. get_current_url() .'/$1"', $content); // replace sibling links
+	$content = preg_replace('#href="' . site_url() . '(?:\/\/)([^"]*)"#im', 'href="' . site_url() . '/$1"', $content); // replace path//file links
 
-	// Images.
-	$content = preg_replace('#src="(?!https?:\/\/)(?!data:)(.+)"#im', 'src="'. DOCS_URI .'/$1"', $content); // fix relative images.
+	// Images
+	$content = preg_replace('#src="(?!https?:\/\/)(?!data:)(.+)"#im', 'src="'. DOCS_URI .'/$1"', $content); // fix relative images
 	$content = preg_replace('#src="(.+)(?:\.\.\/)(.+)"#im', 'src="$1$2"', $content); // replace ../
 
 	// @todo Find a better way to fix the invalid URL coming from `docpress`.

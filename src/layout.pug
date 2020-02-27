@@ -1,5 +1,5 @@
 //- Menu:
-//- renders the menu item recursively.
+//- renders the menu item recursively
 
 mixin menu(m, depth)
   li.menu-item(class=('-level-' + depth + (m.sections ? ' -parent' : '')))
@@ -8,25 +8,25 @@ mixin menu(m, depth)
     else if m.title
       span.title= m.title
 
-    //- Headings.
+    //- Headings
     if m.headings && m.url === active && !m.expand && !m.anchor
       ul.headings.heading-list
         - for (var key in m.headings)
           +heading(m.headings[key], 0)
 
-    //- Sub-pages.
+    //- Sub-pages
     if m.sections
       ul.submenu
         - for (var key in m.sections)
           +menu(m.sections[key], depth + 1)
 
-  //- Headings as subpages.
+  //- Headings as subpages
   if m.headings && m.url === active && m.expand && !m.anchor
     - for (var key in m.headings)
       +heading-menu(m.headings[key], depth)
 
 //- Heading:
-//- renders the heading item recursively.
+//- renders the heading item recursively
 
 mixin heading(h, depth)
   li.heading-item(class=('-depth-' + h.depth))
@@ -39,7 +39,7 @@ mixin heading(h, depth)
 
 //- Heading-menu:
 //- Renders the heading item recursively, but in the markup of a regular menu.
-//- Used for single-page sites.
+//- Used for single-page sites
 
 mixin heading-menu(h, depth)
   li.menu-item(class=('-level-' + depth + (h.headings ? ' -parent' : '')))
@@ -51,7 +51,7 @@ mixin heading-menu(h, depth)
           +heading-menu(h.headings[key], depth + 1)
 
 //-
-//- Heading.
+//- Heading
 //-
 
 mixin header-nav
@@ -76,7 +76,7 @@ mixin footer-nav(prev, next)
             span.title= next.pageTitle
 
 //-
-//- Content.
+//- Content
 //-
 
 .doc-layout

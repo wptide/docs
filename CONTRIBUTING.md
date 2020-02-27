@@ -8,7 +8,7 @@ Before submitting your contribution, please make sure to take a moment and read 
 
 ## Code of Conduct
 
-This project and everyone participating in it are governed by the [Tide Code of Conduct](code-of-conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to support@wptide.org.
+This project and everyone participating in it is governed by the [Tide Code of Conduct](code-of-conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to support@wptide.org.
 
 ## Issue Reporting Guidelines
 
@@ -24,9 +24,9 @@ This project and everyone participating in it are governed by the [Tide Code of 
     - If you are not familiar with branching please read [_A successful Git branching model_](http://nvie.com/posts/a-successful-git-branching-model/) before you go any further.
 - If adding a new feature:
     - Add accompanying test case.
-    - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue first and have it green-lit before working on it.
+    - Provide convincing reason to add this feature. Ideally you should open a suggestion issue first and have it green-lit before working on it.
 - If fixing a bug:
-    - Provide a detailed description of the bug in the PR. Live demo preferred.
+    - Provide detailed description of the bug in the PR. Live demo preferred.
     - Add appropriate test coverage if applicable.
 
 Travis CI will run the unit tests whenever you push changes to your PR. Tests are required to pass successfully for a merge to be considered.

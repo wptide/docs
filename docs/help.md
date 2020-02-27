@@ -38,7 +38,7 @@ ERROR: for wptide_api-mysql_1  Cannot start service api-mysql: b'Mounts denied: 
 
 ## Local Development
 
-If you run any of the `phpcs` commands on the [Local Development](local-development.md) page and get an error, here are a couple of hints that might unblock you.
+If you run any of the `phpcs` commands on the [Local Development](local-development.md) page and get an error, here are a couple hints that might unblock you.
 
 ### Bad Substitution
 
@@ -49,7 +49,7 @@ You get a bad substitution error because your OS doesn't like the `${1:.}` strin
 sh: 1: Bad substitution
 ```
 
-Replace both instances of the `${1:.}` the string inside the `composer.json` file with either a `.` or `$1`. The `.` will mean that the `composer phpcs filename.php` and `composer phpcbf filename.php` commands will no longer function and you must process every file. However, if you change it to `$1` and it works that means you must always supply a path like `composer phpcs .` or `composer phpcs filname.php` and running the command without a path will fail.
+Replace both instances of the `${1:.}` string inside the `composer.json` file with either a `.` or `$1`. The `.` will mean that the `composer phpcs filename.php` and `composer phpcbf filename.php` commands will no longer function and you must process every file. However, if you change it to `$1` and it works that means you must always supply a path like `composer phpcs .` or `composer phpcs filname.php` and running the command without a path will fail.
 
 ### Error Code
 
