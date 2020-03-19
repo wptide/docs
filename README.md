@@ -44,6 +44,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Jeffrey Paul (@jeffpaul)](https://github.com/jeffpaul),
 [Keanan Koppenhaver (@kkoppenhaver)](https://github.com/kkoppenhaver),
 [Leo Postovoit (@postphotos)](https://github.com/postphotos),
+[Mukesh Panchal (@mukeshpanchal27)](https://github.com/mukeshpanchal27),
 [Otto Kekäläinen (@ottok)](https://github.com/ottok),
 [Pierre Gordon (@pierlon)](https://github.com/pierlon),
 [Scott Reilly (@coffee2code)](https://github.com/coffee2code)
