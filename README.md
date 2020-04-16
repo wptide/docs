@@ -46,6 +46,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Leo Postovoit (@postphotos)](https://github.com/postphotos),
 [Otto Kekäläinen (@ottok)](https://github.com/ottok),
 [Pierre Gordon (@pierlon)](https://github.com/pierlon),
+[Prashant Baldha (@pmbaldha)](https://github.com/pmbaldha),
 [Scott Reilly (@coffee2code)](https://github.com/coffee2code)
 
 ### License
