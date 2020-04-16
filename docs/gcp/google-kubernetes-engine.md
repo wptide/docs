@@ -55,7 +55,7 @@ All the goroutines are deployed to a Kubernetes cluster with the same basic step
 
 ## Deploy
 
-Once you've got the variables setup it's basically push the image to Google Container Registry (GCR), create the Kubernetes cluster, and then create a Kubernetes deployment. I'll demonstrate with the PHPCS Server. Other than specific `make` commands for each service, these step are all the same.
+Once you've got the variables setup it's basically push the image to Google Container Registry (GCR), create the Kubernetes cluster, and then create a Kubernetes deployment. I'll demonstrate it with the PHPCS Server. Other than specific `make` commands for each service, these steps are all the same.
 
 Push the image to GCR:
 

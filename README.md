@@ -47,6 +47,7 @@ Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Mukesh Panchal (@mukeshpanchal27)](https://github.com/mukeshpanchal27),
 [Otto Kekäläinen (@ottok)](https://github.com/ottok),
 [Pierre Gordon (@pierlon)](https://github.com/pierlon),
+[Prashant Baldha (@pmbaldha)](https://github.com/pmbaldha),
 [Scott Reilly (@coffee2code)](https://github.com/coffee2code)
 
 ### License
