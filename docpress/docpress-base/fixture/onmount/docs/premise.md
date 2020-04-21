@@ -51,7 +51,7 @@ $(function () {
 However, you have a few problems with this approach.
 
 - **Not testable** — You can't make unit tests from this code. To test this, you will need to load the entire page, simulate a click, and see if it worked. There's no easy way to test it in isolation.
-- **Not reusable** — When there are 2 `.js-expandable-nav` elements in the page, this will break. This isn't a concern at first, but it certainly hampers code reusability.
+- **Not reusable** — When there are 2 `.js-expandable-nav` elements on the page, this will break. This isn't a concern at first, but it certainly hampers code reusability.
 - **Not for dialog boxes** — Since it triggers on a `document.ready` event, it doesn't work on elements loaded later. There's no easy way to retrigger this code, either, which you would want to do for when content is loaded remotely (like in a dialog box).
 - **No cleanups** — What happens when `.js-expandable-nav` exits the DOM (eg, the dialog box was closed)? In a more complex scenario, you will want to do cleanup such as unbinding event handlers.
 
@@ -76,7 +76,7 @@ $.onmount('.js-expandable-nav', function () {
 })
 ```
 
-This block is called a *behavior*—that is, a piece of JavaScript that defines what dynamic behavior happens (eg, menu expands on button click) for a given selector (eg, `.js-expandable-nav`). This is a concept first seen in legacy IE as [DHTML behaviors].
+This block is called a *behavior*—that is, a piece of JavaScript that defines what dynamic behavior happens (eg, the menu expands on button click) for a given selector (eg, `.js-expandable-nav`). This is a concept first seen in legacy IE as [DHTML behaviors].
 
 [DHTML behaviors]: https://msdn.microsoft.com/en-us/library/ms531079%28v=vs.85%29.aspx
 
@@ -95,4 +95,4 @@ By simply wrapping your code in `$.onmount(...)` instead of `$(function)` (aka `
 
 * **Idempotent** — You're assured that the block will only run once for every `.js-expandable-nav` element. If it has been applied before, it will not apply again.
 * **Reusable** — You can retrigger this behavior for tests. This allows you to create an isolated test for the behavior.
-* **Reusable** — You can call behaviors again and again (`$.onmount()`) every time your DOM changes to make it work for any new elements. This is useful for in-page transitions with Turbolinks or Pjax, or for dynamically-loaded content such as modal boxes.
+* **Reusable** — You can call behaviors again and again (`$.onmount()`) every time your DOM changes to make it work for any new elements. This is useful for in-page transitions with Turbolinks or Pjax, or dynamically-loaded content such as modal boxes.

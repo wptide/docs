@@ -1,6 +1,6 @@
 # Google App Engine
 
-You need to setup App Engine before you can deploy to GCP or use GCP resources for local development.
+You need to setup an App Engine before you can deploy to GCP or use GCP resources for local development.
 
 ## Environment Variables
 

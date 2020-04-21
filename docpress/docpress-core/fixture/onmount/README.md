@@ -118,7 +118,7 @@ bower install onmount
 
   > Registers a behavior for `selector` to run the callback `init()`. The `exit()` callback will be called once the behavior is triggered again but the element is no longer attached to the DOM.
   >
-  > The callbacks are passed an object `b`, and  the same object is passed for both `init` and `exit`. This allows them to communicate and keep aware of state.
+  > The callbacks are passed an object `b`, and the same object is passed for both `init` and `exit`. This allows them to communicate and keep aware of the state.
   >
   > An ID is also provided, `b.id`, which is guaranteed unique for every behavior-element pair.
 
