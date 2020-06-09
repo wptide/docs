@@ -18,6 +18,11 @@ require_once( 'functions/docpress-make-absolute-urls.php' );
 
 define( 'DOCS_FILE_PATH', docpress_get_file_path() );
 
+// Enables themes to manage the document title tag
+add_action( 'after_setup_theme', function() {
+	add_theme_support( 'title-tag' );
+} );
+
 // Remove unused scripts & styles.
 add_action('init', function() {
 	global $pagenow;

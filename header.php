@@ -10,7 +10,6 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 	<head>
-		<title><?php wp_title(); ?></title>
 		<meta name="description" content="Automated insight into WordPress themes and plugins">
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width">
