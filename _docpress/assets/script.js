@@ -615,7 +615,7 @@ void (function (root, factory) {
   }
 
   /**
-   * Interanl: checks if given element `el` is in the query result `list`.
+   * Internal: checks if given element `el` is in the query result `list`.
    */
 
   function has (list, el) {

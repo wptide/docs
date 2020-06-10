@@ -60,7 +60,7 @@ Scrollclass.prototype.destroy = function () {
 
 /**
  * Internal: Updates data on window resize. This sets some useful stuff that
- * can be used by the `onscroll` handler.
+ * Can be used by the `onscroll` handler.
  */
 
 Scrollclass.prototype.update = function () {

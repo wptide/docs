@@ -14,7 +14,7 @@ If you are going to use any GCP resources for local development or plan to deplo
 
 ## Service Account
 
-Go to the [Credentials](https://console.cloud.google.com/apis/credentials/) section of your project in the Console. Click **Create credentials** and then click **Service account key**. For the Service account, select **App Engine app default service account**. Then click **Create** to generate and download the JSON service account key file to your local machine. Save the file as `service-account.json` in the the projects root directory. We will use this file to connect to Google Cloud Platform services and API's like Cloud Storage and Cloud SQL.
+Go to the [Credentials](https://console.cloud.google.com/apis/credentials/) section of your project in the Console. Click **Create credentials** and then click **Service account key**. For the Service account, select **App Engine app default service account**. Then click **Create** to generate and download the JSON service account key file to your local machine. Save the file as `service-account.json` in the projects root directory. We will use this file to connect to Google Cloud Platform services and API's like Cloud Storage and Cloud SQL.
 
 _If **App Engine app default service account** is missing from the list of service accounts, then you haven't activated App Engine for your project or it is still initializing._
 
@@ -29,7 +29,7 @@ These three variables are required for both local development and deployments to
 
 | Variable | Description |
 | :--- | :--- |
-| `GCP_PROJECT` | The unique ID of you Google project. Default is `tide-local`. _Note: you must update this value if you plan to use **any** GCP resources, for purely local development the default value will work as-is._ |
+| `GCP_PROJECT` | The unique ID of your Google project. Default is `tide-local`. _Note: you must update this value if you plan to use **any** GCP resources, for purely local development the default value will work as-is._ |
 | `GCP_REGION` | The [region][regions-and-zones] where all your resources will be created. For example, `us-west1`. |
 | `GCP_ZONE` | The preferred [zone][regions-and-zones] in your region that resources will be created, For example, `us-west1-a`. |
 
