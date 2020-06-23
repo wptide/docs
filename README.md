@@ -37,7 +37,8 @@ Have questions? Don't open an Issue, come join us in the [`#tide` channel](https
 
 ### Credits
 
-Props: [Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
+Props: [Arslan Ahmed (@akkspros)](https://github.com/akkspros),
+[Bartek Makoś (@MakiBM)](https://github.com/MakiBM),
 [Cathi Bosco (@cathibosco)](https://github.com/cathibosco),
 [Derek Herman (@valendesigns)](https://github.com/valendesigns),
 [Janki Moradiya (@jankimoradiya)](https://github.com/jankimoradiya),
